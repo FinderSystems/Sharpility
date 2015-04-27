@@ -42,8 +42,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Collections\CollectionExtenensions.cs" />
+    <Compile Include="Collections\Lists.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Util\Enums.cs" />
+    <Compile Include="Util\Strings.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
