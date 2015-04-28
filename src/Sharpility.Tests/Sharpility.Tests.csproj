@@ -63,6 +63,7 @@
     <Compile Include="Util\EnumsTests.cs" />
     <Compile Include="Util\NumbersTests.cs" />
     <Compile Include="Util\ObjectsTests.cs" />
+    <Compile Include="Util\PrecognitionsTests.cs" />
     <Compile Include="Util\ReflectionsTests.cs" />
     <Compile Include="Util\StringsTests.cs" />
     <Compile Include="Util\ToStringHelperTests.cs" />
