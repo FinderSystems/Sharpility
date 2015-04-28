@@ -10,9 +10,9 @@ namespace Sharpility.Extensions
             return count > 0 ? string.Concat(Enumerable.Repeat(value, count)) : "";
         }
 
-        public static byte[] ToBytes(this string value, Encoding encoding)
+        public static byte[] ToBytes(this string value, Encoding encoding = null)
         {
-            return encoding.GetBytes(value);
+            return (encoding ?? Encoding.Default).GetBytes(value);
         }
 
         public static byte[] ToAsciiBytes(this string value)

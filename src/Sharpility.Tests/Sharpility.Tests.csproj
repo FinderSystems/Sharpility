@@ -65,6 +65,7 @@
     <Compile Include="Extensions\StringExtensionsTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Util\EnumsTests.cs" />
+    <Compile Include="Util\HashesTests.cs" />
     <Compile Include="Util\NumbersTests.cs" />
     <Compile Include="Util\ObjectsTests.cs" />
     <Compile Include="Util\PrecognitionsTests.cs" />

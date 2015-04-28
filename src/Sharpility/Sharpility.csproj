@@ -45,6 +45,7 @@
     <Compile Include="Extensions\CollectionExtenensions.cs" />
     <Compile Include="Util\Dictionaries.cs" />
     <Compile Include="Extensions\DictionaryExtensions.cs" />
+    <Compile Include="Util\Hashes.cs" />
     <Compile Include="Util\Lists.cs" />
     <Compile Include="Extensions\ObjectExtensions.cs" />
     <Compile Include="Collections\OrderedHashImmutableDictionary.cs" />
