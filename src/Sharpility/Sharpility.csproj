@@ -42,18 +42,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Collections\CollectionExtenensions.cs" />
+    <Compile Include="Extensions\CollectionExtenensions.cs" />
     <Compile Include="Collections\Dictionaries.cs" />
-    <Compile Include="Collections\DictionaryExtensions.cs" />
+    <Compile Include="Extensions\DictionaryExtensions.cs" />
     <Compile Include="Collections\Lists.cs" />
+    <Compile Include="Extensions\ObjectExtensions.cs" />
     <Compile Include="Collections\OrderedHashImmutableDictionary.cs" />
     <Compile Include="Collections\OrderedImmutableDictionary.cs" />
     <Compile Include="Collections\Sets.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Util\Enums.cs" />
     <Compile Include="Util\Numbers.cs" />
     <Compile Include="Util\Objects.cs" />
+    <Compile Include="Util\Reflections.cs" />
     <Compile Include="Util\Strings.cs" />
+    <Compile Include="Util\ToStringHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using NFluent;
 using NUnit.Framework;
 using Sharpility.Collections;
 using Sharpility.Util;
@@ -9,170 +8,94 @@ namespace Sharpility.Tests.Util
     [TestFixture]
     public class StringsTests
     {
-        [Test]
-        public void ShouldReturnNullOnLimitedStringFromNull()
+        [Test, TestCaseSource("LimitedStringTestCases")]
+        public string ShouldReturnLimitedString(string value, int length)
         {
-            // given
-            const string value = null;
-            const int length = 100;
-
             // when
             var result = Strings.LimitedString(value, length);
 
             // then
-            Check.That(result).IsNull();
+            return result;
         }
 
-        [Test]
-        public void ShouldReturnGivenStringWhenLengthIsLowerThanLimit()
+        private static IEnumerable<ITestCaseData> LimitedStringTestCases()
         {
-            // given
-            const string value = "ala ma kota";
-            const int length = 500;
+            yield return new TestCaseData(null, 100)
+                .SetName("Should return null on null string limited to 100 characters")
+                .Returns(null);
 
-            // when
-            var result = Strings.LimitedString(value, length);
+            yield return new TestCaseData("alice has a cat", 5)
+                .SetName("Should return string limited to 5 characters")
+                .Returns("alice");
 
-            // then
-            Check.That(result).IsEqualTo(value);
+            yield return new TestCaseData("alice has a cat", 1000)
+                .SetName("Should return same string when characets limit is greater than string length")
+                .Returns("alice has a cat");
         }
 
-        [Test]
-        public void ShouldReturnStringLimitedToLength()
+        [Test, TestCaseSource("StringLengthTestCases")]
+        public int ShouldReturnStringLength(string value)
         {
-            // given
-            const string value = "ala ma kota";
-            const int length = 3;
-
-            // when
-            var result = Strings.LimitedString(value, length);
-
-            // then
-            Check.That(result).IsEqualTo("ala");
-        }
-
-        [Test]
-        public void ShouldReturnStringLength()
-        {
-            // given
-            const string value = "test";
-
             // when
             var length = Strings.Length(value);
 
             // then
-            Check.That(length).IsEqualTo(value.Length);
+            return length;
         }
 
-        [Test]
-        public void ShouldReturnZeroLengthForNullString()
+        private static IEnumerable<ITestCaseData> StringLengthTestCases()
         {
-            // given
-            const string value = null;
+            yield return new TestCaseData("test")
+                .SetName("Should return string length")
+                .Returns(4);
 
-            // when
-            var length = Strings.Length(value);
-
-            // then
-            Check.That(length).IsEqualTo(0);
-        }
-        
-        [Test]
-        public void ShouldGenerateToStringForString()
-        {
-            // given
-            const string value = "test";
-
-            // when
-            var toString = Strings.ToString(value);
-
-            // then
-            Check.That(toString).IsEqualTo(value);
+            yield return new TestCaseData(null)
+                .SetName("Should return 0 length for null string")
+                .Returns(0);
         }
 
-        [Test]
-        public void ShouldGenerateToStringForCollection()
+        [Test, TestCaseSource("ToStringTestCases")]
+        public string ShouldReturnReturnObjectToString(object obj)
         {
-            // given
-            IEnumerable<int?> collection = new List<int?> { 1, 2, null, 3 };
-
             // when
-            var toString = Strings.ToString(collection);
+            var toString = Strings.ToString(obj);
 
             // then
-            Check.That(toString).IsEqualTo("[1, 2, null, 3]");
+            return toString;
         }
 
-        [Test]
-        public void ShouldGenerateToStringForNullCollection()
+        private static IEnumerable<ITestCaseData> ToStringTestCases()
         {
-            // given
-            IEnumerable<int?> collection = null;
+            yield return new TestCaseData("test")
+                .SetName("Should return string")
+                .Returns("test");
 
-            // when
-            // ReSharper disable once ExpressionIsAlwaysNull
-            var toString = Strings.ToString(collection);
+            yield return new TestCaseData(null)
+                .SetName("Should generate toString of null object")
+                .Returns("null");
 
-            // then
-            Check.That(toString).IsEqualTo("null");
-        }
+            yield return new TestCaseData(new List<int?> { 1, 2, null, 3 })
+                .SetName("Should generate toString of collection")
+                .Returns("[1, 2, null, 3]");
 
-        [Test]
-        public void ShouldGenerateToStringForEmptyCollection()
-        {
-            // given
-            IEnumerable<int> collection = Lists.EmptyList<int>();
+            yield return new TestCaseData(Lists.EmptyList<int>())
+                .SetName("Should generate toString of empty collection")
+                .Returns("[]");
 
-            // when
-            var toString = Strings.ToString(collection);
+            yield return new TestCaseData((object) new object[] {"A", "B", 3, 4})
+               .SetName("Should generate toString of array")
+               .Returns("[A, B, 3, 4]");
 
-            // then
-            Check.That(toString).IsEqualTo("[]");
-        }
+            yield return new TestCaseData(Dictionaries.Create("A", 1, "B", 2, "C", 3))
+              .SetName("Should generate toString of dictionary")
+              .Returns("[(A, 1), (B, 2), (C, 3)]");
 
-        [Test]
-        public void ShouldGenerateToStringForDictionary()
-        {
-            // given
-            IDictionary<string, int> dictionary = new Dictionary<string, int>();
-            dictionary["A"] = 1;
-            dictionary["B"] = 2;
-            dictionary["C"] = 3;
-
-            // when
-            var toString = Strings.ToString(dictionary);
-
-            // then
-            Check.That(toString).IsEqualTo("[(A, 1), (B, 2), (C, 3)]");
-        }
-
-        [Test]
-        public void ShouldGenerateToStringForComplexDictionary()
-        {
-            // given
-            IDictionary<string, IList<IList<int>>> dictionary = new Dictionary<string, IList<IList<int>>>();
-            dictionary["A"] = new List<IList<int>>(Lists.AsList(Lists.AsList(1, 2, 3), Lists.AsList(4, 5, 6)));
-            dictionary["B"] = new List<IList<int>>(Lists.AsList(Lists.AsList(1), Lists.AsList(2)));
-            dictionary["C"] = new List<IList<int>>(Lists.AsList(Lists.EmptyList<int>(), null));
-
-            // when
-            var toString = Strings.ToString(dictionary);
-
-            // then
-            Check.That(toString).IsEqualTo("[(A, [[1, 2, 3], [4, 5, 6]]), (B, [[1], [2]]), (C, [[], null])]");
-        }
-
-        [Test]
-        public void ShouldGenerateToStringForArray()
-        {
-            // given
-            var array = new object[] {1, "2", 3D};
-
-            // when
-            var toString = Strings.ToString(array);
-
-            // then
-            Check.That(toString).IsEqualTo("[1, 2, 3]");
+            yield return new TestCaseData(Dictionaries.Create(
+                "A", Lists.AsList(Lists.AsList(1, 2, 3), Lists.AsList(4, 5, 6)),
+                "B", Lists.AsList(Lists.AsList(1), Lists.AsList(2)),
+                "C", Lists.AsList(Lists.EmptyList<int>(), null)))
+              .SetName("Should generate toString of complex dictionary")
+              .Returns("[(A, [[1, 2, 3], [4, 5, 6]]), (B, [[1], [2]]), (C, [[], null])]");
         }
     }
 }

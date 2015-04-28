@@ -52,9 +52,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Collections\DictionariesTests.cs" />
+    <Compile Include="Collections\ListsTests.cs" />
+    <Compile Include="Collections\SetsTests.cs" />
+    <Compile Include="Extensions\CollectionExtensionsTests.cs" />
+    <Compile Include="Extensions\DictionaryExtensionsTests.cs" />
+    <Compile Include="Extensions\ObjectExtensionsTests.cs" />
+    <Compile Include="Extensions\StringExtensionsTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Util\EnumsTests.cs" />
+    <Compile Include="Util\NumbersTests.cs" />
+    <Compile Include="Util\ObjectsTests.cs" />
+    <Compile Include="Util\ReflectionsTests.cs" />
     <Compile Include="Util\StringsTests.cs" />
+    <Compile Include="Util\ToStringHelperTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

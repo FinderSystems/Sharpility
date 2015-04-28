@@ -22,16 +22,6 @@ namespace Sharpility.Util
             return value;
         }
 
-        public static string HexBytesToString(byte[] bytes)
-        {
-            var results = new StringBuilder();
-            foreach (var element in bytes)
-            {
-                results.Append(String.Format("{0:x2}", element));
-            }
-            return results.ToString();
-        }
-
         public static string ToString(object value)
         {
             if (value is string)
