@@ -80,7 +80,7 @@ namespace Sharpility.Util
 
         public static string CallingMethodName()
         {
-            var frame = new StackFrame(skipFrames: 1);
+            var frame = new StackFrame(skipFrames: 2);
             var method = frame.GetMethod();
             return method != null ? method.Name : null;
         }
