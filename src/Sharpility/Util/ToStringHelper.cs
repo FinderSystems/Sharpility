@@ -8,7 +8,6 @@ namespace Sharpility.Util
     public sealed class ToStringHelper
     {
         private readonly object type;
-
         private readonly OrderedHashImmutableDictionary<string, object>.Builder fields =
             OrderedHashImmutableDictionary<string, object>.CreateBuilder();
 

@@ -1,4 +1,6 @@
 ﻿
+using System.Globalization;
+
 namespace Sharpility.Util
 {
     public static class Numbers
@@ -45,28 +47,48 @@ namespace Sharpility.Util
             return null;
         }
 
-        public static double? TryParseDouble(string value)
+        public static double? TryParseDouble(string value, NumberFormatInfo format = null)
+        {
+            if (string.IsNullOrEmpty(value))
+            {
+                return null;
+            }
+            const NumberStyles style = NumberStyles.Float | NumberStyles.AllowThousands;
+            return TryParseDouble(value, style, format);
+        }
+
+        public static double? TryParseDouble(string value, NumberStyles style, NumberFormatInfo format = null)
         {
             if (string.IsNullOrEmpty(value))
             {
                 return null;
             }
             double result;
-            if (double.TryParse(value, out result))
+            if (double.TryParse(value, style, format ?? NumberFormatInfo.InvariantInfo, out result))
             {
                 return result;
             }
             return null;
         }
 
-        public static float? TryParseFloat(string value)
+        public static float? TryParseFloat(string value, NumberFormatInfo format = null)
+        {
+            if (string.IsNullOrEmpty(value))
+            {
+                return null;
+            }
+            const NumberStyles style = NumberStyles.Float | NumberStyles.AllowThousands;
+            return TryParseFloat(value, style, format);
+        }
+
+        public static float? TryParseFloat(string value, NumberStyles style, NumberFormatInfo format = null)
         {
             if (string.IsNullOrEmpty(value))
             {
                 return null;
             }
             float result;
-            if (float.TryParse(value, out result))
+            if (float.TryParse(value, style, format ?? NumberFormatInfo.InvariantInfo, out result))
             {
                 return result;
             }
