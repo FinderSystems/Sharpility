@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Linq;
 
-namespace Sharpility.Collections
+namespace Sharpility.Extensions
 {
     public static class CollectionExtenensions
     {
@@ -50,6 +50,13 @@ namespace Sharpility.Collections
         {
             var results = new HashSet<TV>();
             results.AddAll(list.Select(element => converter(element)));
+            return results;
+        }
+
+        public static IEnumerable<TV> ConvertAll<T, TV>(this IEnumerable<T> list, Converter<T, TV> converter)
+        {
+            var results = new List<TV>(list.Count());
+            results.AddRange(list.Select(element => converter(element)));
             return results;
         }
 

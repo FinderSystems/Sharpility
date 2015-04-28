@@ -16,7 +16,7 @@ namespace Sharpility.Collections
             return new List<T>();
         }
 
-        public static IList<T> SingletonList<T>(T element)
+        public static IList<T> Singleton<T>(T element)
         {
             return ImmutableList.Create(element);
         }

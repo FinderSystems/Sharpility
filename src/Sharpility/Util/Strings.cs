@@ -22,6 +22,16 @@ namespace Sharpility.Util
             return value;
         }
 
+        public static string HexBytesToString(byte[] bytes)
+        {
+            var results = new StringBuilder();
+            foreach (var element in bytes)
+            {
+                results.Append(String.Format("{0:x2}", element));
+            }
+            return results.ToString();
+        }
+
         public static string ToString(object value)
         {
             if (value is string)
@@ -39,10 +49,6 @@ namespace Sharpility.Util
             else if (value is IEnumerable)
             {
                 return ToString((IEnumerable) value);
-            }
-            else if (value != null && value.GetType().IsArray)
-            {
-                return ToString((Array) value);
             }
             return value != null ? value.ToString() : "null";
         }
@@ -78,24 +84,9 @@ namespace Sharpility.Util
             return builder.ToString();
         }
 
-        private static string ToString(Array values)
-        {
-            var builder = new StringBuilder("[");
-            foreach (var value in values)
-            {
-                if (builder.Length > 1)
-                {
-                    builder.Append(", ");
-                }
-                builder.Append(ToString(value));
-            }
-            builder.Append("]");
-            return builder.ToString();
-        }
-
         private static string ToString(IDictionary map)
         {
-            var builder = new StringBuilder("{");
+            var builder = new StringBuilder("[");
             var iterator = map.GetEnumerator();
             while (iterator.MoveNext())
             {
@@ -104,9 +95,9 @@ namespace Sharpility.Util
                 {
                     builder.Append(", ");
                 }
-                builder.Append(String.Format("[{0}, {1}]", ToString(entry.Key), ToString(entry.Value)));
+                builder.Append(String.Format("({0}, {1})", ToString(entry.Key), ToString(entry.Value)));
             }
-            builder.Append("}");
+            builder.Append("]");
             return builder.ToString();
         }
     }

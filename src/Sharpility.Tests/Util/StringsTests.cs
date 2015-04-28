@@ -143,7 +143,7 @@ namespace Sharpility.Tests.Util
             var toString = Strings.ToString(dictionary);
 
             // then
-            Check.That(toString).IsEqualTo("{[A, 1], [B, 2], [C, 3]}");
+            Check.That(toString).IsEqualTo("[(A, 1), (B, 2), (C, 3)]");
         }
 
         [Test]
@@ -159,7 +159,7 @@ namespace Sharpility.Tests.Util
             var toString = Strings.ToString(dictionary);
 
             // then
-            Check.That(toString).IsEqualTo("{[A, [[1, 2, 3], [4, 5, 6]]], [B, [[1], [2]]], [C, [[], null]]}");
+            Check.That(toString).IsEqualTo("[(A, [[1, 2, 3], [4, 5, 6]]), (B, [[1], [2]]), (C, [[], null])]");
         }
 
         [Test]
