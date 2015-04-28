@@ -1,8 +1,7 @@
-﻿
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.Immutable;
 
-namespace Sharpility.Collections
+namespace Sharpility.Util
 {
     public static class Lists
     {

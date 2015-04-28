@@ -43,13 +43,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Extensions\CollectionExtenensions.cs" />
-    <Compile Include="Collections\Dictionaries.cs" />
+    <Compile Include="Util\Dictionaries.cs" />
     <Compile Include="Extensions\DictionaryExtensions.cs" />
-    <Compile Include="Collections\Lists.cs" />
+    <Compile Include="Util\Lists.cs" />
     <Compile Include="Extensions\ObjectExtensions.cs" />
     <Compile Include="Collections\OrderedHashImmutableDictionary.cs" />
     <Compile Include="Collections\OrderedImmutableDictionary.cs" />
-    <Compile Include="Collections\Sets.cs" />
+    <Compile Include="Util\Sets.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Util\Enums.cs" />

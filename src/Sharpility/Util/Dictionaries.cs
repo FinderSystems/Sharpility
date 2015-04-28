@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Sharpility.Extensions;
 
-namespace Sharpility.Collections
+namespace Sharpility.Util
 {
     public static class Dictionaries
     {
