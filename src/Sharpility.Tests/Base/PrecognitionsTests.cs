@@ -2,6 +2,7 @@
 using NFluent;
 using NiceTry;
 using NUnit.Framework;
+using Sharpility.Base;
 using Sharpility.Util;
 
 namespace Sharpility.Tests.Util
@@ -105,5 +106,13 @@ namespace Sharpility.Tests.Util
             Check.That(caughtException).IsInstanceOf<ApplicationException>();
             Check.That(caughtException.Message).IsEqualTo(errorMessage);
         }
+
+        // TODO isNotNull
+        // TODO isNull
+        // TODO isNotEmpty string
+        // TODO isNotEmpty collection
+        // TODO isEmpty collection
+        // TODO isSingleton
+        // TODO EvaluateEnum
     }
 }

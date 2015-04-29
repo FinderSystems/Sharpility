@@ -56,7 +56,7 @@
     <Compile Include="Util\Enums.cs" />
     <Compile Include="Util\Numbers.cs" />
     <Compile Include="Util\Objects.cs" />
-    <Compile Include="Util\Precognitions.cs" />
+    <Compile Include="Base\Precognitions.cs" />
     <Compile Include="Util\Reflections.cs" />
     <Compile Include="Util\Strings.cs" />
     <Compile Include="Util\ToStringHelper.cs" />

@@ -7,12 +7,7 @@ namespace Sharpility.Util
     {
         public static int Hash(params object[] elements)
         {
-            var hashCode = 1;
-            foreach (object element in elements)
-            {
-                hashCode = 31 * hashCode + HashCode(element);
-            }
-            return hashCode;
+            return HashCode(elements);
         }
 
         public static bool Equal(object first, object second)
@@ -25,11 +20,15 @@ namespace Sharpility.Util
             {
                 return ((IComparable)first).CompareTo((IComparable)second) == 0;
             }
+            else if (first is IDictionary && second is IDictionary)
+            {
+                return DictionariesEqual((IDictionary) first, (IDictionary) second);
+            }
             else if (first is IEnumerable && second is IEnumerable)
             {
                 return SequenceEqual((IEnumerable) first, (IEnumerable) second);
             }
-            return object.Equals(first, second);
+            return Equals(first, second);
         }
 
         public static int HashCode(object obj)
@@ -44,7 +43,7 @@ namespace Sharpility.Util
         private static int HashCode(IEnumerable enumerable)
         {
             var hashCode = 1;
-            foreach (object element in enumerable)
+            foreach (var element in enumerable)
             {
                 hashCode = 31 * hashCode + HashCode(element);
             }
@@ -62,6 +61,24 @@ namespace Sharpility.Util
                 }
             }
             return !secondIterator.MoveNext();
+        }
+
+        private static bool DictionariesEqual(IDictionary first, IDictionary second)
+        {
+            if (first.Count != second.Count)
+            {
+                return false;
+            }
+            var iterator = first.GetEnumerator();
+            while (iterator.MoveNext())
+            {
+                var entry = iterator.Entry;
+                if (!second.Contains(entry.Key) || !Equal(entry.Value, second[entry.Key]))
+                {
+                    return false;
+                }
+            }
+            return true;
         }
     }
 }

@@ -56,9 +56,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Collections\DictionariesTests.cs" />
-    <Compile Include="Collections\ListsTests.cs" />
-    <Compile Include="Collections\SetsTests.cs" />
+    <Compile Include="Collections\OrderedImmutableDictionaryTests.cs" />
+    <Compile Include="Util\DictionariesTests.cs" />
+    <Compile Include="Util\ListsTests.cs" />
+    <Compile Include="Util\SetsTests.cs" />
     <Compile Include="Extensions\CollectionExtensionsTests.cs" />
     <Compile Include="Extensions\DictionaryExtensionsTests.cs" />
     <Compile Include="Extensions\ObjectExtensionsTests.cs" />
@@ -68,7 +69,7 @@
     <Compile Include="Util\HashesTests.cs" />
     <Compile Include="Util\NumbersTests.cs" />
     <Compile Include="Util\ObjectsTests.cs" />
-    <Compile Include="Util\PrecognitionsTests.cs" />
+    <Compile Include="Base\PrecognitionsTests.cs" />
     <Compile Include="Util\ReflectionsTests.cs" />
     <Compile Include="Util\StringsTests.cs" />
     <Compile Include="Util\ToStringHelperTests.cs" />
@@ -85,6 +86,7 @@
       <Name>Sharpility</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

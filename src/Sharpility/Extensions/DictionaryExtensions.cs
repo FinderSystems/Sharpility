@@ -5,72 +5,77 @@ namespace Sharpility.Extensions
 {
     public static class DictionaryExtensions
     {
-        public static void Put<T, TV>(this IDictionary<T, TV> map, T key, TV value)
+        public static IDictionary<T, TV> Put<T, TV>(this IDictionary<T, TV> dictionary, T key, TV value)
         {
-            map[key] = value;
+            dictionary[key] = value;
+            return dictionary;
         }
 
-        public static void Put<T, TV>(this IDictionary<T, TV> map, KeyValuePair<T, TV> entry)
+        public static IDictionary<T, TV> Put<T, TV>(this IDictionary<T, TV> dictionary, KeyValuePair<T, TV> entry)
         {
-            map[entry.Key] = entry.Value;
+            dictionary[entry.Key] = entry.Value;
+            return dictionary;
         }
 
-        public static void PutAll<T, TV>(this IDictionary<T, TV> map, IDictionary<T, TV> values)
+        public static IDictionary<T, TV> PutAll<T, TV>(this IDictionary<T, TV> dictionary, IDictionary<T, TV> values)
         {
             foreach (var key in values.Keys)
             {
-                map.Put(key, values[key]);
+                dictionary.Put(key, values[key]);
             }
+            return dictionary;
         }
 
-        public static void PutAll<T, TV>(this IDictionary<T, TV> map, params KeyValuePair<T, TV>[] entries)
+        public static IDictionary<T, TV> PutAll<T, TV>(this IDictionary<T, TV> dictionary, params KeyValuePair<T, TV>[] entries)
         {
             foreach (var entry in entries)
             {
-                map.Put(entry);
+                dictionary.Put(entry);
             }
+            return dictionary;
         }
 
-        public static void PutAll<T, TV>(this IDictionary<T, TV> map, IEnumerable<KeyValuePair<T, TV>> entries)
+        public static IDictionary<T, TV> PutAll<T, TV>(this IDictionary<T, TV> dictionary, IEnumerable<KeyValuePair<T, TV>> entries)
         {
             foreach (var entry in entries)
             {
-                map.Put(entry);
+                dictionary.Put(entry);
             }
+            return dictionary;
         }
 
-        public static TV Get<T, TV>(this IDictionary<T, TV> map, T key)
+        public static TV Get<T, TV>(this IDictionary<T, TV> dictionary, T key)
         {
-            return map[key];
+            return dictionary[key];
         }
 
-        public static TV Get<T, TV>(this IReadOnlyDictionary<T, TV> map, T key)
+        public static TV Get<T, TV>(this IReadOnlyDictionary<T, TV> dictionary, T key)
         {
-            return map[key];
+            return dictionary[key];
         }
 
-        public static TV GetIfPresent<T, TV>(this IDictionary<T, TV> map, T key)
+        public static TV GetIfPresent<T, TV>(this IDictionary<T, TV> dictionary, T key)
             where TV : class
         {
-            return map.ContainsKey(key) ? map.Get(key) : null;
+            return dictionary.ContainsKey(key) ? dictionary.Get(key) : null;
         }
 
-        public static TV GetIfPresent<T, TV>(this IReadOnlyDictionary<T, TV> map, T key)
+        public static TV GetIfPresent<T, TV>(this IReadOnlyDictionary<T, TV> dictionary, T key)
             where TV : class
         {
-            return map.ContainsKey(key) ? map.Get(key) : null;
+            return dictionary.ContainsKey(key) ? dictionary.Get(key) : null;
         }
 
-        public static TV? GetIfPresent<T, TV>(this IDictionary<T, TV?> map, T key)
+        public static TV? GetIfPresent<T, TV>(this IDictionary<T, TV?> dictionary, T key)
            where TV : struct
         {
-            return map.ContainsKey(key) ? map.Get(key) : null;
+            return dictionary.ContainsKey(key) ? dictionary.Get(key) : null;
         }
 
-        public static TV? GetIfPresent<T, TV>(this IReadOnlyDictionary<T, TV?> map, T key)
+        public static TV? GetIfPresent<T, TV>(this IReadOnlyDictionary<T, TV?> dictionary, T key)
            where TV : struct
         {
-            return map.ContainsKey(key) ? map.Get(key) : null;
+            return dictionary.ContainsKey(key) ? dictionary.Get(key) : null;
         }
 
         public static ISet<KeyValuePair<T, TV>> Entries<T, TV>(this IDictionary<T, TV> dictionary)

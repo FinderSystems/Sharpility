@@ -1,5 +1,5 @@
 ﻿
-namespace Sharpility.Tests.Collections
+namespace Sharpility.Tests.Util
 {
     class DictionariesTests
     {

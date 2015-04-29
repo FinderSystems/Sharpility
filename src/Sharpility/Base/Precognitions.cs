@@ -2,8 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using Sharpility.Extensions;
+using Sharpility.Util;
 
-namespace Sharpility.Util
+namespace Sharpility.Base
 {
     public static class Precognitions
     {
