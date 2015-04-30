@@ -43,6 +43,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Extensions\CollectionExtenensions.cs" />
+    <Compile Include="IO\EmbeddedResources.cs" />
+    <Compile Include="IO\Files.cs" />
+    <Compile Include="IO\Streams.cs" />
+    <Compile Include="Time\Clock.cs" />
+    <Compile Include="Time\FixedClock.cs" />
+    <Compile Include="Time\SystemClock.cs" />
     <Compile Include="Util\Dictionaries.cs" />
     <Compile Include="Extensions\DictionaryExtensions.cs" />
     <Compile Include="Util\Hashes.cs" />
