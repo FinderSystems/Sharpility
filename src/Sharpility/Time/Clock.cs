@@ -4,6 +4,6 @@ namespace Sharpility.Time
 {
     public interface Clock
     {
-        DateTime CurrentTime();
+        DateTime CurrentTime { get; }
     }
 }

@@ -12,9 +12,9 @@ namespace Sharpility.Time
             return new SystemClock();
         }
 
-        public DateTime CurrentTime()
+        public DateTime CurrentTime
         {
-            return DateTime.Now;
+            get { return DateTime.Now; }
         }
     }
 }

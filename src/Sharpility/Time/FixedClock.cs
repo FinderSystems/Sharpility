@@ -26,9 +26,9 @@ namespace Sharpility.Time
             Time = time;
         }
 
-        public DateTime CurrentTime()
+        public DateTime CurrentTime
         {
-            return Time;
+            get { return Time; }
         }
     }
 }
