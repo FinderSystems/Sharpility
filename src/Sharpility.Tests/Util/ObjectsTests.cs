@@ -68,6 +68,22 @@ namespace Sharpility.Tests.Util
             yield return new TestCaseData(1324, null)
                 .SetName("Should return that object is not equals to null")
                 .Returns(false);
+
+            yield return new TestCaseData(Sets.AsSet(1, 2, 3), Sets.AsSet(3, 2, 1))
+                .SetName("Should return that sets are equals")
+                .Returns(true);
+
+            yield return new TestCaseData(Sets.EmptySet<int>(), Sets.EmptySet<int>())
+               .SetName("Should return that empty sets are equals")
+               .Returns(true);
+
+            yield return new TestCaseData(Sets.EmptySet<int>(), Sets.EmptySet<string>())
+               .SetName("Should return that empty sets with different types are not equals")
+               .Returns(false);
+
+            yield return new TestCaseData(Sets.AsSet(1, 2, 3), Sets.AsSet(3, 2))
+               .SetName("Should return that sets are not equals")
+               .Returns(false);
         } 
 
         // TODO hashCode tests

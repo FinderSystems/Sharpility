@@ -6,7 +6,7 @@ namespace Sharpility.Util
 {
     public static class Dictionaries
     {
-        public static IDictionary<T, TV> Create<T, TV>(params KeyValuePair<T, TV>[] entries)
+        public static IDictionary<T, TV> CreateFromEntries<T, TV>(params KeyValuePair<T, TV>[] entries)
         {
             var dictionary = new Dictionary<T, TV>();
             dictionary.PutAll(entries);

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using Sharpility.Collections;
 
 namespace Sharpility.Util
 {
@@ -23,6 +24,10 @@ namespace Sharpility.Util
             else if (first is IDictionary && second is IDictionary)
             {
                 return DictionariesEqual((IDictionary) first, (IDictionary) second);
+            }
+            else if (Sets.IsGenericSet(first) && Sets.IsGenericSet(second))
+            {
+                return ElementsEqual(first as IEnumerable, second as IEnumerable);
             }
             else if (first is IEnumerable && second is IEnumerable)
             {
@@ -48,6 +53,15 @@ namespace Sharpility.Util
                 hashCode = 31 * hashCode + HashCode(element);
             }
             return hashCode;
+        }
+
+        private static bool ElementsEqual(IEnumerable first, IEnumerable second)
+        {
+            var firstCollection = WildcardCollection.Of(first);
+            var secondCollection = WildcardCollection.Of(second);
+            return firstCollection.Count == secondCollection.Count && 
+                firstCollection.GenericType == secondCollection.GenericType &&
+                firstCollection.ContainsAll(second);
         }
 
         private static bool SequenceEqual(IEnumerable first, IEnumerable second)

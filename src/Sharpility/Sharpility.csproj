@@ -42,7 +42,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Collections\Concurrent\DefaultConcurrentQueue.cs" />
+    <Compile Include="Collections\DefaultQueue.cs" />
+    <Compile Include="Collections\IQueue.cs" />
+    <Compile Include="Collections\LinkedQueue.cs" />
+    <Compile Include="Collections\MappedQueue.cs" />
+    <Compile Include="Collections\WildcardCollection.cs" />
     <Compile Include="Extensions\CollectionExtenensions.cs" />
+    <Compile Include="Extensions\DateTimeExtensions.cs" />
     <Compile Include="IO\EmbeddedResources.cs" />
     <Compile Include="IO\Files.cs" />
     <Compile Include="IO\Streams.cs" />

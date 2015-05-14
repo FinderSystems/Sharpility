@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Collections.Immutable;
+using System.Linq;
 
 namespace Sharpility.Util
 {
@@ -28,6 +29,13 @@ namespace Sharpility.Util
         public static IList<T> AsList<T>(params T[] values)
         {
             return new List<T>(values);
+        }
+
+        public static bool IsGenericList(object value)
+        {
+            return value != null && value.GetType().GetInterfaces().Any(
+               interfaceType => interfaceType.IsGenericType &&
+                   interfaceType.GetGenericTypeDefinition() == typeof(IList<>));
         }
     }
 }

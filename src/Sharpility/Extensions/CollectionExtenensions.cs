@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Linq;
+using Sharpility.Collections;
+using Sharpility.Collections.Concurrent;
 
 namespace Sharpility.Extensions
 {
@@ -116,5 +119,15 @@ namespace Sharpility.Extensions
             result.AddAll(values);
             return result.ToImmutableList();
         }
+
+        public static IQueue<T> ToIQueue<T>(this Queue<T> queue)
+        {
+            return new DefaultQueue<T>(queue);
+        }
+
+        public static IQueue<T> ToIQueue<T>(this ConcurrentQueue<T> queue)
+        {
+            return new DefaultConcurrentQueue<T>(queue);
+        } 
     }
 }
