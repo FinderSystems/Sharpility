@@ -42,20 +42,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Collections\AbstractSortedMappedQueue.cs" />
+    <Compile Include="Collections\ArrayListSortedMappedQueue.cs" />
     <Compile Include="Collections\Concurrent\DefaultConcurrentQueue.cs" />
     <Compile Include="Collections\DefaultQueue.cs" />
     <Compile Include="Collections\IQueue.cs" />
     <Compile Include="Collections\LinkedQueue.cs" />
     <Compile Include="Collections\MappedQueue.cs" />
+    <Compile Include="Collections\SortedMappedQueue.cs" />
+    <Compile Include="Collections\SortedSetMappedQueue.cs" />
     <Compile Include="Collections\WildcardCollection.cs" />
     <Compile Include="Extensions\CollectionExtenensions.cs" />
+    <Compile Include="Extensions\CompererExtensions.cs" />
     <Compile Include="Extensions\DateTimeExtensions.cs" />
     <Compile Include="IO\EmbeddedResources.cs" />
     <Compile Include="IO\Files.cs" />
     <Compile Include="IO\Streams.cs" />
     <Compile Include="Time\Clock.cs" />
+    <Compile Include="Time\DateRange.cs" />
     <Compile Include="Time\FixedClock.cs" />
     <Compile Include="Time\SystemClock.cs" />
+    <Compile Include="Util\Comparers.cs" />
     <Compile Include="Util\Dictionaries.cs" />
     <Compile Include="Extensions\DictionaryExtensions.cs" />
     <Compile Include="Util\Hashes.cs" />

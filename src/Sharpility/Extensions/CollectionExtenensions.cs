@@ -132,6 +132,61 @@ namespace Sharpility.Extensions
             return result.ToImmutableList();
         }
 
+        public static void Sort<T>(this ICollection<T> collection, IComparer<T> comparator = null)
+        {
+            if (collection is List<T>)
+            {
+                ((List<T>)collection).Sort(comparator);
+            }
+            else
+            {
+                SortCollection(collection, comparator);
+            }
+        }
+
+        public static T First<T>(this ICollection<T> collection)
+        {
+            if (collection is LinkedList<T>)
+            {
+                return ((LinkedList<T>)collection).First.Value;
+            }
+            else
+            {
+                return collection.ElementAt(0);
+            }
+        }
+
+        public static T Last<T>(this ICollection<T> collection)
+        {
+            if (collection is LinkedList<T>)
+            {
+                return ((LinkedList<T>)collection).Last.Value;
+            }
+            else
+            {
+                return collection.ElementAt(collection.Count - 1);
+            }
+        }
+
+        public static T RemoveFirst<T>(this ICollection<T> collection)
+        {
+            var value = collection.First();
+            if (collection is IList<T>)
+            {
+                ((IList<T>)collection).RemoveAt(0);
+            }
+            else if (collection is LinkedList<T>)
+            {
+                ((LinkedList<T>)collection).RemoveFirst();
+            }
+            else
+            {
+                collection.Remove(value);
+                return value;
+            }
+            return value;
+        }
+
         public static IQueue<T> ToIQueue<T>(this Queue<T> queue)
         {
             return new DefaultQueue<T>(queue);
@@ -140,6 +195,14 @@ namespace Sharpility.Extensions
         public static IQueue<T> ToIQueue<T>(this ConcurrentQueue<T> queue)
         {
             return new DefaultConcurrentQueue<T>(queue);
-        } 
+        }
+
+        private static void SortCollection<T>(ICollection<T> list, IComparer<T> comparator)
+        {
+            var elements = list.ToArray();
+            Array.Sort(elements, 0, elements.Length, comparator);
+            list.Clear();
+            list.AddAll(elements);
+        }
     }
 }
