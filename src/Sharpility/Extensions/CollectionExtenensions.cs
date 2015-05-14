@@ -63,6 +63,18 @@ namespace Sharpility.Extensions
             return results;
         }
 
+        public static bool ContainsAll<T>(this ICollection<T> collection, ICollection<T> elements)
+        {
+            foreach (var element in elements)
+            {
+                if (!collection.Contains(element))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
         public static bool IsEmpty<T>(this IEnumerable<T> enumerable)
         {
             return !enumerable.Any();
