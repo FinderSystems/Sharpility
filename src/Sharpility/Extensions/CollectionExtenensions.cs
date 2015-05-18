@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Linq;
 using Sharpility.Collections;
 using Sharpility.Collections.Concurrent;
+using Sharpility.Util;
 
 namespace Sharpility.Extensions
 {
@@ -56,14 +58,77 @@ namespace Sharpility.Extensions
             return results;
         }
 
-        public static IEnumerable<TV> ConvertAll<T, TV>(this IEnumerable<T> list, Converter<T, TV> converter)
+        public static IEnumerable<TV> ConvertAll<T, TV>(this IEnumerable<T> enumerable, Converter<T, TV> converter)
         {
-            var results = new List<TV>(list.Count());
-            results.AddRange(list.Select(element => converter(element)));
+            var results = new List<TV>(enumerable.Count());
+            results.AddRange(enumerable.Select(element => converter(element)));
             return results;
         }
 
-        public static bool ContainsAll<T>(this ICollection<T> collection, ICollection<T> elements)
+        public static bool ContainsAll<T>(this IEnumerable<T> enumerable, IEnumerable<T> elements)
+        {
+            foreach (var element in elements)
+            {
+                if (!enumerable.Contains(element))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        public static bool Contains(this IEnumerable enumerable, object element)
+        {
+            if (enumerable is IList)
+            {
+                return ((IList) enumerable).Contains(element);
+            }
+            else if (element != null && Lists.IsGenericCollection(enumerable))
+            {
+                var type = enumerable.GetType();
+                var genericType = enumerable.ElementType();
+                var containsMethod = type.GetMethod(name: "Contains", types: new Type[] { genericType });
+                return element.GetType().IsAssignableFrom(genericType) && (bool) containsMethod.Invoke(obj: enumerable, parameters: new[] { element });
+            }
+            else
+            {
+                return ContainsElement(enumerable, element);
+            }
+        }
+
+        public static int Count(this IEnumerable enumerable)
+        {
+            if (enumerable is ICollection)
+            {
+                return ((ICollection) enumerable).Count;
+            }
+            else if (Lists.IsGenericCollection(enumerable))
+            {
+                var type = enumerable.GetType();
+                var countProperty = type.GetProperty(name: "Count");
+                return (int) countProperty.GetValue(obj: enumerable);
+            }
+            else
+            {
+                int count = 0;
+                foreach (var element in enumerable)
+                {
+                    count ++;
+                }
+                return count;
+            }
+        }
+
+        public static Type ElementType(this IEnumerable enumerable)
+        {
+            if (Lists.IsGenericCollection(enumerable))
+            {
+                return GenericTypeOf(enumerable);
+            }
+            return typeof (object);
+        }
+
+        public static bool ContainsAll(this IEnumerable collection, IEnumerable elements)
         {
             foreach (var element in elements)
             {
@@ -203,6 +268,22 @@ namespace Sharpility.Extensions
             Array.Sort(elements, 0, elements.Length, comparator);
             list.Clear();
             list.AddAll(elements);
+        }
+
+        private static Type GenericTypeOf(IEnumerable enumerable)
+        {
+            if (enumerable == null)
+            {
+                return null;
+            }
+            var type = enumerable.GetType();
+            var genericTypes = type.GetGenericArguments();
+            return genericTypes.IsNotEmpty() ? genericTypes[0] : null;
+        }
+
+        private static bool ContainsElement(IEnumerable enumerable, object element)
+        {
+            return enumerable.Cast<object>().Any(e => Objects.Equal(e, element));
         }
     }
 }

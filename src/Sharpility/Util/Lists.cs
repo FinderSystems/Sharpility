@@ -31,9 +31,23 @@ namespace Sharpility.Util
             return new List<T>(values);
         }
 
-        public static bool IsGenericList(object value)
+        public static bool IsGenericEnumerable(object obj)
         {
-            return value != null && value.GetType().GetInterfaces().Any(
+            return obj != null && obj.GetType().GetInterfaces().Any(
+                interfaceType => interfaceType.IsGenericType &&
+                    interfaceType.GetGenericTypeDefinition() == typeof(IEnumerable<>));
+        }
+
+        public static bool IsGenericCollection(object obj)
+        {
+            return obj != null && obj.GetType().GetInterfaces().Any(
+                interfaceType => interfaceType.IsGenericType &&
+                    interfaceType.GetGenericTypeDefinition() == typeof(ICollection<>)); 
+        }
+
+        public static bool IsGenericList(object obj)
+        {
+            return obj != null && obj.GetType().GetInterfaces().Any(
                interfaceType => interfaceType.IsGenericType &&
                    interfaceType.GetGenericTypeDefinition() == typeof(IList<>));
         }

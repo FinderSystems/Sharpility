@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections;
-using Sharpility.Collections;
+using Sharpility.Extensions;
 
 namespace Sharpility.Util
 {
@@ -57,11 +57,9 @@ namespace Sharpility.Util
 
         private static bool ElementsEqual(IEnumerable first, IEnumerable second)
         {
-            var firstCollection = WildcardCollection.Of(first);
-            var secondCollection = WildcardCollection.Of(second);
-            return firstCollection.Count == secondCollection.Count && 
-                firstCollection.GenericType == secondCollection.GenericType &&
-                firstCollection.ContainsAll(second);
+            return first.Count() == second.Count() && 
+                first.ElementType() == second.ElementType() &&
+                first.ContainsAll(second);
         }
 
         private static bool SequenceEqual(IEnumerable first, IEnumerable second)
