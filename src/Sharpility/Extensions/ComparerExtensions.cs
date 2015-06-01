@@ -2,11 +2,11 @@
 
 namespace Sharpility.Extensions
 {
-    public static class CompererExtensions
+    public static class ComparerExtensions
     {
-        public static IComparer<T> Reverse<T>(this IComparer<T> comperer)
+        public static IComparer<T> Reverse<T>(this IComparer<T> comparer)
         {
-            return new ReverseComparer<T>(comperer);
+            return new ReverseComparer<T>(comparer);
         }
 
         private sealed class ReverseComparer<T> : IComparer<T>
