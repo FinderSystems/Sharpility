@@ -10,7 +10,7 @@ using Sharpility.Util;
 
 namespace Sharpility.Extensions
 {
-    public static class CollectionExtenensions
+    public static class CollectionExtensions
     {
         public static void AddAll<T>(this ICollection<T> collection, IEnumerable<T> values)
         {

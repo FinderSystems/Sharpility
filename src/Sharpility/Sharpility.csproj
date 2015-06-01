@@ -51,7 +51,7 @@
     <Compile Include="Collections\MappedQueue.cs" />
     <Compile Include="Collections\SortedMappedQueue.cs" />
     <Compile Include="Collections\SortedSetMappedQueue.cs" />
-    <Compile Include="Extensions\CollectionExtenensions.cs" />
+    <Compile Include="Extensions\CollectionExtensions.cs" />
     <Compile Include="Extensions\CompererExtensions.cs" />
     <Compile Include="Extensions\DateTimeExtensions.cs" />
     <Compile Include="IO\EmbeddedResources.cs" />
