@@ -4,9 +4,19 @@ using Sharpility.Extensions;
 
 namespace Sharpility.Time
 {
+    /// <summary>
+    /// Date interval between two dateTimes.
+    /// </summary>
     public sealed class DateRange
     {
+        /// <summary>
+        /// DateTime From
+        /// </summary>
         public DateTime From { get; private set; }
+
+        /// <summary>
+        /// DateTime To
+        /// </summary>
         public DateTime To { get; private set; }
 
         private DateRange(DateTime from, DateTime to)
@@ -17,26 +27,50 @@ namespace Sharpility.Time
             To = to;
         }
 
+        /// <summary>
+        /// Create new DateRange instance.
+        /// </summary>
+        /// <param name="from">DateTime From</param>
+        /// <param name="to">DateTiem To</param>
+        /// <returns>DateRange</returns>
         public static DateRange Of(DateTime from, DateTime to)
         {
             return new DateRange(from, to);
         }
 
+        /// <summary>
+        /// Create new DateRange instance from.
+        /// </summary>
+        /// <param name="from">DateTime From parsed using DateTime Parse</param>
+        /// <param name="to">DateTime From parsed using DateTime Parse</param>
+        /// <returns>DateRange</returns>
         public static DateRange Of(string from, string to)
         {
             return Of(DateTime.Parse(from), DateTime.Parse(to));
         }
 
+        /// <summary>
+        /// Checks is date is between date range interval.
+        /// </summary>
+        /// <param name="date">checked date</param>
+        /// <returns>true if date is between date range interval</returns>
         public bool Contains(DateTime date)
         {
             return date >= From && date <= To;
         }
 
+        /// <summary>
+        /// Returns date range duration.
+        /// </summary>
         public TimeSpan Duration
         {
             get { return TimeSpan.FromMilliseconds(To.ToMilliseconds() - From.ToMilliseconds()); }
         }
 
+        /// <summary>
+        /// Converts date range to two elements array { From, To}.
+        /// </summary>
+        /// <returns></returns>
         public DateTime[] ToArray()
         {
             return new[] { From, To };

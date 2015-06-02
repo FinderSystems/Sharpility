@@ -6,13 +6,28 @@ using System.Text;
 
 namespace Sharpility.Util
 {
+    /// <summary>
+    /// Strings Utility.
+    /// </summary>
     public static class Strings
     {
+        /// <summary>
+        /// Returns length of given string.
+        /// If string is NULL returns 0.
+        /// </summary>
+        /// <param name="value">given string</param>
+        /// <returns>string length</returns>
         public static int Length(string value)
         {
             return value != null ? value.Length : 0;
         }
 
+        /// <summary>
+        /// Trims string to given length.
+        /// </summary>
+        /// <param name="value">string</param>
+        /// <param name="length">maximum string length</param>
+        /// <returns>string limtited to given length</returns>
         public static string LimitedString(string value, int length)
         {
             if (Length(value) > length)
@@ -22,6 +37,11 @@ namespace Sharpility.Util
             return value;
         }
 
+        /// <summary>
+        /// Converts object to string with collections and dictinoaries support.
+        /// </summary>
+        /// <param name="value">object converted string</param>
+        /// <returns>generated string</returns>
         public static string ToString(object value)
         {
             if (value is string)

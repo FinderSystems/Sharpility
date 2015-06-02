@@ -5,10 +5,17 @@ using Sharpility.Util;
 
 namespace Sharpility.Collections
 {
+    /// <summary>
+    /// IQueue implementation using LinkedList
+    /// </summary>
+    /// <typeparam name="T">Type of queue item</typeparam>
     public sealed class LinkedQueue<T>: IQueue<T>
     {
         private readonly LinkedList<T> list;
 
+        /// <summary>
+        /// Creates new instance.
+        /// </summary>
         public LinkedQueue()
         {
             list = new LinkedList<T>();

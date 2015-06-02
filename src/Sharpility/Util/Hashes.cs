@@ -5,8 +5,17 @@ using Sharpility.Extensions;
 
 namespace Sharpility.Util
 {
+    /// <summary>
+    /// Hashes Utility.
+    /// </summary>
     public static class Hashes
     {
+        /// <summary>
+        /// Generates MD5 hash in hex string.
+        /// </summary>
+        /// <param name="value">Hashed value</param>
+        /// <param name="encoding">Hash encoding, Encoding.Default if not provided</param>
+        /// <returns>MD5 hash</returns>
         public static string Md5(string value, Encoding encoding = null)
         {
             if (value == null)
@@ -18,6 +27,12 @@ namespace Sharpility.Util
             return ToHexString(hash);
         }
 
+        /// <summary>
+        /// Generates SHA-1 hash in hex string.
+        /// </summary>
+        /// <param name="value">Hashed value</param>
+        /// <param name="encoding">Hash encoding, Encoding.Default if not provided</param>
+        /// <returns>SHA-1 hash</returns>
         public static string Sha1(string value, Encoding encoding = null)
         {
             if (value == null)
@@ -29,6 +44,12 @@ namespace Sharpility.Util
             return ToHexString(hash);
         }
 
+        /// <summary>
+        /// Generates SHA-256 hash in hex string.
+        /// </summary>
+        /// <param name="value">Hashed value</param>
+        /// <param name="encoding">Hash encoding, Encoding.Default if not provided</param>
+        /// <returns>SHA-256 hash</returns>
         public static string Sha256(string value, Encoding encoding = null)
         {
             if (value == null)

@@ -4,15 +4,26 @@ using Sharpility.Util;
 
 namespace Sharpility.Collections
 {
+    /// <summary>
+    /// Default IQueue implementation using System.Collections.Generic.Queue 
+    /// </summary>
+    /// <typeparam name="T">Type of queue item</typeparam>
     public sealed class DefaultQueue<T>: IQueue<T>
     {
         private readonly Queue<T> queue;
 
+        /// <summary>
+        /// Creates new queue.
+        /// </summary>
         public DefaultQueue()
         {
             queue = new Queue<T>();
         }
 
+        /// <summary>
+        /// Creates queue with given capacity.
+        /// </summary>
+        /// <param name="capacity">Queue capacity</param>
         public DefaultQueue(int capacity)
         {
             queue = new Queue<T>(capacity);
