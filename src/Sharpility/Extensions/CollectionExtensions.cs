@@ -69,10 +69,10 @@ namespace Sharpility.Extensions
         }
 
         /// <summary>
-        /// Convert set items to another type and returns new set.
+        /// Convert list items to another type and returns new set.
         /// </summary>
-        /// <typeparam name="T">Type of source set item</typeparam>
-        /// <typeparam name="TV">Type of destination set item</typeparam>
+        /// <typeparam name="T">Type of source list item</typeparam>
+        /// <typeparam name="TV">Type of destination list item</typeparam>
         /// <param name="list">Source set</param>
         /// <param name="converter">Item converter</param>
         /// <returns>Converted set</returns>
