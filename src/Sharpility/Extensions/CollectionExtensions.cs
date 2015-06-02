@@ -12,38 +12,70 @@ namespace Sharpility.Extensions
 {
     public static class CollectionExtensions
     {
-        public static void AddAll<T>(this ICollection<T> collection, IEnumerable<T> values)
+        /// <summary>
+        /// Adds items to this enumerable.
+        /// </summary>
+        /// <typeparam name="T">Type of item</typeparam>
+        /// <param name="collection">this</param>
+        /// <param name="items">added items</param>
+        public static void AddAll<T>(this ICollection<T> collection, IEnumerable<T> items)
         {
-            foreach (var value in values)
+            foreach (var value in items)
             {
                 collection.Add(value);
             }
         }
 
-        public static void AddAll<T>(this ICollection<T> collection, params T[] values)
+        /// <summary>
+        /// Adds items to this enumerable.
+        /// </summary>
+        /// <typeparam name="T">Type of item</typeparam>
+        /// <param name="collection">this</param>
+        /// <param name="items">added items</param>
+        public static void AddAll<T>(this ICollection<T> collection, params T[] items)
         {
-            foreach (var value in values)
+            foreach (var value in items)
             {
                 collection.Add(value);
             }
         }
 
-        public static void RemoveAll<T>(this ICollection<T> collection, IEnumerable<T> values)
+        /// <summary>
+        /// Remove items from this enumerable.
+        /// </summary>
+        /// <typeparam name="T">Type of item</typeparam>
+        /// <param name="collection">this</param>
+        /// <param name="items">removed items</param>
+        public static void RemoveAll<T>(this ICollection<T> collection, IEnumerable<T> items)
         {
-            foreach (var value in values)
+            foreach (var value in items)
             {
                 collection.Remove(value);
             }
         }
 
-        public static void RemoveAll<T>(this ICollection<T> collection, params T[] values)
+        /// <summary>
+        /// Remove items from this enumerable.
+        /// </summary>
+        /// <typeparam name="T">Type of item</typeparam>
+        /// <param name="collection">this</param>
+        /// <param name="items">removed items</param>
+        public static void RemoveAll<T>(this ICollection<T> collection, params T[] items)
         {
-            foreach (var value in values)
+            foreach (var value in items)
             {
                 collection.Remove(value);
             }
         }
 
+        /// <summary>
+        /// Convert set items to another type and returns new set.
+        /// </summary>
+        /// <typeparam name="T">Type of source set item</typeparam>
+        /// <typeparam name="TV">Type of destination set item</typeparam>
+        /// <param name="list">Source set</param>
+        /// <param name="converter">Item converter</param>
+        /// <returns>Converted set</returns>
         public static IList<TV> ConvertAll<T, TV>(this IList<T> list, Converter<T, TV> converter)
         {
             var results = new List<TV>(list.Count);
@@ -51,23 +83,31 @@ namespace Sharpility.Extensions
             return results;
         }
 
-        public static ISet<TV> ConvertAll<T, TV>(this ISet<T> list, Converter<T, TV> converter)
+        /// <summary>
+        /// Convert set items to another type and returns new set.
+        /// </summary>
+        /// <typeparam name="T">Type of source set item</typeparam>
+        /// <typeparam name="TV">Type of destination set item</typeparam>
+        /// <param name="set">Source set</param>
+        /// <param name="converter">Item converter</param>
+        /// <returns>Converted set</returns>
+        public static ISet<TV> ConvertAll<T, TV>(this ISet<T> set, Converter<T, TV> converter)
         {
             var results = new HashSet<TV>();
-            results.AddAll(list.Select(element => converter(element)));
+            results.AddAll(set.Select(element => converter(element)));
             return results;
         }
 
-        public static IEnumerable<TV> ConvertAll<T, TV>(this IEnumerable<T> enumerable, Converter<T, TV> converter)
+        /// <summary>
+        /// Checks is enumerable contains all of given items.
+        /// </summary>
+        /// <typeparam name="T">Type of enumerable</typeparam>
+        /// <param name="enumerable">this</param>
+        /// <param name="items">checked items</param>
+        /// <returns>true if enumerable contais all of given items</returns>
+        public static bool ContainsAll<T>(this IEnumerable<T> enumerable, IEnumerable<T> items)
         {
-            var results = new List<TV>(enumerable.Count());
-            results.AddRange(enumerable.Select(element => converter(element)));
-            return results;
-        }
-
-        public static bool ContainsAll<T>(this IEnumerable<T> enumerable, IEnumerable<T> elements)
-        {
-            foreach (var element in elements)
+            foreach (var element in items)
             {
                 if (!enumerable.Contains(element))
                 {
@@ -77,25 +117,36 @@ namespace Sharpility.Extensions
             return true;
         }
 
-        public static bool Contains(this IEnumerable enumerable, object element)
+        /// <summary>
+        /// Checks is enumerable contais item.
+        /// </summary>
+        /// <param name="enumerable">this</param>
+        /// <param name="item">checked item</param>
+        /// <returns>true if enumerable contais item</returns>
+        public static bool Contains(this IEnumerable enumerable, object item)
         {
             if (enumerable is IList)
             {
-                return ((IList) enumerable).Contains(element);
+                return ((IList) enumerable).Contains(item);
             }
-            else if (element != null && Lists.IsGenericCollection(enumerable))
+            else if (item != null && Lists.IsGenericCollection(enumerable))
             {
                 var type = enumerable.GetType();
-                var genericType = enumerable.ElementType();
+                var genericType = enumerable.ItemType();
                 var containsMethod = type.GetMethod(name: "Contains", types: new Type[] { genericType });
-                return element.GetType().IsAssignableFrom(genericType) && (bool) containsMethod.Invoke(obj: enumerable, parameters: new[] { element });
+                return item.GetType().IsAssignableFrom(genericType) && (bool) containsMethod.Invoke(obj: enumerable, parameters: new[] { item });
             }
             else
             {
-                return ContainsElement(enumerable, element);
+                return ContainsElement(enumerable, item);
             }
         }
 
+        /// <summary>
+        /// Counts number of items in enumerable.
+        /// </summary>
+        /// <param name="enumerable">this</param>
+        /// <returns>number if items in enumerable</returns>
         public static int Count(this IEnumerable enumerable)
         {
             if (enumerable is ICollection)
@@ -119,7 +170,12 @@ namespace Sharpility.Extensions
             }
         }
 
-        public static Type ElementType(this IEnumerable enumerable)
+        /// <summary>
+        /// Returns type of item accepted by this enumerable.
+        /// </summary>
+        /// <param name="enumerable">this</param>
+        /// <returns>type of item accepted by this enumerable</returns>
+        public static Type ItemType(this IEnumerable enumerable)
         {
             if (Lists.IsGenericCollection(enumerable))
             {
@@ -128,11 +184,17 @@ namespace Sharpility.Extensions
             return typeof (object);
         }
 
-        public static bool ContainsAll(this IEnumerable collection, IEnumerable elements)
+        /// <summary>
+        /// Checks is enumerable contains all of given items.
+        /// </summary>
+        /// <param name="enumerable">this</param>
+        /// <param name="items">checked items</param>
+        /// <returns>true if enumerable contais all of given items</returns>
+        public static bool ContainsAll(this IEnumerable enumerable, IEnumerable items)
         {
-            foreach (var element in elements)
+            foreach (var element in items)
             {
-                if (!collection.Contains(element))
+                if (!enumerable.Contains(element))
                 {
                     return false;
                 }
@@ -140,75 +202,179 @@ namespace Sharpility.Extensions
             return true;
         }
 
+        /// <summary>
+        /// Checks is enumerable does not contains any items.
+        /// </summary>
+        /// <typeparam name="T">Type of enumerable item</typeparam>
+        /// <param name="enumerable">this</param>
+        /// <returns>true if enumerable is empty</returns>
         public static bool IsEmpty<T>(this IEnumerable<T> enumerable)
         {
             return !enumerable.Any();
         }
 
+        /// <summary>
+        /// Checks is enumerable contains any items.
+        /// </summary>
+        /// <typeparam name="T">Type of enumerable item</typeparam>
+        /// <param name="enumerable">this</param>
+        /// <returns>true if enumerable is not empty</returns>
         public static bool IsNotEmpty<T>(this IEnumerable<T> enumerable)
         {
             return enumerable.Any();
         }
 
+        /// <summary>
+        /// Checks is enumerable contains only one item.
+        /// </summary>
+        /// <typeparam name="T">Type of enumerable item</typeparam>
+        /// <param name="enumerable">this</param>
+        /// <returns>true if enumerable contais only one item</returns>
         public static bool IsSingleton<T>(this IEnumerable<T> enumerable)
         {
             return enumerable.Count() == 1;
         }
 
-        public static ISet<T> Minus<T>(this ISet<T> set, IEnumerable<T> values)
+        /// <summary>
+        /// Returns set with removed items.
+        /// </summary>
+        /// <typeparam name="T">Type of set item</typeparam>
+        /// <param name="set">this</param>
+        /// <param name="items">removed items</param>
+        /// <returns>new set with removed items</returns>
+        public static ISet<T> Minus<T>(this ISet<T> set, IEnumerable<T> items)
         {
             var result = new HashSet<T>(set);
-            result.RemoveAll(values);
+            result.RemoveAll(items);
             return result;
         }
 
-        public static IList<T> Minus<T>(this IList<T> list, IEnumerable<T> values)
+        /// <summary>
+        /// Returns immutable set with removed items.
+        /// </summary>
+        /// <typeparam name="T">Type of set item</typeparam>
+        /// <param name="set">this</param>
+        /// <param name="items">removed items</param>
+        /// <returns>new set with removed items</returns>
+        public static IImmutableSet<T> Minus<T>(this IImmutableSet<T> set, IEnumerable<T> items)
+        {
+            var result = ImmutableHashSet.CreateBuilder<T>();
+            result.AddAll(set);
+            result.RemoveAll(items);
+            return result.ToImmutableHashSet();
+        }
+
+        /// <summary>
+        /// Returns list with removed items.
+        /// </summary>
+        /// <typeparam name="T">Type of list item</typeparam>
+        /// <param name="list">this</param>
+        /// <param name="items">removed items</param>
+        /// <returns>new list with removed items</returns>
+        public static IList<T> Minus<T>(this IList<T> list, IEnumerable<T> items)
         {
             var result = new List<T>(list);
-            result.RemoveAll(values);
+            result.RemoveAll(items);
             return result;
         }
 
-        public static IImmutableList<T> Minus<T>(this IImmutableList<T> list, IEnumerable<T> values)
+        /// <summary>
+        /// Returns immutable list with removed items.
+        /// </summary>
+        /// <typeparam name="T">Type of list item</typeparam>
+        /// <param name="list">this</param>
+        /// <param name="items">removed items</param>
+        /// <returns>new list with removed items</returns>
+        public static IImmutableList<T> Minus<T>(this IImmutableList<T> list, IEnumerable<T> items)
         {
-            var result = new List<T>(list);
-            result.RemoveAll(values);
+            var result = ImmutableList.CreateBuilder<T>();
+            result.AddAll(list);
+            result.RemoveAll(items);
             return result.ToImmutableList();
         }
 
-        public static IList<T> Plus<T>(this IList<T> list, IEnumerable<T> values)
-        {
-            var result = new List<T>(list);
-            result.AddAll(values);
-            return result;
-        }
-
-        public static ISet<T> Plus<T>(this ISet<T> set, IEnumerable<T> values)
+        /// <summary>
+        /// Returns set with added items.
+        /// </summary>
+        /// <typeparam name="T">Type of set item</typeparam>
+        /// <param name="set">this</param>
+        /// <param name="items">added items</param>
+        /// <returns>new set with added items</returns>
+        public static ISet<T> Plus<T>(this ISet<T> set, IEnumerable<T> items)
         {
             var result = new HashSet<T>(set);
-            result.AddAll(values);
+            result.AddAll(items);
             return set;
         }
 
-        public static IImmutableList<T> Plus<T>(this IImmutableList<T> list, IEnumerable<T> values)
+        /// <summary>
+        /// Returns immutable set with added items.
+        /// </summary>
+        /// <typeparam name="T">Type of set item</typeparam>
+        /// <param name="set">this</param>
+        /// <param name="items">added items</param>
+        /// <returns>new set with added items</returns>
+        public static IImmutableSet<T> Plus<T>(this IImmutableSet<T> set, IEnumerable<T> items)
+        {
+            var result = ImmutableHashSet.CreateBuilder<T>();
+            result.AddAll(set);
+            result.AddAll(items);
+            return set.ToImmutableHashSet();
+        }
+
+        /// <summary>
+        /// Returns list with added items.
+        /// </summary>
+        /// <typeparam name="T">Type of list item</typeparam>
+        /// <param name="list">this</param>
+        /// <param name="items">added items</param>
+        /// <returns>new list with added items</returns>
+        public static IList<T> Plus<T>(this IList<T> list, IEnumerable<T> items)
         {
             var result = new List<T>(list);
-            result.AddAll(values);
+            result.AddAll(items);
+            return result;
+        }
+
+        /// <summary>
+        /// Returns immutable list with added items.
+        /// </summary>
+        /// <typeparam name="T">Type of list item</typeparam>
+        /// <param name="list">this</param>
+        /// <param name="items">added items</param>
+        /// <returns>new list with added items</returns>
+        public static IImmutableList<T> Plus<T>(this IImmutableList<T> list, IEnumerable<T> items)
+        {
+            var result = ImmutableList.CreateBuilder<T>();
+            result.AddAll(list);
+            result.AddAll(items);
             return result.ToImmutableList();
         }
 
-        public static void Sort<T>(this ICollection<T> collection, IComparer<T> comparator = null)
+        /// <summary>
+        /// Sorts this collection.
+        /// </summary>
+        /// <typeparam name="T">Type of collection item</typeparam>
+        /// <param name="collection">this</param>
+        /// <param name="comparer">optional comparer</param>
+        public static void Sort<T>(this ICollection<T> collection, IComparer<T> comparer = null)
         {
             if (collection is List<T>)
             {
-                ((List<T>)collection).Sort(comparator);
+                ((List<T>)collection).Sort(comparer);
             }
             else
             {
-                SortCollection(collection, comparator);
+                SortCollection(collection, comparer);
             }
         }
 
+        /// <summary>
+        /// Returns first item from this collection.
+        /// </summary>
+        /// <typeparam name="T">Type of collection item</typeparam>
+        /// <param name="collection">this</param>
+        /// <returns>First item</returns>
         public static T First<T>(this ICollection<T> collection)
         {
             if (collection is LinkedList<T>)
@@ -221,6 +387,12 @@ namespace Sharpility.Extensions
             }
         }
 
+        /// <summary>
+        /// Returns last item from this collection.
+        /// </summary>
+        /// <typeparam name="T">Type of collection item</typeparam>
+        /// <param name="collection">this</param>
+        /// <returns>Last item</returns>
         public static T Last<T>(this ICollection<T> collection)
         {
             if (collection is LinkedList<T>)
@@ -233,6 +405,12 @@ namespace Sharpility.Extensions
             }
         }
 
+        /// <summary>
+        /// Removes first item from this collection.
+        /// </summary>
+        /// <typeparam name="T">Type of collection item</typeparam>
+        /// <param name="collection">this</param>
+        /// <returns>Removed item</returns>
         public static T RemoveFirst<T>(this ICollection<T> collection)
         {
             var value = collection.First();
@@ -252,11 +430,23 @@ namespace Sharpility.Extensions
             return value;
         }
 
+        /// <summary>
+        /// Wraps this queue in IQueue contract.
+        /// </summary>
+        /// <typeparam name="T">Type of queue element</typeparam>
+        /// <param name="queue">this</param>
+        /// <returns>IQueue</returns>
         public static IQueue<T> ToIQueue<T>(this Queue<T> queue)
         {
             return new DefaultQueue<T>(queue);
         }
 
+        /// <summary>
+        /// Wraps this queue in IQueue contract.
+        /// </summary>
+        /// <typeparam name="T">Type of queue element</typeparam>
+        /// <param name="queue">this</param>
+        /// <returns>IQueue</returns>
         public static IQueue<T> ToIQueue<T>(this ConcurrentQueue<T> queue)
         {
             return new DefaultConcurrentQueue<T>(queue);

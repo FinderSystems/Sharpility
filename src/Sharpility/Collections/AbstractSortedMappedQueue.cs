@@ -44,14 +44,14 @@ namespace Sharpility.Collections
             return true;
         }
 
-        public bool Offer(TValue element)
+        public bool Offer(TValue item)
         {
-            var key = keyExtractor(element);
+            var key = keyExtractor(item);
             if (values.ContainsKey(key))
             {
                 return false;
             }
-            Put(element);
+            Put(item);
             return true;
         }
 
@@ -71,9 +71,9 @@ namespace Sharpility.Collections
             values.Clear();
         }
 
-        public bool Contains(TValue element)
+        public bool Contains(TValue item)
         {
-            var key = keyExtractor(element);
+            var key = keyExtractor(item);
             return values.ContainsKey(key);
         }
 

@@ -24,9 +24,9 @@ namespace Sharpility.Collections
             return list.GetEnumerator();
         }
 
-        public bool Offer(T element)
+        public bool Offer(T item)
         {
-            list.AddFirst(element);
+            list.AddFirst(item);
             return true;
         }
 
@@ -47,9 +47,9 @@ namespace Sharpility.Collections
             list.Clear();
         }
 
-        public bool Contains(T element)
+        public bool Contains(T item)
         {
-            return list.Contains(element);
+            return list.Contains(item);
         }
 
         public int Count

@@ -58,7 +58,7 @@ namespace Sharpility.Util
         private static bool ElementsEqual(IEnumerable first, IEnumerable second)
         {
             return first.Count() == second.Count() && 
-                first.ElementType() == second.ElementType() &&
+                first.ItemType() == second.ItemType() &&
                 first.ContainsAll(second);
         }
 

@@ -36,9 +36,9 @@ namespace Sharpility.Collections.Concurrent
             return queue.GetEnumerator();
         }
 
-        public bool Offer(T element)
+        public bool Offer(T item)
         {
-            queue.Enqueue(element);
+            queue.Enqueue(item);
             return true;
         }
 
@@ -66,9 +66,9 @@ namespace Sharpility.Collections.Concurrent
             }
         }
 
-        public bool Contains(T element)
+        public bool Contains(T item)
         {
-            return queue.Contains(element);
+            return queue.Contains(item);
         }
 
         public int Count
