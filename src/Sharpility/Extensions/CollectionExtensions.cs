@@ -4,6 +4,7 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Linq;
+using Sharpility.Base;
 using Sharpility.Collections;
 using Sharpility.Collections.Concurrent;
 using Sharpility.Util;
@@ -50,7 +51,9 @@ namespace Sharpility.Extensions
         {
             foreach (var value in items)
             {
-                collection.Remove(value);
+                while (collection.Remove(value))
+                {
+                }
             }
         }
 
@@ -350,7 +353,7 @@ namespace Sharpility.Extensions
         {
             var result = new HashSet<T>(set);
             result.AddAll(items);
-            return set;
+            return result;
         }
 
         /// <summary>
@@ -365,7 +368,7 @@ namespace Sharpility.Extensions
             var result = ImmutableHashSet.CreateBuilder<T>();
             result.AddAll(set);
             result.AddAll(items);
-            return set.ToImmutableHashSet();
+            return result.ToImmutableHashSet();
         }
 
         /// <summary>
@@ -423,6 +426,10 @@ namespace Sharpility.Extensions
         /// <returns>First item</returns>
         public static T First<T>(this ICollection<T> collection)
         {
+            if (collection.IsEmpty())
+            {
+                return default(T);
+            }
             if (collection is LinkedList<T>)
             {
                 return ((LinkedList<T>)collection).First.Value;
@@ -441,6 +448,10 @@ namespace Sharpility.Extensions
         /// <returns>Last item</returns>
         public static T Last<T>(this ICollection<T> collection)
         {
+            if (collection.IsEmpty())
+            {
+                return default(T);
+            }
             if (collection is LinkedList<T>)
             {
                 return ((LinkedList<T>)collection).Last.Value;
@@ -460,13 +471,15 @@ namespace Sharpility.Extensions
         public static T RemoveFirst<T>(this ICollection<T> collection)
         {
             var value = collection.First();
+            if (collection is LinkedList<T>)
+            {
+                ((LinkedList<T>)collection).RemoveFirst();
+            }
+            Precognitions.IsNotNull(value, () =>
+                new InvalidOperationException("Could not remove first item from empty collection"));
             if (collection is IList<T>)
             {
                 ((IList<T>)collection).RemoveAt(0);
-            }
-            else if (collection is LinkedList<T>)
-            {
-                ((LinkedList<T>)collection).RemoveFirst();
             }
             else
             {

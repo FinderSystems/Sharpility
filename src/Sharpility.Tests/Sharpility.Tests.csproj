@@ -57,6 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Collections\OrderedImmutableDictionaryTests.cs" />
+    <Compile Include="IO\StreamsTests.cs" />
     <Compile Include="Util\DictionariesTests.cs" />
     <Compile Include="Util\ListsTests.cs" />
     <Compile Include="Util\SetsTests.cs" />

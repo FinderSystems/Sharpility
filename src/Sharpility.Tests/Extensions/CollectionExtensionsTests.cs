@@ -2,7 +2,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using NFluent;
+using NiceTry;
 using NUnit.Framework;
 using Sharpility.Extensions;
 using Sharpility.Util;
@@ -45,7 +47,7 @@ namespace Sharpility.Tests.Extensions
         public void ShouldExtendListByRemoveAllMethod()
         {
             // given
-            IList<string> list = new List<string> { "A", "B", "C", "D", "E", "F" };
+            IList<string> list = new List<string> { "A", "A", "B", "C", "D", "E", "F" };
 
             // when
             list.RemoveAll(Lists.AsList("A", "B"));
@@ -332,6 +334,293 @@ namespace Sharpility.Tests.Extensions
             Check.That(isEnumerableSingleton).IsFalse();
         }
 
-        // TODO minus, plus, first, last, removeFirst, sort
+        [Test]
+        public void ShouldExtendSetByMinusMethod()
+        {
+            // given
+            ISet<string> set = new HashSet<string> {"A", "B", "C", "D"};
+
+            // when
+            var result = set.Minus(Lists.AsList("B", "D", "X"));
+
+            // then
+            Check.That(result).HasSize(2);
+            Check.That(result).Contains("A", "C");
+        }
+
+        [Test]
+        public void ShouldExtendListByMinusMethod()
+        {
+            // given
+            IList<string> list = new List<string> { "A", "B", "B", "C", "D" };
+
+            // when
+            var result = list.Minus(Lists.AsList("B", "D", "X"));
+
+            // then
+            Check.That(result).ContainsExactly("A", "C");
+        }
+
+        [Test]
+        public void ShouldExtendImmutableSetByMinusMethod()
+        {
+            // given
+            IImmutableSet<int> set = ImmutableHashSet.CreateRange(Lists.AsList(1, 2, 3));
+
+            // when
+            var result = set.Minus(Lists.AsList(1, 3, 4));
+
+            // then
+            Check.That(result).HasSize(1);
+            Check.That(result).Contains(2);
+        }
+
+        [Test]
+        public void ShouldExtendImmutableListByMinusMethod()
+        {
+            // given
+            IImmutableList<int> list = ImmutableList.CreateRange(Lists.AsList(1, 2, 3, 4, 4));
+
+            // when
+            var result = list.Minus(Lists.AsList(1, 3, 4));
+
+            // then
+            Check.That(result).ContainsExactly(2);
+        }
+
+        [Test]
+        public void ShouldExtendSetByPlusMethod()
+        {
+            // given
+            ISet<string> set = new HashSet<string> {"A", "B"};
+
+            // when
+            var result = set.Plus(Lists.AsList("B", "C", "D"));
+
+            // then
+            Check.That(result).HasSize(4);
+            Check.That(result).Contains("A", "B", "C", "D");
+        }
+
+        [Test]
+        public void ShouldExtendListByPlusMethod()
+        {
+            // given
+            IList<string> list = new List<string> { "A", "B" };
+
+            // when
+            var result = list.Plus(Lists.AsList("B", "C", "D"));
+
+            // then
+            Check.That(result).ContainsExactly("A", "B", "B", "C", "D");
+        }
+
+        [Test]
+        public void ShouldExtendImmutableSetByPlusMethod()
+        {
+            // given
+            IImmutableSet<string> set = ImmutableHashSet.CreateRange(Lists.AsList("A", "B"));
+
+            // when
+            var result = set.Plus(Lists.AsList("B", "C", "D"));
+
+            // then
+            Check.That(result).HasSize(4);
+            Check.That(result).Contains("A", "B", "C", "D");
+        }
+
+        [Test]
+        public void ShouldExtendImmutableListByPlusMethod()
+        {
+            // given
+            IImmutableList<string> list = ImmutableList.CreateRange(Lists.AsList("A", "B"));
+
+            // when
+            var result = list.Plus(Lists.AsList("B", "C", "D"));
+
+            // then
+            Check.That(result).ContainsExactly("A", "B", "B", "C", "D");
+        }
+
+        [Test]
+        public void ShouldExtenedLinkedListByFirstMethod()
+        {
+            // given
+            ICollection<string> collection = new LinkedList<string>();
+            collection.AddAll("A", "B", "C");
+
+            // when
+            var first = collection.First();
+
+            // then
+            Check.That(first).IsEqualTo("A");
+        }
+
+        [Test]
+        public void ShouldExtenedListByFirstMethod()
+        {
+            // given
+            ICollection<string> collection = new List<string>();
+            collection.AddAll("A", "B", "C");
+
+            // when
+            var first = collection.First();
+
+            // then
+            Check.That(first).IsEqualTo("A");
+        }
+
+        [Test]
+        public void ShouldReturnNullFirstElementOfEmptyCollection()
+        {
+            // given
+            ICollection<int?> collection = Lists.EmptyList<int?>();
+
+            // when
+            var first = collection.First();
+
+            // then
+            Check.That(first).IsNull();
+        }
+
+        [Test]
+        public void ShouldExtenedLinkedListByLastMethod()
+        {
+            // given
+            ICollection<string> collection = new LinkedList<string>();
+            collection.AddAll("A", "B", "C");
+
+            // when
+            var first = collection.Last();
+
+            // then
+            Check.That(first).IsEqualTo("C");
+        }
+
+        [Test]
+        public void ShouldExtenedListByLastMethod()
+        {
+            // given
+            ICollection<string> collection = new List<string>();
+            collection.AddAll("A", "B", "C");
+
+            // when
+            var first = collection.Last();
+
+            // then
+            Check.That(first).IsEqualTo("C");
+        }
+
+        [Test]
+        public void ShouldReturnNullLastElementOfEmptyCollection()
+        {
+            // given
+            ICollection<int?> collection = Lists.EmptyList<int?>();
+
+            // when
+            var first = collection.Last();
+
+            // then
+            Check.That(first).IsNull();
+        }
+
+        [Test]
+        public void ShouldExtendLinkedListByRemoveFirstMethod()
+        {
+            // given
+            ICollection<string> collection = new LinkedList<string>();
+            collection.AddAll("A", "B", "C");
+
+            // then
+            var removed = collection.RemoveFirst();
+
+            // then
+            Check.That(removed).IsEqualTo("A");
+            Check.That(collection).ContainsExactly("B", "C");
+        }
+
+        [Test]
+        public void ShouldExtendListByRemoveFirstMethod()
+        {
+            // given
+            ICollection<string> collection = new List<string>();
+            collection.AddAll("A", "B", "C");
+
+            // then
+            var removed = collection.RemoveFirst();
+
+            // then
+            Check.That(removed).IsEqualTo("A");
+            Check.That(collection).ContainsExactly("B", "C");
+        }
+
+        [Test]
+        public void ShouldThrowInvalidOperationWhenRemovingFirstFromLinkedList()
+        {
+            ICollection<string> collection = new LinkedList<string>();
+
+            // then
+            var result = Try.To(() => collection.RemoveFirst());
+
+            // then
+            var caughtException = result.IsFailure ? result.Error : null;
+            Check.That(caughtException).IsNotNull();
+            Check.That(caughtException).IsInstanceOf<InvalidOperationException>();
+        }
+
+        [Test]
+        public void ShouldThrowInvalidOperationWhenRemovingFirstFromList()
+        {
+            ICollection<string> collection = new List<string>();
+
+            // then
+            var result = Try.To(() => collection.RemoveFirst());
+
+            // then
+            var caughtException = result.IsFailure ? result.Error : null;
+            Check.That(caughtException).IsNotNull();
+            Check.That(caughtException).IsInstanceOf<InvalidOperationException>();
+        }
+
+        [Test]
+        public void ShouldExtendCollectionBySortMethod()
+        {
+            // given
+            ICollection<string> collection = new List<string> {"D", "B", "A", "C"};
+
+            // when
+            collection.Sort();
+
+            // then
+            Check.That(collection).ContainsExactly("A", "B", "C", "D");
+        }
+
+        [Test]
+        public void ShouldExtendCollectionBySortMethodWithComparer()
+        {
+            // given
+            var comparer = Comparers.OfComparables<string>().Reverse();
+            ICollection<string> collection = new List<string> { "D", "B", "A", "C" };
+
+            // when
+            collection.Sort(comparer);
+
+            // then
+            Check.That(collection).ContainsExactly("D", "C", "B", "A");
+        }
+
+        [Test]
+        public void ShouldExtendLinkedListBySortMethod()
+        {
+            // given
+            ICollection<string> collection = new LinkedList<string>();
+            collection.AddAll("D", "B", "A", "C");
+
+            // when
+            collection.Sort();
+
+            // then
+            Check.That(collection).ContainsExactly("A", "B", "C", "D");
+        }
     }
 }
