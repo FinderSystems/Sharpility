@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using System.Text;
 using Sharpility.Collections;
 using Sharpility.Extensions;
@@ -104,14 +105,26 @@ namespace Sharpility.Util
             if (value != null && (generateToStringOfSubProperties || generateToStringOfSubFields))
             {
                 var type = value.GetType();
-                return !type.IsPrimitive && !(value is string) && !(value is IEnumerable);
+                return !type.IsPrimitive && !(value is string);
             }
             return false;
         }
 
-        private string GenerateToStringOf(object value)
+        private string GenerateToStringOf(object obj)
         {
-            var helper = Of(value);
+            if (obj is IEnumerable)
+            {
+                return GenerateToStringOfEnumerable((IEnumerable) obj);
+            }
+            else
+            {
+                return GenerateToStringOfObject(obj);
+            }
+        }
+
+        private string GenerateToStringOfObject(object obj)
+        {
+            var helper = Of(obj);
             if (generateToStringOfSubProperties)
             {
                 helper.AddProperties()
@@ -127,6 +140,16 @@ namespace Sharpility.Util
                 helper.SkipNulls();
             }
             return helper.ToString();
+        }
+
+        private string GenerateToStringOfEnumerable(IEnumerable enumerable)
+        {
+            var list = new List<string>();
+            foreach (var obj in enumerable)
+            {
+                list.Add(GenerateToStringOf(obj));
+            }
+            return Strings.ToString(list);
         }
     }
 }
