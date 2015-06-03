@@ -143,7 +143,7 @@ namespace Sharpility.Extensions
         }
 
         /// <summary>
-        /// Counts number of items in enumerable.
+        /// Returns number of items in enumerable.
         /// </summary>
         /// <param name="enumerable">this</param>
         /// <returns>number if items in enumerable</returns>
@@ -177,6 +177,11 @@ namespace Sharpility.Extensions
         /// <returns>type of item accepted by this enumerable</returns>
         public static Type ItemType(this IEnumerable enumerable)
         {
+            if (enumerable.GetType().IsArray)
+            {
+                var elementType = enumerable.GetType().GetElementType();
+                return elementType ?? typeof(object);
+            }
             if (Lists.IsGenericCollection(enumerable))
             {
                 return GenericTypeOf(enumerable);
@@ -214,6 +219,17 @@ namespace Sharpility.Extensions
         }
 
         /// <summary>
+        /// Checks is enumerable does not contains any items.
+        /// </summary>
+        /// <param name="enumerable">this</param>
+        /// <returns>true if enumerable is empty</returns>
+        public static bool IsEmpty(this IEnumerable enumerable)
+        {
+            var enumerator = enumerable.GetEnumerator();
+            return !enumerator.MoveNext();
+        }
+
+        /// <summary>
         /// Checks is enumerable contains any items.
         /// </summary>
         /// <typeparam name="T">Type of enumerable item</typeparam>
@@ -225,6 +241,16 @@ namespace Sharpility.Extensions
         }
 
         /// <summary>
+        /// Checks is enumerable contains any items.
+        /// </summary>
+        /// <param name="enumerable">this</param>
+        /// <returns>true if enumerable is not empty</returns>
+        public static bool IsNotEmpty(this IEnumerable enumerable)
+        {
+            return !IsEmpty(enumerable);
+        }
+
+        /// <summary>
         /// Checks is enumerable contains only one item.
         /// </summary>
         /// <typeparam name="T">Type of enumerable item</typeparam>
@@ -233,6 +259,26 @@ namespace Sharpility.Extensions
         public static bool IsSingleton<T>(this IEnumerable<T> enumerable)
         {
             return enumerable.Count() == 1;
+        }
+
+        /// <summary>
+        /// Checks is enumerable contains only one item.
+        /// </summary>
+        /// <param name="enumerable">this</param>
+        /// <returns>true if enumerable contais only one item</returns>
+        public static bool IsSingleton(this IEnumerable enumerable)
+        {
+            var count = 0;
+            var enumerator = enumerable.GetEnumerator();
+            while (enumerator.MoveNext())
+            {
+                count++;
+                if (count > 1)
+                {
+                    return false;
+                }
+            }
+            return count == 1;
         }
 
         /// <summary>
@@ -468,7 +514,7 @@ namespace Sharpility.Extensions
             }
             var type = enumerable.GetType();
             var genericTypes = type.GetGenericArguments();
-            return genericTypes.IsNotEmpty() ? genericTypes[0] : null;
+            return genericTypes.IsNotEmpty() ? genericTypes[0] : typeof(object);
         }
 
         private static bool ContainsElement(IEnumerable enumerable, object element)

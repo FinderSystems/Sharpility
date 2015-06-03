@@ -1,5 +1,6 @@
 ﻿
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using NFluent;
 using NUnit.Framework;
@@ -97,5 +98,240 @@ namespace Sharpility.Tests.Extensions
             Check.That(result).HasSize(4);
             Check.That(result).Contains("1", "2", "3", "4");
         }
+
+        [Test]
+        public void ShouldExtenedArrayEnumerableByContainsMethod()
+        {
+            // given
+            IEnumerable array = new object[] { "A", "B", 1 };
+
+            // when
+            var containsA = array.Contains("A");
+            var containsOne = array.Contains(1);
+            var containsC = array.Contains("C");
+
+            Check.That(containsA).IsTrue();
+            Check.That(containsOne).IsTrue();
+            Check.That(containsC).IsFalse();
+        }
+
+        [Test]
+        public void ShouldExtenedGenericEnumerableByContainsMethod()
+        {
+            // given
+            IEnumerable set = new HashSet<string> {"A", "B"};
+
+            // when
+            var containsA = set.Contains("A");
+            var containsOne = set.Contains(1);
+            var containsC = set.Contains("C");
+
+            Check.That(containsA).IsTrue();
+            Check.That(containsOne).IsFalse();
+            Check.That(containsC).IsFalse();
+        }
+
+        [Test]
+        public void ShouldExtendArrayEnumerableByCountMethod()
+        {
+            // given
+            IEnumerable array = new object[] { "A", "B", 1 };
+
+            // when
+            var count = CollectionExtensions.Count(array);
+
+            // then
+            Check.That(count).IsEqualTo(3);
+        }
+
+        [Test]
+        public void ShouldExtendGenericEnumerableByCountMethod()
+        {
+            // given
+            IEnumerable list = new List<int> {1, 2, 3};
+
+            // when
+            var count = CollectionExtensions.Count(list);
+
+            // then
+            Check.That(count).IsEqualTo(3);
+        }
+
+        [Test]
+        public void ShouldExtenedEnumerableByItemTypeMethod()
+        {
+            // given
+            IEnumerable array = new object[0];
+
+            // when
+            var itemType = array.ItemType();
+
+            // then
+            Check.That(itemType).IsEqualTo(typeof (object));
+        }
+
+        [Test]
+        public void ShouldExtenedGenericArrayEnumerableByItemTypeMethod()
+        {
+            // given
+            IEnumerable array = new string[0];
+
+            // when
+            var itemType = array.ItemType();
+
+            // then
+            Check.That(itemType).IsEqualTo(typeof(string));
+        }
+
+        [Test]
+        public void ShouldExtenedGenericListEnumerableByItemTypeMethod()
+        {
+            // given
+            IEnumerable list = new List<DateTime>();
+
+            // when
+            var itemType = list.ItemType();
+
+            // then
+            Check.That(itemType).IsEqualTo(typeof(DateTime));
+        }
+
+        [Test]
+        public void ShouldExtendArrayEnumerableByContainsAllMethod()
+        {
+            // given
+            IEnumerable array = new object[] {1, "A", "X"};
+
+            // when
+            var containsAll1 = array.ContainsAll(Lists.AsList("A", "X"));
+            var containsAll2 = array.ContainsAll(Lists.AsList("A", "X", "B"));
+
+            // then
+            Check.That(containsAll1).IsTrue();
+            Check.That(containsAll2).IsFalse();
+        }
+
+        [Test]
+        public void ShouldExtendGenericEnumerableByContainsAllMethod()
+        {
+            // given
+            IEnumerable array = new List<int> {1, 2, 3};
+
+            // when
+            var containsAll1 = array.ContainsAll(Lists.AsList(1, 2, 3));
+            var containsAll2 = array.ContainsAll(Lists.AsList(2, 4));
+            var containsAll3 = array.ContainsAll(new object[] {1, 3});
+            var containsAll4 = array.ContainsAll(new object[] {"A", 1});
+
+            // then
+            Check.That(containsAll1).IsTrue();
+            Check.That(containsAll2).IsFalse();
+            Check.That(containsAll3).IsTrue();
+            Check.That(containsAll4).IsFalse();
+        }
+
+        [Test]
+        public void ShouldExtendExtendGenericEnumerableByIsEmptyMethod()
+        {
+            // given
+            IEnumerable<int> emptyEnumerable = new List<int>();
+            IEnumerable<int> notEmptyEnumerable = new List<int> {1};
+
+            // when
+            var isEmptyEnumerableEmpty = emptyEnumerable.IsEmpty();
+            var isNotEmptyEnumerableEmpty = notEmptyEnumerable.IsEmpty();
+
+            // then
+            Check.That(isEmptyEnumerableEmpty).IsTrue();
+            Check.That(isNotEmptyEnumerableEmpty).IsFalse();
+        }
+
+        [Test]
+        public void ShouldExtendExtendNonGenericEnumerableByIsEmptyMethod()
+        {
+            // given
+            IEnumerable emptyEnumerable = new object[0];
+            IEnumerable notEmptyEnumerable = new object[] { 1 };
+
+            // when
+            var isEmptyEnumerableEmpty = emptyEnumerable.IsEmpty();
+            var isNotEmptyEnumerableEmpty = notEmptyEnumerable.IsEmpty();
+
+            // then
+            Check.That(isEmptyEnumerableEmpty).IsTrue();
+            Check.That(isNotEmptyEnumerableEmpty).IsFalse();
+        }
+
+        [Test]
+        public void ShouldExtendExtendGenericEnumerableByIsNotEmptyMethod()
+        {
+            // given
+            IEnumerable<int> emptyEnumerable = new List<int>();
+            IEnumerable<int> notEmptyEnumerable = new List<int> { 1 };
+
+            // when
+            var isEmptyEnumerableNotEmpty = emptyEnumerable.IsNotEmpty();
+            var isNotEmptyEnumerableNotEmpty = notEmptyEnumerable.IsNotEmpty();
+
+            // then
+            Check.That(isEmptyEnumerableNotEmpty).IsFalse();
+            Check.That(isNotEmptyEnumerableNotEmpty).IsTrue();
+        }
+
+        [Test]
+        public void ShouldExtendExtendNonGenericEnumerableByIsNotEmptyMethod()
+        {
+            // given
+            IEnumerable emptyEnumerable = new object[0];
+            IEnumerable notEmptyEnumerable = new object[] { 1 };
+
+            // when
+            var isEmptyEnumerableNotEmpty = emptyEnumerable.IsNotEmpty();
+            var isNotEmptyEnumerableNotEmpty = notEmptyEnumerable.IsNotEmpty();
+
+            // then
+            Check.That(isEmptyEnumerableNotEmpty).IsFalse();
+            Check.That(isNotEmptyEnumerableNotEmpty).IsTrue();
+        }
+
+        [Test]
+        public void ShouldExtenedGenericEnumerableByIsSingletonMethod()
+        {
+            // given
+            IEnumerable<int> emptyEnumerable = new List<int>();
+            IEnumerable<string> singletonEnumerable = new List<string> { "X" };
+            IEnumerable<string> enumerable = new List<string> { "A", "B" };
+
+            // when
+            var isEmptyEnumerableSingleton = emptyEnumerable.IsSingleton();
+            var isSingletonEnumerableSingleton = singletonEnumerable.IsSingleton();
+            var isEnumerableSingleton = enumerable.IsSingleton();
+
+            // then
+            Check.That(isEmptyEnumerableSingleton).IsFalse();
+            Check.That(isSingletonEnumerableSingleton).IsTrue();
+            Check.That(isEnumerableSingleton).IsFalse();
+        }
+
+        [Test]
+        public void ShouldExtenedNonGenericEnumerableByIsSingletonMethod()
+        {
+            // given
+            IEnumerable emptyEnumerable = new object[0];
+            IEnumerable singletonEnumerable = new object[] {"A"};
+            IEnumerable enumerable = new object[] {"A", "B"};
+
+            // when
+            var isEmptyEnumerableSingleton = emptyEnumerable.IsSingleton();
+            var isSingletonEnumerableSingleton = singletonEnumerable.IsSingleton();
+            var isEnumerableSingleton = enumerable.IsSingleton();
+
+            // then
+            Check.That(isEmptyEnumerableSingleton).IsFalse();
+            Check.That(isSingletonEnumerableSingleton).IsTrue();
+            Check.That(isEnumerableSingleton).IsFalse();
+        }
+
+        // TODO minus, plus, first, last, removeFirst, sort
     }
 }
