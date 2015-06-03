@@ -6,6 +6,11 @@ namespace Sharpility.IO
 {
     public static class Files
     {
+        /// <summary>
+        /// Deletes file if exists.
+        /// </summary>
+        /// <param name="file">file to delete</param>
+        /// <returns>true if file was deleted, false if not</returns>
         public static bool DeleteIfExists(string file)
         {
             if (File.Exists(file))
@@ -27,6 +32,11 @@ namespace Sharpility.IO
             return false;
         }
 
+        /// <summary>
+        /// Tries to delete file.
+        /// </summary>
+        /// <param name="file">file to delete</param>
+        /// <returns>true if file was deleted, false if not</returns>
         public static bool TryDeleteFile(string file)
         {
             try
