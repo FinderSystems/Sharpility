@@ -1,0 +1,4 @@
+version: 1.0.{build}
+build:
+  project: src/Sharpility.sln
+  verbosity: normal
