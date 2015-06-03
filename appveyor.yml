@@ -1,0 +1,6 @@
+version: 1.0.{build}
+before_build:
+- nuget restore src/Sharpility.sln
+build:
+  project: src/Sharpility.sln
+  verbosity: normal
