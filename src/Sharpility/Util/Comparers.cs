@@ -3,8 +3,16 @@ using System.Collections.Generic;
 
 namespace Sharpility.Util
 {
+    /// <summary>
+    /// Comparers utils.
+    /// </summary>
     public static class Comparers
     {
+        /// <summary>
+        /// Creates comparer for comparable objects.
+        /// </summary>
+        /// <typeparam name="T">Type of comparable object</typeparam>
+        /// <returns>Comparer</returns>
         public static IComparer<T> OfComparables<T>()
             where T : IComparable<T>
         {
