@@ -1,5 +1,6 @@
 ﻿
 using System;
+using System.Diagnostics.CodeAnalysis;
 using NFluent;
 using NUnit.Framework;
 using Sharpility.Extensions;
@@ -156,6 +157,7 @@ namespace Sharpility.Tests.Util
             }
         }
 
+        [SuppressMessage("ReSharper", "NotAccessedField.Local")]
         private class ObjectWithFields
         {
             private readonly string name;
@@ -170,6 +172,7 @@ namespace Sharpility.Tests.Util
             }
         }
 
+        [SuppressMessage("ReSharper", "NotAccessedField.Local")]
         private class ComplexObjectWithFields : ObjectWithFields
         {
             private readonly int id;

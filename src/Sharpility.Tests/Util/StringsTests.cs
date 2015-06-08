@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using NUnit.Framework;
-using Sharpility.Collections;
 using Sharpility.Util;
 
 namespace Sharpility.Tests.Util

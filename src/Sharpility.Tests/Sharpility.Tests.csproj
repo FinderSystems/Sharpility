@@ -58,6 +58,10 @@
   <ItemGroup>
     <Compile Include="Collections\OrderedImmutableDictionaryTests.cs" />
     <Compile Include="Collections\SortedMappedQueueTests.cs" />
+    <Compile Include="Extensions\ComparerExtensionsTests.cs" />
+    <Compile Include="Extensions\DateTimeExtensionsTests.cs" />
+    <Compile Include="IO\EmbeddedResourcesTests.cs" />
+    <Compile Include="IO\FilesTests.cs" />
     <Compile Include="IO\StreamsTests.cs" />
     <Compile Include="Util\DictionariesTests.cs" />
     <Compile Include="Util\ListsTests.cs" />
@@ -77,6 +81,9 @@
     <Compile Include="Util\ToStringHelperTests.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="IO\Test1" />
+    <EmbeddedResource Include="IO\Test2" />
+    <EmbeddedResource Include="IO\Test3" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

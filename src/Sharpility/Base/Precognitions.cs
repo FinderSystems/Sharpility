@@ -36,7 +36,7 @@ namespace Sharpility.Base
 
         public static void IsNotNull(object value, string errorMessage)
         {
-            IsNotNull(value != null, () => new ArgumentException(errorMessage));
+            IsNotNull(value, () => new ArgumentException(errorMessage));
         }
 
         public static void IsNotNull(object value, Func<Exception> exception)
@@ -66,17 +66,17 @@ namespace Sharpility.Base
 
         public static void IsNotEmpty<T>(IEnumerable<T> collection, string errorMessage)
         {
-            Evaluate(collection.IsNotEmpty(), () => new ArgumentException(errorMessage));
+           IsNotEmpty(collection, () => new ArgumentException(errorMessage));
         }
 
         public static void IsNotEmpty<T>(IEnumerable<T> collection, Func<Exception> exception)
         {
-            Evaluate(collection.IsNotEmpty(), exception);
+            Evaluate(collection != null && collection.IsNotEmpty(), exception);
         }
 
         public static void IsEmpty<T>(IEnumerable<T> collection, string errorMessage)
         {
-            Evaluate(collection.IsEmpty(), () => new ArgumentException(errorMessage));
+            IsEmpty(collection, () => new ArgumentException(errorMessage));
         }
 
         public static void IsEmpty<T>(IEnumerable<T> collection, Func<Exception> exception)
@@ -86,12 +86,12 @@ namespace Sharpility.Base
 
         public static void IsSingleton<T>(IEnumerable<T> collection, string errorMessage)
         {
-            Evaluate(collection.IsSingleton(), () => new ArgumentException(errorMessage));
+            IsSingleton(collection, () => new ArgumentException(errorMessage));
         }
 
         public static void IsSingleton<T>(IEnumerable<T> collection, Func<Exception> exception)
         {
-            Evaluate(collection.IsSingleton(), exception);
+            Evaluate(collection != null && collection.IsSingleton(), exception);
         }
 
         public static void EvaluateEnum<T>(string enumValue)
@@ -99,7 +99,7 @@ namespace Sharpility.Base
         {
             EvaluateEnum<T>(enumValue, availableValues => new ArgumentException(
                 String.Format("Invalid enum value: '{0}' for {1} expected one of {2}", 
-                enumValue, typeof(T), Strings.ToString(availableValues))));
+                Strings.ToString(enumValue), typeof(T), Strings.ToString(availableValues))));
         }
 
         public static void EvaluateEnum<T>(string enumValue, string message)
@@ -117,6 +117,11 @@ namespace Sharpility.Base
         public static void EvaluateEnum<T>(string enumValue, Converter<IEnumerator, Exception> exception)
             where T : struct, IConvertible
         {
+            if (enumValue == null)
+            {
+                var types = Enum.GetValues(typeof(T));
+                throw exception(types.GetEnumerator());
+            }
             try
             {
                 Enums.ValueOf<T>(enumValue);
