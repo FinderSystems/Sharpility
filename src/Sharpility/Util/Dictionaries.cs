@@ -261,11 +261,25 @@ namespace Sharpility.Util
 
         # endregion QuickImmutableDictionaryCreate
 
+        /// <summary>
+        /// Creates key-obj entry.
+        /// </summary>
+        /// <typeparam name="T">Type of key</typeparam>
+        /// <typeparam name="TV">Type of obj</typeparam>
+        /// <param name="key">Key</param>
+        /// <param name="value">Value</param>
+        /// <returns>entry</returns>
         public static KeyValuePair<T, TV> Entry<T, TV>(T key, TV value)
         {
             return new KeyValuePair<T, TV>(key: key, value: value);
         }
 
+        /// <summary>
+        /// Creates empty dictionary instance.
+        /// </summary>
+        /// <typeparam name="T">Type of key</typeparam>
+        /// <typeparam name="TV">Type of obj</typeparam>
+        /// <returns>empty dictionary</returns>
         public static IDictionary<T, TV> Empty<T, TV>()
         {
             return new Dictionary<T, TV>();

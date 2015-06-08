@@ -3,9 +3,8 @@ using NFluent;
 using NiceTry;
 using NUnit.Framework;
 using Sharpility.Base;
-using Sharpility.Util;
 
-namespace Sharpility.Tests.Util
+namespace Sharpility.Tests.Base
 {
     [TestFixture]
     public class PrecognitionsTests

@@ -2,6 +2,9 @@
 
 namespace Sharpility.Time
 {
+    /// <summary>
+    /// Provides current time.
+    /// </summary>
     public interface Clock
     {
         /// <summary>
