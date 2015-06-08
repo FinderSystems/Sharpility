@@ -4,6 +4,7 @@ using System.Collections.Immutable;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Text;
 using Sharpility.Base;
 
 namespace Sharpility.IO
@@ -41,11 +42,11 @@ namespace Sharpility.IO
             return stream;
         }
 
-        public static string LoadResourceContent(Type classLoader, string resource)
+        public static string LoadResourceContent(Type classLoader, string resource, Encoding encoding = null)
         {
             using (var stream = LoadResource(classLoader, resource))
             {
-                return Streams.ReadAll(stream);
+                return Streams.ReadAll(stream, encoding);
             }
         }
     }

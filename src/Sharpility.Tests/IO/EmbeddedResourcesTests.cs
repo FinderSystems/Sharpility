@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
 using NFluent;
 using NiceTry;
 using NUnit.Framework;
@@ -67,9 +68,10 @@ namespace Sharpility.Tests.IO
         {
             // given
             var classLoader = GetType();
+            var encoding = Encoding.UTF8;
 
             // when
-            var content = EmbeddedResources.LoadResourceContent(classLoader, resource);
+            var content = EmbeddedResources.LoadResourceContent(classLoader, resource, encoding);
 
             // then
             return content;
@@ -87,7 +89,7 @@ namespace Sharpility.Tests.IO
 
             yield return new TestCaseData("Sharpility.Tests.IO.Test3")
                 .SetName("Should return content for 'Sharpility.Tests.IO.Test3' embedded resource")
-                .Returns("A\r\nB\r\nC");
+                .Returns("A\nB\nC");
         } 
     }
 }
