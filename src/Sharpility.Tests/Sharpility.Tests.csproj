@@ -66,6 +66,7 @@
     <Compile Include="IO\EmbeddedResourcesTests.cs" />
     <Compile Include="IO\FilesTests.cs" />
     <Compile Include="IO\StreamsTests.cs" />
+    <Compile Include="Time\DateRangeTests.cs" />
     <Compile Include="Util\ComparersTests.cs" />
     <Compile Include="Util\DictionariesTests.cs" />
     <Compile Include="Util\ListsTests.cs" />
