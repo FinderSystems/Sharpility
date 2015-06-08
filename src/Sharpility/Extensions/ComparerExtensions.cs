@@ -2,6 +2,9 @@
 
 namespace Sharpility.Extensions
 {
+    /// <summary>
+    /// Extensions of IComparer class.
+    /// </summary>
     public static class ComparerExtensions
     {
         /// <summary>

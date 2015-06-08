@@ -3,6 +3,9 @@ using System.Text;
 
 namespace Sharpility.Extensions
 {
+    /// <summary>
+    /// String extensions.
+    /// </summary>
     public static class StringExtensions
     {
         /// <summary>

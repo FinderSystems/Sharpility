@@ -8,6 +8,9 @@ using Sharpility.Base;
 
 namespace Sharpility.IO
 {
+    /// <summary>
+    /// Utility for embedded resources.
+    /// </summary>
     public static class EmbeddedResources
     {
         public static ICollection<string> Resources(Type classLoader)
