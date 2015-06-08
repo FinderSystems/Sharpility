@@ -4,8 +4,18 @@ using Sharpility.Extensions;
 
 namespace Sharpility.Util
 {
+    /// <summary>
+    /// Dictionary utils.
+    /// </summary>
     public static class Dictionaries
     {
+        /// <summary>
+        /// Creates dictionary instance from KeyValuePair entries.
+        /// </summary>
+        /// <typeparam name="T">Type of key</typeparam>
+        /// <typeparam name="TV">Type of value</typeparam>
+        /// <param name="entries">entries</param>
+        /// <returns>dictionary</returns>
         public static IDictionary<T, TV> CreateFromEntries<T, TV>(params KeyValuePair<T, TV>[] entries)
         {
             var dictionary = new Dictionary<T, TV>();
@@ -15,6 +25,14 @@ namespace Sharpility.Util
 
         # region QuickDictionaryCreate
 
+        /// <summary>
+        /// Creates dictionary instance with given key and value.
+        /// </summary>
+        /// <typeparam name="T">Type of key</typeparam>
+        /// <typeparam name="TV">Type of value</typeparam>
+        /// <param name="key">key</param>
+        /// <param name="value">Value</param>
+        /// <returns>dictionary</returns>
         public static IDictionary<T, TV> Create<T, TV>(T key, TV value)
         {
             var dictionary = new Dictionary<T, TV>();
@@ -22,6 +40,16 @@ namespace Sharpility.Util
             return dictionary;
         }
 
+        /// <summary>
+        /// Creates dictionary instance with given keys and values.
+        /// </summary>
+        /// <typeparam name="T">Type of key</typeparam>
+        /// <typeparam name="TV">Type of value</typeparam>
+        /// <param name="key1">key1</param>
+        /// <param name="value1">Value1</param>
+        /// <param name="key2">key2</param>
+        /// <param name="value2">Value2</param>
+        /// <returns>dictionary</returns>
         public static IDictionary<T, TV> Create<T, TV>(T key1, TV value1, T key2, TV value2)
         {
             var dictionary = new Dictionary<T, TV>();
@@ -30,6 +58,18 @@ namespace Sharpility.Util
             return dictionary;
         }
 
+        /// <summary>
+        /// Creates dictionary instance with given keys and values.
+        /// </summary>
+        /// <typeparam name="T">Type of key</typeparam>
+        /// <typeparam name="TV">Type of value</typeparam>
+        /// <param name="key1">key1</param>
+        /// <param name="value1">Value1</param>
+        /// <param name="key2">key2</param>
+        /// <param name="value2">Value2</param>
+        /// <param name="key3">key3</param>
+        /// <param name="value3">Value3</param>
+        /// <returns>dictionary</returns>
         public static IDictionary<T, TV> Create<T, TV>(T key1, TV value1, T key2, TV value2, T key3, TV value3)
         {
             var dictionary = new Dictionary<T, TV>();
@@ -39,6 +79,20 @@ namespace Sharpility.Util
             return dictionary;
         }
 
+        /// <summary>
+        /// Creates dictionary instance with given keys and values.
+        /// </summary>
+        /// <typeparam name="T">Type of key</typeparam>
+        /// <typeparam name="TV">Type of value</typeparam>
+        /// <param name="key1">key1</param>
+        /// <param name="value1">Value1</param>
+        /// <param name="key2">key2</param>
+        /// <param name="value2">Value2</param>
+        /// <param name="key3">key3</param>
+        /// <param name="value3">Value3</param>
+        /// <param name="key4">key4</param>
+        /// <param name="value4">Value4</param>
+        /// <returns>dictionary</returns>
         public static IDictionary<T, TV> Create<T, TV>(T key1, TV value1, T key2, TV value2, T key3, TV value3, T key4, TV value4)
         {
             var dictionary = new Dictionary<T, TV>();
@@ -49,6 +103,22 @@ namespace Sharpility.Util
             return dictionary;
         }
 
+        /// <summary>
+        /// Creates dictionary instance with given keys and values.
+        /// </summary>
+        /// <typeparam name="T">Type of key</typeparam>
+        /// <typeparam name="TV">Type of value</typeparam>
+        /// <param name="key1">key1</param>
+        /// <param name="value1">Value1</param>
+        /// <param name="key2">key2</param>
+        /// <param name="value2">Value2</param>
+        /// <param name="key3">key3</param>
+        /// <param name="value3">Value3</param>
+        /// <param name="key4">key4</param>
+        /// <param name="value4">Value4</param>
+        /// <param name="key5">key5</param>
+        /// <param name="value5">Value5</param>
+        /// <returns>dictionary</returns>
         public static IDictionary<T, TV> Create<T, TV>(T key1, TV value1, T key2, TV value2, T key3, TV value3, T key4, TV value4, T key5, TV value5)
         {
             var dictionary = new Dictionary<T, TV>();
@@ -60,6 +130,24 @@ namespace Sharpility.Util
             return dictionary;
         }
 
+        /// <summary>
+        /// Creates dictionary instance with given keys and values.
+        /// </summary>
+        /// <typeparam name="T">Type of key</typeparam>
+        /// <typeparam name="TV">Type of value</typeparam>
+        /// <param name="key1">key1</param>
+        /// <param name="value1">Value1</param>
+        /// <param name="key2">key2</param>
+        /// <param name="value2">Value2</param>
+        /// <param name="key3">key3</param>
+        /// <param name="value3">Value3</param>
+        /// <param name="key4">key4</param>
+        /// <param name="value4">Value4</param>
+        /// <param name="key5">key5</param>
+        /// <param name="value5">Value5</param>
+        /// <param name="key6">key6</param>
+        /// <param name="value6">Value6</param>
+        /// <returns>dictionary</returns>
         public static IDictionary<T, TV> Create<T, TV>(T key1, TV value1, T key2, TV value2, T key3, TV value3, T key4, TV value4, T key5, TV value5, 
             T key6, TV value6)
         {
@@ -73,6 +161,26 @@ namespace Sharpility.Util
             return dictionary;
         }
 
+        /// <summary>
+        /// Creates dictionary instance with given keys and values.
+        /// </summary>
+        /// <typeparam name="T">Type of key</typeparam>
+        /// <typeparam name="TV">Type of value</typeparam>
+        /// <param name="key1">key1</param>
+        /// <param name="value1">Value1</param>
+        /// <param name="key2">key2</param>
+        /// <param name="value2">Value2</param>
+        /// <param name="key3">key3</param>
+        /// <param name="value3">Value3</param>
+        /// <param name="key4">key4</param>
+        /// <param name="value4">Value4</param>
+        /// <param name="key5">key5</param>
+        /// <param name="value5">Value5</param>
+        /// <param name="key6">key6</param>
+        /// <param name="value6">Value6</param>
+        /// <param name="key7">key7</param>
+        /// <param name="value7">Value7</param>
+        /// <returns>dictionary</returns>
         public static IDictionary<T, TV> Create<T, TV>(T key1, TV value1, T key2, TV value2, T key3, TV value3, T key4, TV value4, T key5, TV value5, 
             T key6, TV value6, T key7, TV value7)
         {
@@ -87,6 +195,28 @@ namespace Sharpility.Util
             return dictionary;
         }
 
+        /// <summary>
+        /// Creates dictionary instance with given keys and values.
+        /// </summary>
+        /// <typeparam name="T">Type of key</typeparam>
+        /// <typeparam name="TV">Type of value</typeparam>
+        /// <param name="key1">key1</param>
+        /// <param name="value1">Value1</param>
+        /// <param name="key2">key2</param>
+        /// <param name="value2">Value2</param>
+        /// <param name="key3">key3</param>
+        /// <param name="value3">Value3</param>
+        /// <param name="key4">key4</param>
+        /// <param name="value4">Value4</param>
+        /// <param name="key5">key5</param>
+        /// <param name="value5">Value5</param>
+        /// <param name="key6">key6</param>
+        /// <param name="value6">Value6</param>
+        /// <param name="key7">key7</param>
+        /// <param name="value7">Value7</param>
+        /// <param name="key8">key8</param>
+        /// <param name="value8">Value8</param>
+        /// <returns>dictionary</returns>
         public static IDictionary<T, TV> Create<T, TV>(T key1, TV value1, T key2, TV value2, T key3, TV value3, T key4, TV value4, T key5, TV value5, 
             T key6, TV value6, T key7, TV value7, T key8, TV value8)
         {
@@ -102,6 +232,30 @@ namespace Sharpility.Util
             return dictionary;
         }
 
+        /// <summary>
+        /// Creates dictionary instance with given keys and values.
+        /// </summary>
+        /// <typeparam name="T">Type of key</typeparam>
+        /// <typeparam name="TV">Type of value</typeparam>
+        /// <param name="key1">key1</param>
+        /// <param name="value1">Value1</param>
+        /// <param name="key2">key2</param>
+        /// <param name="value2">Value2</param>
+        /// <param name="key3">key3</param>
+        /// <param name="value3">Value3</param>
+        /// <param name="key4">key4</param>
+        /// <param name="value4">Value4</param>
+        /// <param name="key5">key5</param>
+        /// <param name="value5">Value5</param>
+        /// <param name="key6">key6</param>
+        /// <param name="value6">Value6</param>
+        /// <param name="key7">key7</param>
+        /// <param name="value7">Value7</param>
+        /// <param name="key8">key8</param>
+        /// <param name="value8">Value8</param>
+        /// <param name="key9">key9</param>
+        /// <param name="value9">Value9</param>
+        /// <returns>dictionary</returns>
         public static IDictionary<T, TV> Create<T, TV>(T key1, TV value1, T key2, TV value2, T key3, TV value3, T key4, TV value4, T key5, TV value5, 
             T key6, TV value6, T key7, TV value7, T key8, TV value8, T key9, TV value9)
         {
@@ -118,6 +272,32 @@ namespace Sharpility.Util
             return dictionary;
         }
 
+        /// <summary>
+        /// Creates dictionary instance with given keys and values.
+        /// </summary>
+        /// <typeparam name="T">Type of key</typeparam>
+        /// <typeparam name="TV">Type of value</typeparam>
+        /// <param name="key1">key1</param>
+        /// <param name="value1">Value1</param>
+        /// <param name="key2">key2</param>
+        /// <param name="value2">Value2</param>
+        /// <param name="key3">key3</param>
+        /// <param name="value3">Value3</param>
+        /// <param name="key4">key4</param>
+        /// <param name="value4">Value4</param>
+        /// <param name="key5">key5</param>
+        /// <param name="value5">Value5</param>
+        /// <param name="key6">key6</param>
+        /// <param name="value6">Value6</param>
+        /// <param name="key7">key7</param>
+        /// <param name="value7">Value7</param>
+        /// <param name="key8">key8</param>
+        /// <param name="value8">Value8</param>
+        /// <param name="key9">key9</param>
+        /// <param name="value9">Value9</param>
+        /// <param name="key10">key10</param>
+        /// <param name="value10">Value10</param>
+        /// <returns>dictionary</returns>
         public static IDictionary<T, TV> Create<T, TV>(T key1, TV value1, T key2, TV value2, T key3, TV value3, T key4, TV value4, T key5, TV value5, 
             T key6, TV value6, T key7, TV value7, T key8, TV value8, T key9, TV value9, T key10, TV value10)
         {
@@ -139,6 +319,14 @@ namespace Sharpility.Util
 
         # region QuickImmutableDictionaryCreate
 
+        /// <summary>
+        /// Creates immutable dictionary instance with given key and value.
+        /// </summary>
+        /// <typeparam name="T">Type of key</typeparam>
+        /// <typeparam name="TV">Type of value</typeparam>
+        /// <param name="key">key</param>
+        /// <param name="value">Value</param>
+        /// <returns>dictionary</returns>
         public static IImmutableDictionary<T, TV> CreateImmutable<T, TV>(T key, TV value)
         {
             var dictionary = ImmutableDictionary.CreateBuilder<T, TV>();
@@ -146,6 +334,16 @@ namespace Sharpility.Util
             return dictionary.ToImmutable();
         }
 
+        /// <summary>
+        /// Creates immutable dictionary instance with given keys and values.
+        /// </summary>
+        /// <typeparam name="T">Type of key</typeparam>
+        /// <typeparam name="TV">Type of value</typeparam>
+        /// <param name="key1">key1</param>
+        /// <param name="value1">Value1</param>
+        /// <param name="key2">key2</param>
+        /// <param name="value2">Value2</param>
+        /// <returns>dictionary</returns>
         public static IImmutableDictionary<T, TV> CreateImmutable<T, TV>(T key1, TV value1, T key2, TV value2)
         {
             var dictionary = ImmutableDictionary.CreateBuilder<T, TV>();
@@ -154,6 +352,18 @@ namespace Sharpility.Util
             return dictionary.ToImmutable();
         }
 
+        /// <summary>
+        /// Creates immutable dictionary instance with given keys and values.
+        /// </summary>
+        /// <typeparam name="T">Type of key</typeparam>
+        /// <typeparam name="TV">Type of value</typeparam>
+        /// <param name="key1">key1</param>
+        /// <param name="value1">Value1</param>
+        /// <param name="key2">key2</param>
+        /// <param name="value2">Value2</param>
+        /// <param name="key3">key3</param>
+        /// <param name="value3">Value3</param>
+        /// <returns>dictionary</returns>
         public static IImmutableDictionary<T, TV> CreateImmutable<T, TV>(T key1, TV value1, T key2, TV value2, T key3, TV value3)
         {
             var dictionary = ImmutableDictionary.CreateBuilder<T, TV>();
@@ -163,6 +373,20 @@ namespace Sharpility.Util
             return dictionary.ToImmutable();
         }
 
+        /// <summary>
+        /// Creates immutable dictionary instance with given keys and values.
+        /// </summary>
+        /// <typeparam name="T">Type of key</typeparam>
+        /// <typeparam name="TV">Type of value</typeparam>
+        /// <param name="key1">key1</param>
+        /// <param name="value1">Value1</param>
+        /// <param name="key2">key2</param>
+        /// <param name="value2">Value2</param>
+        /// <param name="key3">key3</param>
+        /// <param name="value3">Value3</param>
+        /// <param name="key4">key4</param>
+        /// <param name="value4">Value4</param>
+        /// <returns>dictionary</returns>
         public static IImmutableDictionary<T, TV> CreateImmutable<T, TV>(T key1, TV value1, T key2, TV value2, T key3, TV value3, T key4, TV value4)
         {
             var dictionary = ImmutableDictionary.CreateBuilder<T, TV>();
@@ -173,6 +397,22 @@ namespace Sharpility.Util
             return dictionary.ToImmutable();
         }
 
+        /// <summary>
+        /// Creates immutable dictionary instance with given keys and values.
+        /// </summary>
+        /// <typeparam name="T">Type of key</typeparam>
+        /// <typeparam name="TV">Type of value</typeparam>
+        /// <param name="key1">key1</param>
+        /// <param name="value1">Value1</param>
+        /// <param name="key2">key2</param>
+        /// <param name="value2">Value2</param>
+        /// <param name="key3">key3</param>
+        /// <param name="value3">Value3</param>
+        /// <param name="key4">key4</param>
+        /// <param name="value4">Value4</param>
+        /// <param name="key5">key5</param>
+        /// <param name="value5">Value5</param>
+        /// <returns>dictionary</returns>
         public static IImmutableDictionary<T, TV> CreateImmutable<T, TV>(T key1, TV value1, T key2, TV value2, T key3, TV value3, T key4, TV value4, T key5, TV value5)
         {
             var dictionary = ImmutableDictionary.CreateBuilder<T, TV>();
@@ -184,6 +424,24 @@ namespace Sharpility.Util
             return dictionary.ToImmutable();
         }
 
+        /// <summary>
+        /// Creates immutable dictionary instance with given keys and values.
+        /// </summary>
+        /// <typeparam name="T">Type of key</typeparam>
+        /// <typeparam name="TV">Type of value</typeparam>
+        /// <param name="key1">key1</param>
+        /// <param name="value1">Value1</param>
+        /// <param name="key2">key2</param>
+        /// <param name="value2">Value2</param>
+        /// <param name="key3">key3</param>
+        /// <param name="value3">Value3</param>
+        /// <param name="key4">key4</param>
+        /// <param name="value4">Value4</param>
+        /// <param name="key5">key5</param>
+        /// <param name="value5">Value5</param>
+        /// <param name="key6">key6</param>
+        /// <param name="value6">Value6</param>
+        /// <returns>dictionary</returns>
         public static IImmutableDictionary<T, TV> CreateImmutable<T, TV>(T key1, TV value1, T key2, TV value2, T key3, TV value3, T key4, TV value4, T key5, TV value5,
             T key6, TV value6)
         {
@@ -197,6 +455,26 @@ namespace Sharpility.Util
             return dictionary.ToImmutable();
         }
 
+        /// <summary>
+        /// Creates immutable dictionary instance with given keys and values.
+        /// </summary>
+        /// <typeparam name="T">Type of key</typeparam>
+        /// <typeparam name="TV">Type of value</typeparam>
+        /// <param name="key1">key1</param>
+        /// <param name="value1">Value1</param>
+        /// <param name="key2">key2</param>
+        /// <param name="value2">Value2</param>
+        /// <param name="key3">key3</param>
+        /// <param name="value3">Value3</param>
+        /// <param name="key4">key4</param>
+        /// <param name="value4">Value4</param>
+        /// <param name="key5">key5</param>
+        /// <param name="value5">Value5</param>
+        /// <param name="key6">key6</param>
+        /// <param name="value6">Value6</param>
+        /// <param name="key7">key7</param>
+        /// <param name="value7">Value7</param>
+        /// <returns>dictionary</returns>
         public static IImmutableDictionary<T, TV> CreateImmutable<T, TV>(T key1, TV value1, T key2, TV value2, T key3, TV value3, T key4, TV value4, T key5, TV value5,
             T key6, TV value6, T key7, TV value7)
         {
@@ -211,6 +489,28 @@ namespace Sharpility.Util
             return dictionary.ToImmutable();
         }
 
+        /// <summary>
+        /// Creates immutable dictionary instance with given keys and values.
+        /// </summary>
+        /// <typeparam name="T">Type of key</typeparam>
+        /// <typeparam name="TV">Type of value</typeparam>
+        /// <param name="key1">key1</param>
+        /// <param name="value1">Value1</param>
+        /// <param name="key2">key2</param>
+        /// <param name="value2">Value2</param>
+        /// <param name="key3">key3</param>
+        /// <param name="value3">Value3</param>
+        /// <param name="key4">key4</param>
+        /// <param name="value4">Value4</param>
+        /// <param name="key5">key5</param>
+        /// <param name="value5">Value5</param>
+        /// <param name="key6">key6</param>
+        /// <param name="value6">Value6</param>
+        /// <param name="key7">key7</param>
+        /// <param name="value7">Value7</param>
+        /// <param name="key8">key8</param>
+        /// <param name="value8">Value8</param>
+        /// <returns>dictionary</returns>
         public static IImmutableDictionary<T, TV> CreateImmutable<T, TV>(T key1, TV value1, T key2, TV value2, T key3, TV value3, T key4, TV value4, T key5, TV value5,
             T key6, TV value6, T key7, TV value7, T key8, TV value8)
         {
@@ -226,6 +526,30 @@ namespace Sharpility.Util
             return dictionary.ToImmutable();
         }
 
+        /// <summary>
+        /// Creates immutable dictionary instance with given keys and values.
+        /// </summary>
+        /// <typeparam name="T">Type of key</typeparam>
+        /// <typeparam name="TV">Type of value</typeparam>
+        /// <param name="key1">key1</param>
+        /// <param name="value1">Value1</param>
+        /// <param name="key2">key2</param>
+        /// <param name="value2">Value2</param>
+        /// <param name="key3">key3</param>
+        /// <param name="value3">Value3</param>
+        /// <param name="key4">key4</param>
+        /// <param name="value4">Value4</param>
+        /// <param name="key5">key5</param>
+        /// <param name="value5">Value5</param>
+        /// <param name="key6">key6</param>
+        /// <param name="value6">Value6</param>
+        /// <param name="key7">key7</param>
+        /// <param name="value7">Value7</param>
+        /// <param name="key8">key8</param>
+        /// <param name="value8">Value8</param>
+        /// <param name="key9">key9</param>
+        /// <param name="value9">Value9</param>
+        /// <returns>dictionary</returns>
         public static IImmutableDictionary<T, TV> CreateImmutable<T, TV>(T key1, TV value1, T key2, TV value2, T key3, TV value3, T key4, TV value4, T key5, TV value5,
             T key6, TV value6, T key7, TV value7, T key8, TV value8, T key9, TV value9)
         {
@@ -242,6 +566,32 @@ namespace Sharpility.Util
             return dictionary.ToImmutable();
         }
 
+        /// <summary>
+        /// Creates immutable dictionary instance with given keys and values.
+        /// </summary>
+        /// <typeparam name="T">Type of key</typeparam>
+        /// <typeparam name="TV">Type of value</typeparam>
+        /// <param name="key1">key1</param>
+        /// <param name="value1">Value1</param>
+        /// <param name="key2">key2</param>
+        /// <param name="value2">Value2</param>
+        /// <param name="key3">key3</param>
+        /// <param name="value3">Value3</param>
+        /// <param name="key4">key4</param>
+        /// <param name="value4">Value4</param>
+        /// <param name="key5">key5</param>
+        /// <param name="value5">Value5</param>
+        /// <param name="key6">key6</param>
+        /// <param name="value6">Value6</param>
+        /// <param name="key7">key7</param>
+        /// <param name="value7">Value7</param>
+        /// <param name="key8">key8</param>
+        /// <param name="value8">Value8</param>
+        /// <param name="key9">key9</param>
+        /// <param name="value9">Value9</param>
+        /// <param name="key10">key10</param>
+        /// <param name="value10">Value10</param>
+        /// <returns>dictionary</returns>
         public static IImmutableDictionary<T, TV> CreateImmutable<T, TV>(T key1, TV value1, T key2, TV value2, T key3, TV value3, T key4, TV value4, T key5, TV value5,
             T key6, TV value6, T key7, TV value7, T key8, TV value8, T key9, TV value9, T key10, TV value10)
         {

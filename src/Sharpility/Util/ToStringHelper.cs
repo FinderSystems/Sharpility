@@ -6,6 +6,9 @@ using Sharpility.Extensions;
 
 namespace Sharpility.Util
 {
+    /// <summary>
+    /// Utility for building toString representation of object.
+    /// </summary>
     public sealed class ToStringHelper
     {
         private readonly object type;
@@ -13,25 +16,41 @@ namespace Sharpility.Util
             OrderedHashImmutableDictionary<string, object>.CreateBuilder();
 
         private bool skipNulls;
-        private bool generateToStringOfSubProperties;
-        private bool generateToStringOfSubFields;
+        private bool generateToStringOfProperties;
+        private bool generateToStringOfFields;
 
         private ToStringHelper(object type)
         {
             this.type = type;
         }
 
-        public static ToStringHelper Of(object type)
+        /// <summary>
+        /// Creates new ToStringHelper for given object
+        /// </summary>
+        /// <param name="obj">object</param>
+        /// <returns>ToStringHelper</returns>
+        public static ToStringHelper Of(object obj)
         {
-            return new ToStringHelper(type);
+            return new ToStringHelper(obj);
         }
 
+        /// <summary>
+        /// Adds entry as 'name:value' in generated toString.
+        /// </summary>
+        /// <param name="name">Printed name</param>
+        /// <param name="value">Printed value</param>
+        /// <returns>this</returns>
         public ToStringHelper Add(string name, object value)
         {
             fields.Put(name, value);
             return this;
         }
 
+        /// <summary>
+        /// Adds all object properties as entries in generated toString.
+        /// </summary>
+        /// <param name="includeBase">Should include base class properties, default: False</param>
+        /// <returns>this</returns>
         public ToStringHelper AddProperties(bool includeBase = false)
         {
             var properties = Reflections.Properties(type, includeBase);
@@ -42,6 +61,11 @@ namespace Sharpility.Util
             return this;
         }
 
+        /// <summary>
+        /// Adds all object fields as entries in generated toString.
+        /// </summary>
+        /// <param name="includeBase">Should include base class properties, default: False</param>
+        /// <returns>this</returns>
         public ToStringHelper AddFields(bool includeBase = false)
         {
             var fields = Reflections.Fields(type, includeBase);
@@ -52,30 +76,53 @@ namespace Sharpility.Util
             return this;
         }
 
+        /// <summary>
+        /// Adds all object properties and fields as entries in generated toString.
+        /// </summary>
+        /// <param name="includeBase">Should include base class properties and fields, default: False</param>
+        /// <returns>this</returns>
         public ToStringHelper AddMembers(bool includeBase = false)
         {
             AddProperties(includeBase);
             AddFields(includeBase);
             return this;
         }
+
+        /// <summary>
+        /// Skips printing null values.
+        /// </summary>
+        /// <param name="skip">Should skip printing null values, default: True</param>
+        /// <returns>this</returns>
         public ToStringHelper SkipNulls(bool skip = true) 
         {
             skipNulls = skip;
             return this;
         }
 
-        public ToStringHelper GenerateToStringOfSubProperties()
+        /// <summary>
+        /// Enables toString generation of object properties.
+        /// </summary>
+        /// <returns>this</returns>
+        public ToStringHelper GenerateToStringOfProperties()
         {
-            generateToStringOfSubProperties = true;
+            generateToStringOfProperties = true;
             return this;
         }
 
-        public ToStringHelper GenerateToStringOfSubFields()
+        /// <summary>
+        /// Enables toString generation of object fields.
+        /// </summary>
+        /// <returns>this</returns>
+        public ToStringHelper GenerateToStringOfFields()
         {
-            generateToStringOfSubFields = true;
+            generateToStringOfFields = true;
             return this;
         }
-
+        
+        /// <summary>
+        /// Builds object toString representation.
+        /// </summary>
+        /// <returns>toString</returns>
         public override string ToString()
         {
             var dictionary = fields.Build();
@@ -102,7 +149,7 @@ namespace Sharpility.Util
 
         private bool ShouldGenerateToString(object value)
         {
-            if (value != null && (generateToStringOfSubProperties || generateToStringOfSubFields))
+            if (value != null && (generateToStringOfProperties || generateToStringOfFields))
             {
                 var type = value.GetType();
                 return !type.IsPrimitive && !(value is string);
@@ -125,15 +172,15 @@ namespace Sharpility.Util
         private string GenerateToStringOfObject(object obj)
         {
             var helper = Of(obj);
-            if (generateToStringOfSubProperties)
+            if (generateToStringOfProperties)
             {
                 helper.AddProperties()
-                    .GenerateToStringOfSubProperties();
+                    .GenerateToStringOfProperties();
             }
-            if (generateToStringOfSubFields)
+            if (generateToStringOfFields)
             {
                 helper.AddFields()
-                    .GenerateToStringOfSubFields();
+                    .GenerateToStringOfFields();
             }
             if (skipNulls)
             {
