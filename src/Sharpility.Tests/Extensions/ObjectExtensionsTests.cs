@@ -95,5 +95,52 @@ namespace Sharpility.Tests.Extensions
 
             Check.That(Objects.Equal(first, second)).IsEqualTo(false);
         }
+
+        [Test]
+        public void ShouldEqualSetSame()
+        {
+            ISet<int> first = new HashSet<int>();
+            first.Add(2);
+            first.Add(1);
+            first.Add(3);
+
+            ISet<int> second = new HashSet<int>();
+            second.Add(3);
+            second.Add(2);
+            second.Add(1);
+
+            Check.That(Objects.Equal(first, second)).IsEqualTo(true);
+        }
+
+        [Test]
+        public void ShouldEqualSetDifferentValues()
+        {
+            ISet<int> first = new HashSet<int>();
+            first.Add(2);
+            first.Add(1);
+            first.Add(4);
+
+            ISet<int> second = new HashSet<int>();
+            second.Add(3);
+            second.Add(2);
+            second.Add(1);
+
+            Check.That(Objects.Equal(first, second)).IsEqualTo(false);
+        }
+
+        [Test]
+        public void ShouldNotEqualSetDifferentLength()
+        {
+            ISet<int> first = new HashSet<int>();
+            first.Add(2);
+            first.Add(1);
+
+            ISet<int> second = new HashSet<int>();
+            second.Add(3);
+            second.Add(2);
+            second.Add(1);
+
+            Check.That(Objects.Equal(first, second)).IsEqualTo(false);
+        }
     }
 }
