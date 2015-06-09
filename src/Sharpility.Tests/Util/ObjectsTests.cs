@@ -152,7 +152,7 @@ namespace Sharpility.Tests.Util
             first = Dictionaries.Create(1, "A", 2, "B");
             second = Dictionaries.Create(3, "C", 4, "D");
             yield return new TestCaseData(first, second)
-                .SetName("Should generate same hash codes for different dictionaries")
+                .SetName("Should generate different hash codes for different dictionaries")
                 .Returns(false);
 
             first = Dictionaries.Create(1, "A", 2, "B");
