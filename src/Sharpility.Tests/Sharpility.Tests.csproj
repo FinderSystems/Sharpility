@@ -89,6 +89,7 @@
     <EmbeddedResource Include="IO\Test1" />
     <EmbeddedResource Include="IO\Test2" />
     <EmbeddedResource Include="IO\Test3" />
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
