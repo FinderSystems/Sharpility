@@ -1,6 +1,8 @@
 ﻿
+using System;
 using System.Collections.Generic;
 using NUnit.Framework;
+using Sharpility.Extensions;
 using Sharpility.Util;
 
 namespace Sharpility.Tests.Util
@@ -84,8 +86,133 @@ namespace Sharpility.Tests.Util
             yield return new TestCaseData(Sets.AsSet(1, 2, 3), Sets.AsSet(3, 2))
                .SetName("Should return that sets are not equals")
                .Returns(false);
-        } 
+        }
 
-        // TODO hashCode tests
+        [Test, TestCaseSource("HashCodeTestCases")]
+        public bool ShouldGenerateHashCodes(object first, object second)
+        {
+            // when
+            var firstHash = Objects.HashCode(first);
+            var secondHash = Objects.HashCode(second);
+
+            // then
+            return firstHash == secondHash;
+        }
+
+        private static IEnumerable<ITestCaseData> HashCodeTestCases()
+        {
+            object first = Lists.AsList(1, 2, 3, 4);
+            object second = Lists.AsList(1, 2, 3, 4);
+            yield return new TestCaseData(first, second)
+                .SetName("Should generate same hash codes for lists with exact elements")
+                .Returns(true);
+
+            first = new object[] {"A", 3, new DateTime(2015, 6, 9, 0, 0, 0)};
+            second = new object[] { "A", 3, new DateTime(2015, 6, 9, 0, 0, 0)};
+            yield return new TestCaseData(first, second)
+                .SetName("Should generate same hash codes for arrays with exact elements")
+                .Returns(true);
+
+            first = Lists.AsList(1, 2, 3, 4);
+            second = Lists.AsList(1, 2, 4, 3);
+            yield return new TestCaseData(first, second)
+                .SetName("Should generate different hash codes for lists with different elements order")
+                .Returns(false);
+
+            first = Lists.AsList(1, 2, 3, 4);
+            second = Lists.AsList(1, 2, 3);
+            yield return new TestCaseData(first, second)
+                .SetName("Should generate different hash codes for lists with different elements count")
+                .Returns(false);
+
+            first = Lists.EmptyList<string>();
+            second = Lists.AsList("A");
+            yield return new TestCaseData(first, second)
+                .SetName("Should generate different hash codes for empty list and not empty list")
+                .Returns(false);
+
+            first = "test";
+            second = "test";
+            yield return new TestCaseData(first, second)
+                .SetName("Should generate same hash codes for same strings")
+                .Returns(true);
+
+            first = 5;
+            second = 5;
+            yield return new TestCaseData(first, second)
+                .SetName("Should generate same hash codes for same ints")
+                .Returns(true);
+
+            first = Dictionaries.Create(1, "A", 2, "B");
+            second = Dictionaries.Create(1, "A", 2, "B");
+            yield return new TestCaseData(first, second)
+                .SetName("Should generate same hash codes for same dictionaries")
+                .Returns(true);
+
+            first = Dictionaries.Create(1, "A", 2, "B");
+            second = Dictionaries.Create(3, "C", 4, "D");
+            yield return new TestCaseData(first, second)
+                .SetName("Should generate same hash codes for different dictionaries")
+                .Returns(false);
+
+            first = Dictionaries.Create(1, "A", 2, "B");
+            second = Dictionaries.Create(1, "A");
+            yield return new TestCaseData(first, second)
+                .SetName("Should generate same hash codes for different dictionaries sizes")
+                .Returns(false);
+
+            first = new HashObject(5);
+            second = new HashObject(5);
+            yield return new TestCaseData(first, second)
+               .SetName("Should generate same hash codes using GetHashCode implementation")
+               .Returns(true);
+
+            first = new HashObject(5);
+            second = new HashObject(1);
+            yield return new TestCaseData(first, second)
+               .SetName("Should generate different hash codes using GetHashCode implementation")
+               .Returns(false);
+
+            first = Lists.AsList(new HashObject(1), new HashObject(2), new HashObject(3));
+            second = Lists.AsList(new HashObject(1), new HashObject(2), new HashObject(3));
+            yield return new TestCaseData(first, second)
+               .SetName("Should generate same hash codes using GetHashCode implementation for list items")
+               .Returns(true);
+
+            first = Lists.AsList(new HashObject(1), new HashObject(2), new HashObject(3));
+            second = Lists.AsList(new HashObject(3), new HashObject(2), new HashObject(1));
+            yield return new TestCaseData(first, second)
+               .SetName("Should generate different hash codes using GetHashCode implementation for list items")
+               .Returns(false);
+
+            yield return new TestCaseData(null, null)
+               .SetName("Should generate same hash codes for nulls")
+               .Returns(true);
+
+            first = new object();
+            yield return new TestCaseData(first, null)
+               .SetName("Should generate different hash codes for null and object")
+               .Returns(false);
+        }
+
+        private class HashObject
+        {
+            private readonly int hashCode;
+
+            internal HashObject(int hashCode)
+            {
+                this.hashCode = hashCode;
+            }
+
+            public override bool Equals(object obj)
+            {
+                return this.EqualsByFields(obj);
+            }
+
+            public override int GetHashCode()
+            {
+                return hashCode;
+            }
+        }
     }
 }

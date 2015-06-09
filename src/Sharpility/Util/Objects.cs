@@ -4,13 +4,28 @@ using Sharpility.Extensions;
 
 namespace Sharpility.Util
 {
+    /// <summary>
+    /// Objects utility.
+    /// </summary>
     public static class Objects
     {
+        /// <summary>
+        /// Generates hashCode for elements.
+        /// </summary>
+        /// <param name="elements">elements</param>
+        /// <returns>HashCode</returns>
         public static int Hash(params object[] elements)
         {
             return HashCode(elements);
         }
 
+        /// <summary>
+        /// Compares if objects are equals.
+        /// Supports: Comparables, Dictionaries, Collections and Sets.
+        /// </summary>
+        /// <param name="first">Compared object</param>
+        /// <param name="second">Compared object</param>
+        /// <returns>True if elements are equals</returns>
         public static bool Equal(object first, object second)
         {
             if (ReferenceEquals(first, second))
@@ -36,6 +51,11 @@ namespace Sharpility.Util
             return Equals(first, second);
         }
 
+        /// <summary>
+        /// Returns object HashCode. If object is ICollection generates hashCode of collection items.
+        /// </summary>
+        /// <param name="obj">object</param>
+        /// <returns>HashCode</returns>
         public static int HashCode(object obj)
         {
             if (obj is ICollection)
