@@ -3,6 +3,9 @@ using Sharpility.Util;
 
 namespace Sharpility.Extensions
 {
+    /// <summary>
+    /// Extensions of object class.
+    /// </summary>
     public static class ObjectExtensions
     {
         /// <summary>

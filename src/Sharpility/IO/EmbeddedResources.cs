@@ -4,10 +4,14 @@ using System.Collections.Immutable;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Text;
 using Sharpility.Base;
 
 namespace Sharpility.IO
 {
+    /// <summary>
+    /// Utility for embedded resources.
+    /// </summary>
     public static class EmbeddedResources
     {
         public static ICollection<string> Resources(Type classLoader)
@@ -33,16 +37,16 @@ namespace Sharpility.IO
         {
             var assembly = Assembly.GetAssembly(classLoader);
             var stream = assembly.GetManifestResourceStream(resource);
-            Precognitions.IsNotNull(stream, 
-                String.Format("Could not find resource: '{0}' at {1}", resource, classLoader));
+            Precognitions.IsNotNull(stream, () => new FileNotFoundException(
+                String.Format("Could not find resource: '{0}' at {1}", resource, classLoader)));
             return stream;
         }
 
-        public static string LoadResourceContent(Type classLoader, string resource)
+        public static string LoadResourceContent(Type classLoader, string resource, Encoding encoding = null)
         {
             using (var stream = LoadResource(classLoader, resource))
             {
-                return Streams.ReadAll(stream);
+                return Streams.ReadAll(stream, encoding);
             }
         }
     }

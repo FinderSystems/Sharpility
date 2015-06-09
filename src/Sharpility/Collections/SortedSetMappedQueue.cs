@@ -12,26 +12,26 @@ namespace Sharpility.Collections
         {
         }
 
-        public static MappedQueue<TValue> Create(Converter<TValue, TKey> keyExtractor, IComparer<TValue> comparer)
+        public static SortedMappedQueue<TValue> Create(Converter<TValue, TKey> keyExtractor, IComparer<TValue> comparer)
         {
             return new SortedSetMappedQueue<TKey, TValue>(keyExtractor, comparer);
         }
 
-        public static MappedQueue<T> Create<T>(IComparer<T> comparer)
+        public static SortedMappedQueue<T> Create<T>(IComparer<T> comparer)
             where T : class
         {
             Converter<T, T> keyExtractor = element => element;
             return new SortedSetMappedQueue<T, T>(keyExtractor, comparer);
         }
 
-        public static MappedQueue<T> Create<T>()
+        public static SortedMappedQueue<T> Create<T>()
             where T : class, IComparable<T>
         {
             var comparer = Comparers.OfComparables<T>();
             return Create(comparer);
         }
 
-        public static MappedQueue<TV> Create<T, TV>(Converter<TV, T> keyExtractor)
+        public static SortedMappedQueue<TV> Create<T, TV>(Converter<TV, T> keyExtractor)
             where TV : class, IComparable<TV>
         {
             var comparer = Comparers.OfComparables<TV>();

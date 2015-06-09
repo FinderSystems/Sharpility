@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using Sharpility.Base;
 using Sharpility.Extensions;
 
@@ -43,10 +44,12 @@ namespace Sharpility.Time
         /// </summary>
         /// <param name="from">DateTime From parsed using DateTime Parse</param>
         /// <param name="to">DateTime From parsed using DateTime Parse</param>
+        /// <param name="format">Date time format</param>
         /// <returns>DateRange</returns>
-        public static DateRange Of(string from, string to)
+        public static DateRange Of(string from, string to, IFormatProvider format = null)
         {
-            return Of(DateTime.Parse(from), DateTime.Parse(to));
+            return format != null ? Of(DateTime.Parse(from, format), DateTime.Parse(to, format)) : 
+                Of(DateTime.Parse(from), DateTime.Parse(to));
         }
 
         /// <summary>

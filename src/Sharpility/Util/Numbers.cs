@@ -3,8 +3,17 @@ using System.Globalization;
 
 namespace Sharpility.Util
 {
+    /// <summary>
+    /// Utilities for numbers.
+    /// </summary>
     public static class Numbers
     {
+        /// <summary>
+        /// Tries to parse short from string value.
+        /// If value could not be parsed returns null.
+        /// </summary>
+        /// <param name="value">Parsed value</param>
+        /// <returns>short or null</returns>
         public static short? TryParseShort(string value)
         {
             if (string.IsNullOrEmpty(value))
@@ -19,6 +28,12 @@ namespace Sharpility.Util
             return null;
         }
 
+        /// <summary>
+        /// Tries to parse int from string value.
+        /// If value could not be parsed returns null.
+        /// </summary>
+        /// <param name="value">Parsed value</param>
+        /// <returns>int or null</returns>
         public static int? TryParseInt(string value)
         {
             if (string.IsNullOrEmpty(value))
@@ -33,6 +48,12 @@ namespace Sharpility.Util
             return null;
         }
 
+        /// <summary>
+        /// Tries to parse long from string value.
+        /// If value could not be parsed returns null.
+        /// </summary>
+        /// <param name="value">Parsed value</param>
+        /// <returns>long or null</returns>
         public static long? TryParseLong(string value)
         {
             if (string.IsNullOrEmpty(value))
@@ -47,6 +68,13 @@ namespace Sharpility.Util
             return null;
         }
 
+        /// <summary>
+        /// Tries to parse double from string value.
+        /// If value could not be parsed returns null.
+        /// </summary>
+        /// <param name="value">Parsed value</param>
+        /// <param name="format">Double format, default: NumberFormatInfo.InvariantInfo</param>
+        /// <returns>double or null</returns>
         public static double? TryParseDouble(string value, NumberFormatInfo format = null)
         {
             if (string.IsNullOrEmpty(value))
@@ -57,6 +85,14 @@ namespace Sharpility.Util
             return TryParseDouble(value, style, format);
         }
 
+        /// <summary>
+        /// Tries to parse double from string value.
+        /// If value could not be parsed returns null.
+        /// </summary>
+        /// <param name="value">Parsed value</param>
+        /// <param name="style">Style of double value</param>
+        /// <param name="format">Double format, default: NumberFormatInfo.InvariantInfo</param>
+        /// <returns>double or null</returns>
         public static double? TryParseDouble(string value, NumberStyles style, NumberFormatInfo format = null)
         {
             if (string.IsNullOrEmpty(value))
@@ -71,6 +107,13 @@ namespace Sharpility.Util
             return null;
         }
 
+        /// <summary>
+        /// Tries to parse float from string value.
+        /// If value could not be parsed returns null.
+        /// </summary>
+        /// <param name="value">Parsed value</param>
+        /// <param name="format">Float format, default: NumberFormatInfo.InvariantInfo</param>
+        /// <returns>float or null</returns>
         public static float? TryParseFloat(string value, NumberFormatInfo format = null)
         {
             if (string.IsNullOrEmpty(value))
@@ -81,6 +124,14 @@ namespace Sharpility.Util
             return TryParseFloat(value, style, format);
         }
 
+        /// <summary>
+        /// Tries to parse float from string value.
+        /// If value could not be parsed returns null.
+        /// </summary>
+        /// <param name="value">Parsed value</param>
+        /// <param name="style">Style of float value</param>
+        /// <param name="format">Double format, default: NumberFormatInfo.InvariantInfo</param>
+        /// <returns>float or null</returns>
         public static float? TryParseFloat(string value, NumberStyles style, NumberFormatInfo format = null)
         {
             if (string.IsNullOrEmpty(value))

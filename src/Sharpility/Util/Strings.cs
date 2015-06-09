@@ -60,13 +60,16 @@ namespace Sharpility.Util
             {
                 return ToString((IEnumerable) value);
             }
-            return value != null ? value.ToString() : "null";
+            else
+            {
+                return value != null ? value.ToString() : "null";    
+            }
         }
 
-        private static string ToString(IEnumerable values)
+        private static string ToString(IEnumerable enumerable)
         {
             var builder = new StringBuilder("[");
-            foreach (var value in values)
+            foreach (var value in enumerable)
             {
                 if (builder.Length > 1)
                 {
@@ -94,10 +97,10 @@ namespace Sharpility.Util
             return builder.ToString();
         }
 
-        private static string ToString(IDictionary map)
+        private static string ToString(IDictionary dictionary)
         {
             var builder = new StringBuilder("[");
-            var iterator = map.GetEnumerator();
+            var iterator = dictionary.GetEnumerator();
             while (iterator.MoveNext())
             {
                 var entry = iterator.Entry;

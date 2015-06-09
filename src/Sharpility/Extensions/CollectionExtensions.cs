@@ -11,6 +11,9 @@ using Sharpility.Util;
 
 namespace Sharpility.Extensions
 {
+    /// <summary>
+    /// Collections extensions.
+    /// </summary>
     public static class CollectionExtensions
     {
         /// <summary>

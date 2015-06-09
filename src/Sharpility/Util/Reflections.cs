@@ -7,18 +7,33 @@ namespace Sharpility.Util
 {
     public static class Reflections
     {
-        public static Type CurrentType()
+        /// <summary>
+        /// Returns type of object invoking this method.
+        /// </summary>
+        /// <param name="framesToSkip">Frames to skip, default: 1</param>
+        /// <param name="excludedType">Excluded type</param>
+        /// <returns>Type</returns>
+        public static Type CurrentType(int framesToSkip = 1, Type excludedType = null)
         {
             Type declaringType;
-            var framesToSkip = 1;
             do
             {
                 var frame = new StackFrame(skipFrames: framesToSkip, fNeedFileInfo: false);
                 var method = frame.GetMethod();
                 declaringType = method.DeclaringType;
                 framesToSkip++;
-            } while (ShouldContinueToLookForType(declaringType));
+            } while (ShouldContinueToLookForType(declaringType, excludedType));
             return declaringType;
+        }
+
+        private static bool ShouldContinueToLookForType(Type declaringType, Type excludedType)
+        {
+            if (declaringType == excludedType || declaringType == typeof(Reflections))
+            {
+                return true;
+            }
+            return declaringType != null
+                && declaringType.Module.Name.Equals("mscorlib.dll", StringComparison.OrdinalIgnoreCase);
         }
 
         private static bool ShouldContinueToLookForType(Type declaringType)
@@ -26,6 +41,12 @@ namespace Sharpility.Util
             return declaringType != null && declaringType.Module.Name.Equals("mscorlib.dll", StringComparison.OrdinalIgnoreCase);
         }
 
+        /// <summary>
+        /// Returns ordered dictionary with object properties.
+        /// </summary>
+        /// <param name="obj">object</param>
+        /// <param name="includeBase">Should include properties from object base class, default: false</param>
+        /// <returns>Ordered dictionary with object properties</returns>
         public static OrderedImmutableDictionary<string, object> Properties(object obj, bool includeBase = false)
         {
             var builder = OrderedHashImmutableDictionary<string, object>.CreateBuilder();
@@ -52,6 +73,12 @@ namespace Sharpility.Util
             }
         }
 
+        /// <summary>
+        /// Returns ordered dictionary with object fields.
+        /// </summary>
+        /// <param name="obj">object</param>
+        /// <param name="includeBase">Should include fields from object base class, default: false</param>
+        /// <returns>Ordered dictionary with object fields</returns>
         public static OrderedImmutableDictionary<string, object> Fields(object obj, bool includeBase = false)
         {
             var builder = OrderedHashImmutableDictionary<string, object>.CreateBuilder();
@@ -78,6 +105,10 @@ namespace Sharpility.Util
             }
         }
 
+        /// <summary>
+        /// Returns calling method name.
+        /// </summary>
+        /// <returns>method name</returns>
         public static string CallingMethodName()
         {
             var frame = new StackFrame(skipFrames: 2);
