@@ -1,5 +1,6 @@
 ﻿
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using NUnit.Framework;
 using Sharpility.Util;
 
@@ -159,6 +160,70 @@ namespace Sharpility.Tests.Util
             yield return new TestCaseData(null)
                 .SetName("Should return null when parsing double from null string")
                 .Returns(null);
+        }
+
+        [Test, TestCaseSource("DoubleToDecimalTestCases")]
+        public decimal? ShouldConvertDoubleToDecimal(double? given)
+        {
+            // when
+            var result = Numbers.DoubleToDecimal(given);
+
+            // then
+            return result;
+        }
+
+        [SuppressMessage("ReSharper", "ExpressionIsAlwaysNull")]
+        private static IEnumerable<ITestCaseData> DoubleToDecimalTestCases()
+        {
+            double? given = 10D;
+            decimal? expected = 10M;
+            yield return new TestCaseData(given)
+                .SetName(Strings.Format("Should convert double {0} to decimal {1}", given, expected))
+                .Returns(expected);
+
+            given = 150.50D;
+            expected = 150.50M;
+            yield return new TestCaseData(given)
+                .SetName(Strings.Format("Should convert double {0} to decimal {1}", given, expected))
+                .Returns(expected);
+
+            given = null;
+            expected = null;
+            yield return new TestCaseData(given)
+                .SetName(Strings.Format("Should convert double {0} to decimal {1}", given, expected))
+                .Returns(expected);
+        }
+
+        [Test, TestCaseSource("DecimalToDoubleTestCases")]
+        public double? ShouldConvertDecimalToDouble(decimal? given)
+        {
+            // when
+            var result = Numbers.DecimalToDouble(given);
+
+            // then
+            return result;
+        }
+
+        [SuppressMessage("ReSharper", "ExpressionIsAlwaysNull")]
+        private static IEnumerable<ITestCaseData> DecimalToDoubleTestCases()
+        {
+            decimal? given = 10M;
+            double? expected = 10D;
+            yield return new TestCaseData(given)
+                .SetName(Strings.Format("Should convert decimal {0} to double {1}", given, expected))
+                .Returns(expected);
+
+            given = 150.50M;
+            expected = 150.50D;
+            yield return new TestCaseData(given)
+                .SetName(Strings.Format("Should convert decimal {0} to double {1}", given, expected))
+                .Returns(expected);
+
+            given = null;
+            expected = null;
+            yield return new TestCaseData(given)
+                .SetName(Strings.Format("Should convert decimal {0} to double {1}", given, expected))
+                .Returns(expected);
         } 
     }
 }

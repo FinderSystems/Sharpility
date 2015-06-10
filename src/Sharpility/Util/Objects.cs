@@ -58,9 +58,13 @@ namespace Sharpility.Util
         /// <returns>HashCode</returns>
         public static int HashCode(object obj)
         {
+            if (obj is IDictionary)
+            {
+                return HashCode((IDictionary) obj);
+            }
             if (obj is ICollection)
             {
-                return HashCode((IEnumerable)obj);
+                return HashCode((IEnumerable) obj);
             }
             return obj == null ? 0 : obj.GetHashCode();
         }
@@ -71,6 +75,17 @@ namespace Sharpility.Util
             foreach (var element in enumerable)
             {
                 hashCode = 31 * hashCode + HashCode(element);
+            }
+            return hashCode;
+        }
+
+        private static int HashCode(IDictionary dictionary)
+        {
+            var hashCode = 1;
+            var enumerator = dictionary.GetEnumerator();
+            while (enumerator.MoveNext())
+            {
+                hashCode = 31 * hashCode + Hash(enumerator.Key, enumerator.Value);
             }
             return hashCode;
         }

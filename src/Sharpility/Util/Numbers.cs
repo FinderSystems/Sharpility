@@ -1,4 +1,5 @@
 ﻿
+using System;
 using System.Globalization;
 
 namespace Sharpility.Util
@@ -144,6 +145,26 @@ namespace Sharpility.Util
                 return result;
             }
             return null;
+        }
+
+        /// <summary>
+        /// Converts nullable decimal value to nullable double.
+        /// </summary>
+        /// <param name="value">decimal value</param>
+        /// <returns>double value</returns>
+        public static double? DecimalToDouble(decimal? value)
+        {
+            return value == null ? (double?) null : Convert.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Converts nullable double value to nullable decimal.
+        /// </summary>
+        /// <param name="value">double value</param>
+        /// <returns>decimal value</returns>
+        public static decimal? DoubleToDecimal(double? value)
+        {
+            return value == null ? (decimal?)null : Convert.ToDecimal(value);
         }
     }
 }

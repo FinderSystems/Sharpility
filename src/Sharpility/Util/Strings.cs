@@ -3,6 +3,7 @@
 using System;
 using System.Collections;
 using System.Text;
+using JetBrains.Annotations;
 
 namespace Sharpility.Util
 {
@@ -112,6 +113,24 @@ namespace Sharpility.Util
             }
             builder.Append("]");
             return builder.ToString();
+        }
+
+        /// <summary>
+        /// Decorated String.Format by pre formatting paramters.
+        /// </summary>
+        /// <param name="value">Formated string</param>
+        /// <param name="parameters">Format parameters</param>
+        /// <returns>Formatted string</returns>
+        [StringFormatMethod("value")]
+        public static string Format(string value, params object[] parameters)
+        {
+            var preFormattedParameters = new object[parameters.Length];
+            var i = 0;
+            foreach (var param in parameters)
+            {
+                preFormattedParameters[i ++] = ToString(param);
+            }
+            return String.Format(value, preFormattedParameters);
         }
     }
 }

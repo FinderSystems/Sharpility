@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Linq;
+using Sharpility.Extensions;
 
 namespace Sharpility.Util
 {
@@ -61,6 +62,30 @@ namespace Sharpility.Util
         {
             return new List<T>(values);
         }
+
+        /// <summary>
+        /// Creates new list from given values.
+        /// </summary>
+        /// <typeparam name="T">Type of list item</typeparam>
+        /// <param name="values">values</param>
+        /// <returns>list</returns>
+        public static IList<T> AsList<T>(IEnumerable<T> values)
+        {
+            return new List<T>(values);
+        }
+
+        /// <summary>
+        /// Creates new linked list from given values.
+        /// </summary>
+        /// <typeparam name="T">Type of list item</typeparam>
+        /// <param name="values">values</param>
+        /// <returns>linked list</returns>
+        public static LinkedList<T> AsLinkedList<T>(IEnumerable<T> values)
+        {
+            var result = new LinkedList<T>();
+            result.AddAll(values);
+            return result;
+        } 
 
         /// <summary>
         /// Checks is object is implements generic IEnumerable interface.
