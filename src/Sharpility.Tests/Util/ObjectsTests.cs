@@ -171,13 +171,8 @@ namespace Sharpility.Tests.Util
 
             first = Dictionaries.Create(1, "A", 2, "B");
             second = Dictionaries.Create(3, "C", 4, "D");
-
-            // TODO tmp
-            var message = String.Format("Test msg {0} --> {1}, {2} --> {3}", Strings.ToString(first),
-                Objects.HashCode(first), Strings.ToString(second), Objects.HashCode(second));
-
             yield return new TestCaseData(first, second)
-                .SetName(message)
+                .SetName("Should generate different hash codes for different dictionaries")
                 .Returns(false);
 
             first = Dictionaries.Create(1, "A", 2, "B");
