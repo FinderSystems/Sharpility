@@ -96,5 +96,43 @@ namespace Sharpility.Tests.Util
               .SetName("Should generate toString of complex dictionary")
               .Returns("[(A, [[1, 2, 3], [4, 5, 6]]), (B, [[1], [2]]), (C, [[], null])]");
         }
+
+        [Test, TestCaseSource("StringFormatTestCases")]
+        public string ShouldFormatStringParameters(string value, object[] parameters)
+        {
+            // when
+            var formatted = Strings.Format(value, parameters);
+
+            // then
+            return formatted;
+        }
+
+        private static IEnumerable<ITestCaseData> StringFormatTestCases()
+        {
+            yield return new TestCaseData("test", new object[0])
+                .SetName("Should format string without params")
+                .Returns("test");
+
+            yield return new TestCaseData("This is '{0}'", new object[] {null})
+                .SetName("Should format null params")
+                .Returns("This is 'null'");
+
+            yield return new TestCaseData("{0}, {1}, {2}", new object[] { 1, "B", null })
+                .SetName("Should format multiple params")
+                .Returns("1, B, null");
+
+            yield return new TestCaseData("This is {0}", new object[] {Lists.AsList(1, 2, 3)})
+                .SetName("Should format list params")
+                .Returns("This is [1, 2, 3]");
+
+            yield return new TestCaseData("This is {0}", new object[] {
+                Lists.AsList(Lists.AsList("A", "B"), Lists.AsList("C", "D"), Lists.EmptyList<string>())})
+                .SetName("Should format nested list params")
+                .Returns("This is [[A, B], [C, D], []]");
+
+            yield return new TestCaseData("This is {0}", new object[] { Dictionaries.Create("A", 1, "B", 2) })
+               .SetName("Should format dictionary params")
+               .Returns("This is [(A, 1), (B, 2)]");
+        } 
     }
 }

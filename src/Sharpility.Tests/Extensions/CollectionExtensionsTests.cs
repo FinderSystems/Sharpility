@@ -622,5 +622,50 @@ namespace Sharpility.Tests.Extensions
             // then
             Check.That(collection).ContainsExactly("A", "B", "C", "D");
         }
+
+        [Test]
+        public void ShouldExtenedListByFindAllMethod()
+        {
+            // given
+            IList<int> list = new List<int> {1, 2, 3, 4};
+            Predicate<int> filter = item => item % 2 == 0;
+
+            // when
+            var filtered = list.FindAll(filter);
+
+            // then
+            Check.That(filtered).IsInstanceOf<List<int>>();
+            Check.That(filtered).ContainsExactly(2, 4);
+        }
+
+        [Test]
+        public void ShouldExtenedSetByFindAllMethod()
+        {
+            // given
+            var set = Sets.AsSet(1, 2, 3, 4);
+            Predicate<int> filter = item => item % 2 == 0;
+
+            // when
+            var filtered = set.FindAll(filter);
+
+            // then
+            Check.That(filtered).IsInstanceOf<HashSet<int>>();
+            Check.That(filtered).ContainsExactly(2, 4);
+        }
+
+        [Test]
+        public void ShouldExtenedLinkedListByFindAllMethod()
+        {
+            // given
+            IEnumerable<int> list = Lists.AsLinkedList(Lists.AsList(1, 2, 3, 4));
+            Predicate<int> filter = item => item % 2 == 0;
+
+            // when
+            var filtered = list.FindAll(filter);
+
+            // then
+            Check.That(filtered).IsInstanceOf<LinkedList<int>>();
+            Check.That(filtered).ContainsExactly(2, 4);
+        }
     }
 }

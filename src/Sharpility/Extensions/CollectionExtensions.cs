@@ -514,6 +514,61 @@ namespace Sharpility.Extensions
             return new DefaultConcurrentQueue<T>(queue);
         }
 
+        /// <summary>
+        /// Returns filtered list items by given predicate.
+        /// </summary>
+        /// <typeparam name="T">Type of list item</typeparam>
+        /// <param name="list">this</param>
+        /// <param name="filter">Item filter</param>
+        /// <returns>Filtered list</returns>
+        public static IList<T> FindAll<T>(this IList<T> list, Predicate<T> filter)
+        {
+            if (list is List<T>)
+            {
+                return ((List<T>) list).FindAll(filter);
+            }
+            else
+            {
+                return list.Where(item => filter(item)).ToList();
+            }
+        }
+
+        /// <summary>
+        /// Returns filtered enumerable items by given predicate.
+        /// </summary>
+        /// <typeparam name="T">Type of enumerable item</typeparam>
+        /// <param name="enumerable">this</param>
+        /// <param name="filter">Item filter</param>
+        /// <returns>Filtered enumerable</returns>
+        public static IEnumerable<T> FindAll<T>(this IEnumerable<T> enumerable, Predicate<T> filter)
+        {
+            if (enumerable is List<T>)
+            {
+                return ((List<T>)enumerable).FindAll(filter);
+            } else if (enumerable is ISet<T>)
+            {
+                return FindAll((ISet<T>) enumerable, filter);
+            }
+            var filtered =  enumerable.Where(item => filter(item)).ToList();
+            if (enumerable is LinkedList<T>)
+            {
+                return Lists.AsLinkedList(filtered);
+            }
+            return filtered;
+        }
+
+        /// <summary>
+        /// Returns filtered set items by given predicate.
+        /// </summary>
+        /// <typeparam name="T">Type of set item</typeparam>
+        /// <param name="set">this</param>
+        /// <param name="filter">Item filter</param>
+        /// <returns>Filtered set</returns>
+        public static ISet<T> FindAll<T>(this ISet<T> set, Predicate<T> filter)
+        {
+            return Sets.AsSet(set.Where(item => filter(item)));
+        }
+
         private static void SortCollection<T>(ICollection<T> list, IComparer<T> comparator)
         {
             var elements = list.ToArray();
