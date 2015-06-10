@@ -1,19 +1,19 @@
 ﻿
 using NUnit.Framework;
-using NFluent;
 using Sharpility.Extensions;
 using System;
-using Moq;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Sharpility.Tests.Extensions
 {
     [TestFixture]
-    class ObjectExtensionsTests
+    public class ObjectExtensionsTests
     {
         [Test, TestCaseSource("ProperEqualsTestCases")]
         public Tuple<bool, bool, bool> ShouldRunProperEquals(object first, object second)
         {
+
             var properties = first.EqualsByProperties(second);
             var fields = first.EqualsByFields(second);
             var members = first.EqualsByMembers(second);
@@ -83,14 +83,15 @@ namespace Sharpility.Tests.Extensions
                 .Returns(onlyFields);
 
             first = new Testable(1, "2", new List<int> { 1, 3, 2 });
-            second = new Testable(1, "2", null);
-            second.two = "2";
+            second = new Testable(1, "2", null) {two = "2"};
             yield return new TestCaseData(first, second)
                 .SetName("Should not equal by all members")
                 .Returns(none);
         }
 
-
+        [SuppressMessage("ReSharper", "NotAccessedField.Local")]
+        [SuppressMessage("ReSharper", "MemberCanBePrivate.Local")]
+        [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Local")]
         private class Testable
         {
             private int one;
@@ -108,9 +109,9 @@ namespace Sharpility.Tests.Extensions
 
             public Testable(int alpha, string beta, List<int> theta)
             {
-                this.Alpha = alpha;
-                this.Beta = beta;
-                this.Theta = theta;
+                Alpha = alpha;
+                Beta = beta;
+                Theta = theta;
             }
 
             public int Alpha { get; set; }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Linq;
 using System.Reflection;
 using Sharpility.Collections;
 
@@ -93,7 +94,7 @@ namespace Sharpility.Util
             if (type != null)
             {
                 var fields = type.GetFields(options);
-                foreach (var field in fields)
+                foreach (var field in fields.Where(f => !f.Name.EndsWith("k__BackingField")))
                 {
                     var value = field.GetValue(obj);
                     builder.Put(field.Name, value);
