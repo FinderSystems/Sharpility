@@ -152,7 +152,7 @@ namespace Sharpility.Util
             if (value != null && (generateToStringOfProperties || generateToStringOfFields))
             {
                 var type = value.GetType();
-                return !type.IsPrimitive && !(value is string);
+                return !type.IsPrimitive && !(value is string) && type.IsClass;
             }
             return false;
         }

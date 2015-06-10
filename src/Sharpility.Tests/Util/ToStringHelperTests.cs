@@ -1,4 +1,5 @@
 ﻿
+using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
@@ -50,7 +51,7 @@ namespace Sharpility.Tests.Util
                 .ToString();
 
             // then
-            Check.That(toString).IsEqualTo("TestObj {Name:Test, Id:1, Objects:null, Values:[1, 2, 3], Flag:Default}");
+            Check.That(toString).IsEqualTo("TestObj {Name:Test, Id:1, Objects:null, Values:[1, 2, 3], Flag:Default, Duration:null}");
         }
 
         [Test]
@@ -118,7 +119,7 @@ namespace Sharpility.Tests.Util
                 .ToString();
 
             // then
-            Check.That(toString).IsEqualTo("TestObj3 {Name:TEST, Id:4, Objects:[], Values:null, Flag:DeclaredOnly, age:123, surname:Zdzislawski, data:[X]}");
+            Check.That(toString).IsEqualTo("TestObj3 {Name:TEST, Id:4, Objects:[], Values:null, Flag:DeclaredOnly, Duration:null, age:123, surname:Zdzislawski, data:[X]}");
         }
 
         [Test]
@@ -157,7 +158,8 @@ namespace Sharpility.Tests.Util
                 Id = 1,
                 Name = "Test",
                 Flag = BindingFlags.CreateInstance,
-                Objects = Lists.AsList(listObject1, listObject2)
+                Objects = Lists.AsList(listObject1, listObject2),
+                Duration = TimeSpan.FromSeconds(5)
             };
             var helper = ToStringHelper.Of(obj)
                 .AddProperties()
@@ -172,15 +174,15 @@ namespace Sharpility.Tests.Util
                     "Name:Test, " +
                     "Id:1, " +
                     "Objects:[" +
-                        "TestObj {Name:listObject1, Id:3, Flag:BindingFlags {}}, " +
+                        "TestObj {Name:listObject1, Id:3, Flag:Default}, " +
                         "TestObj {Id:100, Objects:[" +
-                            "TestObj {Name:listObject1, Id:3, Flag:BindingFlags {}}" +
+                            "TestObj {Name:listObject1, Id:3, Flag:Default}" +
                         "], " +
-                        "Flag:BindingFlags {}}" +
+                        "Flag:Default}" +
                     "], " +
-                    "Flag:BindingFlags {}}";
+                    "Flag:CreateInstance, " +
+                    "Duration:00:00:05}";
             Check.That(toString).IsEqualTo(expected);
-
         }
 
         [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Local")]
@@ -191,6 +193,7 @@ namespace Sharpility.Tests.Util
             public IList<TestObj> Objects { get; set; }
             public IList<int> Values { get; set; }
             public BindingFlags Flag { get; set; }
+            public TimeSpan? Duration { get; set; }
         }
 
         [SuppressMessage("ReSharper", "NotAccessedField.Local")]
