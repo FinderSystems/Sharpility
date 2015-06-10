@@ -43,6 +43,14 @@ namespace Sharpility.Tests.Util
                 .SetName("Should return that collections are not equals")
                 .Returns(false);
 
+            yield return new TestCaseData(Lists.AsList(Lists.AsList(1, 2), Lists.AsList(3, 4)), Lists.AsList(Lists.AsList(1, 2), Lists.AsList(3, 4)))
+                .SetName("Should return that nested collections are equals")
+                .Returns(true);
+
+            yield return new TestCaseData(Lists.AsList(Lists.AsList(1, 2), Lists.AsList(3, 4)), Lists.AsList(Lists.AsList(1, 2), Lists.AsList(3, 4, 5)))
+                .SetName("Should return that nested collections are not equals")
+                .Returns(false);
+
             yield return new TestCaseData(new object[] { "A", 13 }, new object[] { "A", 13 })
                 .SetName("Should return that arrays are not equals")
                 .Returns(true);
@@ -107,6 +115,18 @@ namespace Sharpility.Tests.Util
                 .SetName("Should generate same hash codes for lists with exact elements")
                 .Returns(true);
 
+            first = Lists.AsList(Lists.AsList("A", "B", "C"), Lists.AsList("C", "D"), Lists.EmptyList<string>());
+            second = Lists.AsList(Lists.AsList("A", "B", "C"), Lists.AsList("C", "D"), Lists.EmptyList<string>());
+            yield return new TestCaseData(first, second)
+                .SetName("Should generate same hash codes for nested lists with exact elements")
+                .Returns(true);
+
+            first = Lists.AsList(Lists.AsList("A", "B", "C"), Lists.AsList("C", "D"), Lists.EmptyList<string>());
+            second = Lists.AsList(Lists.AsList("A", "B", "C"), Lists.AsList("C", "D"), Lists.AsList("X"));
+            yield return new TestCaseData(first, second)
+                .SetName("Should generate different hash codes for nested lists with different elements")
+                .Returns(false);
+
             first = new object[] {"A", 3, new DateTime(2015, 6, 9, 0, 0, 0)};
             second = new object[] { "A", 3, new DateTime(2015, 6, 9, 0, 0, 0)};
             yield return new TestCaseData(first, second)
@@ -151,8 +171,13 @@ namespace Sharpility.Tests.Util
 
             first = Dictionaries.Create(1, "A", 2, "B");
             second = Dictionaries.Create(3, "C", 4, "D");
+
+            // TODO tmp
+            var message = String.Format("Test msg {0} --> {1}, {2} --> {3}", Strings.ToString(first),
+                Objects.HashCode(first), Strings.ToString(second), Objects.HashCode(second));
+
             yield return new TestCaseData(first, second)
-                .SetName("Should generate different hash codes for different dictionaries")
+                .SetName(message)
                 .Returns(false);
 
             first = Dictionaries.Create(1, "A", 2, "B");
