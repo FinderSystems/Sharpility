@@ -3,7 +3,6 @@ using NUnit.Framework;
 using NFluent;
 using Sharpility.Extensions;
 using System;
-using Sharpility.Util;
 using Moq;
 using System.Collections.Generic;
 
@@ -12,135 +11,111 @@ namespace Sharpility.Tests.Extensions
     [TestFixture]
     class ObjectExtensionsTests
     {
-        [Test]
-        public void ShouldEqualsByReference()
+        [Test, TestCaseSource("ProperEqualsTestCases")]
+        public Tuple<bool, bool, bool> ShouldRunProperEquals(object first, object second)
         {
-            Object first = new Object();
-            var second = first;
-
-            Check.That(Objects.Equal(first, second)).IsEqualTo(true);
+            var properties = first.EqualsByProperties(second);
+            var fields = first.EqualsByFields(second);
+            var members = first.EqualsByMembers(second);
+            return new Tuple<bool, bool, bool>(properties, fields, members);
         }
 
-        [Test]
-        public void ShouldNotEqualTwoBareObjects()
+        private static IEnumerable<ITestCaseData> ProperEqualsTestCases()
         {
-            Object first = new Object();
-            Object second = new Object();
+            var onlyProperies = new Tuple<bool, bool, bool>(true, false, false);
+            var onlyFields = new Tuple<bool, bool, bool>(false, true, false);
+            var allMembers = new Tuple<bool, bool, bool>(true, true, true);
+            var none = new Tuple<bool, bool, bool>(false, false, false);
 
-            Check.That(Objects.Equal(first, second)).IsEqualTo(false);
+            var object1 = new Object();
+            var object2 = new Object();
+            yield return new TestCaseData(object1, object2)
+                .SetName("Should equal by all members of empty objects")
+                .Returns(allMembers);
+
+            var first = new Testable(1, "2", false, null);
+            var second = new Testable(1, "2", false, null);
+            yield return new TestCaseData(first, second)
+                .SetName("Should equal by all members with null list when properties are not set")
+                .Returns(allMembers);
+
+            first = new Testable(5, "2", true, new List<string> {"smell", "niuch", "woń"});
+            second = new Testable(5, "2", true, new List<string> { "smell", "niuch", "woń" });
+            yield return new TestCaseData(first, second)
+                .SetName("Should equal by all members with the same list when properties are not set")
+                .Returns(allMembers);
+
+            first = new Testable(5, "2", true, new List<string> { "smell", "niuch", "woń" });
+            second = new Testable(5, "2", true, new List<string> { "smell", "woń", "niuch" });
+            yield return new TestCaseData(first, second)
+                .SetName("Should equal by properties with different list in fields when properties are not set")
+                .Returns(onlyProperies);
+
+            first = new Testable(5, "2", null, new List<string> { "smell", "niuch", "woń" });
+            second = new Testable(5, "2", null, new List<string> { "smell", "niuch", "woń" });
+            yield return new TestCaseData(first, second)
+                .SetName("Should equal by all members with the same list but nulled bool when properties are not set")
+                .Returns(allMembers);
+
+            first = new Testable(1, "2", false, null);
+            second = new Testable(1, "2", false, null);
+            second.Alpha = 3;
+            yield return new TestCaseData(first, second)
+                .SetName("Should equal by fields but not properties when property is different")
+                .Returns(onlyFields);
+
+            first = new Testable(1, "2", null);
+            second = new Testable(1, "2", null);
+            yield return new TestCaseData(first, second)
+                .SetName("Should equal by all members with null property list when fields are not set")
+                .Returns(allMembers);
+
+            first = new Testable(1, "2", new List<int> { 1,3,2 });
+            second = new Testable(1, "2", new List<int> { 1,3,2 });
+            yield return new TestCaseData(first, second)
+                .SetName("Should equal by all members with the same property list when fields are not set")
+                .Returns(allMembers);
+
+            first = new Testable(1, "2", new List<int> { 1, 3, 2 });
+            second = new Testable(1, "2", new List<int> { 1, 2, 3 });
+            yield return new TestCaseData(first, second)
+                .SetName("Should equal by fields with different property list when fields are not set")
+                .Returns(onlyFields);
+
+            first = new Testable(1, "2", new List<int> { 1, 3, 2 });
+            second = new Testable(1, "2", null);
+            second.two = "2";
+            yield return new TestCaseData(first, second)
+                .SetName("Should not equal by all members")
+                .Returns(none);
         }
 
-        [Test]
-        public void ShouldEqualIComparableZero()
+
+        private class Testable
         {
-            var first = new Mock<IComparable>();
-            var second = new Mock<IComparable>();
-            first.Setup(i => i.CompareTo(second.Object)).Returns(0);
+            private int one;
+            public string two;
+            private bool? three;
+            private List<string> four;
 
-            Check.That(Objects.Equal(first.Object, second.Object)).IsEqualTo(true);
-        }
+            public Testable(int one, string two, bool? three, List<string> four)
+            {
+                this.one = one;
+                this.two = two;
+                this.three = three;
+                this.four = four;
+            }
 
-        [Test]
-        public void ShouldNotEqualIComparableOne()
-        {
-            var first = new Mock<IComparable>();
-            var second = new Mock<IComparable>();
-            first.Setup(i => i.CompareTo(second.Object)).Returns(1);
+            public Testable(int alpha, string beta, List<int> theta)
+            {
+                this.Alpha = alpha;
+                this.Beta = beta;
+                this.Theta = theta;
+            }
 
-            Check.That(Objects.Equal(first.Object, second.Object)).IsEqualTo(false);
-        }
-
-        [Test]
-        public void ShouldNotEqualIComparableMinusOne()
-        {
-            var first = new Mock<IComparable>();
-            var second = new Mock<IComparable>();
-            first.Setup(i => i.CompareTo(second.Object)).Returns(-1);
-
-            Check.That(Objects.Equal(first.Object, second.Object)).IsEqualTo(false);
-        }
-
-        [Test]
-        public void ShouldEqualIDictionarySame()
-        {
-            IDictionary<string, string> first =
-                new Dictionary<string, string>();
-            first.Add("A", "Alpha");
-            first.Add("B", "Beta");
-            first.Add("C", "Whatever");
-
-            IDictionary<string, string> second =
-                new Dictionary<string, string>();
-            second.Add("A", "Alpha");
-            second.Add("B", "Beta");
-            second.Add("C", "Whatever");
-
-            Check.That(Objects.Equal(first, second)).IsEqualTo(true);
-        }
-
-        [Test]
-        public void ShouldNotEqualIDictionaryDifferent()
-        {
-            IDictionary<string, string> first =
-                new Dictionary<string, string>();
-            first.Add("A", "Alpha");
-            first.Add("B", "Beta");
-            first.Add("C", "Whatever");
-
-            IDictionary<string, string> second =
-                new Dictionary<string, string>();
-            second.Add("A", "Alpha");
-            second.Add("B", "Beta");
-            second.Add("C", "Whenever");
-
-            Check.That(Objects.Equal(first, second)).IsEqualTo(false);
-        }
-
-        [Test]
-        public void ShouldEqualSetSame()
-        {
-            ISet<int> first = new HashSet<int>();
-            first.Add(2);
-            first.Add(1);
-            first.Add(3);
-
-            ISet<int> second = new HashSet<int>();
-            second.Add(3);
-            second.Add(2);
-            second.Add(1);
-
-            Check.That(Objects.Equal(first, second)).IsEqualTo(true);
-        }
-
-        [Test]
-        public void ShouldEqualSetDifferentValues()
-        {
-            ISet<int> first = new HashSet<int>();
-            first.Add(2);
-            first.Add(1);
-            first.Add(4);
-
-            ISet<int> second = new HashSet<int>();
-            second.Add(3);
-            second.Add(2);
-            second.Add(1);
-
-            Check.That(Objects.Equal(first, second)).IsEqualTo(false);
-        }
-
-        [Test]
-        public void ShouldNotEqualSetDifferentLength()
-        {
-            ISet<int> first = new HashSet<int>();
-            first.Add(2);
-            first.Add(1);
-
-            ISet<int> second = new HashSet<int>();
-            second.Add(3);
-            second.Add(2);
-            second.Add(1);
-
-            Check.That(Objects.Equal(first, second)).IsEqualTo(false);
+            public int Alpha { get; set; }
+            public string Beta { get; set; }
+            public List<int> Theta {get; set;}
         }
     }
 }
