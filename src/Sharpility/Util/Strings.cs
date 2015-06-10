@@ -3,7 +3,6 @@
 using System;
 using System.Collections;
 using System.Text;
-using JetBrains.Annotations;
 
 namespace Sharpility.Util
 {
@@ -121,7 +120,6 @@ namespace Sharpility.Util
         /// <param name="value">Formated string</param>
         /// <param name="parameters">Format parameters</param>
         /// <returns>Formatted string</returns>
-        [StringFormatMethod("value")]
         public static string Format(string value, params object[] parameters)
         {
             var preFormattedParameters = new object[parameters.Length];
