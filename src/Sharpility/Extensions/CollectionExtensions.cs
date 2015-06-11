@@ -558,6 +558,17 @@ namespace Sharpility.Extensions
         }
 
         /// <summary>
+        /// Converts enumerable to set.
+        /// </summary>
+        /// <typeparam name="T">Type of enumerable item</typeparam>
+        /// <param name="enumberable">this</param>
+        /// <returns>Set</returns>
+        public static ISet<T> ToSet<T>(this IEnumerable<T> enumberable)
+        {
+            return new HashSet<T>(enumberable);
+        } 
+
+        /// <summary>
         /// Returns filtered set items by given predicate.
         /// </summary>
         /// <typeparam name="T">Type of set item</typeparam>
@@ -566,7 +577,7 @@ namespace Sharpility.Extensions
         /// <returns>Filtered set</returns>
         public static ISet<T> FindAll<T>(this ISet<T> set, Predicate<T> filter)
         {
-            return Sets.AsSet(set.Where(item => filter(item)));
+            return set.Where(item => filter(item)).ToSet();
         }
 
         private static void SortCollection<T>(ICollection<T> list, IComparer<T> comparator)

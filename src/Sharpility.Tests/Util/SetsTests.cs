@@ -68,5 +68,30 @@ namespace Sharpility.Tests.Util
                 .SetName("Should return given set if not null")
                 .Returns(notNullSet);
         }
+
+        [Test, TestCaseSource("SetFromArrayTestCases")]
+        public ISet<string> ShouldCreateSetFromEnumerable(string[] values)
+        {
+            // when
+            var set = Sets.AsSet(values);
+
+            // then
+            return set;
+        }
+
+        private static IEnumerable<ITestCaseData> SetFromArrayTestCases()
+        {
+            yield return new TestCaseData((object) new [] {"A", "B", "C"})
+                .SetName("Should create set from list")
+                .Returns(new HashSet<string> {"A", "B", "C"});
+
+            yield return new TestCaseData((object)new[] { "A", "A", "B", "C", "C"})
+                .SetName("Should create set from not unique list")
+                .Returns(new HashSet<string> { "A", "B", "C" });
+
+            yield return new TestCaseData((object) new string[0])
+                .SetName("Should create set from not empty list")
+                .Returns(new HashSet<string>());
+        }
     }
 }

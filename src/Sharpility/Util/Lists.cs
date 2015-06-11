@@ -64,17 +64,6 @@ namespace Sharpility.Util
         }
 
         /// <summary>
-        /// Creates new list from given values.
-        /// </summary>
-        /// <typeparam name="T">Type of list item</typeparam>
-        /// <param name="values">values</param>
-        /// <returns>list</returns>
-        public static IList<T> AsList<T>(IEnumerable<T> values)
-        {
-            return new List<T>(values);
-        }
-
-        /// <summary>
         /// Creates new linked list from given values.
         /// </summary>
         /// <typeparam name="T">Type of list item</typeparam>

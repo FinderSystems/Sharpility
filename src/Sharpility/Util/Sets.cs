@@ -63,17 +63,6 @@ namespace Sharpility.Util
         }
 
         /// <summary>
-        /// Creates set from given values.
-        /// </summary>
-        /// <typeparam name="T">Type of set item</typeparam>
-        /// <param name="values">Set values</param>
-        /// <returns>set</returns>
-        public static ISet<T> AsSet<T>(IEnumerable<T> values)
-        {
-            return new HashSet<T>(values);
-        }
-
-        /// <summary>
         /// Chceks is object implements generic ISet interface.
         /// </summary>
         /// <param name="obj">Checked object</param>

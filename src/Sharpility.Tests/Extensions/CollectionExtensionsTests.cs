@@ -667,5 +667,19 @@ namespace Sharpility.Tests.Extensions
             Check.That(filtered).IsInstanceOf<LinkedList<int>>();
             Check.That(filtered).ContainsExactly(2, 4);
         }
+        
+        [Test]
+        public void ShouldExtenedEnumerableByToSetMethod()
+        {
+            // given
+            IEnumerable<int> enumerable = Lists.AsList(1, 2, 3, 3, 3, 4, 5);
+
+            // then
+            var set = enumerable.ToSet();
+
+            // then
+            Check.That(set).HasSize(5);
+            Check.That(set).Contains(1, 2, 3, 4, 5);
+        }
     }
 }
