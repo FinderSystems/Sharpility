@@ -54,6 +54,7 @@
     <Compile Include="Extensions\CollectionExtensions.cs" />
     <Compile Include="Extensions\ComparerExtensions.cs" />
     <Compile Include="Extensions\DateTimeExtensions.cs" />
+    <Compile Include="Extensions\DbCommandExtensions.cs" />
     <Compile Include="IO\EmbeddedResources.cs" />
     <Compile Include="IO\Files.cs" />
     <Compile Include="IO\Streams.cs" />
