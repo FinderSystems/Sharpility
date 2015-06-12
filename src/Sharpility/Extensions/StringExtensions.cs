@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Text;
 
 namespace Sharpility.Extensions
@@ -48,6 +49,17 @@ namespace Sharpility.Extensions
         public static byte[] ToUtf8Bytes(this string value)
         {
             return ToBytes(value, Encoding.UTF8);
+        }
+
+        /// <summary>
+        /// Compares string with case ignore.
+        /// </summary>
+        /// <param name="value">this</param>
+        /// <param name="comparedTo">compared to</param>
+        /// <returns>true if is equal</returns>
+        public static bool EqualsIgnoreCases(this string value, string comparedTo)
+        {
+            return value.Equals(comparedTo, StringComparison.InvariantCultureIgnoreCase);
         }
     }
 }

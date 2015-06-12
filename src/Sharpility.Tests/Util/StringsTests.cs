@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using NUnit.Framework;
+using Sharpility.Extensions;
 using Sharpility.Util;
 
 namespace Sharpility.Tests.Util
@@ -133,6 +135,56 @@ namespace Sharpility.Tests.Util
             yield return new TestCaseData("This is {0}", new object[] { Dictionaries.Create("A", 1, "B", 2) })
                .SetName("Should format dictionary params")
                .Returns("This is [(A, 1), (B, 2)]");
-        } 
+        }
+
+        [Test, TestCaseSource("EqualsIgnoreCasesTestCases")]
+        public bool ShouldExtendStringByEqualsIgnoreCasesMethod(string given, string comparedTo)
+        {
+            // when
+            var result = given.EqualsIgnoreCases(comparedTo);
+
+            // then
+            return result;
+        }
+
+        [SuppressMessage("ReSharper", "ConditionIsAlwaysTrueOrFalse")]
+        [SuppressMessage("ReSharper", "RedundantAssignment")]
+        private static IEnumerable<ITestCaseData> EqualsIgnoreCasesTestCases()
+        {
+            var given = "aa";
+            var comparedTo = "aa";
+            var expected = true;
+            yield return new TestCaseData(given, comparedTo)
+                .SetName(Strings.Format("'{0}' to '{1}' compared with ignored cases returns {2}", given, comparedTo, expected))
+                .Returns(expected);
+
+            given = "AAA";
+            comparedTo = "AAA";
+            expected = true;
+            yield return new TestCaseData(given, comparedTo)
+                .SetName(Strings.Format("'{0}' to '{1}' compared with ignored cases returns {2}", given, comparedTo, expected))
+                .Returns(expected);
+
+            given = "AAA";
+            comparedTo = "aaa";
+            expected = true;
+            yield return new TestCaseData(given, comparedTo)
+                .SetName(Strings.Format("'{0}' to '{1}' compared with ignored cases returns {2}", given, comparedTo, expected))
+                .Returns(expected);
+
+            given = "AaAaa";
+            comparedTo = "aAAAa";
+            expected = true;
+            yield return new TestCaseData(given, comparedTo)
+                .SetName(Strings.Format("'{0}' to '{1}' compared with ignored cases returns {2}", given, comparedTo, expected))
+                .Returns(expected);
+
+            given = "AAB";
+            comparedTo = "AA";
+            expected = false;
+            yield return new TestCaseData(given, comparedTo)
+                .SetName(Strings.Format("'{0}' to '{1}' compared with ignored cases returns {2}", given, comparedTo, expected))
+                .Returns(expected);
+        }
     }
 }
