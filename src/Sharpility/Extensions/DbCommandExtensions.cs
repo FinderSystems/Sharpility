@@ -3,7 +3,7 @@
 namespace Sharpility.Extensions
 {
     /// <summary>
-    /// Extension of IDbCommand interface
+    /// Extensions for IDbCommand interface.
     /// </summary>
     public static class DbCommandExtensions
     {
