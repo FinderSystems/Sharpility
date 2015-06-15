@@ -55,6 +55,9 @@
     <Compile Include="Extensions\ComparerExtensions.cs" />
     <Compile Include="Extensions\DateTimeExtensions.cs" />
     <Compile Include="Extensions\DbCommandExtensions.cs" />
+    <Compile Include="Function\BiConsumer.cs" />
+    <Compile Include="Function\BiConverter.cs" />
+    <Compile Include="Function\Consumer.cs" />
     <Compile Include="IO\EmbeddedResources.cs" />
     <Compile Include="IO\Files.cs" />
     <Compile Include="IO\Streams.cs" />
