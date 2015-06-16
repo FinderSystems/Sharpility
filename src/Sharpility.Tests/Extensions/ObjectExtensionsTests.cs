@@ -4,6 +4,7 @@ using Sharpility.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using Sharpility.Util;
 
 namespace Sharpility.Tests.Extensions
 {
@@ -89,6 +90,37 @@ namespace Sharpility.Tests.Extensions
                 .Returns(none);
         }
 
+        [Test, TestCaseSource("ComplexObjectsEqualityTestCases")]
+        public bool ShouldCompareComplexObjectsEquality(object first, object second)
+        {
+            // when
+            var equals = first.Equals(second);
+
+            // then
+            return equals;
+        }
+
+        private static IEnumerable<ITestCaseData> ComplexObjectsEqualityTestCases()
+        {
+            var first = new ComplexObj { Id = 1, Name = "Test", X = 1 };
+            var second = new ComplexObj { Id = 1, Name = "Test", X = 1 };
+            yield return new TestCaseData(first, second)
+                .SetName("Should return that complex objects are equals")
+                .Returns(true);
+
+            first = new ComplexObj { Id = 1, Name = "Test", X = 1 };
+            second = new ComplexObj { Id = 1, Name = "Test", X = 2 };
+            yield return new TestCaseData(first, second)
+                .SetName("Should return that complex objects are not equals")
+                .Returns(false);
+
+            first = new ComplexObj { Id = 1, Name = "Test", X = 1 };
+            second = new ComplexObj { Id = 2, Name = "Test", X = 1 };
+            yield return new TestCaseData(first, second)
+                .SetName("Should return that complex objects are not if base class properties differs")
+                .Returns(false);
+        }
+
         [SuppressMessage("ReSharper", "NotAccessedField.Local")]
         [SuppressMessage("ReSharper", "MemberCanBePrivate.Local")]
         [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Local")]
@@ -117,6 +149,39 @@ namespace Sharpility.Tests.Extensions
             public int Alpha { get; set; }
             public string Beta { get; set; }
             public List<int> Theta {get; set;}
+        }
+
+        [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Local")]
+        private class BaseObj
+        {
+            public string Name { get; set; }
+            public int Id { get; set; }
+
+            public override bool Equals(object obj)
+            {
+                return this.EqualsByProperties(obj);
+            }
+
+            public override int GetHashCode()
+            {
+                return this.PropertiesHash();
+            }
+        }
+
+        [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Local")]
+        private class ComplexObj: BaseObj
+        {
+            public int X { get; set; }
+
+            public override bool Equals(object obj)
+            {
+                return base.Equals(obj) && this.EqualsByProperties(obj);
+            }
+
+            public override int GetHashCode()
+            {
+                return Objects.Hash(base.GetHashCode(), this.PropertiesHash());
+            }
         }
     }
 }
