@@ -36,6 +36,7 @@
       <HintPath>..\packages\System.Collections.Immutable.1.1.36\lib\portable-net45+win8+wp8+wpa81\System.Collections.Immutable.dll</HintPath>
     </Reference>
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -43,13 +44,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Collections\AbstractMultiDictionary.cs" />
     <Compile Include="Collections\AbstractSortedMappedQueue.cs" />
     <Compile Include="Collections\ArrayListSortedMappedQueue.cs" />
     <Compile Include="Collections\Concurrent\DefaultConcurrentQueue.cs" />
     <Compile Include="Collections\DefaultQueue.cs" />
+    <Compile Include="Collections\HashSetMultiDictionary.cs" />
     <Compile Include="Collections\IQueue.cs" />
+    <Compile Include="Collections\LinkedListMultiDictionary.cs" />
     <Compile Include="Collections\LinkedQueue.cs" />
+    <Compile Include="Collections\ArrayListMultiDictionary.cs" />
     <Compile Include="Collections\MappedQueue.cs" />
+    <Compile Include="Collections\MultiDictionary.cs" />
     <Compile Include="Collections\SortedMappedQueue.cs" />
     <Compile Include="Collections\SortedSetMappedQueue.cs" />
     <Compile Include="Extensions\CollectionExtensions.cs" />

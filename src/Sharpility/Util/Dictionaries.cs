@@ -18,7 +18,7 @@ namespace Sharpility.Util
         /// <returns>dictionary</returns>
         public static IDictionary<T, TV> CreateFromEntries<T, TV>(params KeyValuePair<T, TV>[] entries)
         {
-            var dictionary = new Dictionary<T, TV>();
+            var dictionary = new Dictionary<T, TV>(entries.Length);
             dictionary.PutAll(entries);
             return dictionary;
         }
