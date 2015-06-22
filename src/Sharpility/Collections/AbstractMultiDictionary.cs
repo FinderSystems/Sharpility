@@ -68,10 +68,13 @@ namespace Sharpility.Collections
 
         public bool Remove(TKey key, TValue value)
         {
-            var keyValues = ValuesOf(key);
-            var result = keyValues.Remove(value);
-            Count -= keyValues.Count;
-            if (keyValues.IsEmpty())
+            var keyValues = dictionary.GetIfPresent(key);
+            var result = keyValues != null && keyValues.Remove(value);
+            if (result)
+            {
+                Count -= 1;
+            }
+            if (keyValues != null && keyValues.IsEmpty() && dictionary.ContainsKey(key))
             {
                 dictionary.Remove(key);
             }
@@ -177,7 +180,7 @@ namespace Sharpility.Collections
                 var multiEntries = new HashSet<KeyValuePair<TKey, ICollection<TValue>>>();
                 foreach (var multiEntry in dictionary)
                 {
-                    var valuesCopy = ResultCollection(multiEntry.Value);
+                    var valuesCopy = ComparableCollection(multiEntry.Value);
                     multiEntries.Add(new KeyValuePair<TKey, ICollection<TValue>>(multiEntry.Key, valuesCopy));
                 }
                 return multiEntries;
@@ -216,10 +219,6 @@ namespace Sharpility.Collections
             return dictionary[key];
         }
 
-        protected abstract ICollection<TValue> CreateCollection(int capacity);
-
-        protected abstract ICollection<TValue> ResultCollection(ICollection<TValue> collection);
-
         public override bool Equals(object obj)
         {
             var that = obj as MultiDictionary<TKey, TValue>;
@@ -235,5 +234,11 @@ namespace Sharpility.Collections
         {
             return Strings.ToString(dictionary);
         }
+
+        protected abstract ICollection<TValue> CreateCollection(int capacity);
+
+        protected abstract ICollection<TValue> ResultCollection(ICollection<TValue> collection);
+
+        protected abstract ICollection<TValue> ComparableCollection(ICollection<TValue> collection);
     }
 }

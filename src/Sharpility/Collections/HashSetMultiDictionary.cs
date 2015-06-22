@@ -22,5 +22,11 @@ namespace Sharpility.Collections
         {
             return new HashSet<TValue>(collection);
         }
+
+        protected override ICollection<TValue> ComparableCollection(ICollection<TValue> collection)
+        {
+            var list = new HashSet<TValue>(collection);
+            return ComparableSet<TValue>.Of(list);
+        }
     }
 }

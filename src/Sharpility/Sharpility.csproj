@@ -47,6 +47,8 @@
     <Compile Include="Collections\AbstractMultiDictionary.cs" />
     <Compile Include="Collections\AbstractSortedMappedQueue.cs" />
     <Compile Include="Collections\ArrayListSortedMappedQueue.cs" />
+    <Compile Include="Collections\ComparableList.cs" />
+    <Compile Include="Collections\ComparableSet.cs" />
     <Compile Include="Collections\Concurrent\DefaultConcurrentQueue.cs" />
     <Compile Include="Collections\DefaultQueue.cs" />
     <Compile Include="Collections\HashSetMultiDictionary.cs" />

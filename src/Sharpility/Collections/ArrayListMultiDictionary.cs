@@ -22,5 +22,11 @@ namespace Sharpility.Collections
         {
             return new List<TValue>(collection);
         }
+
+        protected override ICollection<TValue> ComparableCollection(ICollection<TValue> collection)
+        {
+            var list = new List<TValue>(collection);
+            return ComparableList<TValue>.Of(list);
+        }
     }
 }
