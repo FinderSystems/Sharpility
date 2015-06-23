@@ -297,6 +297,16 @@ namespace Sharpility.Tests.Collections
                 .IsTrue();
         }
 
+        [Test, TestCaseSource("MultiDictionaryComparationCases")]
+        public bool ShouldCompareMultiDictionaries(MultiDictionary<int, string> first, MultiDictionary<int, string> second)
+        {
+            // when
+            var result = first.Equals(second);
+
+            // then
+            return result;
+        }
+
         private static IEnumerable<MultiDictionaryContext> MultiDictionaryCases()
         {
             yield return new ArrayListMultiDictionaryContext();
@@ -304,6 +314,51 @@ namespace Sharpility.Tests.Collections
             yield return new HashSetMultiDictionaryContext();
 
             yield return new LinkedListMultiDictionaryContext();
+        }
+
+        private static IEnumerable<ITestCaseData> MultiDictionaryComparationCases()
+        {
+            MultiDictionary<int, string> first = new ArrayListMultiDictionary<int, string>();
+            first.Put(1, "A");
+            first.Put(2, "B");
+            first.PutAll(3, Lists.AsList("A", "B", "C"));
+
+            MultiDictionary<int, string> second = new ArrayListMultiDictionary<int, string>();
+            second.Put(1, "A");
+            second.Put(2, "B");
+            second.PutAll(3, Lists.AsList("A", "B", "C"));
+
+            yield return new TestCaseData(first, second)
+                .SetName("Should return that multi dictionaries are equals")
+                .Returns(true);
+
+            first = new HashSetMultiDictionary<int, string>();
+            first.Put(1, "A");
+            first.Put(2, "B");
+            first.PutAll(3, Lists.AsList("A", "B", "C"));
+
+            second = new ArrayListMultiDictionary<int, string>();
+            second.Put(1, "A");
+            second.Put(2, "B");
+            second.PutAll(3, Lists.AsList("A", "B", "C"));
+
+            yield return new TestCaseData(first, second)
+                .SetName("Should return that different implementations of multi dictionaries with same elements are equals")
+                .Returns(true);
+
+            first = new ArrayListMultiDictionary<int, string>();
+            first.Put(1, "A");
+            first.Put(2, "B");
+            first.PutAll(3, Lists.AsList("A", "B", "C"));
+
+            second = new ArrayListMultiDictionary<int, string>();
+            second.Put(1, "A");
+            second.Put(2, "B");
+            second.PutAll(3, Lists.AsList("B", "C"));
+
+            yield return new TestCaseData(first, second)
+                .SetName("Should return that multi dictionaries with different elements are not equals")
+                .Returns(false);
         } 
 
         public interface MultiDictionaryContext
