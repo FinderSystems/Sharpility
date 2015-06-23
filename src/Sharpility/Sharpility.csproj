@@ -52,6 +52,9 @@
     <Compile Include="Collections\Concurrent\DefaultConcurrentQueue.cs" />
     <Compile Include="Collections\DefaultQueue.cs" />
     <Compile Include="Collections\HashSetMultiDictionary.cs" />
+    <Compile Include="Collections\ImmutableListMultiDictionary.cs" />
+    <Compile Include="Collections\ImmutableMultiDictionary.cs" />
+    <Compile Include="Collections\ImmutableSetMultiDictionary.cs" />
     <Compile Include="Collections\IQueue.cs" />
     <Compile Include="Collections\LinkedListMultiDictionary.cs" />
     <Compile Include="Collections\LinkedQueue.cs" />

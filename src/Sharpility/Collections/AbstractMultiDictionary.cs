@@ -166,7 +166,7 @@ namespace Sharpility.Collections
             }
         }
 
-        private IEnumerable<KeyValuePair<TKey, TValue>> EntriesOf(KeyValuePair<TKey, ICollection<TValue>> multiEntry)
+        private static IEnumerable<KeyValuePair<TKey, TValue>> EntriesOf(KeyValuePair<TKey, ICollection<TValue>> multiEntry)
         {
             return multiEntry.Value
                 .Select(value => new KeyValuePair<TKey, TValue>(multiEntry.Key, value))
