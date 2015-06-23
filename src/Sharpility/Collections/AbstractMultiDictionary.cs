@@ -144,7 +144,7 @@ namespace Sharpility.Collections
         {
             get
             {
-                var result = CreateCollection(valuesCapacity);
+                var result = new List<TValue>(valuesCapacity);
                 foreach (var entry in MultiEntries)
                 {
                     result.AddAll(entry.Value);

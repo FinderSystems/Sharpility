@@ -57,6 +57,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Collections\ArrayListMultiDictionaryTests.cs" />
+    <Compile Include="Collections\HashSetMultiDictionaryTests.cs" />
+    <Compile Include="Collections\LinkedListMultiDictionaryTests.cs" />
+    <Compile Include="Collections\MultiDictionaryTests.cs" />
     <Compile Include="Collections\OrderedImmutableDictionaryTests.cs" />
     <Compile Include="Collections\SortedMappedQueueTests.cs" />
     <Compile Include="Extensions\ComparerExtensionsTests.cs" />
