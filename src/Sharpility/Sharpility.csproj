@@ -67,6 +67,7 @@
     <Compile Include="Extensions\ComparerExtensions.cs" />
     <Compile Include="Extensions\DateTimeExtensions.cs" />
     <Compile Include="Extensions\DbCommandExtensions.cs" />
+    <Compile Include="Extensions\MultiDictionaryExtensions.cs" />
     <Compile Include="Function\BiConsumer.cs" />
     <Compile Include="Function\BiConverter.cs" />
     <Compile Include="Function\Consumer.cs" />

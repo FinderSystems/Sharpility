@@ -7,6 +7,11 @@ using Sharpility.Util;
 
 namespace Sharpility.Collections
 {
+    /// <summary>
+    /// Immutable implementation of MultiDictionary.
+    /// </summary>
+    /// <typeparam name="TKey">Type of dictionary key</typeparam>
+    /// <typeparam name="TValue">Type of dictionary value</typeparam>
     public abstract class ImmutableMultiDictionary<TKey, TValue>: MultiDictionary<TKey, TValue>
     {
         private readonly IImmutableDictionary<TKey, ICollection<TValue>> dictionary;
@@ -174,6 +179,12 @@ namespace Sharpility.Collections
 
         protected abstract ICollection<TValue> MutableCopy(ICollection<TValue> values);
 
+        /// <summary>
+        /// Builder of ImmutableMultiDictionary.
+        /// </summary>
+        /// <typeparam name="T">Type dictionary key</typeparam>
+        /// <typeparam name="TV">Type of dictionary value</typeparam>
+        /// <typeparam name="TR">Type of builded ImmutableMultiDictionary</typeparam>
         public abstract class AbstractImmutableListMultiDictionaryBuilder<T, TV, TR>
             where TR: ImmutableMultiDictionary<T, TV>
         {
@@ -184,30 +195,56 @@ namespace Sharpility.Collections
                 this.dictionary = dictionary;
             }
 
+            /// <summary>
+            /// Puts entry to builded ImmutableMultiDictionary.
+            /// </summary>
+            /// <param name="key">Entry key</param>
+            /// <param name="value">Entry value</param>
+            /// <returns>Builder</returns>
             public AbstractImmutableListMultiDictionaryBuilder<T, TV, TR> Put(T key, TV value)
             {
                 dictionary.Put(key, value);
                 return this;
             }
 
+            /// <summary>
+            /// Puts multiple entries for given key to builded ImmutableMultiDictionary.
+            /// </summary>
+            /// <param name="key">Entry key</param>
+            /// <param name="values">Entry values</param>
+            /// <returns>Builder</returns>
             public AbstractImmutableListMultiDictionaryBuilder<T, TV, TR> PutAll(T key, IEnumerable<TV> values)
             {
                 dictionary.PutAll(key, values);
                 return this;
             }
 
+            /// <summary>
+            /// Puts all entries from given MultiDictionary to builded ImmutableMultiDictionary.
+            /// </summary>
+            /// <param name="multiDictionary">multiDictionary</param>
+            /// <returns>Builder</returns>
             public AbstractImmutableListMultiDictionaryBuilder<T, TV, TR> PutAll(MultiDictionary<T, TV> multiDictionary)
             {
                 dictionary.PutAll(multiDictionary);
                 return this;
             }
 
+            /// <summary>
+            /// Puts all entries from given Dictionary to builded ImmutableMultiDictionary.
+            /// </summary>
+            /// <param name="dictionary">dictionary</param>
+            /// <returns>Builder</returns>
             public AbstractImmutableListMultiDictionaryBuilder<T, TV, TR> PutAll(IDictionary<T, TV> dictionary)
             {
                 this.dictionary.PutAll(dictionary);
                 return this;
             }
 
+            /// <summary>
+            /// Builds ImmutableMultiDictionary.
+            /// </summary>
+            /// <returns></returns>
             public TR Build()
             {
                 var builder = ImmutableDictionary.CreateBuilder<T, ICollection<TV>>();

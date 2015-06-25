@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Collections.Immutable;
+using Sharpility.Collections;
 
 namespace Sharpility.Extensions
 {
@@ -208,6 +209,81 @@ namespace Sharpility.Extensions
                 entries.Add(iterator.Current);
             }
             return entries.ToImmutable();
+        }
+
+        /// <summary>
+        /// Converts dictionary to ArrayListMultiDictionary.
+        /// </summary>
+        /// <typeparam name="TKey">Type of dictionary key</typeparam>
+        /// <typeparam name="TValue">Type of dictionary value</typeparam>
+        /// <param name="dictionary">this</param>
+        /// <returns>ArrayListMultiDictionary</returns>
+        public static ArrayListMultiDictionary<TKey, TValue> ToArrayListMultiDictionary<TKey, TValue>(
+            this IDictionary<TKey, TValue> dictionary)
+        {
+            var result = new ArrayListMultiDictionary<TKey, TValue>();
+            result.PutAll(dictionary);
+            return result;
+        }
+
+        /// <summary>
+        /// Converts dictionary to LinkedListMultiDictionary.
+        /// </summary>
+        /// <typeparam name="TKey">Type of dictionary key</typeparam>
+        /// <typeparam name="TValue">Type of dictionary value</typeparam>
+        /// <param name="dictionary">this</param>
+        /// <returns>LinkedListMultiDictionary</returns>
+        public static LinkedListMultiDictionary<TKey, TValue> ToLinkedListMultiDictionary<TKey, TValue>(
+            this IDictionary<TKey, TValue> dictionary)
+        {
+            var result = new LinkedListMultiDictionary<TKey, TValue>();
+            result.PutAll(dictionary);
+            return result;
+        }
+
+        /// <summary>
+        /// Converts dictionary to HashSetMultiDictionary.
+        /// </summary>
+        /// <typeparam name="TKey">Type of dictionary key</typeparam>
+        /// <typeparam name="TValue">Type of dictionary value</typeparam>
+        /// <param name="dictionary">this</param>
+        /// <returns>HashSetMultiDictionary</returns>
+        public static HashSetMultiDictionary<TKey, TValue> ToHashSetMultiDictionary<TKey, TValue>(
+            this IDictionary<TKey, TValue> dictionary)
+        {
+            var result = new HashSetMultiDictionary<TKey, TValue>();
+            result.PutAll(dictionary);
+            return result;
+        }
+
+        /// <summary>
+        /// Converts dictionary to ImmutableListMultiDictionary.
+        /// </summary>
+        /// <typeparam name="TKey">Type of dictionary key</typeparam>
+        /// <typeparam name="TValue">Type of dictionary value</typeparam>
+        /// <param name="dictionary">this</param>
+        /// <returns>ImmutableListMultiDictionary</returns>
+        public static ImmutableListMultiDictionary<TKey, TValue> ToImmutableListMultiDictionary<TKey, TValue>(
+            this IDictionary<TKey, TValue> dictionary)
+        {
+            var builder = ImmutableListMultiDictionary<TKey, TValue>.Builder();
+            builder.PutAll(dictionary);
+            return builder.Build();
+        }
+
+        /// <summary>
+        /// Converts dictionary to ImmutableSetMultiDictionary.
+        /// </summary>
+        /// <typeparam name="TKey">Type of dictionary key</typeparam>
+        /// <typeparam name="TValue">Type of dictionary value</typeparam>
+        /// <param name="dictionary">this</param>
+        /// <returns>ImmutableSetMultiDictionary</returns>
+        public static ImmutableSetMultiDictionary<TKey, TValue> ToImmutableSetMultiDictionary<TKey, TValue>(
+            this IDictionary<TKey, TValue> dictionary)
+        {
+            var builder = ImmutableSetMultiDictionary<TKey, TValue>.Builder();
+            builder.PutAll(dictionary);
+            return builder.Build();
         }
     }
 }

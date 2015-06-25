@@ -3,6 +3,11 @@ using System.Collections.Immutable;
 
 namespace Sharpility.Collections
 {
+    /// <summary>
+    /// Implementation of ImmutableMultiDictionary using ImmutableList for key values.
+    /// </summary>
+    /// <typeparam name="TKey">Type of dictionary key</typeparam>
+    /// <typeparam name="TValue">Type of dictionary value</typeparam>
     public sealed class ImmutableListMultiDictionary<TKey, TValue>: ImmutableMultiDictionary<TKey, TValue>
     {
         internal ImmutableListMultiDictionary(IImmutableDictionary<TKey, ICollection<TValue>> dictionary) : 
@@ -10,22 +15,36 @@ namespace Sharpility.Collections
         {
         }
 
+        /// <summary>
+        /// Returns builder of ImmutableListMultiDictionary.
+        /// </summary>
+        /// <returns></returns>
         public static ImmutableListMultiDictionaryBuilder Builder()
         {
             return new ImmutableListMultiDictionaryBuilder();
         }
 
+        /// <summary>
+        /// Returns builder of ImmutableListMultiDictionary.
+        /// </summary>
+        /// <param name="keysCapacity">Initial keys capacity</param>
+        /// <param name="valuesCapacity">Intial values capacity</param>
+        /// <returns></returns>
         public static ImmutableListMultiDictionaryBuilder Builder(int keysCapacity, int valuesCapacity)
         {
             return new ImmutableListMultiDictionaryBuilder(keysCapacity, valuesCapacity);
         }
 
-        #region QuickCreate
-
-        public static ImmutableListMultiDictionary<TKey, TValue> Of()
+        /// <summary>
+        /// Returns empty ImmutableListMultiDictionary.
+        /// </summary>
+        /// <returns></returns>
+        public static ImmutableListMultiDictionary<TKey, TValue> Empty()
         {
             return Builder().Build();
         }
+
+        #region QuickCreate
 
         public static ImmutableListMultiDictionary<TKey, TValue> Of(TKey key, TValue value)
         {
@@ -163,6 +182,9 @@ namespace Sharpility.Collections
             return new List<TValue>(values);
         }
 
+        /// <summary>
+        /// Builder of ImmutableListMultiDictionary.
+        /// </summary>
         public sealed class ImmutableListMultiDictionaryBuilder : AbstractImmutableListMultiDictionaryBuilder<TKey, TValue, ImmutableListMultiDictionary<TKey, TValue>>
         {
             internal ImmutableListMultiDictionaryBuilder(int keysCapacity, int valuesCapacity)

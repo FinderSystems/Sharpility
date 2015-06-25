@@ -580,6 +580,44 @@ namespace Sharpility.Extensions
             return set.Where(item => filter(item)).ToSet();
         }
 
+        /// <summary>
+        /// Converts enumerable to MultiDictionary
+        /// </summary>
+        /// <typeparam name="T">Type of enumerable item</typeparam>
+        /// <typeparam name="TKey">Type of dictionary key</typeparam>
+        /// <typeparam name="TValue">Type of dictionary value</typeparam>
+        /// <param name="enumerable">enumerable</param>
+        /// <param name="keyConverter">Key converter</param>
+        /// <param name="valueConverter">Value converter</param>
+        /// <returns>MultiDictionary</returns>
+        public static MultiDictionary<TKey, TValue> ToMultiDictionary<T, TKey, TValue>(this IEnumerable<T> enumerable,
+            Converter<T, TKey> keyConverter, Converter<T, TValue> valueConverter)
+        {
+            var result = new ArrayListMultiDictionary<TKey, TValue>();
+            foreach (var element in enumerable)
+            {
+                var key = keyConverter(element);
+                var value = valueConverter(element);
+                result.Put(key, value);
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// Maps enumerable values by keys and returns MultiDictionary.
+        /// </summary>
+        /// <typeparam name="TKey">Type of dictionary key</typeparam>
+        /// <typeparam name="TValue">Type of enumerable value</typeparam>
+        /// <param name="enumerable">enumerable</param>
+        /// <param name="keyConverter">Key converter</param>
+        /// <returns>MultiDictionary</returns>
+        public static MultiDictionary<TKey, TValue> ToMultiDictionary<TKey, TValue>(this IEnumerable<TValue> enumerable,
+            Converter<TValue, TKey> keyConverter)
+        {
+            Converter<TValue, TValue> valueConverter = value => value;
+            return ToMultiDictionary(enumerable, keyConverter, valueConverter);
+        }
+
         private static void SortCollection<T>(ICollection<T> list, IComparer<T> comparator)
         {
             var elements = list.ToArray();
