@@ -139,7 +139,7 @@ namespace Sharpility.Extensions
             {
                 var type = enumerable.GetType();
                 var genericType = enumerable.ItemType();
-                var containsMethod = type.GetMethod(name: "Contains", types: new Type[] { genericType });
+                var containsMethod = type.GetMethod(name: "Contains", types: new [] { genericType });
                 return item.GetType().IsAssignableFrom(genericType) && (bool) containsMethod.Invoke(obj: enumerable, parameters: new[] { item });
             }
             else
@@ -618,6 +618,12 @@ namespace Sharpility.Extensions
             return ToMultiDictionary(enumerable, keyConverter, valueConverter);
         }
 
+        /// <summary>
+        /// Maps enumerable items to number of occurrences.
+        /// </summary>
+        /// <typeparam name="T">Type of enumerable item</typeparam>
+        /// <param name="enumerable">this</param>
+        /// <returns>Dictionary (item, itemCount)</returns>
         public static IDictionary<T, int> DistinctElementCount<T>(this IEnumerable<T> enumerable)
         {
             var result = new Dictionary<T, int>();
