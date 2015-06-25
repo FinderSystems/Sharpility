@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using NFluent;
 using NUnit.Framework;
+using Sharpility.Collections;
 using Sharpility.Extensions;
 using Sharpility.Util;
 
@@ -136,6 +137,146 @@ namespace Sharpility.Tests.Extensions
                 Dictionaries.Entry("A", "A1"),
                 Dictionaries.Entry("B", "B1"),
                 Dictionaries.Entry("C", "C1"));
+        }
+
+        [Test]
+        public void ShouldExntedDictionaryByToArrayListMultiDictionaryMethod()
+        {
+            // given
+            var dictionary = Dictionaries.Create("A", "A1", "B", "B1", "C", "C1");
+
+            // when
+            var multiDictionary = dictionary.ToArrayListMultiDictionary();
+
+            // then
+            Check.That(multiDictionary)
+                .IsEqualTo(ArrayListMultiDictionary<string, string>.Of("A", "A1", "B", "B1", "C", "C1"));
+        }
+
+        [Test]
+        public void ShouldExntedReadOnlyDictionaryByToArrayListMultiDictionaryMethod()
+        {
+            // given
+            var dictionary = Dictionaries.CreateImmutable("A", "A1", "B", "B1", "C", "C1");
+
+            // when
+            var multiDictionary = dictionary.ToArrayListMultiDictionary();
+
+            // then
+            Check.That(multiDictionary)
+                .IsEqualTo(ArrayListMultiDictionary<string, string>.Of("A", "A1", "B", "B1", "C", "C1"));
+        }
+
+        [Test]
+        public void ShouldExntedDictionaryByToHashSetMultiDictionaryMethod()
+        {
+            // given
+            var dictionary = Dictionaries.Create("A", "A1", "B", "B1", "C", "C1");
+
+            // when
+            var multiDictionary = dictionary.ToHashSetMultiDictionary();
+
+            // then
+            Check.That(multiDictionary)
+                .IsEqualTo(HashSetMultiDictionary<string, string>.Of("A", "A1", "B", "B1", "C", "C1"));
+        }
+
+        [Test]
+        public void ShouldExntedReadOnlyDictionaryByToHashSetMultiDictionaryMethod()
+        {
+            // given
+            var dictionary = Dictionaries.CreateImmutable("A", "A1", "B", "B1", "C", "C1");
+
+            // when
+            var multiDictionary = dictionary.ToHashSetMultiDictionary();
+
+            // then
+            Check.That(multiDictionary)
+                .IsEqualTo(HashSetMultiDictionary<string, string>.Of("A", "A1", "B", "B1", "C", "C1"));
+        }
+
+        [Test]
+        public void ShouldExntedDictionaryByToLinkedListMultiDictionaryMethod()
+        {
+            // given
+            var dictionary = Dictionaries.Create("A", "A1", "B", "B1", "C", "C1");
+
+            // when
+            var multiDictionary = dictionary.ToLinkedListMultiDictionary();
+
+            // then
+            Check.That(multiDictionary)
+                .IsEqualTo(LinkedListMultiDictionary<string, string>.Of("A", "A1", "B", "B1", "C", "C1"));
+        }
+
+        [Test]
+        public void ShouldExntedReadOnlyDictionaryByToLinkedListMultiDictionaryMethod()
+        {
+            // given
+            var dictionary = Dictionaries.CreateImmutable("A", "A1", "B", "B1", "C", "C1");
+
+            // when
+            var multiDictionary = dictionary.ToLinkedListMultiDictionary();
+
+            // then
+            Check.That(multiDictionary)
+                .IsEqualTo(LinkedListMultiDictionary<string, string>.Of("A", "A1", "B", "B1", "C", "C1"));
+        }
+
+        [Test]
+        public void ShouldExntedDictionaryByToImmutableListMultiDictionaryMethod()
+        {
+            // given
+            var dictionary = Dictionaries.Create("A", "A1", "B", "B1", "C", "C1");
+
+            // when
+            var multiDictionary = dictionary.ToImmutableListMultiDictionary();
+
+            // then
+            Check.That(multiDictionary)
+                .IsEqualTo(ImmutableListMultiDictionary<string, string>.Of("A", "A1", "B", "B1", "C", "C1"));
+        }
+
+        [Test]
+        public void ShouldExntedReadOnlyDictionaryByToImmutableListMultiDictionaryMethod()
+        {
+            // given
+            var dictionary = Dictionaries.CreateImmutable("A", "A1", "B", "B1", "C", "C1");
+
+            // when
+            var multiDictionary = dictionary.ToImmutableListMultiDictionary();
+
+            // then
+            Check.That(multiDictionary)
+                .IsEqualTo(ImmutableListMultiDictionary<string, string>.Of("A", "A1", "B", "B1", "C", "C1"));
+        }
+
+        [Test]
+        public void ShouldExntedDictionaryByToImmutableSetMultiDictionaryMethod()
+        {
+            // given
+            var dictionary = Dictionaries.Create("A", "A1", "B", "B1", "C", "C1");
+
+            // when
+            var multiDictionary = dictionary.ToImmutableSetMultiDictionary();
+
+            // then
+            Check.That(multiDictionary)
+                .IsEqualTo(ImmutableSetMultiDictionary<string, string>.Of("A", "A1", "B", "B1", "C", "C1"));
+        }
+
+        [Test]
+        public void ShouldExntedReadOnlyDictionaryByToImmutableSetMultiDictionaryMethod()
+        {
+            // given
+            var dictionary = Dictionaries.CreateImmutable("A", "A1", "B", "B1", "C", "C1");
+
+            // when
+            var multiDictionary = dictionary.ToImmutableSetMultiDictionary();
+
+            // then
+            Check.That(multiDictionary)
+                .IsEqualTo(ImmutableSetMultiDictionary<string, string>.Of("A", "A1", "B", "B1", "C", "C1"));
         }
     }
 }

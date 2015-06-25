@@ -39,7 +39,7 @@ namespace Sharpility.Collections
             throw new InvalidOperationException("Operation is not supported");
         }
 
-        public void PutAll(IDictionary<TKey, TValue> dictionary)
+        public void PutAll(IEnumerable<KeyValuePair<TKey, TValue>> entries)
         {
             throw new InvalidOperationException("Operation is not supported");
         }
@@ -231,13 +231,13 @@ namespace Sharpility.Collections
             }
 
             /// <summary>
-            /// Puts all entries from given Dictionary to builded ImmutableMultiDictionary.
+            /// Puts all entries to builded ImmutableMultiDictionary.
             /// </summary>
-            /// <param name="dictionary">dictionary</param>
+            /// <param name="entries">KeyValuePair entries</param>
             /// <returns>Builder</returns>
-            public AbstractImmutableListMultiDictionaryBuilder<T, TV, TR> PutAll(IDictionary<T, TV> dictionary)
+            public AbstractImmutableListMultiDictionaryBuilder<T, TV, TR> PutAll(IEnumerable<KeyValuePair<T, TV>> entries)
             {
-                this.dictionary.PutAll(dictionary);
+                dictionary.PutAll(entries);
                 return this;
             }
 

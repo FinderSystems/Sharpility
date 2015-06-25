@@ -30,10 +30,10 @@ namespace Sharpility.Collections
         void PutAll(MultiDictionary<TKey, TValue> multiDictionary);
 
         /// <summary>
-        /// Puts all entries from given dictionary.
+        /// Puts all entries.
         /// </summary>
-        /// <param name="dictionary">dicionary</param>
-        void PutAll(IDictionary<TKey, TValue> dictionary);
+        /// <param name="entries">KeyValuePair entries</param>
+        void PutAll(IEnumerable<KeyValuePair<TKey, TValue>> entries);
 
         /// <summary>
         /// Removes key entries.

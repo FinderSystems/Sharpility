@@ -6,6 +6,7 @@ using System.Collections.Immutable;
 using NFluent;
 using NiceTry;
 using NUnit.Framework;
+using Sharpility.Collections;
 using Sharpility.Extensions;
 using Sharpility.Util;
 
@@ -680,6 +681,35 @@ namespace Sharpility.Tests.Extensions
             // then
             Check.That(set).HasSize(5);
             Check.That(set).Contains(1, 2, 3, 4, 5);
+        }
+        
+        [Test]
+        public void ShouldExtendEnumberableByToMultiDictionaryMethod()
+        {
+            // given
+            IEnumerable<int> enumerable = Lists.AsList(1, 2, 3);
+            Converter<int, string> keyConverter = element => element.ToString();
+            Converter<int, int> valueConverter = element => element*2;
+
+            // when
+            var multiDictionary = enumerable.ToMultiDictionary(keyConverter, valueConverter);
+
+            // then
+            Check.That(multiDictionary).IsEqualTo(ArrayListMultiDictionary<string, int>.Of("1", 2, "2", 4, "3", 6));
+        }
+
+        [Test]
+        public void ShouldExtendEnumberableByToMultiDictionaryMethodWithoutValueConverter()
+        {
+            // given
+            IEnumerable<int> enumerable = Lists.AsList(1, 2, 3);
+            Converter<int, string> keyConverter = element => element.ToString();
+
+            // when
+            var multiDictionary = enumerable.ToMultiDictionary(keyConverter);
+
+            // then
+            Check.That(multiDictionary).IsEqualTo(ArrayListMultiDictionary<string, int>.Of("1", 1, "2", 2, "3", 3));
         }
     }
 }

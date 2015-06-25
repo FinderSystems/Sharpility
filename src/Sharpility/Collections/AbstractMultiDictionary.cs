@@ -50,9 +50,9 @@ namespace Sharpility.Collections
             }
         }
 
-        public void PutAll(IDictionary<TKey, TValue> dictionary)
+        public void PutAll(IEnumerable<KeyValuePair<TKey, TValue>> entries)
         {
-            foreach (var entry in dictionary)
+            foreach (var entry in entries)
             {
                 Put(entry.Key, entry.Value);
             }

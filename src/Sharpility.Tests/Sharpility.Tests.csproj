@@ -65,6 +65,7 @@
     <Compile Include="Extensions\ComparerExtensionsTests.cs" />
     <Compile Include="Extensions\DateTimeExtensionsTests.cs" />
     <Compile Include="Extensions\DbCommandExtensionsTests.cs" />
+    <Compile Include="Extensions\MultiDictionaryExtensionsTests.cs" />
     <Compile Include="IO\EmbeddedResourcesTests.cs" />
     <Compile Include="IO\FilesTests.cs" />
     <Compile Include="IO\StreamsTests.cs" />
