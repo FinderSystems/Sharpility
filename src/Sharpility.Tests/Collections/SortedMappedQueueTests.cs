@@ -4,7 +4,7 @@ using NFluent;
 using NUnit.Framework;
 using Sharpility.Collections;
 using Sharpility.Extensions;
-using Sharpility.Tests.Function;
+using Sharpility.Function;
 using Sharpility.Util;
 
 namespace Sharpility.Tests.Collections
