@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Collections.Immutable;
+using Sharpility.Collections;
 using Sharpility.Extensions;
 
 namespace Sharpility.Util
@@ -20,7 +21,7 @@ namespace Sharpility.Util
         {
             var dictionary = new Dictionary<T, TV>(entries.Length);
             dictionary.PutAll(entries);
-            return dictionary;
+            return ComparableDictionary<T, TV>.Of(dictionary);
         }
 
         # region QuickDictionaryCreate
@@ -37,7 +38,7 @@ namespace Sharpility.Util
         {
             var dictionary = new Dictionary<T, TV>();
             dictionary.Put(key, value);
-            return dictionary;
+            return ComparableDictionary<T, TV>.Of(dictionary);
         }
 
         /// <summary>
@@ -55,7 +56,7 @@ namespace Sharpility.Util
             var dictionary = new Dictionary<T, TV>();
             dictionary.Put(key1, value1);
             dictionary.Put(key2, value2);
-            return dictionary;
+            return ComparableDictionary<T, TV>.Of(dictionary);
         }
 
         /// <summary>
@@ -76,7 +77,7 @@ namespace Sharpility.Util
             dictionary.Put(key1, value1);
             dictionary.Put(key2, value2);
             dictionary.Put(key3, value3);
-            return dictionary;
+            return ComparableDictionary<T, TV>.Of(dictionary);
         }
 
         /// <summary>
@@ -100,7 +101,7 @@ namespace Sharpility.Util
             dictionary.Put(key2, value2);
             dictionary.Put(key3, value3);
             dictionary.Put(key4, value4);
-            return dictionary;
+            return ComparableDictionary<T, TV>.Of(dictionary);
         }
 
         /// <summary>
@@ -127,7 +128,7 @@ namespace Sharpility.Util
             dictionary.Put(key3, value3);
             dictionary.Put(key4, value4);
             dictionary.Put(key5, value5);
-            return dictionary;
+            return ComparableDictionary<T, TV>.Of(dictionary);
         }
 
         /// <summary>
@@ -158,7 +159,7 @@ namespace Sharpility.Util
             dictionary.Put(key4, value4);
             dictionary.Put(key5, value5);
             dictionary.Put(key6, value6);
-            return dictionary;
+            return ComparableDictionary<T, TV>.Of(dictionary);
         }
 
         /// <summary>
@@ -192,7 +193,7 @@ namespace Sharpility.Util
             dictionary.Put(key5, value5);
             dictionary.Put(key6, value6);
             dictionary.Put(key7, value7);
-            return dictionary;
+            return ComparableDictionary<T, TV>.Of(dictionary);
         }
 
         /// <summary>
@@ -229,7 +230,7 @@ namespace Sharpility.Util
             dictionary.Put(key6, value6);
             dictionary.Put(key7, value7);
             dictionary.Put(key8, value8);
-            return dictionary;
+            return ComparableDictionary<T, TV>.Of(dictionary);
         }
 
         /// <summary>
@@ -269,7 +270,7 @@ namespace Sharpility.Util
             dictionary.Put(key7, value7);
             dictionary.Put(key8, value8);
             dictionary.Put(key9, value9);
-            return dictionary;
+            return ComparableDictionary<T, TV>.Of(dictionary);
         }
 
         /// <summary>
@@ -312,7 +313,7 @@ namespace Sharpility.Util
             dictionary.Put(key8, value8);
             dictionary.Put(key9, value9);
             dictionary.Put(key10, value10);
-            return dictionary;
+            return ComparableDictionary<T, TV>.Of(dictionary);
         }
 
         # endregion QuickDictionaryCreate
@@ -632,7 +633,7 @@ namespace Sharpility.Util
         /// <returns>empty dictionary</returns>
         public static IDictionary<T, TV> Empty<T, TV>()
         {
-            return new Dictionary<T, TV>();
+            return ComparableDictionary<T, TV>.Of(new Dictionary<T, TV>());
         }
     }
 }

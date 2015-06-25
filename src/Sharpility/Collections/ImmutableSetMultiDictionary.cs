@@ -173,12 +173,12 @@ namespace Sharpility.Collections
 
         protected override ICollection<TValue> EmptyCollection()
         {
-            return ImmutableList<TValue>.Empty;
+            return ImmutableHashSet<TValue>.Empty;
         }
 
         protected override ICollection<TValue> MutableCopy(ICollection<TValue> values)
         {
-            return new List<TValue>(values);
+            return new HashSet<TValue>(values);
         }
 
         /// <summary>

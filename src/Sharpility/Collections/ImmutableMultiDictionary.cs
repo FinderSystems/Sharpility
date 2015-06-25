@@ -156,7 +156,7 @@ namespace Sharpility.Collections
             {
                 result.Put(entry.Key, MutableCopy(entry.Value));
             }
-            return result;
+            return ComparableDictionary<TKey, ICollection<TValue>>.Of(result);
         }
 
         public override bool Equals(object obj)

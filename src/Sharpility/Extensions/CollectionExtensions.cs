@@ -618,6 +618,23 @@ namespace Sharpility.Extensions
             return ToMultiDictionary(enumerable, keyConverter, valueConverter);
         }
 
+        public static IDictionary<T, int> DistinctElementCount<T>(this IEnumerable<T> enumerable)
+        {
+            var result = new Dictionary<T, int>();
+            foreach (var element in enumerable)
+            {
+                if (result.ContainsKey(element))
+                {
+                    result[element] = result[element] + 1;
+                }
+                else
+                {
+                    result[element] = 1;
+                }
+            }
+            return ComparableDictionary<T, int>.Of(result);
+        }
+
         private static void SortCollection<T>(ICollection<T> list, IComparer<T> comparator)
         {
             var elements = list.ToArray();

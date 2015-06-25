@@ -207,7 +207,7 @@ namespace Sharpility.Collections
         {
             var result = new Dictionary<TKey, ICollection<TValue>>(dictionary.Count);
             result.PutAll(dictionary);
-            return result;
+            return ComparableDictionary<TKey, ICollection<TValue>>.Of(result);
         }
 
         private ICollection<TValue> ValuesOf(TKey key)

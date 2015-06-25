@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using NFluent;
 using NiceTry;
 using NUnit.Framework;
 using Sharpility.Collections;
+using Sharpility.Extensions;
 using Sharpility.Util;
 
 namespace Sharpility.Tests.Collections
@@ -11,6 +13,110 @@ namespace Sharpility.Tests.Collections
     [TestFixture]
     public class ImmutableMultiDictionaryTests
     {
+        [Test, TestCaseSource("ImmutableMultiDictionaries")]
+        public void ShouldReturnImmutableMultiDictionaryEntries(ImmutableMultiDictionaryCreator creator)
+        {
+            // given
+            var entires = Lists.AsList(
+                Dictionaries.Entry(1, "A"),
+                Dictionaries.Entry(1, "B"),
+                Dictionaries.Entry(1, "C"),
+                Dictionaries.Entry(2, "A"),
+                Dictionaries.Entry(3, "C"));
+            var immutableMultiDictionary = creator.Create(entires.ToArray());
+
+            // when
+            var result = immutableMultiDictionary.Entries;
+
+            // then
+            Check.That(immutableMultiDictionary.Count).IsEqualTo(entires.Count);
+            Check.That(result).HasSize(entires.Count).And.Contains(entires.ToArray());
+        }
+
+        [Test, TestCaseSource("ImmutableMultiDictionaries")]
+        public void ShouldReturnImmutableMultiDictionaryMultiEntries(ImmutableMultiDictionaryCreator creator)
+        {
+            // given
+            var entires = Lists.AsList(
+                Dictionaries.Entry(1, "A"),
+                Dictionaries.Entry(1, "B"),
+                Dictionaries.Entry(1, "C"),
+                Dictionaries.Entry(2, "A"),
+                Dictionaries.Entry(3, "C"));
+            var immutableMultiDictionary = creator.Create(entires.ToArray());
+
+            // when
+            var result = immutableMultiDictionary.MultiEntries;
+
+            // then
+            var mutliEntriesDictionary = result.ToDictionary(element => element.Key, element => element.Value);
+            Check.That(immutableMultiDictionary.Count).IsEqualTo(entires.Count);
+            Check.That(result).HasSize(3);
+            Check.That(mutliEntriesDictionary.Keys).HasSize(3).And.Contains(1, 2, 3);
+            Check.That(mutliEntriesDictionary[1]).HasSize(3).And.Contains("A", "B", "C");
+            Check.That(mutliEntriesDictionary[2]).HasSize(1).And.Contains("A");
+            Check.That(mutliEntriesDictionary[3]).HasSize(1).And.Contains("C");
+        }
+
+        [Test, TestCaseSource("ImmutableMultiDictionaries")]
+        public void ShouldReturnEmptyCollectionForNotExistingKey(ImmutableMultiDictionaryCreator creator)
+        {
+            // given
+            var immutableMultiDictionary = creator.Create<string, string>();
+
+            // when
+            var keyValues = immutableMultiDictionary["test"];
+            var keyValues2 = immutableMultiDictionary.Get("test");
+
+            // then
+            Check.That(keyValues).IsEmpty();
+            Check.That(keyValues2).IsEmpty();
+            Check.That(keyValues is IReadOnlyCollection<string>).IsTrue();
+            Check.That(keyValues2 is IReadOnlyCollection<string>).IsTrue();
+        }
+
+        [Test, TestCaseSource("ImmutableMultiDictionaries")]
+        public void ShouldReturnImmutableMultiDictionaryValuesForKey(ImmutableMultiDictionaryCreator creator)
+        {
+            // given
+            var immutableMultiDictionary = creator.Create
+                (Dictionaries.Entry("A", "B"), 
+                Dictionaries.Entry("A", "C"),
+                Dictionaries.Entry("A", "D"));
+
+            // when
+            var keyValues = immutableMultiDictionary["A"];
+            var keyValues2 = immutableMultiDictionary.Get("A");
+
+            // then
+            Check.That(keyValues).HasSize(3).And.Contains("B", "C", "D");
+            Check.That(keyValues2).HasSize(3).And.Contains("B", "C", "D");
+
+            Check.That(keyValues is IReadOnlyCollection<string>).IsTrue();
+            Check.That(keyValues2 is IReadOnlyCollection<string>).IsTrue();
+        }
+
+        [Test, TestCaseSource("ImmutableMultiDictionaries")]
+        public void ShouldReturImmutableMultiDictionaryValues(ImmutableMultiDictionaryCreator creator)
+         {
+            // given
+            var immutableMultiDictionary = creator.Create(ArrayListMultiDictionary<int, string>.Of(
+                 1, "A", 1, "B", 1, "C", 
+                 2, "A", 3, "C", 
+                 3, "X").Entries.ToArray());
+
+            // when
+            var values = immutableMultiDictionary.Values;
+
+            // then
+            Check.That(immutableMultiDictionary.Count).IsEqualTo(6);
+            Check.That(values).HasSize(6).And.Contains("A", "B", "C", "X");
+            Check.That(Objects.Equal(values.DistinctElementCount(), 
+                Dictionaries.Create("A", 2, "B", 1, "C", 2, "X", 1)))
+                .IsTrue();
+            Check.That(values is IReadOnlyCollection<string>).IsTrue();
+        }
+
         [Test, TestCaseSource("ImmutableMultiDictionaries")]
         public void ShouldPreventImmutableMultiDictionaryPut(ImmutableMultiDictionaryCreator creator)
         {

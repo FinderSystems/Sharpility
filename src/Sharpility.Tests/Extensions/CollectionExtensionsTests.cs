@@ -711,5 +711,21 @@ namespace Sharpility.Tests.Extensions
             // then
             Check.That(multiDictionary).IsEqualTo(ArrayListMultiDictionary<string, int>.Of("1", 1, "2", 2, "3", 3));
         }
+
+        [Test]
+        public void ShouldExtenedEnumerableByDistinctElementCountMethod()
+        {
+            // given
+            var set = Sets.AsSet("A", "B", "C");
+            var list = Lists.AsList("A", "B", "B", "B", "C", "C", "D", "D", "D", "D");
+
+            // when
+            var setDistinctElementsCount = set.DistinctElementCount();
+            var listDistinctElementsCount = list.DistinctElementCount();
+
+            // then
+            Check.That(setDistinctElementsCount).IsEqualTo(Dictionaries.Create("A", 1, "B", 1, "C", 1));
+            Check.That(listDistinctElementsCount).IsEqualTo(Dictionaries.Create("A", 1, "B", 3, "C", 2, "D", 4));
+        }
     }
 }
