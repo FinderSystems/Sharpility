@@ -44,14 +44,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Collections\AbstractCompositeDictionary.cs" />
     <Compile Include="Collections\AbstractMultiDictionary.cs" />
     <Compile Include="Collections\AbstractSortedMappedQueue.cs" />
     <Compile Include="Collections\ArrayListSortedMappedQueue.cs" />
     <Compile Include="Collections\ComparableDictionary.cs" />
     <Compile Include="Collections\ComparableList.cs" />
     <Compile Include="Collections\ComparableSet.cs" />
+    <Compile Include="Collections\CompositeDictionary.cs" />
+    <Compile Include="Collections\CompositeKey.cs" />
     <Compile Include="Collections\Concurrent\DefaultConcurrentQueue.cs" />
     <Compile Include="Collections\DefaultQueue.cs" />
+    <Compile Include="Collections\HashCompositeDictionary.cs" />
     <Compile Include="Collections\HashSetMultiDictionary.cs" />
     <Compile Include="Collections\ImmutableListMultiDictionary.cs" />
     <Compile Include="Collections\ImmutableMultiDictionary.cs" />
@@ -81,6 +85,7 @@
     <Compile Include="Time\SystemClock.cs" />
     <Compile Include="Util\Booleans.cs" />
     <Compile Include="Util\Comparers.cs" />
+    <Compile Include="Util\CompositeKeys.cs" />
     <Compile Include="Util\Dictionaries.cs" />
     <Compile Include="Extensions\DictionaryExtensions.cs" />
     <Compile Include="Util\Hashes.cs" />

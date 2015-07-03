@@ -56,6 +56,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Collections\AbstractCompositeDictionaryTests.cs" />
     <Compile Include="Collections\ArrayListMultiDictionaryTests.cs" />
     <Compile Include="Collections\HashSetMultiDictionaryTests.cs" />
     <Compile Include="Collections\ImmutableListMultiDictionaryTests.cs" />
