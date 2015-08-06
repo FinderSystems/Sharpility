@@ -57,6 +57,7 @@
     <Compile Include="Collections\DefaultQueue.cs" />
     <Compile Include="Collections\HashCompositeDictionary.cs" />
     <Compile Include="Collections\HashSetMultiDictionary.cs" />
+    <Compile Include="Collections\ImmutableCompositeDictionary.cs" />
     <Compile Include="Collections\ImmutableListMultiDictionary.cs" />
     <Compile Include="Collections\ImmutableMultiDictionary.cs" />
     <Compile Include="Collections\ImmutableSetMultiDictionary.cs" />
@@ -89,6 +90,7 @@
     <Compile Include="Util\Dictionaries.cs" />
     <Compile Include="Extensions\DictionaryExtensions.cs" />
     <Compile Include="Util\Hashes.cs" />
+    <Compile Include="Util\KeyValuePairs.cs" />
     <Compile Include="Util\Lists.cs" />
     <Compile Include="Extensions\ObjectExtensions.cs" />
     <Compile Include="Collections\OrderedHashImmutableDictionary.cs" />
@@ -99,7 +101,7 @@
     <Compile Include="Util\Enums.cs" />
     <Compile Include="Util\Numbers.cs" />
     <Compile Include="Util\Objects.cs" />
-    <Compile Include="Base\Precognitions.cs" />
+    <Compile Include="Base\Preconditions.cs" />
     <Compile Include="Util\Reflections.cs" />
     <Compile Include="Util\Strings.cs" />
     <Compile Include="Util\ToStringHelper.cs" />

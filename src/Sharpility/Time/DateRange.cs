@@ -21,7 +21,7 @@ namespace Sharpility.Time
 
         private DateRange(DateTime from, DateTime to)
         {
-            Precognitions.Evaluate(from <= to, 
+            Preconditions.Evaluate(from <= to, 
                 String.Format("Invalid date range {0} - {1}", from, to));
             From = from;
             To = to;

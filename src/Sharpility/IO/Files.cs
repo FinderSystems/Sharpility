@@ -118,7 +118,7 @@ namespace Sharpility.IO
         /// <returns>path with ending directory separator removed</returns>
         public static string TrimEndingDirectorySeparator(string path)
         {
-            Precognitions.IsNotNull(path, "Path not specified");
+            Preconditions.IsNotNull(path, "Path not specified");
             if (path.EndsWith(System.IO.Path.DirectorySeparatorChar.ToString()) && path.Length > 1)
             {
                 return path.Substring(0, path.Length - 1);

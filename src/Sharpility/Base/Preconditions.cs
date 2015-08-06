@@ -9,7 +9,7 @@ namespace Sharpility.Base
     /// <summary>
     /// Simple utility for data validation.
     /// </summary>
-    public static class Precognitions
+    public static class Preconditions
     {
         /// <summary>
         /// Evaluates is statement is true and throws ArgumentException with given message if not.

@@ -37,7 +37,7 @@ namespace Sharpility.IO
         {
             var assembly = Assembly.GetAssembly(classLoader);
             var stream = assembly.GetManifestResourceStream(resource);
-            Precognitions.IsNotNull(stream, () => new FileNotFoundException(
+            Preconditions.IsNotNull(stream, () => new FileNotFoundException(
                 String.Format("Could not find resource: '{0}' at {1}", resource, classLoader)));
             return stream;
         }

@@ -11,7 +11,7 @@ using Sharpility.Util;
 namespace Sharpility.Tests.Base
 {
     [TestFixture]
-    public class PrecognitionsTests
+    public class PreconditionsTests
     {
 
         #region EvaulatePassTests
@@ -24,7 +24,7 @@ namespace Sharpility.Tests.Base
             const string errorMessage = "test";
 
             // when
-            var result = Try.To(() => Precognitions.Evaluate(condition, errorMessage));
+            var result = Try.To(() => Preconditions.Evaluate(condition, errorMessage));
 
             // then
             var caughtException = result.IsFailure ? result.Error : null;
@@ -40,7 +40,7 @@ namespace Sharpility.Tests.Base
             Func<ApplicationException> exception = () => new ApplicationException(errorMessage);
 
             // when
-            var result = Try.To(() => Precognitions.Evaluate(condition, exception));
+            var result = Try.To(() => Preconditions.Evaluate(condition, exception));
 
             // then
             var caughtException = result.IsFailure ? result.Error : null;
@@ -55,7 +55,7 @@ namespace Sharpility.Tests.Base
             const string errorMessage = "test";
 
             // when
-            var result = Try.To(() => Precognitions.Evaluate(condition, errorMessage));
+            var result = Try.To(() => Preconditions.Evaluate(condition, errorMessage));
 
             // then
             var caughtException = result.IsFailure ? result.Error : null;
@@ -71,7 +71,7 @@ namespace Sharpility.Tests.Base
             Func<ApplicationException> exception = () => new ApplicationException(errorMessage);
 
             // when
-            var result = Try.To(() => Precognitions.Evaluate(condition, exception));
+            var result = Try.To(() => Preconditions.Evaluate(condition, exception));
 
             // then
             var caughtException = result.IsFailure ? result.Error : null;
@@ -90,7 +90,7 @@ namespace Sharpility.Tests.Base
             const string errorMessage = "test";
 
             // when
-            var result = Try.To(() => Precognitions.Evaluate(condition, errorMessage));
+            var result = Try.To(() => Preconditions.Evaluate(condition, errorMessage));
 
             // then
             var caughtException = result.IsFailure ? result.Error : null;
@@ -108,7 +108,7 @@ namespace Sharpility.Tests.Base
             Func<ApplicationException> exception = () => new ApplicationException(errorMessage);
 
             // when
-            var result = Try.To(() => Precognitions.Evaluate(condition, exception));
+            var result = Try.To(() => Preconditions.Evaluate(condition, exception));
 
             // then
             var caughtException = result.IsFailure ? result.Error : null;
@@ -126,7 +126,7 @@ namespace Sharpility.Tests.Base
             Func<ApplicationException> exception = () => new ApplicationException(errorMessage);
 
             // when
-            var result = Try.To(() => Precognitions.Evaluate(condition, exception));
+            var result = Try.To(() => Preconditions.Evaluate(condition, exception));
 
             // then
             var caughtException = result.IsFailure ? result.Error : null;
@@ -147,7 +147,7 @@ namespace Sharpility.Tests.Base
             var obj = new object();
 
             // when
-            var result = Try.To(() => Precognitions.IsNotNull(obj, errorMessage));
+            var result = Try.To(() => Preconditions.IsNotNull(obj, errorMessage));
 
             // then
             var caughtException = result.IsFailure ? result.Error : null;
@@ -162,7 +162,7 @@ namespace Sharpility.Tests.Base
             const object obj = null;
 
             // when
-            var result = Try.To(() => Precognitions.IsNotNull(obj, errorMessage));
+            var result = Try.To(() => Preconditions.IsNotNull(obj, errorMessage));
 
             // then
             var caughtException = result.IsFailure ? result.Error : null;
@@ -180,7 +180,7 @@ namespace Sharpility.Tests.Base
             var obj = new object();
 
             // when
-            var result = Try.To(() => Precognitions.IsNotNull(obj, exception));
+            var result = Try.To(() => Preconditions.IsNotNull(obj, exception));
 
             // then
             var caughtException = result.IsFailure ? result.Error : null;
@@ -196,7 +196,7 @@ namespace Sharpility.Tests.Base
             const object obj = null;
 
             // when
-            var result = Try.To(() => Precognitions.IsNotNull(obj, exception));
+            var result = Try.To(() => Preconditions.IsNotNull(obj, exception));
 
             // then
             var caughtException = result.IsFailure ? result.Error : null;
@@ -217,7 +217,7 @@ namespace Sharpility.Tests.Base
             const object obj = null;
 
             // when
-            var result = Try.To(() => Precognitions.IsNull(obj, errorMessage));
+            var result = Try.To(() => Preconditions.IsNull(obj, errorMessage));
 
             // then
             var caughtException = result.IsFailure ? result.Error : null;
@@ -232,7 +232,7 @@ namespace Sharpility.Tests.Base
             var obj = new object();
 
             // when
-            var result = Try.To(() => Precognitions.IsNull(obj, errorMessage));
+            var result = Try.To(() => Preconditions.IsNull(obj, errorMessage));
 
             // then
             var caughtException = result.IsFailure ? result.Error : null;
@@ -250,7 +250,7 @@ namespace Sharpility.Tests.Base
             const object obj = null;
 
             // when
-            var result = Try.To(() => Precognitions.IsNull(obj, exception));
+            var result = Try.To(() => Preconditions.IsNull(obj, exception));
 
             // then
             var caughtException = result.IsFailure ? result.Error : null;
@@ -266,7 +266,7 @@ namespace Sharpility.Tests.Base
             var obj = new object();
 
             // when
-            var result = Try.To(() => Precognitions.IsNull(obj, exception));
+            var result = Try.To(() => Preconditions.IsNull(obj, exception));
 
             // then
             var caughtException = result.IsFailure ? result.Error : null;
@@ -287,7 +287,7 @@ namespace Sharpility.Tests.Base
             const string value = "abc";
 
             // when
-            var result = Try.To(() => Precognitions.IsNotEmpty(value, errorMessage));
+            var result = Try.To(() => Preconditions.IsNotEmpty(value, errorMessage));
 
             // then
             var caughtException = result.IsFailure ? result.Error : null;
@@ -302,7 +302,7 @@ namespace Sharpility.Tests.Base
             const string value = "";
 
             // when
-            var result = Try.To(() => Precognitions.IsNotEmpty(value, errorMessage));
+            var result = Try.To(() => Preconditions.IsNotEmpty(value, errorMessage));
 
             // then
             var caughtException = result.IsFailure ? result.Error : null;
@@ -319,7 +319,7 @@ namespace Sharpility.Tests.Base
             const string value = null;
 
             // when
-            var result = Try.To(() => Precognitions.IsNotEmpty(value, errorMessage));
+            var result = Try.To(() => Preconditions.IsNotEmpty(value, errorMessage));
 
             // then
             var caughtException = result.IsFailure ? result.Error : null;
@@ -337,7 +337,7 @@ namespace Sharpility.Tests.Base
             const string value = "abc";
 
             // when
-            var result = Try.To(() => Precognitions.IsNotEmpty(value, exception));
+            var result = Try.To(() => Preconditions.IsNotEmpty(value, exception));
 
             // then
             var caughtException = result.IsFailure ? result.Error : null;
@@ -353,7 +353,7 @@ namespace Sharpility.Tests.Base
             const string value = "";
 
             // when
-            var result = Try.To(() => Precognitions.IsNotEmpty(value, exception));
+            var result = Try.To(() => Preconditions.IsNotEmpty(value, exception));
 
             // then
             var caughtException = result.IsFailure ? result.Error : null;
@@ -371,7 +371,7 @@ namespace Sharpility.Tests.Base
             const string value = null;
 
             // when
-            var result = Try.To(() => Precognitions.IsNotEmpty(value, exception));
+            var result = Try.To(() => Preconditions.IsNotEmpty(value, exception));
 
             // then
             var caughtException = result.IsFailure ? result.Error : null;
@@ -392,7 +392,7 @@ namespace Sharpility.Tests.Base
             IEnumerable<int> enumerable = Lists.AsList(1, 2, 3);
 
             // when
-            var result = Try.To(() => Precognitions.IsNotEmpty(enumerable, errorMessage));
+            var result = Try.To(() => Preconditions.IsNotEmpty(enumerable, errorMessage));
 
             // then
             var caughtException = result.IsFailure ? result.Error : null;
@@ -407,7 +407,7 @@ namespace Sharpility.Tests.Base
             IEnumerable<int> enumerable = Lists.EmptyList<int>();
 
             // when
-            var result = Try.To(() => Precognitions.IsNotEmpty(enumerable, errorMessage));
+            var result = Try.To(() => Preconditions.IsNotEmpty(enumerable, errorMessage));
 
             // then
             var caughtException = result.IsFailure ? result.Error : null;
@@ -424,7 +424,7 @@ namespace Sharpility.Tests.Base
             IEnumerable<int> enumerable = null;
 
             // when
-            var result = Try.To(() => Precognitions.IsNotEmpty(enumerable, errorMessage));
+            var result = Try.To(() => Preconditions.IsNotEmpty(enumerable, errorMessage));
 
             // then
             var caughtException = result.IsFailure ? result.Error : null;
@@ -442,7 +442,7 @@ namespace Sharpility.Tests.Base
             IEnumerable<int> enumerable = Lists.AsList(1, 2, 3);
 
             // when
-            var result = Try.To(() => Precognitions.IsNotEmpty(enumerable, exception));
+            var result = Try.To(() => Preconditions.IsNotEmpty(enumerable, exception));
 
             // then
             var caughtException = result.IsFailure ? result.Error : null;
@@ -458,7 +458,7 @@ namespace Sharpility.Tests.Base
             IEnumerable<int> enumerable = Lists.EmptyList<int>();
 
             // when
-            var result = Try.To(() => Precognitions.IsNotEmpty(enumerable, exception));
+            var result = Try.To(() => Preconditions.IsNotEmpty(enumerable, exception));
 
             // then
             var caughtException = result.IsFailure ? result.Error : null;
@@ -476,7 +476,7 @@ namespace Sharpility.Tests.Base
             IEnumerable<int> enumerable = null;
 
             // when
-            var result = Try.To(() => Precognitions.IsNotEmpty(enumerable, exception));
+            var result = Try.To(() => Preconditions.IsNotEmpty(enumerable, exception));
 
             // then
             var caughtException = result.IsFailure ? result.Error : null;
@@ -497,7 +497,7 @@ namespace Sharpility.Tests.Base
             IEnumerable<int> enumerable = Lists.EmptyList<int>();
 
             // when
-            var result = Try.To(() => Precognitions.IsEmpty(enumerable, errorMessage));
+            var result = Try.To(() => Preconditions.IsEmpty(enumerable, errorMessage));
 
             // then
             var caughtException = result.IsFailure ? result.Error : null;
@@ -512,7 +512,7 @@ namespace Sharpility.Tests.Base
             IEnumerable<int> enumerable = Lists.AsList(1);
 
             // when
-            var result = Try.To(() => Precognitions.IsEmpty(enumerable, errorMessage));
+            var result = Try.To(() => Preconditions.IsEmpty(enumerable, errorMessage));
 
             // then
             var caughtException = result.IsFailure ? result.Error : null;
@@ -530,7 +530,7 @@ namespace Sharpility.Tests.Base
             IEnumerable<int> enumerable = Lists.EmptyList<int>();
 
             // when
-            var result = Try.To(() => Precognitions.IsEmpty(enumerable, exception));
+            var result = Try.To(() => Preconditions.IsEmpty(enumerable, exception));
 
             // then
             var caughtException = result.IsFailure ? result.Error : null;
@@ -546,7 +546,7 @@ namespace Sharpility.Tests.Base
             IEnumerable<int> enumerable = Lists.Singleton(3);
 
             // when
-            var result = Try.To(() => Precognitions.IsEmpty(enumerable, exception));
+            var result = Try.To(() => Preconditions.IsEmpty(enumerable, exception));
 
             // then
             var caughtException = result.IsFailure ? result.Error : null;
@@ -567,7 +567,7 @@ namespace Sharpility.Tests.Base
             IEnumerable<string> enumerable = Lists.Singleton("A");
 
             // when
-            var result = Try.To(() => Precognitions.IsSingleton(enumerable, errorMessage));
+            var result = Try.To(() => Preconditions.IsSingleton(enumerable, errorMessage));
 
             // then
             var caughtException = result.IsFailure ? result.Error : null;
@@ -582,7 +582,7 @@ namespace Sharpility.Tests.Base
             IEnumerable<string> enumerable = Lists.AsList("A", "B");
 
             // when
-            var result = Try.To(() => Precognitions.IsSingleton(enumerable, errorMessage));
+            var result = Try.To(() => Preconditions.IsSingleton(enumerable, errorMessage));
 
             // then
             var caughtException = result.IsFailure ? result.Error : null;
@@ -599,7 +599,7 @@ namespace Sharpility.Tests.Base
             IEnumerable<string> enumerable = Lists.EmptyList<string>();
 
             // when
-            var result = Try.To(() => Precognitions.IsSingleton(enumerable, errorMessage));
+            var result = Try.To(() => Preconditions.IsSingleton(enumerable, errorMessage));
 
             // then
             var caughtException = result.IsFailure ? result.Error : null;
@@ -616,7 +616,7 @@ namespace Sharpility.Tests.Base
             IEnumerable<int> enumerable = null;
 
             // when
-            var result = Try.To(() => Precognitions.IsSingleton(enumerable, errorMessage));
+            var result = Try.To(() => Preconditions.IsSingleton(enumerable, errorMessage));
 
             // then
             var caughtException = result.IsFailure ? result.Error : null;
@@ -634,7 +634,7 @@ namespace Sharpility.Tests.Base
             IEnumerable<int> enumerable = Lists.Singleton(1);
 
             // when
-            var result = Try.To(() => Precognitions.IsSingleton(enumerable, exception));
+            var result = Try.To(() => Preconditions.IsSingleton(enumerable, exception));
 
             // then
             var caughtException = result.IsFailure ? result.Error : null;
@@ -650,7 +650,7 @@ namespace Sharpility.Tests.Base
             IEnumerable<int> enumerable = Lists.AsList(1, 2);
 
             // when
-            var result = Try.To(() => Precognitions.IsSingleton(enumerable, exception));
+            var result = Try.To(() => Preconditions.IsSingleton(enumerable, exception));
 
             // then
             var caughtException = result.IsFailure ? result.Error : null;
@@ -668,7 +668,7 @@ namespace Sharpility.Tests.Base
             IEnumerable<int> enumerable = Lists.EmptyList<int>();
 
             // when
-            var result = Try.To(() => Precognitions.IsSingleton(enumerable, exception));
+            var result = Try.To(() => Preconditions.IsSingleton(enumerable, exception));
 
             // then
             var caughtException = result.IsFailure ? result.Error : null;
@@ -686,7 +686,7 @@ namespace Sharpility.Tests.Base
             IEnumerable<int> enumerable = null;
 
             // when
-            var result = Try.To(() => Precognitions.IsSingleton(enumerable, exception));
+            var result = Try.To(() => Preconditions.IsSingleton(enumerable, exception));
 
             // then
             var caughtException = result.IsFailure ? result.Error : null;
@@ -706,7 +706,7 @@ namespace Sharpility.Tests.Base
             const string value = "Test";
 
             // when
-            var result = Try.To(() => Precognitions.EvaluateEnum<TestEnum>(value));
+            var result = Try.To(() => Preconditions.EvaluateEnum<TestEnum>(value));
 
             // then
             var caughtException = result.IsFailure ? result.Error : null;
@@ -720,14 +720,14 @@ namespace Sharpility.Tests.Base
             const string value = "invalid";
 
             // when
-            var result = Try.To(() => Precognitions.EvaluateEnum<TestEnum>(value));
+            var result = Try.To(() => Preconditions.EvaluateEnum<TestEnum>(value));
 
             // then
             var caughtException = result.IsFailure ? result.Error : null;
             Check.That(caughtException).IsNotNull();
             Check.That(caughtException).IsInstanceOf<ArgumentException>();
             Check.That(caughtException.Message).IsEqualTo(
-                "Invalid enum value: 'invalid' for Sharpility.Tests.Base.PrecognitionsTests+TestEnum expected one of [Test, Test1, Test2]");
+                "Invalid enum value: 'invalid' for Sharpility.Tests.Base.PreconditionsTests+TestEnum expected one of [Test, Test1, Test2]");
         }
 
         [Test]
@@ -737,14 +737,14 @@ namespace Sharpility.Tests.Base
             const string value = null;
 
             // when
-            var result = Try.To(() => Precognitions.EvaluateEnum<TestEnum>(value));
+            var result = Try.To(() => Preconditions.EvaluateEnum<TestEnum>(value));
 
             // then
             var caughtException = result.IsFailure ? result.Error : null;
             Check.That(caughtException).IsNotNull();
             Check.That(caughtException).IsInstanceOf<ArgumentException>();
             Check.That(caughtException.Message).IsEqualTo(
-                "Invalid enum value: 'null' for Sharpility.Tests.Base.PrecognitionsTests+TestEnum expected one of [Test, Test1, Test2]");
+                "Invalid enum value: 'null' for Sharpility.Tests.Base.PreconditionsTests+TestEnum expected one of [Test, Test1, Test2]");
         }
 
         [Test]
@@ -755,7 +755,7 @@ namespace Sharpility.Tests.Base
             const string value = "Test";
 
             // when
-            var result = Try.To(() => Precognitions.EvaluateEnum<TestEnum>(value, errorMessage));
+            var result = Try.To(() => Preconditions.EvaluateEnum<TestEnum>(value, errorMessage));
 
             // then
             var caughtException = result.IsFailure ? result.Error : null;
@@ -770,7 +770,7 @@ namespace Sharpility.Tests.Base
             const string value = "invalid";
 
             // when
-            var result = Try.To(() => Precognitions.EvaluateEnum<TestEnum>(value, errorMessage));
+            var result = Try.To(() => Preconditions.EvaluateEnum<TestEnum>(value, errorMessage));
 
             // then
             var caughtException = result.IsFailure ? result.Error : null;
@@ -787,7 +787,7 @@ namespace Sharpility.Tests.Base
             const string value = null;
 
             // when
-            var result = Try.To(() => Precognitions.EvaluateEnum<TestEnum>(value, errorMessage));
+            var result = Try.To(() => Preconditions.EvaluateEnum<TestEnum>(value, errorMessage));
 
             // then
             var caughtException = result.IsFailure ? result.Error : null;
@@ -805,7 +805,7 @@ namespace Sharpility.Tests.Base
             Func<InvalidCastException> exception = () => new InvalidCastException(errorMessage);
 
             // when
-            var result = Try.To(() => Precognitions.EvaluateEnum<TestEnum>(value, exception));
+            var result = Try.To(() => Preconditions.EvaluateEnum<TestEnum>(value, exception));
 
             // then
             var caughtException = result.IsFailure ? result.Error : null;
@@ -821,7 +821,7 @@ namespace Sharpility.Tests.Base
             Func<InvalidCastException> exception = () => new InvalidCastException(errorMessage);
 
             // when
-            var result = Try.To(() => Precognitions.EvaluateEnum<TestEnum>(value, exception));
+            var result = Try.To(() => Preconditions.EvaluateEnum<TestEnum>(value, exception));
 
             // then
             var caughtException = result.IsFailure ? result.Error : null;
@@ -839,7 +839,7 @@ namespace Sharpility.Tests.Base
             Func<InvalidCastException> exception = () => new InvalidCastException(errorMessage);
 
             // when
-            var result = Try.To(() => Precognitions.EvaluateEnum<TestEnum>(value, exception));
+            var result = Try.To(() => Preconditions.EvaluateEnum<TestEnum>(value, exception));
 
             // then
             var caughtException = result.IsFailure ? result.Error : null;
@@ -858,7 +858,7 @@ namespace Sharpility.Tests.Base
                 enumValues => new ArgumentException(errorMessage + Strings.ToString(enumValues));
 
             // when
-            var result = Try.To(() => Precognitions.EvaluateEnum<TestEnum>(value, converter));
+            var result = Try.To(() => Preconditions.EvaluateEnum<TestEnum>(value, converter));
 
             // then
             var caughtException = result.IsFailure ? result.Error : null;
@@ -875,7 +875,7 @@ namespace Sharpility.Tests.Base
                 enumValues => new ArgumentException(errorMessage + Strings.ToString(enumValues));
 
             // when
-            var result = Try.To(() => Precognitions.EvaluateEnum<TestEnum>(value, converter));
+            var result = Try.To(() => Preconditions.EvaluateEnum<TestEnum>(value, converter));
 
             // then
             var caughtException = result.IsFailure ? result.Error : null;
@@ -894,7 +894,7 @@ namespace Sharpility.Tests.Base
                 enumValues => new ArgumentException(errorMessage + Strings.ToString(enumValues));
 
             // when
-            var result = Try.To(() => Precognitions.EvaluateEnum<TestEnum>(value, converter));
+            var result = Try.To(() => Preconditions.EvaluateEnum<TestEnum>(value, converter));
 
             // then
             var caughtException = result.IsFailure ? result.Error : null;

@@ -478,7 +478,7 @@ namespace Sharpility.Extensions
             {
                 ((LinkedList<T>)collection).RemoveFirst();
             }
-            Precognitions.IsNotNull(value, () =>
+            Preconditions.IsNotNull(value, () =>
                 new InvalidOperationException("Could not remove first item from empty collection"));
             if (collection is IList<T>)
             {

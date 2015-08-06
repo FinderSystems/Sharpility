@@ -88,7 +88,7 @@
     <Compile Include="Util\HashesTests.cs" />
     <Compile Include="Util\NumbersTests.cs" />
     <Compile Include="Util\ObjectsTests.cs" />
-    <Compile Include="Base\PrecognitionsTests.cs" />
+    <Compile Include="Base\PreconditionsTests.cs" />
     <Compile Include="Util\ReflectionsTests.cs" />
     <Compile Include="Util\StringsTests.cs" />
     <Compile Include="Util\ToStringHelperTests.cs" />
