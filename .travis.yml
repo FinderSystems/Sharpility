@@ -13,6 +13,16 @@ env:
   global:
     secure: TvoO+cJmRLtCc4oAgv/4bzO0IU5Iwh+Fsha9uvWEH8jaLUFPmWXi5ifRvn7AryWy6zRV+FYeFMe1OvEYJhmcuJ2DbdRCMTL3+KRlS8xPRGmO13b/ulcBv30Ws0RTPKdK+buFbdhkF2YYwHMuSFlTvMOf5WtvPBv+rg3oiF/JV0g2bR+H1HL8EZ30SfNrvtiQkjnrrJrDjkDCdqQb/J4VVp0XZt+yEr1JyiHpVDtuHS+MWkzdmWCs9YVM5LuUCaMwFs53sdvzRWs5D+U63OJx1xiIo0TJnaMHwsVIAtXxamFMrsYwjKsPdN4rtD2M99M6H/22rb8d8kl+Scq24rdbZoo+5O6O0bQMd2sYPlWadElBIzLrzZ6toEqLzJWjqrCSalL8uk/cHmqrzEDgbpa4fEFC/F+Z15y9ioE8otUn+7s++qp1a2zC/4rDoiUVgPQwgzrWL/YqQEThXQwJHEuwNr4BzlGxAZIY9ELlFEuOfm5LTgtVzRrDBcxF1Qvpw5OmF6z3j1xDHl5hVtIf1tpRZOzEbLsh3++n/eoD9FV97oOwU/GRUqGBuKjW5EKxPtELSAfdof6gwICUkI0PghSnh83DY2SiCVjxtVf453zqL2REPPDolzm13ObihHkLofiJl0dTWd/sosYqMWFIFgPL4sHWoY4BJDHv/b9jU465BiE=
 after_success:
-  - set -o errexit -o nounset
   - rev=$(git rev-parse --short HEAD)
   - doxygen doxygen.config
+  - cd documentation
+  - git init
+  - git config user.name "Marcin Stefaniuk"
+  - git config user.email "marcin@stefaniuk.info"
+  - git remote add upstream "https://$GH_TOKEN@github.com/FinderSystems/Sharpility.git"
+  - git fetch upstream
+  - git reset upstream/gh-pages
+  - touch .
+  - git add -A .
+  - git commit -m "Rebuild pages at ${rev}"
+  - git push -q upstream HEAD:gh-pages
