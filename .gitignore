@@ -1,6 +1,0 @@
-src/packages
-src/Sharpility/bin
-src/Sharpility/obj
-src/Sharpility.Tests/bin
-src/Sharpility.Tests/obj
-*.suo

@@ -1,0 +1,4 @@
+var interface_sharpility_1_1_tests_1_1_collections_1_1_immutable_multi_dictionary_tests_1_1_immutable_multi_dictionary_creator =
+[
+    [ "Create< TKey, TValue >", "interface_sharpility_1_1_tests_1_1_collections_1_1_immutable_multi_dictionary_tests_1_1_immutable_multi_dictionary_creator.html#a8b49c8df35ff4e10dc60d81cc9711e08", null ]
+];

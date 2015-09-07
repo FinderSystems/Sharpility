@@ -1,0 +1,25 @@
+var interface_sharpility_1_1_collections_1_1_multi_dictionary-g =
+[
+    [ "Clear", "interface_sharpility_1_1_collections_1_1_multi_dictionary-g.html#a5145cb8c46b7a6408633f8c4fd4e9f33", null ],
+    [ "ContainsEntry", "interface_sharpility_1_1_collections_1_1_multi_dictionary-g.html#a452d86eb4201e6dbc0958a3434690083", null ],
+    [ "ContainsKey", "interface_sharpility_1_1_collections_1_1_multi_dictionary-g.html#a852b48eeadc6096571a67d3bf5f92da6", null ],
+    [ "ContainsValue", "interface_sharpility_1_1_collections_1_1_multi_dictionary-g.html#a2268c7fd320ad6d95e748fc1f798a46f", null ],
+    [ "Get", "interface_sharpility_1_1_collections_1_1_multi_dictionary-g.html#aaf932a04b69c219c716f84d775bde881", null ],
+    [ "Put", "interface_sharpility_1_1_collections_1_1_multi_dictionary-g.html#a8006ccc57160da16e7ae51290fb6276b", null ],
+    [ "PutAll", "interface_sharpility_1_1_collections_1_1_multi_dictionary-g.html#adef682d0dee2b7738f3a12b74654f256", null ],
+    [ "PutAll", "interface_sharpility_1_1_collections_1_1_multi_dictionary-g.html#ac643a597e397cde62c3d5fe235ca54a6", null ],
+    [ "PutAll", "interface_sharpility_1_1_collections_1_1_multi_dictionary-g.html#a4893d5a5d5e4ba0e75cfd7d9f780a8ed", null ],
+    [ "Remove", "interface_sharpility_1_1_collections_1_1_multi_dictionary-g.html#ae30e76d9c34989f71fb821950219a2d2", null ],
+    [ "Remove", "interface_sharpility_1_1_collections_1_1_multi_dictionary-g.html#a547358f2dfdd081ec35887e87b2ec70f", null ],
+    [ "RemoveAll", "interface_sharpility_1_1_collections_1_1_multi_dictionary-g.html#a8334b7a7042581b6b820cf69d6ae3987", null ],
+    [ "ReplaceValues", "interface_sharpility_1_1_collections_1_1_multi_dictionary-g.html#af5768af291bf9a10689f5003de151fa9", null ],
+    [ "ToDictionary", "interface_sharpility_1_1_collections_1_1_multi_dictionary-g.html#a06dae3f8613788e7ee2e72cd07245d02", null ],
+    [ "ValuesCount", "interface_sharpility_1_1_collections_1_1_multi_dictionary-g.html#a6ae0275aa216464919e6e835f8d66132", null ],
+    [ "Count", "interface_sharpility_1_1_collections_1_1_multi_dictionary-g.html#a04509fda1f240f12c8e1242d45950b02", null ],
+    [ "Entries", "interface_sharpility_1_1_collections_1_1_multi_dictionary-g.html#ab6590c72b6ec111a85dcee4359eeb6f5", null ],
+    [ "IsEmpty", "interface_sharpility_1_1_collections_1_1_multi_dictionary-g.html#a03b223436ece8cfa34280c1d2bc8c740", null ],
+    [ "Keys", "interface_sharpility_1_1_collections_1_1_multi_dictionary-g.html#ab33c42c2758b04caec0bcb327af39b96", null ],
+    [ "MultiEntries", "interface_sharpility_1_1_collections_1_1_multi_dictionary-g.html#ad13b9c34d648de26bb43cb3127957569", null ],
+    [ "this[TKey key]", "interface_sharpility_1_1_collections_1_1_multi_dictionary-g.html#a411b9ca7d91d4b17682917645a537287", null ],
+    [ "Values", "interface_sharpility_1_1_collections_1_1_multi_dictionary-g.html#ad9c865a4f2b75f431f502919bef1dec0", null ]
+];

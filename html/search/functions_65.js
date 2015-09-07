@@ -1,0 +1,4 @@
+var searchData=
+[
+  ['empty',['Empty',['../class_sharpility_1_1_collections_1_1_array_list_multi_dictionary-g.html#ae78293b96fb423d83e2ffb090816e879',1,'Sharpility::Collections::ArrayListMultiDictionary-g.Empty()'],['../class_sharpility_1_1_collections_1_1_hash_set_multi_dictionary-g.html#a316e34f35b2807a95dc74ebaf79292e1',1,'Sharpility::Collections::HashSetMultiDictionary-g.Empty()'],['../class_sharpility_1_1_collections_1_1_immutable_list_multi_dictionary-g.html#aff8fe032eaf8d0bcf07134ee3dbde1fe',1,'Sharpility::Collections::ImmutableListMultiDictionary-g.Empty()'],['../class_sharpility_1_1_collections_1_1_immutable_set_multi_dictionary-g.html#a309a70b68c42839bcdc24541ac08c68d',1,'Sharpility::Collections::ImmutableSetMultiDictionary-g.Empty()'],['../class_sharpility_1_1_collections_1_1_linked_list_multi_dictionary-g.html#acf997a868e0a3911120a185cc4c554e1',1,'Sharpility::Collections::LinkedListMultiDictionary-g.Empty()']]]
+];

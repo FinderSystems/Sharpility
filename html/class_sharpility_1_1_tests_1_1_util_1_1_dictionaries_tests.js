@@ -1,0 +1,25 @@
+var class_sharpility_1_1_tests_1_1_util_1_1_dictionaries_tests =
+[
+    [ "ShouldCreateDictionaryFromEntries", "class_sharpility_1_1_tests_1_1_util_1_1_dictionaries_tests.html#ad659ea2b54779dee0a36f0cc790ccf78", null ],
+    [ "ShouldCreateEmptyDictionary", "class_sharpility_1_1_tests_1_1_util_1_1_dictionaries_tests.html#aa7d70a0317f15800d67f50edeb683f65", null ],
+    [ "ShouldQuickCreateDictionary1", "class_sharpility_1_1_tests_1_1_util_1_1_dictionaries_tests.html#a6f1e2d6c77193605a989ac106b15d9af", null ],
+    [ "ShouldQuickCreateDictionary10", "class_sharpility_1_1_tests_1_1_util_1_1_dictionaries_tests.html#a2cf16f224a636f353637e6cb560450bf", null ],
+    [ "ShouldQuickCreateDictionary2", "class_sharpility_1_1_tests_1_1_util_1_1_dictionaries_tests.html#a816d8bee38f4f595f069887bdd9efdeb", null ],
+    [ "ShouldQuickCreateDictionary3", "class_sharpility_1_1_tests_1_1_util_1_1_dictionaries_tests.html#aad8c5e939f2467be67220154c2922f5f", null ],
+    [ "ShouldQuickCreateDictionary4", "class_sharpility_1_1_tests_1_1_util_1_1_dictionaries_tests.html#add3a6d2e54ed9c9208b071179859a86f", null ],
+    [ "ShouldQuickCreateDictionary5", "class_sharpility_1_1_tests_1_1_util_1_1_dictionaries_tests.html#a98e85b055a22e7d042a6896d0c65db36", null ],
+    [ "ShouldQuickCreateDictionary6", "class_sharpility_1_1_tests_1_1_util_1_1_dictionaries_tests.html#a71765be80061435c9ac168e64edea286", null ],
+    [ "ShouldQuickCreateDictionary7", "class_sharpility_1_1_tests_1_1_util_1_1_dictionaries_tests.html#a5f4fb18112683c1025819709896eb92c", null ],
+    [ "ShouldQuickCreateDictionary8", "class_sharpility_1_1_tests_1_1_util_1_1_dictionaries_tests.html#a5c0bef28a7260f2c601cbf67b0e38e5a", null ],
+    [ "ShouldQuickCreateDictionary9", "class_sharpility_1_1_tests_1_1_util_1_1_dictionaries_tests.html#a465942832781b438d330b17ade0afd12", null ],
+    [ "ShouldQuickCreateImmutableDictionary1", "class_sharpility_1_1_tests_1_1_util_1_1_dictionaries_tests.html#a5c8840eabeaf79e798ecbaa3432ddb17", null ],
+    [ "ShouldQuickCreateImmutableDictionary10", "class_sharpility_1_1_tests_1_1_util_1_1_dictionaries_tests.html#a94a625e615e81f97bb9e8bc6a1a258b4", null ],
+    [ "ShouldQuickCreateImmutableDictionary2", "class_sharpility_1_1_tests_1_1_util_1_1_dictionaries_tests.html#ab336f21478d38d9f61b9c7cc192644a7", null ],
+    [ "ShouldQuickCreateImmutableDictionary3", "class_sharpility_1_1_tests_1_1_util_1_1_dictionaries_tests.html#aa5b87b146fe3728b2279403f04523222", null ],
+    [ "ShouldQuickCreateImmutableDictionary4", "class_sharpility_1_1_tests_1_1_util_1_1_dictionaries_tests.html#a2761747fe5461f023cf153c6475a1991", null ],
+    [ "ShouldQuickCreateImmutableDictionary5", "class_sharpility_1_1_tests_1_1_util_1_1_dictionaries_tests.html#afb51824c9b10294cf9c49fbdff74d5a3", null ],
+    [ "ShouldQuickCreateImmutableDictionary6", "class_sharpility_1_1_tests_1_1_util_1_1_dictionaries_tests.html#a0e2ae402da5f6e361ab5cf8c30521036", null ],
+    [ "ShouldQuickCreateImmutableDictionary7", "class_sharpility_1_1_tests_1_1_util_1_1_dictionaries_tests.html#a63048d24dd65e017accac5c23f4362f1", null ],
+    [ "ShouldQuickCreateImmutableDictionary8", "class_sharpility_1_1_tests_1_1_util_1_1_dictionaries_tests.html#af3ae377e657c816074d26b17bd9d2fa5", null ],
+    [ "ShouldQuickCreateImmutableDictionary9", "class_sharpility_1_1_tests_1_1_util_1_1_dictionaries_tests.html#aaff10a71240ce8eec091d6bf87662c33", null ]
+];

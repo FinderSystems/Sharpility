@@ -1,0 +1,5 @@
+var class_sharpility_1_1_tests_1_1_collections_1_1_immutable_list_multi_dictionary_tests =
+[
+    [ "ShouldBuildImmutableListMultiDictionaryAndReturnImmutableListValues", "class_sharpility_1_1_tests_1_1_collections_1_1_immutable_list_multi_dictionary_tests.html#a70fd6d9813c27147318ef9def4d7cff9", null ],
+    [ "ShouldConvertImmutableListMultiDictionaryToDictionaryWithListAsValue", "class_sharpility_1_1_tests_1_1_collections_1_1_immutable_list_multi_dictionary_tests.html#a785f1125cdf7ccc4e265f2516e3d03df", null ]
+];

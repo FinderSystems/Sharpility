@@ -1,0 +1,5 @@
+var searchData=
+[
+  ['of',['Of',['../class_sharpility_1_1_time_1_1_date_range.html#ac13bb239941e4479c70de4b299b05b4b',1,'Sharpility::Time::DateRange.Of(DateTime from, DateTime to)'],['../class_sharpility_1_1_time_1_1_date_range.html#a35327161dd335e9c7b2f6dfe5eca905d',1,'Sharpility::Time::DateRange.Of(string from, string to, IFormatProvider format=null)'],['../class_sharpility_1_1_util_1_1_to_string_helper.html#ab023d85a9f71786182cfb54085221399',1,'Sharpility::Util::ToStringHelper.Of()']]],
+  ['offer',['Offer',['../class_sharpility_1_1_collections_1_1_concurrent_1_1_default_concurrent_queue-g.html#a2134af5c3990bdcb8e1aced87894cec5',1,'Sharpility::Collections::Concurrent::DefaultConcurrentQueue-g.Offer()'],['../class_sharpility_1_1_collections_1_1_default_queue-g.html#a115d7f007fb8f9869c47633b892ba00a',1,'Sharpility::Collections::DefaultQueue-g.Offer()'],['../interface_sharpility_1_1_collections_1_1_i_queue-g.html#a3d25ba0d173990048a42052187fcbab2',1,'Sharpility::Collections::IQueue-g.Offer()'],['../class_sharpility_1_1_collections_1_1_linked_queue-g.html#aff8354978874fddd6dd2c45f75ce04ed',1,'Sharpility::Collections::LinkedQueue-g.Offer()']]]
+];
