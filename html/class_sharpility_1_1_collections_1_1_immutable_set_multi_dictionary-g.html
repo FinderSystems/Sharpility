@@ -177,10 +177,10 @@ ImmutableSetMultiDictionary<br class="typebreak"/>
 &lt; TKey, TValue &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>Of</b> (TKey key1, TValue value1, TKey key2, TValue value2, TKey key3, TValue value3, TKey key4, TValue value4, TKey key5, TValue value5, TKey key6, TValue value6, TKey key7, TValue value7, TKey key8, TValue value8, TKey key9, TValue value9, TKey key10, TValue value10)</td></tr>
 <tr><td colspan="2"><h2><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a520bc69d86f6d7a11900e6df570692a0"></a><!-- doxytag: member="Sharpility::Collections::ImmutableSetMultiDictionary&#45;g::EmptyCollection" ref="a520bc69d86f6d7a11900e6df570692a0" args="()" -->
-override ICollection&lt; TValue &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>EmptyCollection</b> ()</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9ce92824ebf918594c486b18c8a334b6"></a><!-- doxytag: member="Sharpility::Collections::ImmutableSetMultiDictionary&#45;g::MutableCopy" ref="a9ce92824ebf918594c486b18c8a334b6" args="(ICollection&lt; TValue &gt; values)" -->
-override ICollection&lt; TValue &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>MutableCopy</b> (ICollection&lt; TValue &gt; values)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">override ICollection&lt; TValue &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sharpility_1_1_collections_1_1_immutable_set_multi_dictionary-g.html#a520bc69d86f6d7a11900e6df570692a0">EmptyCollection</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns empty collection matching <a class="el" href="interface_sharpility_1_1_collections_1_1_multi_dictionary-g.html" title="Dictionary that contains multiple values at given key.">MultiDictionary</a> implementation.  <a href="#a520bc69d86f6d7a11900e6df570692a0"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">override ICollection&lt; TValue &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sharpility_1_1_collections_1_1_immutable_set_multi_dictionary-g.html#a9ce92824ebf918594c486b18c8a334b6">MutableCopy</a> (ICollection&lt; TValue &gt; values)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates mutable copy of given collection.  <a href="#a9ce92824ebf918594c486b18c8a334b6"></a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><h3>template&lt;TKey, TValue&gt;<br/>
@@ -265,6 +265,59 @@ template&lt;TKey , TValue &gt; </div>
 
 </div>
 </div>
+<a class="anchor" id="a520bc69d86f6d7a11900e6df570692a0"></a><!-- doxytag: member="Sharpility::Collections::ImmutableSetMultiDictionary&#45;g::EmptyCollection" ref="a520bc69d86f6d7a11900e6df570692a0" args="()" -->
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;TKey , TValue &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">override ICollection&lt;TValue&gt; <a class="el" href="class_sharpility_1_1_collections_1_1_immutable_set_multi_dictionary-g.html">Sharpility.Collections.ImmutableSetMultiDictionary</a>&lt; TKey, TValue &gt;.<a class="el" href="class_sharpility_1_1_collections_1_1_immutable_set_multi_dictionary-g.html#a520bc69d86f6d7a11900e6df570692a0">EmptyCollection</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td><code> [inline, protected, virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Returns empty collection matching <a class="el" href="interface_sharpility_1_1_collections_1_1_multi_dictionary-g.html" title="Dictionary that contains multiple values at given key.">MultiDictionary</a> implementation. </p>
+<dl class="return"><dt><b>Returns:</b></dt><dd>empty collection</dd></dl>
+
+<p>Implements <a class="el" href="class_sharpility_1_1_collections_1_1_immutable_multi_dictionary-g.html#a549740a8a195cf554a203c4120b10958">Sharpility.Collections.ImmutableMultiDictionary&lt; TKey, TValue &gt;</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a9ce92824ebf918594c486b18c8a334b6"></a><!-- doxytag: member="Sharpility::Collections::ImmutableSetMultiDictionary&#45;g::MutableCopy" ref="a9ce92824ebf918594c486b18c8a334b6" args="(ICollection&lt; TValue &gt; values)" -->
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;TKey , TValue &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">override ICollection&lt;TValue&gt; <a class="el" href="class_sharpility_1_1_collections_1_1_immutable_set_multi_dictionary-g.html">Sharpility.Collections.ImmutableSetMultiDictionary</a>&lt; TKey, TValue &gt;.<a class="el" href="class_sharpility_1_1_collections_1_1_immutable_set_multi_dictionary-g.html#a9ce92824ebf918594c486b18c8a334b6">MutableCopy</a> </td>
+          <td>(</td>
+          <td class="paramtype">ICollection&lt; TValue &gt;&#160;</td>
+          <td class="paramname"><em>values</em></td><td>)</td>
+          <td><code> [inline, protected, virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Creates mutable copy of given collection. </p>
+<dl class="params"><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">values</td><td>Transformed collection</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>Mutable collection</dd></dl>
+
+<p>Implements <a class="el" href="class_sharpility_1_1_collections_1_1_immutable_multi_dictionary-g.html#a102a04412c2a0a8f2c04ff226aaf1e2e">Sharpility.Collections.ImmutableMultiDictionary&lt; TKey, TValue &gt;</a>.</p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>src/Sharpility/Collections/ImmutableSetMultiDictionary.cs</li>
 </ul>
@@ -275,7 +328,7 @@ template&lt;TKey , TValue &gt; </div>
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Properties</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Properties</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">

@@ -101,13 +101,16 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">Sharpility.Collections.OrderedImmutableDictionary&lt; T, TV &gt; Interface Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<!-- doxytag: class="Sharpility::Collections::OrderedImmutableDictionary-g" --><div class="dynheader">
+<!-- doxytag: class="Sharpility::Collections::OrderedImmutableDictionary-g" -->
+<p>Immutable dictionary holding putted keys order.  
+ <a href="interface_sharpility_1_1_collections_1_1_ordered_immutable_dictionary-g.html#details">More...</a></p>
+<div class="dynheader">
 Inheritance diagram for Sharpility.Collections.OrderedImmutableDictionary&lt; T, TV &gt;:</div>
 <div class="dyncontent">
  <div class="center">
   <img src="interface_sharpility_1_1_collections_1_1_ordered_immutable_dictionary-g.png" usemap="#Sharpility.Collections.OrderedImmutableDictionary&lt; T, TV &gt;_map" alt=""/>
   <map id="Sharpility.Collections.OrderedImmutableDictionary&lt; T, TV &gt;_map" name="Sharpility.Collections.OrderedImmutableDictionary&lt; T, TV &gt;_map">
-<area href="class_sharpility_1_1_collections_1_1_ordered_hash_immutable_dictionary-g.html" alt="Sharpility.Collections.OrderedHashImmutableDictionary&lt; T, TV &gt;" shape="rect" coords="0,56,381,80"/>
+<area href="class_sharpility_1_1_collections_1_1_ordered_hash_immutable_dictionary-g.html" title="HashMap implementation of OrderedImmutableDictionary." alt="Sharpility.Collections.OrderedHashImmutableDictionary&lt; T, TV &gt;" shape="rect" coords="0,56,381,80"/>
 </map>
  </div></div>
 
@@ -115,15 +118,63 @@ Inheritance diagram for Sharpility.Collections.OrderedImmutableDictionary&lt; T,
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="properties"></a>
 Properties</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0b06b9f6e05912efef8d22eca8611d67"></a><!-- doxytag: member="Sharpility::Collections::OrderedImmutableDictionary&#45;g::OrderedKeys" ref="a0b06b9f6e05912efef8d22eca8611d67" args="" -->
-IImmutableList&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>OrderedKeys</b><code> [get]</code></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a21629404eee5c037d4599d476ee38c70"></a><!-- doxytag: member="Sharpility::Collections::OrderedImmutableDictionary&#45;g::OrderedEntries" ref="a21629404eee5c037d4599d476ee38c70" args="" -->
-IImmutableList&lt; KeyValuePair<br class="typebreak"/>
-&lt; T, TV &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>OrderedEntries</b><code> [get]</code></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">IImmutableList&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_sharpility_1_1_collections_1_1_ordered_immutable_dictionary-g.html#a0b06b9f6e05912efef8d22eca8611d67">OrderedKeys</a><code> [get]</code></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Dictionary keys with put order.  <a href="#a0b06b9f6e05912efef8d22eca8611d67"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">IImmutableList&lt; KeyValuePair<br class="typebreak"/>
+&lt; T, TV &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_sharpility_1_1_collections_1_1_ordered_immutable_dictionary-g.html#a21629404eee5c037d4599d476ee38c70">OrderedEntries</a><code> [get]</code></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Entry set sorted by keys put order.  <a href="#a21629404eee5c037d4599d476ee38c70"></a><br/></td></tr>
 </table>
-<h3>template&lt;T, TV&gt;<br/>
- interface Sharpility::Collections::OrderedImmutableDictionary&lt; T, TV &gt;</h3>
+<hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
+<div class="textblock"><h3>template&lt;T, TV&gt;<br/>
+interface Sharpility::Collections::OrderedImmutableDictionary&lt; T, TV &gt;</h3>
 
+<p>Immutable dictionary holding putted keys order. </p>
+<dl class=""><dt><b>Template Parameters:</b></dt><dd>
+  <table class="">
+    <tr><td class="paramname">T</td><td>Type of key</td></tr>
+    <tr><td class="paramname">TV</td><td>Type of value</td></tr>
+  </table>
+  </dd>
+</dl>
+</div><hr/><h2>Property Documentation</h2>
+<a class="anchor" id="a21629404eee5c037d4599d476ee38c70"></a><!-- doxytag: member="Sharpility::Collections::OrderedImmutableDictionary&#45;g::OrderedEntries" ref="a21629404eee5c037d4599d476ee38c70" args="" -->
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;T , TV &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">IImmutableList&lt;KeyValuePair&lt;T, TV&gt; &gt; <a class="el" href="interface_sharpility_1_1_collections_1_1_ordered_immutable_dictionary-g.html">Sharpility.Collections.OrderedImmutableDictionary</a>&lt; T, TV &gt;.<a class="el" href="interface_sharpility_1_1_collections_1_1_ordered_immutable_dictionary-g.html#a21629404eee5c037d4599d476ee38c70">OrderedEntries</a><code> [get]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Entry set sorted by keys put order. </p>
+
+<p>Implemented in <a class="el" href="class_sharpility_1_1_collections_1_1_ordered_hash_immutable_dictionary-g.html#a512a903241a1c2989b9612c265938fae">Sharpility.Collections.OrderedHashImmutableDictionary&lt; T, TV &gt;</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a0b06b9f6e05912efef8d22eca8611d67"></a><!-- doxytag: member="Sharpility::Collections::OrderedImmutableDictionary&#45;g::OrderedKeys" ref="a0b06b9f6e05912efef8d22eca8611d67" args="" -->
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;T , TV &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">IImmutableList&lt;T&gt; <a class="el" href="interface_sharpility_1_1_collections_1_1_ordered_immutable_dictionary-g.html">Sharpility.Collections.OrderedImmutableDictionary</a>&lt; T, TV &gt;.<a class="el" href="interface_sharpility_1_1_collections_1_1_ordered_immutable_dictionary-g.html#a0b06b9f6e05912efef8d22eca8611d67">OrderedKeys</a><code> [get]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Dictionary keys with put order. </p>
+
+<p>Implemented in <a class="el" href="class_sharpility_1_1_collections_1_1_ordered_hash_immutable_dictionary-g.html#ac3b062be0e7507a2d5255157a4dd6bd2">Sharpility.Collections.OrderedHashImmutableDictionary&lt; T, TV &gt;</a>.</p>
+
+</div>
+</div>
 <hr/>The documentation for this interface was generated from the following file:<ul>
 <li>src/Sharpility/Collections/OrderedImmutableDictionary.cs</li>
 </ul>
@@ -134,7 +185,7 @@ IImmutableList&lt; KeyValuePair<br class="typebreak"/>
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Properties</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Properties</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">

@@ -2,10 +2,10 @@ var class_sharpility_1_1_collections_1_1_ordered_hash_immutable_dictionary-g =
 [
     [ "Add", "class_sharpility_1_1_collections_1_1_ordered_hash_immutable_dictionary-g.html#a21a313e91e876088389bde392dac9a38", null ],
     [ "AddRange", "class_sharpility_1_1_collections_1_1_ordered_hash_immutable_dictionary-g.html#a27cf99ad6e349ca75447e17459c50984", null ],
+    [ "Builder", "class_sharpility_1_1_collections_1_1_ordered_hash_immutable_dictionary-g.html#adf27b6ef849ee1946de24262ba590c20", null ],
     [ "Clear", "class_sharpility_1_1_collections_1_1_ordered_hash_immutable_dictionary-g.html#a1d93786464c957dd1c17f185df495200", null ],
     [ "Contains", "class_sharpility_1_1_collections_1_1_ordered_hash_immutable_dictionary-g.html#acc3ef3569576d18824de14bebaf07056", null ],
     [ "ContainsKey", "class_sharpility_1_1_collections_1_1_ordered_hash_immutable_dictionary-g.html#aabeb40145155ab2dd5f47dc82905c762", null ],
-    [ "CreateBuilder", "class_sharpility_1_1_collections_1_1_ordered_hash_immutable_dictionary-g.html#a74f635fdf75728402725204b657d6803", null ],
     [ "GetEnumerator", "class_sharpility_1_1_collections_1_1_ordered_hash_immutable_dictionary-g.html#a44fc182d3601f3b49d9fd51d8245c8e9", null ],
     [ "Remove", "class_sharpility_1_1_collections_1_1_ordered_hash_immutable_dictionary-g.html#ac337057f6c3a3eda40dfef4c7ad8839b", null ],
     [ "RemoveRange", "class_sharpility_1_1_collections_1_1_ordered_hash_immutable_dictionary-g.html#a7946425008bec10620a3c8646b73a80f", null ],

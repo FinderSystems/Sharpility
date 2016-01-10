@@ -11,5 +11,6 @@ var searchData=
   ['immutablesetmultidictionary_2dg',['ImmutableSetMultiDictionary-g',['../class_sharpility_1_1_collections_1_1_immutable_set_multi_dictionary-g.html',1,'Sharpility::Collections']]],
   ['immutablesetmultidictionarybuilder',['ImmutableSetMultiDictionaryBuilder',['../class_sharpility_1_1_collections_1_1_immutable_set_multi_dictionary-g_1_1_immutable_set_multi_dictionary_builder.html',1,'Sharpility::Collections::ImmutableSetMultiDictionary-g']]],
   ['immutablesetmultidictionarytests',['ImmutableSetMultiDictionaryTests',['../class_sharpility_1_1_tests_1_1_collections_1_1_immutable_set_multi_dictionary_tests.html',1,'Sharpility::Tests::Collections']]],
+  ['instancecreatortests',['InstanceCreatorTests',['../class_sharpility_1_1_tests_1_1_util_1_1_instance_creator_tests.html',1,'Sharpility::Tests::Util']]],
   ['iqueue_2dg',['IQueue-g',['../interface_sharpility_1_1_collections_1_1_i_queue-g.html',1,'Sharpility::Collections']]]
 ];

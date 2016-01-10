@@ -103,7 +103,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">Sharpility.Collections.AbstractMultiDictionary&lt; TKey, TValue &gt; Class Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<!-- doxytag: class="Sharpility::Collections::AbstractMultiDictionary-g" --><!-- doxytag: inherits="Sharpility::Collections::MultiDictionary-g" --><div class="dynheader">
+<!-- doxytag: class="Sharpility::Collections::AbstractMultiDictionary-g" --><!-- doxytag: inherits="Sharpility::Collections::MultiDictionary-g" -->
+<p>Abstraction of <a class="el" href="interface_sharpility_1_1_collections_1_1_multi_dictionary-g.html" title="Dictionary that contains multiple values at given key.">MultiDictionary</a>.  
+ <a href="class_sharpility_1_1_collections_1_1_abstract_multi_dictionary-g.html#details">More...</a></p>
+<div class="dynheader">
 Inheritance diagram for Sharpility.Collections.AbstractMultiDictionary&lt; TKey, TValue &gt;:</div>
 <div class="dyncontent">
  <div class="center">
@@ -159,12 +162,12 @@ override int&#160;</td><td class="memItemRight" valign="bottom"><b>GetHashCode</
 override string&#160;</td><td class="memItemRight" valign="bottom"><b>ToString</b> ()</td></tr>
 <tr><td colspan="2"><h2><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a86ed17c1082c107dbff4954203bc2509"></a><!-- doxytag: member="Sharpility::Collections::AbstractMultiDictionary&#45;g::CreateCollection" ref="a86ed17c1082c107dbff4954203bc2509" args="(int capacity)" -->
-abstract ICollection&lt; TValue &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>CreateCollection</b> (int capacity)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae4d1fbcd26d7def7a70f1f98df04ad82"></a><!-- doxytag: member="Sharpility::Collections::AbstractMultiDictionary&#45;g::ResultCollection" ref="ae4d1fbcd26d7def7a70f1f98df04ad82" args="(ICollection&lt; TValue &gt; collection)" -->
-abstract ICollection&lt; TValue &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>ResultCollection</b> (ICollection&lt; TValue &gt; collection)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab4b0e7e11a4ab70596808b16f7abe6a0"></a><!-- doxytag: member="Sharpility::Collections::AbstractMultiDictionary&#45;g::ComparableCollection" ref="ab4b0e7e11a4ab70596808b16f7abe6a0" args="(ICollection&lt; TValue &gt; collection)" -->
-abstract ICollection&lt; TValue &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>ComparableCollection</b> (ICollection&lt; TValue &gt; collection)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">abstract ICollection&lt; TValue &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sharpility_1_1_collections_1_1_abstract_multi_dictionary-g.html#a86ed17c1082c107dbff4954203bc2509">CreateCollection</a> (int capacity)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates collection matching <a class="el" href="interface_sharpility_1_1_collections_1_1_multi_dictionary-g.html" title="Dictionary that contains multiple values at given key.">MultiDictionary</a> implementation with given capacity.  <a href="#a86ed17c1082c107dbff4954203bc2509"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">abstract ICollection&lt; TValue &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sharpility_1_1_collections_1_1_abstract_multi_dictionary-g.html#ae4d1fbcd26d7def7a70f1f98df04ad82">ResultCollection</a> (ICollection&lt; TValue &gt; collection)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates collection matching <a class="el" href="interface_sharpility_1_1_collections_1_1_multi_dictionary-g.html" title="Dictionary that contains multiple values at given key.">MultiDictionary</a> implementation.  <a href="#ae4d1fbcd26d7def7a70f1f98df04ad82"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">abstract ICollection&lt; TValue &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sharpility_1_1_collections_1_1_abstract_multi_dictionary-g.html#ab4b0e7e11a4ab70596808b16f7abe6a0">ComparableCollection</a> (ICollection&lt; TValue &gt; collection)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Created comparable collection from given collection.  <a href="#ab4b0e7e11a4ab70596808b16f7abe6a0"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="properties"></a>
 Properties</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sharpility_1_1_collections_1_1_abstract_multi_dictionary-g.html#a1907c68ca7d24ddae4e87fbc788dba18">Count</a><code> [get, set]</code></td></tr>
@@ -184,10 +187,19 @@ Properties</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sharpility_1_1_collections_1_1_abstract_multi_dictionary-g.html#a0fdbd06d64027a5effb1920b5a3bf991">IsEmpty</a><code> [get]</code></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks is dictionary is emtpy.  <a href="#a0fdbd06d64027a5effb1920b5a3bf991"></a><br/></td></tr>
 </table>
-<h3>template&lt;TKey, TValue&gt;<br/>
- class Sharpility::Collections::AbstractMultiDictionary&lt; TKey, TValue &gt;</h3>
+<hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
+<div class="textblock"><h3>template&lt;TKey, TValue&gt;<br/>
+class Sharpility::Collections::AbstractMultiDictionary&lt; TKey, TValue &gt;</h3>
 
-<hr/><h2>Member Function Documentation</h2>
+<p>Abstraction of <a class="el" href="interface_sharpility_1_1_collections_1_1_multi_dictionary-g.html" title="Dictionary that contains multiple values at given key.">MultiDictionary</a>. </p>
+<dl class=""><dt><b>Template Parameters:</b></dt><dd>
+  <table class="">
+    <tr><td class="paramname">TKey</td><td>Type of key</td></tr>
+    <tr><td class="paramname">TValue</td><td>Type of value</td></tr>
+  </table>
+  </dd>
+</dl>
+</div><hr/><h2>Member Function Documentation</h2>
 <a class="anchor" id="a7c32435a505239b5c5375fc37b695b10"></a><!-- doxytag: member="Sharpility::Collections::AbstractMultiDictionary&#45;g::Clear" ref="a7c32435a505239b5c5375fc37b695b10" args="()" -->
 <div class="memitem">
 <div class="memproto">
@@ -207,6 +219,36 @@ template&lt;TKey , TValue &gt; </div>
 <p>Removes all entries. </p>
 
 <p>Implements <a class="el" href="interface_sharpility_1_1_collections_1_1_multi_dictionary-g.html#a5145cb8c46b7a6408633f8c4fd4e9f33">Sharpility.Collections.MultiDictionary&lt; TKey, TValue &gt;</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ab4b0e7e11a4ab70596808b16f7abe6a0"></a><!-- doxytag: member="Sharpility::Collections::AbstractMultiDictionary&#45;g::ComparableCollection" ref="ab4b0e7e11a4ab70596808b16f7abe6a0" args="(ICollection&lt; TValue &gt; collection)" -->
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;TKey , TValue &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">abstract ICollection&lt;TValue&gt; <a class="el" href="class_sharpility_1_1_collections_1_1_abstract_multi_dictionary-g.html">Sharpility.Collections.AbstractMultiDictionary</a>&lt; TKey, TValue &gt;.<a class="el" href="class_sharpility_1_1_collections_1_1_abstract_multi_dictionary-g.html#ab4b0e7e11a4ab70596808b16f7abe6a0">ComparableCollection</a> </td>
+          <td>(</td>
+          <td class="paramtype">ICollection&lt; TValue &gt;&#160;</td>
+          <td class="paramname"><em>collection</em></td><td>)</td>
+          <td><code> [protected, pure virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Created comparable collection from given collection. </p>
+<dl class="params"><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">collection</td><td>transformed collection</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>comparable collection</dd></dl>
+
+<p>Implemented in <a class="el" href="class_sharpility_1_1_collections_1_1_array_list_multi_dictionary-g.html#a3d1f45e1027ee15435a5060b653bc240">Sharpility.Collections.ArrayListMultiDictionary&lt; TKey, TValue &gt;</a>, <a class="el" href="class_sharpility_1_1_collections_1_1_linked_list_multi_dictionary-g.html#ac32952d2d51804ec75257a28f4349de4">Sharpility.Collections.LinkedListMultiDictionary&lt; TKey, TValue &gt;</a>, and <a class="el" href="class_sharpility_1_1_collections_1_1_hash_set_multi_dictionary-g.html#a79fd5d98f020edaa610a2ccb53b38646">Sharpility.Collections.HashSetMultiDictionary&lt; TKey, TValue &gt;</a>.</p>
 
 </div>
 </div>
@@ -308,6 +350,36 @@ template&lt;TKey , TValue &gt; </div>
 <dl class="return"><dt><b>Returns:</b></dt><dd>true if value is stored in dictionary</dd></dl>
 
 <p>Implements <a class="el" href="interface_sharpility_1_1_collections_1_1_multi_dictionary-g.html#a2268c7fd320ad6d95e748fc1f798a46f">Sharpility.Collections.MultiDictionary&lt; TKey, TValue &gt;</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a86ed17c1082c107dbff4954203bc2509"></a><!-- doxytag: member="Sharpility::Collections::AbstractMultiDictionary&#45;g::CreateCollection" ref="a86ed17c1082c107dbff4954203bc2509" args="(int capacity)" -->
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;TKey , TValue &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">abstract ICollection&lt;TValue&gt; <a class="el" href="class_sharpility_1_1_collections_1_1_abstract_multi_dictionary-g.html">Sharpility.Collections.AbstractMultiDictionary</a>&lt; TKey, TValue &gt;.<a class="el" href="class_sharpility_1_1_collections_1_1_abstract_multi_dictionary-g.html#a86ed17c1082c107dbff4954203bc2509">CreateCollection</a> </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>capacity</em></td><td>)</td>
+          <td><code> [protected, pure virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Creates collection matching <a class="el" href="interface_sharpility_1_1_collections_1_1_multi_dictionary-g.html" title="Dictionary that contains multiple values at given key.">MultiDictionary</a> implementation with given capacity. </p>
+<dl class="params"><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">capacity</td><td>collection capacity</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>created collection</dd></dl>
+
+<p>Implemented in <a class="el" href="class_sharpility_1_1_collections_1_1_array_list_multi_dictionary-g.html#a2d1859b8a521916071e33b5a2787be0a">Sharpility.Collections.ArrayListMultiDictionary&lt; TKey, TValue &gt;</a>, <a class="el" href="class_sharpility_1_1_collections_1_1_linked_list_multi_dictionary-g.html#af9800d87a1d1aa5d74b4efa41d63f498">Sharpility.Collections.LinkedListMultiDictionary&lt; TKey, TValue &gt;</a>, and <a class="el" href="class_sharpility_1_1_collections_1_1_hash_set_multi_dictionary-g.html#a9701c34619937a9c587928810aabba37">Sharpility.Collections.HashSetMultiDictionary&lt; TKey, TValue &gt;</a>.</p>
 
 </div>
 </div>
@@ -621,6 +693,30 @@ template&lt;TKey , TValue &gt; </div>
 
 </div>
 </div>
+<a class="anchor" id="ae4d1fbcd26d7def7a70f1f98df04ad82"></a><!-- doxytag: member="Sharpility::Collections::AbstractMultiDictionary&#45;g::ResultCollection" ref="ae4d1fbcd26d7def7a70f1f98df04ad82" args="(ICollection&lt; TValue &gt; collection)" -->
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;TKey , TValue &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">abstract ICollection&lt;TValue&gt; <a class="el" href="class_sharpility_1_1_collections_1_1_abstract_multi_dictionary-g.html">Sharpility.Collections.AbstractMultiDictionary</a>&lt; TKey, TValue &gt;.<a class="el" href="class_sharpility_1_1_collections_1_1_abstract_multi_dictionary-g.html#ae4d1fbcd26d7def7a70f1f98df04ad82">ResultCollection</a> </td>
+          <td>(</td>
+          <td class="paramtype">ICollection&lt; TValue &gt;&#160;</td>
+          <td class="paramname"><em>collection</em></td><td>)</td>
+          <td><code> [protected, pure virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Creates collection matching <a class="el" href="interface_sharpility_1_1_collections_1_1_multi_dictionary-g.html" title="Dictionary that contains multiple values at given key.">MultiDictionary</a> implementation. </p>
+<dl class="return"><dt><b>Returns:</b></dt><dd>created collection</dd></dl>
+
+<p>Implemented in <a class="el" href="class_sharpility_1_1_collections_1_1_array_list_multi_dictionary-g.html#a4f98579833e83ca7298b95d124be8d0e">Sharpility.Collections.ArrayListMultiDictionary&lt; TKey, TValue &gt;</a>, <a class="el" href="class_sharpility_1_1_collections_1_1_linked_list_multi_dictionary-g.html#a0ce551c790fdd6e6db408f78fb1047bd">Sharpility.Collections.LinkedListMultiDictionary&lt; TKey, TValue &gt;</a>, and <a class="el" href="class_sharpility_1_1_collections_1_1_hash_set_multi_dictionary-g.html#a43ddde21f9c9bc895695e17ed629cb3a">Sharpility.Collections.HashSetMultiDictionary&lt; TKey, TValue &gt;</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="a2edbcc7bf72a739981702b8b9263dd23"></a><!-- doxytag: member="Sharpility::Collections::AbstractMultiDictionary&#45;g::ToDictionary" ref="a2edbcc7bf72a739981702b8b9263dd23" args="()" -->
 <div class="memitem">
 <div class="memproto">
@@ -825,7 +921,7 @@ template&lt;TKey , TValue &gt; </div>
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Properties</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Properties</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">

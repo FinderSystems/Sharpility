@@ -102,18 +102,23 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">Sharpility.Collections.IQueue&lt; T &gt; Interface Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<!-- doxytag: class="Sharpility::Collections::IQueue-g" --><div class="dynheader">
+<!-- doxytag: class="Sharpility::Collections::IQueue-g" -->
+<p>A collection designed for holding elements prior to processing.  
+ <a href="interface_sharpility_1_1_collections_1_1_i_queue-g.html#details">More...</a></p>
+<div class="dynheader">
 Inheritance diagram for Sharpility.Collections.IQueue&lt; T &gt;:</div>
 <div class="dyncontent">
  <div class="center">
   <img src="interface_sharpility_1_1_collections_1_1_i_queue-g.png" usemap="#Sharpility.Collections.IQueue&lt; T &gt;_map" alt=""/>
   <map id="Sharpility.Collections.IQueue&lt; T &gt;_map" name="Sharpility.Collections.IQueue&lt; T &gt;_map">
-<area href="class_sharpility_1_1_collections_1_1_concurrent_1_1_default_concurrent_queue-g.html" alt="Sharpility.Collections.Concurrent.DefaultConcurrentQueue&lt; T &gt;" shape="rect" coords="0,56,431,80"/>
-<area href="class_sharpility_1_1_collections_1_1_default_queue-g.html" title="Default IQueue implementation using System.Collections.Generic.Queue." alt="Sharpility.Collections.DefaultQueue&lt; T &gt;" shape="rect" coords="441,56,872,80"/>
-<area href="class_sharpility_1_1_collections_1_1_linked_queue-g.html" title="IQueue implementation using LinkedList." alt="Sharpility.Collections.LinkedQueue&lt; T &gt;" shape="rect" coords="882,56,1313,80"/>
-<area href="interface_sharpility_1_1_collections_1_1_mapped_queue-g.html" title="Queue with item uniqueness control." alt="Sharpility.Collections.MappedQueue&lt; T &gt;" shape="rect" coords="1323,56,1754,80"/>
-<area href="interface_sharpility_1_1_collections_1_1_sorted_mapped_queue-g.html" title="Mapped queue with sorted elements." alt="Sharpility.Collections.SortedMappedQueue&lt; T &gt;" shape="rect" coords="1323,112,1754,136"/>
-<area href="class_sharpility_1_1_collections_1_1_abstract_sorted_mapped_queue-g.html" alt="Sharpility.Collections.AbstractSortedMappedQueue&lt; TKey, TValue, TQ &gt;" shape="rect" coords="1323,168,1754,192"/>
+<area href="interface_sharpility_1_1_collections_1_1_concurrent_1_1_blocking_queue-g.html" title="A Queue that additionally supports operations that wait for the queue to become non-empty when retrie..." alt="Sharpility.Collections.Concurrent.BlockingQueue&lt; T &gt;" shape="rect" coords="0,56,431,80"/>
+<area href="class_sharpility_1_1_collections_1_1_concurrent_1_1_default_concurrent_queue-g.html" alt="Sharpility.Collections.Concurrent.DefaultConcurrentQueue&lt; T &gt;" shape="rect" coords="441,56,872,80"/>
+<area href="class_sharpility_1_1_collections_1_1_default_queue-g.html" title="Default IQueue implementation using System.Collections.Generic.Queue." alt="Sharpility.Collections.DefaultQueue&lt; T &gt;" shape="rect" coords="882,56,1313,80"/>
+<area href="class_sharpility_1_1_collections_1_1_linked_queue-g.html" title="IQueue implementation using LinkedList." alt="Sharpility.Collections.LinkedQueue&lt; T &gt;" shape="rect" coords="1323,56,1754,80"/>
+<area href="interface_sharpility_1_1_collections_1_1_mapped_queue-g.html" title="Queue with item uniqueness control." alt="Sharpility.Collections.MappedQueue&lt; T &gt;" shape="rect" coords="1764,56,2195,80"/>
+<area href="class_sharpility_1_1_collections_1_1_concurrent_1_1_default_blocking_queue-g.html" title="Implementation of BlockingQueue." alt="Sharpility.Collections.Concurrent.DefaultBlockingQueue&lt; T &gt;" shape="rect" coords="0,112,431,136"/>
+<area href="interface_sharpility_1_1_collections_1_1_sorted_mapped_queue-g.html" title="Mapped queue with sorted elements." alt="Sharpility.Collections.SortedMappedQueue&lt; T &gt;" shape="rect" coords="1764,112,2195,136"/>
+<area href="class_sharpility_1_1_collections_1_1_abstract_sorted_mapped_queue-g.html" title="Abstraction of sorted mapped queue." alt="Sharpility.Collections.AbstractSortedMappedQueue&lt; TKey, TValue, TQ &gt;" shape="rect" coords="1764,168,2195,192"/>
 </map>
  </div></div>
 
@@ -136,10 +141,18 @@ Properties</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_sharpility_1_1_collections_1_1_i_queue-g.html#af9e62db00882859ff18dfae98f8d0003">Count</a><code> [get]</code></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns number of queue items.  <a href="#af9e62db00882859ff18dfae98f8d0003"></a><br/></td></tr>
 </table>
-<h3>template&lt;T&gt;<br/>
- interface Sharpility::Collections::IQueue&lt; T &gt;</h3>
+<hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
+<div class="textblock"><h3>template&lt;T&gt;<br/>
+interface Sharpility::Collections::IQueue&lt; T &gt;</h3>
 
-<hr/><h2>Member Function Documentation</h2>
+<p>A collection designed for holding elements prior to processing. </p>
+<dl class=""><dt><b>Template Parameters:</b></dt><dd>
+  <table class="">
+    <tr><td class="paramname">T</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+</div><hr/><h2>Member Function Documentation</h2>
 <a class="anchor" id="aa87b77f78eab9fe72f11a0bc5fcce111"></a><!-- doxytag: member="Sharpility::Collections::IQueue&#45;g::Clear" ref="aa87b77f78eab9fe72f11a0bc5fcce111" args="()" -->
 <div class="memitem">
 <div class="memproto">
@@ -158,7 +171,7 @@ template&lt;T &gt; </div>
 
 <p>Clears queue. </p>
 
-<p>Implemented in <a class="el" href="class_sharpility_1_1_collections_1_1_abstract_sorted_mapped_queue-g.html#ab6b85b95c1f8b50d3a46fe233b20ee2f">Sharpility.Collections.AbstractSortedMappedQueue&lt; TKey, TValue, TQ &gt;</a>, <a class="el" href="class_sharpility_1_1_collections_1_1_default_queue-g.html#a4507b7af5aba5c7c338e4ab412307e58">Sharpility.Collections.DefaultQueue&lt; T &gt;</a>, <a class="el" href="class_sharpility_1_1_collections_1_1_concurrent_1_1_default_concurrent_queue-g.html#ab832f47f1a3e566462e8bdc905212729">Sharpility.Collections.Concurrent.DefaultConcurrentQueue&lt; T &gt;</a>, and <a class="el" href="class_sharpility_1_1_collections_1_1_linked_queue-g.html#a6812e2b4875f1823616846b5ad8a68d8">Sharpility.Collections.LinkedQueue&lt; T &gt;</a>.</p>
+<p>Implemented in <a class="el" href="class_sharpility_1_1_collections_1_1_concurrent_1_1_default_blocking_queue-g.html#a35a516d989012dd842258b19c1d6efdf">Sharpility.Collections.Concurrent.DefaultBlockingQueue&lt; T &gt;</a>, <a class="el" href="class_sharpility_1_1_collections_1_1_abstract_sorted_mapped_queue-g.html#ab6b85b95c1f8b50d3a46fe233b20ee2f">Sharpility.Collections.AbstractSortedMappedQueue&lt; TKey, TValue, TQ &gt;</a>, <a class="el" href="class_sharpility_1_1_collections_1_1_default_queue-g.html#a4507b7af5aba5c7c338e4ab412307e58">Sharpility.Collections.DefaultQueue&lt; T &gt;</a>, <a class="el" href="class_sharpility_1_1_collections_1_1_concurrent_1_1_default_concurrent_queue-g.html#ab832f47f1a3e566462e8bdc905212729">Sharpility.Collections.Concurrent.DefaultConcurrentQueue&lt; T &gt;</a>, and <a class="el" href="class_sharpility_1_1_collections_1_1_linked_queue-g.html#a6812e2b4875f1823616846b5ad8a68d8">Sharpility.Collections.LinkedQueue&lt; T &gt;</a>.</p>
 
 </div>
 </div>
@@ -188,7 +201,7 @@ template&lt;T &gt; </div>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>is queue contains item</dd></dl>
 
-<p>Implemented in <a class="el" href="class_sharpility_1_1_collections_1_1_concurrent_1_1_default_concurrent_queue-g.html#af20df5aa52be25c1625364e6cc19cf1c">Sharpility.Collections.Concurrent.DefaultConcurrentQueue&lt; T &gt;</a>, <a class="el" href="class_sharpility_1_1_collections_1_1_default_queue-g.html#af864cd6492fd3c69047dde635589a7c5">Sharpility.Collections.DefaultQueue&lt; T &gt;</a>, and <a class="el" href="class_sharpility_1_1_collections_1_1_linked_queue-g.html#a14a4995b6898761aaed601841f503e8c">Sharpility.Collections.LinkedQueue&lt; T &gt;</a>.</p>
+<p>Implemented in <a class="el" href="class_sharpility_1_1_collections_1_1_concurrent_1_1_default_blocking_queue-g.html#a484e1396d76f32f2618a044f6c0c306b">Sharpility.Collections.Concurrent.DefaultBlockingQueue&lt; T &gt;</a>, <a class="el" href="class_sharpility_1_1_collections_1_1_concurrent_1_1_default_concurrent_queue-g.html#af20df5aa52be25c1625364e6cc19cf1c">Sharpility.Collections.Concurrent.DefaultConcurrentQueue&lt; T &gt;</a>, <a class="el" href="class_sharpility_1_1_collections_1_1_default_queue-g.html#af864cd6492fd3c69047dde635589a7c5">Sharpility.Collections.DefaultQueue&lt; T &gt;</a>, and <a class="el" href="class_sharpility_1_1_collections_1_1_linked_queue-g.html#a14a4995b6898761aaed601841f503e8c">Sharpility.Collections.LinkedQueue&lt; T &gt;</a>.</p>
 
 </div>
 </div>
@@ -218,7 +231,7 @@ template&lt;T &gt; </div>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>true if item was accepted</dd></dl>
 
-<p>Implemented in <a class="el" href="class_sharpility_1_1_collections_1_1_default_queue-g.html#a115d7f007fb8f9869c47633b892ba00a">Sharpility.Collections.DefaultQueue&lt; T &gt;</a>, <a class="el" href="class_sharpility_1_1_collections_1_1_concurrent_1_1_default_concurrent_queue-g.html#a2134af5c3990bdcb8e1aced87894cec5">Sharpility.Collections.Concurrent.DefaultConcurrentQueue&lt; T &gt;</a>, and <a class="el" href="class_sharpility_1_1_collections_1_1_linked_queue-g.html#aff8354978874fddd6dd2c45f75ce04ed">Sharpility.Collections.LinkedQueue&lt; T &gt;</a>.</p>
+<p>Implemented in <a class="el" href="class_sharpility_1_1_collections_1_1_concurrent_1_1_default_blocking_queue-g.html#a9d9173d1eb056727eb3fdca0a42c39f5">Sharpility.Collections.Concurrent.DefaultBlockingQueue&lt; T &gt;</a>, <a class="el" href="class_sharpility_1_1_collections_1_1_default_queue-g.html#a115d7f007fb8f9869c47633b892ba00a">Sharpility.Collections.DefaultQueue&lt; T &gt;</a>, <a class="el" href="class_sharpility_1_1_collections_1_1_concurrent_1_1_default_concurrent_queue-g.html#a2134af5c3990bdcb8e1aced87894cec5">Sharpility.Collections.Concurrent.DefaultConcurrentQueue&lt; T &gt;</a>, and <a class="el" href="class_sharpility_1_1_collections_1_1_linked_queue-g.html#aff8354978874fddd6dd2c45f75ce04ed">Sharpility.Collections.LinkedQueue&lt; T &gt;</a>.</p>
 
 </div>
 </div>
@@ -241,7 +254,7 @@ template&lt;T &gt; </div>
 <p>Returns first item in queue. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>first item in queue</dd></dl>
 
-<p>Implemented in <a class="el" href="class_sharpility_1_1_collections_1_1_abstract_sorted_mapped_queue-g.html#a3d08f29d185c86d291818af5b463b299">Sharpility.Collections.AbstractSortedMappedQueue&lt; TKey, TValue, TQ &gt;</a>, <a class="el" href="class_sharpility_1_1_collections_1_1_default_queue-g.html#a0884ba3af5e1689e68b79421619d5d4e">Sharpility.Collections.DefaultQueue&lt; T &gt;</a>, <a class="el" href="class_sharpility_1_1_collections_1_1_concurrent_1_1_default_concurrent_queue-g.html#a95ffc7191c9658d33a4491d0f289c01f">Sharpility.Collections.Concurrent.DefaultConcurrentQueue&lt; T &gt;</a>, and <a class="el" href="class_sharpility_1_1_collections_1_1_linked_queue-g.html#a9ef604a623d322f5aba0cb8bc9b80035">Sharpility.Collections.LinkedQueue&lt; T &gt;</a>.</p>
+<p>Implemented in <a class="el" href="class_sharpility_1_1_collections_1_1_concurrent_1_1_default_blocking_queue-g.html#acb9b47c8f7c5e74683b750156dbc014c">Sharpility.Collections.Concurrent.DefaultBlockingQueue&lt; T &gt;</a>, <a class="el" href="class_sharpility_1_1_collections_1_1_abstract_sorted_mapped_queue-g.html#a3d08f29d185c86d291818af5b463b299">Sharpility.Collections.AbstractSortedMappedQueue&lt; TKey, TValue, TQ &gt;</a>, <a class="el" href="class_sharpility_1_1_collections_1_1_default_queue-g.html#a0884ba3af5e1689e68b79421619d5d4e">Sharpility.Collections.DefaultQueue&lt; T &gt;</a>, <a class="el" href="class_sharpility_1_1_collections_1_1_concurrent_1_1_default_concurrent_queue-g.html#a95ffc7191c9658d33a4491d0f289c01f">Sharpility.Collections.Concurrent.DefaultConcurrentQueue&lt; T &gt;</a>, and <a class="el" href="class_sharpility_1_1_collections_1_1_linked_queue-g.html#a9ef604a623d322f5aba0cb8bc9b80035">Sharpility.Collections.LinkedQueue&lt; T &gt;</a>.</p>
 
 </div>
 </div>
@@ -264,7 +277,7 @@ template&lt;T &gt; </div>
 <p>Removes and return first item in queue. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Removed first queue item</dd></dl>
 
-<p>Implemented in <a class="el" href="class_sharpility_1_1_collections_1_1_abstract_sorted_mapped_queue-g.html#a7afc35094a42652e858db2ac2543a72f">Sharpility.Collections.AbstractSortedMappedQueue&lt; TKey, TValue, TQ &gt;</a>, <a class="el" href="class_sharpility_1_1_collections_1_1_default_queue-g.html#aa54aeb4bf0ff8d810b8165208569953f">Sharpility.Collections.DefaultQueue&lt; T &gt;</a>, <a class="el" href="class_sharpility_1_1_collections_1_1_concurrent_1_1_default_concurrent_queue-g.html#a7ddbf322d3f7df8f3ee1b8e3ee41e64e">Sharpility.Collections.Concurrent.DefaultConcurrentQueue&lt; T &gt;</a>, and <a class="el" href="class_sharpility_1_1_collections_1_1_linked_queue-g.html#a64dc612ec40f5a5c4d27aa22cbe94905">Sharpility.Collections.LinkedQueue&lt; T &gt;</a>.</p>
+<p>Implemented in <a class="el" href="class_sharpility_1_1_collections_1_1_concurrent_1_1_default_blocking_queue-g.html#a2345dd1110aa4e7f67a35842d0dcec94">Sharpility.Collections.Concurrent.DefaultBlockingQueue&lt; T &gt;</a>, <a class="el" href="class_sharpility_1_1_collections_1_1_abstract_sorted_mapped_queue-g.html#a7afc35094a42652e858db2ac2543a72f">Sharpility.Collections.AbstractSortedMappedQueue&lt; TKey, TValue, TQ &gt;</a>, <a class="el" href="class_sharpility_1_1_collections_1_1_default_queue-g.html#aa54aeb4bf0ff8d810b8165208569953f">Sharpility.Collections.DefaultQueue&lt; T &gt;</a>, <a class="el" href="class_sharpility_1_1_collections_1_1_concurrent_1_1_default_concurrent_queue-g.html#a7ddbf322d3f7df8f3ee1b8e3ee41e64e">Sharpility.Collections.Concurrent.DefaultConcurrentQueue&lt; T &gt;</a>, and <a class="el" href="class_sharpility_1_1_collections_1_1_linked_queue-g.html#a64dc612ec40f5a5c4d27aa22cbe94905">Sharpility.Collections.LinkedQueue&lt; T &gt;</a>.</p>
 
 </div>
 </div>
@@ -284,7 +297,7 @@ template&lt;T &gt; </div>
 
 <p>Returns number of queue items. </p>
 
-<p>Implemented in <a class="el" href="class_sharpility_1_1_collections_1_1_abstract_sorted_mapped_queue-g.html#a02d3645c276b64c81af31f0e7667f696">Sharpility.Collections.AbstractSortedMappedQueue&lt; TKey, TValue, TQ &gt;</a>, <a class="el" href="class_sharpility_1_1_collections_1_1_concurrent_1_1_default_concurrent_queue-g.html#afc77d23fff8235d92687081aab6c6d29">Sharpility.Collections.Concurrent.DefaultConcurrentQueue&lt; T &gt;</a>, <a class="el" href="class_sharpility_1_1_collections_1_1_default_queue-g.html#a1574901b50fb52a7c1bf6bd142dc6c52">Sharpility.Collections.DefaultQueue&lt; T &gt;</a>, and <a class="el" href="class_sharpility_1_1_collections_1_1_linked_queue-g.html#ac40c3af59084b7b665c01568a9015e6d">Sharpility.Collections.LinkedQueue&lt; T &gt;</a>.</p>
+<p>Implemented in <a class="el" href="class_sharpility_1_1_collections_1_1_concurrent_1_1_default_blocking_queue-g.html#ac3feee4fedd3d6fe8da41c67af9aad25">Sharpility.Collections.Concurrent.DefaultBlockingQueue&lt; T &gt;</a>, <a class="el" href="class_sharpility_1_1_collections_1_1_abstract_sorted_mapped_queue-g.html#a02d3645c276b64c81af31f0e7667f696">Sharpility.Collections.AbstractSortedMappedQueue&lt; TKey, TValue, TQ &gt;</a>, <a class="el" href="class_sharpility_1_1_collections_1_1_concurrent_1_1_default_concurrent_queue-g.html#afc77d23fff8235d92687081aab6c6d29">Sharpility.Collections.Concurrent.DefaultConcurrentQueue&lt; T &gt;</a>, <a class="el" href="class_sharpility_1_1_collections_1_1_default_queue-g.html#a1574901b50fb52a7c1bf6bd142dc6c52">Sharpility.Collections.DefaultQueue&lt; T &gt;</a>, and <a class="el" href="class_sharpility_1_1_collections_1_1_linked_queue-g.html#ac40c3af59084b7b665c01568a9015e6d">Sharpility.Collections.LinkedQueue&lt; T &gt;</a>.</p>
 
 </div>
 </div>
@@ -298,7 +311,7 @@ template&lt;T &gt; </div>
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Properties</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Properties</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">

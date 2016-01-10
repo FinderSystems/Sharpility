@@ -1,5 +1,9 @@
 var class_sharpility_1_1_tests_1_1_extensions_1_1_collection_extensions_tests =
 [
+    [ "ShouldConvertCollectionToComparable", "class_sharpility_1_1_tests_1_1_extensions_1_1_collection_extensions_tests.html#af3e8b6a5bcf1b01093fe55d5a2c99aae", null ],
+    [ "ShouldConvertEnumerableToComparable", "class_sharpility_1_1_tests_1_1_extensions_1_1_collection_extensions_tests.html#a12bfeff2f50667b5c39a0e059f527332", null ],
+    [ "ShouldConvertListToComparable", "class_sharpility_1_1_tests_1_1_extensions_1_1_collection_extensions_tests.html#a95f4574031a820248f454fb93af92b64", null ],
+    [ "ShouldConvertSetToComparable", "class_sharpility_1_1_tests_1_1_extensions_1_1_collection_extensions_tests.html#af663a9c1bf40bc1d9a1bd9e87a0fc26e", null ],
     [ "ShouldExtendArrayEnumerableByContainsAllMethod", "class_sharpility_1_1_tests_1_1_extensions_1_1_collection_extensions_tests.html#a613e6dd227ecd1b5642c026314a8e629", null ],
     [ "ShouldExtendArrayEnumerableByCountMethod", "class_sharpility_1_1_tests_1_1_extensions_1_1_collection_extensions_tests.html#a8e2049abeed2d0754955b819c06e2685", null ],
     [ "ShouldExtendCollectionBySortMethod", "class_sharpility_1_1_tests_1_1_extensions_1_1_collection_extensions_tests.html#a0cd7edc925f60c0e035b7e9d92f1583a", null ],
@@ -45,8 +49,10 @@ var class_sharpility_1_1_tests_1_1_extensions_1_1_collection_extensions_tests =
     [ "ShouldExtenedListByLastMethod", "class_sharpility_1_1_tests_1_1_extensions_1_1_collection_extensions_tests.html#a846b872496d62d49b17cd7d4630f6989", null ],
     [ "ShouldExtenedNonGenericEnumerableByIsSingletonMethod", "class_sharpility_1_1_tests_1_1_extensions_1_1_collection_extensions_tests.html#aa08082a85914ff5286b20cb8541ca61b", null ],
     [ "ShouldExtenedSetByFindAllMethod", "class_sharpility_1_1_tests_1_1_extensions_1_1_collection_extensions_tests.html#abfbc60f396415340f02b479b96bbc9e0", null ],
-    [ "ShouldReturnNullFirstElementOfEmptyCollection", "class_sharpility_1_1_tests_1_1_extensions_1_1_collection_extensions_tests.html#ae67f8a7c3688b04ca294cf92ec73e477", null ],
-    [ "ShouldReturnNullLastElementOfEmptyCollection", "class_sharpility_1_1_tests_1_1_extensions_1_1_collection_extensions_tests.html#a6155254c1f7ae4980bced4e9020a9568", null ],
+    [ "ShouldReplaceFirstElementList", "class_sharpility_1_1_tests_1_1_extensions_1_1_collection_extensions_tests.html#a39e349b8db00d086fae33123e12b455a", null ],
+    [ "ShouldReplaceLastElementList", "class_sharpility_1_1_tests_1_1_extensions_1_1_collection_extensions_tests.html#a473fe128516db7d89a788cf1835342e9", null ],
+    [ "ShouldReturnTopSliceOfList", "class_sharpility_1_1_tests_1_1_extensions_1_1_collection_extensions_tests.html#a380ed54502d1eee3036bf91b60d0b739", null ],
     [ "ShouldThrowInvalidOperationWhenRemovingFirstFromLinkedList", "class_sharpility_1_1_tests_1_1_extensions_1_1_collection_extensions_tests.html#a6262e242c31f1f79b6538090c33df872", null ],
-    [ "ShouldThrowInvalidOperationWhenRemovingFirstFromList", "class_sharpility_1_1_tests_1_1_extensions_1_1_collection_extensions_tests.html#a66036717bc2b108915ba9adaafc7f92e", null ]
+    [ "ShouldThrowInvalidOperationWhenRemovingFirstFromList", "class_sharpility_1_1_tests_1_1_extensions_1_1_collection_extensions_tests.html#a66036717bc2b108915ba9adaafc7f92e", null ],
+    [ "ShouldTrimCollectionRight", "class_sharpility_1_1_tests_1_1_extensions_1_1_collection_extensions_tests.html#aa7a3c16ee548af70fc8df326b19b9d03", null ]
 ];

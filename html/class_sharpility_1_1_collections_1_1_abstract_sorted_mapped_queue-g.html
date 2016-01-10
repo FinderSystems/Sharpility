@@ -103,7 +103,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">Sharpility.Collections.AbstractSortedMappedQueue&lt; TKey, TValue, TQ &gt; Class Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<!-- doxytag: class="Sharpility::Collections::AbstractSortedMappedQueue-g" --><!-- doxytag: inherits="Sharpility::Collections::SortedMappedQueue-g" --><div class="dynheader">
+<!-- doxytag: class="Sharpility::Collections::AbstractSortedMappedQueue-g" --><!-- doxytag: inherits="Sharpility::Collections::SortedMappedQueue-g" -->
+<p>Abstraction of sorted mapped queue.  
+ <a href="class_sharpility_1_1_collections_1_1_abstract_sorted_mapped_queue-g.html#details">More...</a></p>
+<div class="dynheader">
 Inheritance diagram for Sharpility.Collections.AbstractSortedMappedQueue&lt; TKey, TValue, TQ &gt;:</div>
 <div class="dyncontent">
  <div class="center">
@@ -111,7 +114,7 @@ Inheritance diagram for Sharpility.Collections.AbstractSortedMappedQueue&lt; TKe
   <map id="Sharpility.Collections.AbstractSortedMappedQueue&lt; TKey, TValue, TQ &gt;_map" name="Sharpility.Collections.AbstractSortedMappedQueue&lt; TKey, TValue, TQ &gt;_map">
 <area href="interface_sharpility_1_1_collections_1_1_sorted_mapped_queue-g.html" title="Mapped queue with sorted elements." alt="Sharpility.Collections.SortedMappedQueue&lt; T &gt;" shape="rect" coords="0,112,431,136"/>
 <area href="interface_sharpility_1_1_collections_1_1_mapped_queue-g.html" title="Queue with item uniqueness control." alt="Sharpility.Collections.MappedQueue&lt; T &gt;" shape="rect" coords="0,56,431,80"/>
-<area href="interface_sharpility_1_1_collections_1_1_i_queue-g.html" alt="Sharpility.Collections.IQueue&lt; T &gt;" shape="rect" coords="0,0,431,24"/>
+<area href="interface_sharpility_1_1_collections_1_1_i_queue-g.html" title="A collection designed for holding elements prior to processing." alt="Sharpility.Collections.IQueue&lt; T &gt;" shape="rect" coords="0,0,431,24"/>
 </map>
  </div></div>
 
@@ -135,19 +138,82 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>Offer</b> (TValue ite
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>Contains</b> (TValue item)</td></tr>
 <tr><td colspan="2"><h2><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4dda50d7d547b0b4bc7b8b75da02a481"></a><!-- doxytag: member="Sharpility::Collections::AbstractSortedMappedQueue&#45;g::AbstractSortedMappedQueue" ref="a4dda50d7d547b0b4bc7b8b75da02a481" args="(Converter&lt; TValue, TKey &gt; keyExtractor, IComparer&lt; TValue &gt; comparer, TQ queue)" -->
-&#160;</td><td class="memItemRight" valign="bottom"><b>AbstractSortedMappedQueue</b> (Converter&lt; TValue, TKey &gt; keyExtractor, IComparer&lt; TValue &gt; comparer, TQ queue)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab3da85221ad94cb62849905c90948dea"></a><!-- doxytag: member="Sharpility::Collections::AbstractSortedMappedQueue&#45;g::SortQueue" ref="ab3da85221ad94cb62849905c90948dea" args="(TQ queue, IComparer&lt; TValue &gt; comparer)" -->
-abstract void&#160;</td><td class="memItemRight" valign="bottom"><b>SortQueue</b> (TQ queue, IComparer&lt; TValue &gt; comparer)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sharpility_1_1_collections_1_1_abstract_sorted_mapped_queue-g.html#a4dda50d7d547b0b4bc7b8b75da02a481">AbstractSortedMappedQueue</a> (Converter&lt; TValue, TKey &gt; keyExtractor, IComparer&lt; TValue &gt; comparer, TQ queue)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Created <a class="el" href="class_sharpility_1_1_collections_1_1_abstract_sorted_mapped_queue-g.html" title="Abstraction of sorted mapped queue.">AbstractSortedMappedQueue</a>.  <a href="#a4dda50d7d547b0b4bc7b8b75da02a481"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">abstract void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sharpility_1_1_collections_1_1_abstract_sorted_mapped_queue-g.html#ab3da85221ad94cb62849905c90948dea">SortQueue</a> (TQ queue, IComparer&lt; TValue &gt; comparer)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Sorts queue with given comparer.  <a href="#ab3da85221ad94cb62849905c90948dea"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="properties"></a>
 Properties</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sharpility_1_1_collections_1_1_abstract_sorted_mapped_queue-g.html#a02d3645c276b64c81af31f0e7667f696">Count</a><code> [get]</code></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns number of queue items.  <a href="#a02d3645c276b64c81af31f0e7667f696"></a><br/></td></tr>
 </table>
-<h3>template&lt;TKey, TValue, TQ&gt;<br/>
- class Sharpility::Collections::AbstractSortedMappedQueue&lt; TKey, TValue, TQ &gt;</h3>
+<hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
+<div class="textblock"><h3>template&lt;TKey, TValue, TQ&gt;<br/>
+class Sharpility::Collections::AbstractSortedMappedQueue&lt; TKey, TValue, TQ &gt;</h3>
 
-<hr/><h2>Member Function Documentation</h2>
+<p>Abstraction of sorted mapped queue. </p>
+<dl class=""><dt><b>Template Parameters:</b></dt><dd>
+  <table class="">
+    <tr><td class="paramname">TKey</td><td>Type of key</td></tr>
+    <tr><td class="paramname">TValue</td><td>Type of value</td></tr>
+    <tr><td class="paramname">TQ</td><td>Type of queue</td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="typeconstraint">
+<dl><dt><b>Type Constraints</b><dt><dd>
+<table border="0" cellspacing="2" cellpadding="0">
+<tr><td valign="top"><em>TValue</em></td><td>&#160;:</td><td valign="top"><em>class</em></td><td>&#160;</td></tr>
+<tr><td valign="top"><em>TQ</em></td><td>&#160;:</td><td valign="top"><em>ICollection&lt;TValue&gt;</em></td><td>&#160;</td></tr>
+</table>
+</dl>
+</div>
+</div><hr/><h2>Member Function Documentation</h2>
+<a class="anchor" id="a4dda50d7d547b0b4bc7b8b75da02a481"></a><!-- doxytag: member="Sharpility::Collections::AbstractSortedMappedQueue&#45;g::AbstractSortedMappedQueue" ref="a4dda50d7d547b0b4bc7b8b75da02a481" args="(Converter&lt; TValue, TKey &gt; keyExtractor, IComparer&lt; TValue &gt; comparer, TQ queue)" -->
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;TKey , TValue , TQ &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_sharpility_1_1_collections_1_1_abstract_sorted_mapped_queue-g.html">Sharpility.Collections.AbstractSortedMappedQueue</a>&lt; TKey, TValue, TQ &gt;.<a class="el" href="class_sharpility_1_1_collections_1_1_abstract_sorted_mapped_queue-g.html#a4dda50d7d547b0b4bc7b8b75da02a481">AbstractSortedMappedQueue</a> </td>
+          <td>(</td>
+          <td class="paramtype">Converter&lt; TValue, TKey &gt;&#160;</td>
+          <td class="paramname"><em>keyExtractor</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">IComparer&lt; TValue &gt;&#160;</td>
+          <td class="paramname"><em>comparer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">TQ&#160;</td>
+          <td class="paramname"><em>queue</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [inline, protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Created <a class="el" href="class_sharpility_1_1_collections_1_1_abstract_sorted_mapped_queue-g.html" title="Abstraction of sorted mapped queue.">AbstractSortedMappedQueue</a>. </p>
+<dl class="params"><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">keyExtractor</td><td>Extractor key from value</td></tr>
+    <tr><td class="paramname">comparer</td><td>Comparer of values</td></tr>
+    <tr><td class="paramname">queue</td><td>queue</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a class="anchor" id="ab6b85b95c1f8b50d3a46fe233b20ee2f"></a><!-- doxytag: member="Sharpility::Collections::AbstractSortedMappedQueue&#45;g::Clear" ref="ab6b85b95c1f8b50d3a46fe233b20ee2f" args="()" -->
 <div class="memitem">
 <div class="memproto">
@@ -216,6 +282,44 @@ template&lt;TKey , TValue , TQ &gt; </div>
 
 </div>
 </div>
+<a class="anchor" id="ab3da85221ad94cb62849905c90948dea"></a><!-- doxytag: member="Sharpility::Collections::AbstractSortedMappedQueue&#45;g::SortQueue" ref="ab3da85221ad94cb62849905c90948dea" args="(TQ queue, IComparer&lt; TValue &gt; comparer)" -->
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;TKey , TValue , TQ &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">abstract void <a class="el" href="class_sharpility_1_1_collections_1_1_abstract_sorted_mapped_queue-g.html">Sharpility.Collections.AbstractSortedMappedQueue</a>&lt; TKey, TValue, TQ &gt;.<a class="el" href="class_sharpility_1_1_collections_1_1_abstract_sorted_mapped_queue-g.html#ab3da85221ad94cb62849905c90948dea">SortQueue</a> </td>
+          <td>(</td>
+          <td class="paramtype">TQ&#160;</td>
+          <td class="paramname"><em>queue</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">IComparer&lt; TValue &gt;&#160;</td>
+          <td class="paramname"><em>comparer</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [protected, pure virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Sorts queue with given comparer. </p>
+<dl class="params"><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">queue</td><td>Sorted queue</td></tr>
+    <tr><td class="paramname">comparer</td><td>Comparer of queue items</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/><h2>Property Documentation</h2>
 <a class="anchor" id="a02d3645c276b64c81af31f0e7667f696"></a><!-- doxytag: member="Sharpility::Collections::AbstractSortedMappedQueue&#45;g::Count" ref="a02d3645c276b64c81af31f0e7667f696" args="" -->
 <div class="memitem">
@@ -246,7 +350,7 @@ template&lt;TKey , TValue , TQ &gt; </div>
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Properties</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Properties</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">

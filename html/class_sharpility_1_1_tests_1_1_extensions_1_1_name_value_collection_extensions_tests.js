@@ -1,0 +1,13 @@
+var class_sharpility_1_1_tests_1_1_extensions_1_1_name_value_collection_extensions_tests =
+[
+    [ "ShouldReturDefaultTimeSpanWithUnitFromSettingsWhenPropertyNotSpecified", "class_sharpility_1_1_tests_1_1_extensions_1_1_name_value_collection_extensions_tests.html#a3db223df02a4857ebfecde8a2aac09ac", null ],
+    [ "ShouldReturDefaultTimeSpanWithUnitFromSettingsWhenPropertyValueIsEmpty", "class_sharpility_1_1_tests_1_1_extensions_1_1_name_value_collection_extensions_tests.html#a3f22c235c0ea4eed62b752b4513cd097", null ],
+    [ "ShouldReturnBoolValueFromSettings", "class_sharpility_1_1_tests_1_1_extensions_1_1_name_value_collection_extensions_tests.html#a2ff8b7a5b98d3bbfa1bd0d6a82e1ac7a", null ],
+    [ "ShouldReturnDefaultBoolValueFromSettingsWhenPropertyNotSpecified", "class_sharpility_1_1_tests_1_1_extensions_1_1_name_value_collection_extensions_tests.html#a35020bfdfb9fd490805db589a2f13b39", null ],
+    [ "ShouldReturnDefaultIntValueFromSettingsIfPropertyNotSpecified", "class_sharpility_1_1_tests_1_1_extensions_1_1_name_value_collection_extensions_tests.html#ac34e50d43d0b5d118f21b74e6ca43030", null ],
+    [ "ShouldReturnFalseValueFromSettingsWhenPropertyNotSpecified", "class_sharpility_1_1_tests_1_1_extensions_1_1_name_value_collection_extensions_tests.html#a33340c8376192e13a037e35b363044ce", null ],
+    [ "ShouldReturnIntValueFromSettings", "class_sharpility_1_1_tests_1_1_extensions_1_1_name_value_collection_extensions_tests.html#a672ac9b40fb48763dcd5bc393083caa1", null ],
+    [ "ShouldReturnNullIntValueFromSettingsIfPropertyNotSpecified", "class_sharpility_1_1_tests_1_1_extensions_1_1_name_value_collection_extensions_tests.html#a70a6276bc5228ba523dbf5ef6178559e", null ],
+    [ "ShouldReturnNullTimeSpanFromSettingsWhenPropertyNotSpecified", "class_sharpility_1_1_tests_1_1_extensions_1_1_name_value_collection_extensions_tests.html#aae5a913b07f4b3c63759a78e32323b23", null ],
+    [ "ShouldReturnTimeSpanFromSettings", "class_sharpility_1_1_tests_1_1_extensions_1_1_name_value_collection_extensions_tests.html#aa61b599234b88fe7de8d1f9d53b80eed", null ]
+];

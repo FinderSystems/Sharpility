@@ -1,5 +1,6 @@
 var class_sharpility_1_1_tests_1_1_extensions_1_1_dictionary_extensions_tests =
 [
+    [ "ShouldConvertDictionaryIntoComparable", "class_sharpility_1_1_tests_1_1_extensions_1_1_dictionary_extensions_tests.html#a55ef8d81edcddfc9bc18b641cdac9981", null ],
     [ "ShouldExntedDictionaryByToArrayListMultiDictionaryMethod", "class_sharpility_1_1_tests_1_1_extensions_1_1_dictionary_extensions_tests.html#a70bca937c7472eaad757e30726868653", null ],
     [ "ShouldExntedDictionaryByToHashSetMultiDictionaryMethod", "class_sharpility_1_1_tests_1_1_extensions_1_1_dictionary_extensions_tests.html#a53fd6c18d0d305b96755893cf4859571", null ],
     [ "ShouldExntedDictionaryByToImmutableListMultiDictionaryMethod", "class_sharpility_1_1_tests_1_1_extensions_1_1_dictionary_extensions_tests.html#a3d00765d4e50ce8cd04b76cb5200c938", null ],
