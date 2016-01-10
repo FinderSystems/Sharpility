@@ -7,6 +7,12 @@ using Sharpility.Util;
 
 namespace Sharpility.Collections
 {
+    /// <summary>
+    /// Immutable implementation of CompositeDictionary.
+    /// </summary>
+    /// <typeparam name="TPrimaryKey">Type of primary key</typeparam>
+    /// <typeparam name="TSecondaryKey">Type of secondary key</typeparam>
+    /// <typeparam name="TValue">Type of value</typeparam>
     public sealed class ImmutableCompositeDictionary<TPrimaryKey, TSecondaryKey, TValue> : CompositeDictionary<TPrimaryKey, TSecondaryKey, TValue>
     {
         private readonly int count;
@@ -18,6 +24,10 @@ namespace Sharpility.Collections
             count = dictionary.Sum(entry => entry.Value.Count);
         }
 
+        /// <summary>
+        /// Builder of ImmutableCompositeDictionary.
+        /// </summary>
+        /// <returns></returns>
         public static ImmutableCompositeDictionaryBuilder<TPrimaryKey, TSecondaryKey, TValue> Builder()
         {
             return new ImmutableCompositeDictionaryBuilder<TPrimaryKey, TSecondaryKey, TValue>();
@@ -284,6 +294,12 @@ namespace Sharpility.Collections
             return Strings.ToString(dictionary);
         }
 
+        /// <summary>
+        /// Builder of CompositeDictionary.
+        /// </summary>
+        /// <typeparam name="TPk">Type of primary key</typeparam>
+        /// <typeparam name="TSk">Type of secondary key</typeparam>
+        /// <typeparam name="TV">Type of value</typeparam>
         public sealed class ImmutableCompositeDictionaryBuilder<TPk, TSk, TV>
         {
             private readonly IDictionary<TPk, ImmutableDictionary<TSk, TV>.Builder> values = 
@@ -293,6 +309,13 @@ namespace Sharpility.Collections
             {
             }
 
+            /// <summary>
+            /// Puts value into builded composite dictionary.
+            /// </summary>
+            /// <param name="primaryKey">Primary key</param>
+            /// <param name="secondaryKey">Secondary key</param>
+            /// <param name="value">Value</param>
+            /// <returns>Builder instance</returns>
             public ImmutableCompositeDictionaryBuilder<TPk, TSk, TV> Put(TPk primaryKey, TSk secondaryKey, TV value)
             {
                 if (!values.ContainsKey(primaryKey))
@@ -303,11 +326,22 @@ namespace Sharpility.Collections
                 return this;
             }
 
+            /// <summary>
+            /// Puts value into builded composite dictionary.
+            /// </summary>
+            /// <param name="key">Composite key</param>
+            /// <param name="value">Value</param>
+            /// <returns>Builder instance</returns>
             public ImmutableCompositeDictionaryBuilder<TPk, TSk, TV> Put(CompositeKey<TPk, TSk> key, TV value)
             {
                 return Put(key.Primary, key.Secondary, value);
             }
 
+            /// <summary>
+            /// Puts all composite dictionary values into builded composite dictionary.
+            /// </summary>
+            /// <param name="compositeDictionary">Composite dictionary</param>
+            /// <returns>Builder instance</returns>
             public ImmutableCompositeDictionaryBuilder<TPk, TSk, TV> PutAll(CompositeDictionary<TPk, TSk, TV> compositeDictionary)
             {
                 foreach (var entry in compositeDictionary.Entries)
@@ -317,6 +351,11 @@ namespace Sharpility.Collections
                 return this;
             }
 
+            /// <summary>
+            /// Puts all dictionary values into builded composite dictionary.
+            /// </summary>
+            /// <param name="dictionary">Dictionary</param>
+            /// <returns>Builder instance</returns>
             public ImmutableCompositeDictionaryBuilder<TPk, TSk, TV> PutAll(IDictionary<TPk, IDictionary<TSk, TV>> dictionary)
             {
                 foreach (var entry in dictionary)
@@ -329,6 +368,10 @@ namespace Sharpility.Collections
                 return this;
             }
 
+            /// <summary>
+            /// Build ImmutableCompositeDictionary.
+            /// </summary>
+            /// <returns></returns>
             public ImmutableCompositeDictionary<TPk, TSk, TV> Build()
             {
                 var result = ImmutableDictionary.CreateBuilder<TPk, IImmutableDictionary<TSk, TV>>();

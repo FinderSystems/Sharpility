@@ -1,10 +1,17 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Sharpility.Extensions;
 
 namespace Sharpility.Collections
 {
+    /// <summary>
+    /// Abstraction of sorted mapped queue.
+    /// </summary>
+    /// <typeparam name="TKey">Type of key</typeparam>
+    /// <typeparam name="TValue">Type of value</typeparam>
+    /// <typeparam name="TQ">Type of queue</typeparam>
     public abstract class AbstractSortedMappedQueue<TKey, TValue, TQ> : SortedMappedQueue<TValue>
         where TValue : class
         where TQ : ICollection<TValue>
@@ -14,6 +21,12 @@ namespace Sharpility.Collections
         private readonly IComparer<TValue> comparer;
         private readonly TQ queue;
 
+        /// <summary>
+        /// Created AbstractSortedMappedQueue.
+        /// </summary>
+        /// <param name="keyExtractor">Extractor key from value</param>
+        /// <param name="comparer">Comparer of values</param>
+        /// <param name="queue">queue</param>
         protected AbstractSortedMappedQueue(Converter<TValue, TKey> keyExtractor, IComparer<TValue> comparer, TQ queue)
         {
             this.keyExtractor = keyExtractor;
@@ -57,7 +70,7 @@ namespace Sharpility.Collections
 
         public TValue Peek()
         {
-            return queue.IsEmpty() ? null : queue.First();
+            return queue.IsEmpty() ? null : queue.FirstOrDefault();
         }
 
         public TValue Poll()
@@ -82,6 +95,11 @@ namespace Sharpility.Collections
             get { return queue.Count; }
         }
 
+        /// <summary>
+        /// Sorts queue with given comparer.
+        /// </summary>
+        /// <param name="queue">Sorted queue</param>
+        /// <param name="comparer">Comparer of queue items</param>
         protected abstract void SortQueue(TQ queue, IComparer<TValue> comparer);
     }
 }

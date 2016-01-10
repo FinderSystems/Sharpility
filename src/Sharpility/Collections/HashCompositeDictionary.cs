@@ -1,13 +1,27 @@
 ﻿using System.Collections.Generic;
 namespace Sharpility.Collections
 {
+    /// <summary>
+    /// HashMap implementation of CompositeDictionary.
+    /// </summary>
+    /// <typeparam name="TPrimaryKey">Type of primary key</typeparam>
+    /// <typeparam name="TSecondaryKey">Type of secondary key</typeparam>
+    /// <typeparam name="TValue">Type of value</typeparam>
     public sealed class HashCompositeDictionary<TPrimaryKey, TSecondaryKey, TValue> : AbstractCompositeDictionary<TPrimaryKey, TSecondaryKey, TValue>
     {
+        /// <summary>
+        /// Created composite dictionary with primary and secondary keys capacities.
+        /// </summary>
+        /// <param name="primaryKeyCapacity">Capacity of primary keys</param>
+        /// <param name="secondaryKeyCapacity">Capacity of secondary keys</param>
         public HashCompositeDictionary(int primaryKeyCapacity, int secondaryKeyCapacity) 
             :base(new Dictionary<TPrimaryKey, IDictionary<TSecondaryKey, TValue>>(primaryKeyCapacity), secondaryKeyCapacity)
         {
         }
 
+        /// <summary>
+        /// Created composite dictionary.
+        /// </summary>
         public HashCompositeDictionary() 
             :base(new Dictionary<TPrimaryKey, IDictionary<TSecondaryKey, TValue>>())
         {

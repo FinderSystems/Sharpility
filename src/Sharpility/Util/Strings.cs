@@ -49,6 +49,10 @@ namespace Sharpility.Util
             {
                 return (string) value;
             }
+            else if (value is byte[])
+            {
+                return Encoding.Default.GetString((byte[])value);
+            }
             else if (value is IDictionary)
             {
                 return ToString((IDictionary) value);

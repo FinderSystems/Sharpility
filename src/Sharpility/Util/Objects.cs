@@ -44,6 +44,10 @@ namespace Sharpility.Util
             {
                 return ElementsEqual(first as IEnumerable, second as IEnumerable);
             }
+            else if (Sets.IsGenericSet(first) && second is IEnumerable)
+            {
+                return ElementsEqual(first as IEnumerable, second as IEnumerable);
+            }
             else if (first is IEnumerable && second is IEnumerable)
             {
                 return SequenceEqual((IEnumerable) first, (IEnumerable) second);

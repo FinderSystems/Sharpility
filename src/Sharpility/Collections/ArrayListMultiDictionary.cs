@@ -9,10 +9,18 @@ namespace Sharpility.Collections
     /// <typeparam name="TValue">Type of dictionary value</typeparam>
     public sealed class ArrayListMultiDictionary<TKey, TValue>: AbstractMultiDictionary<TKey, TValue>
     {
+        /// <summary>
+        /// Creates MultiDictionary with array list as values holder.
+        /// </summary>
         public ArrayListMultiDictionary()
         {
         }
 
+        /// <summary>
+        /// Creates MultiDictionary with array list as values holder.
+        /// </summary>
+        /// <param name="keysCapacity">Capacity of keys</param>
+        /// <param name="valuesCapacity">Capacity of values</param>
         public ArrayListMultiDictionary(int keysCapacity, int valuesCapacity)
             : base(keysCapacity, valuesCapacity)
         {

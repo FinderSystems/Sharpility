@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Immutable;
+using System.Linq;
 using NFluent;
 using NiceTry;
 using NUnit.Framework;
@@ -472,19 +473,6 @@ namespace Sharpility.Tests.Extensions
         }
 
         [Test]
-        public void ShouldReturnNullFirstElementOfEmptyCollection()
-        {
-            // given
-            ICollection<int?> collection = Lists.EmptyList<int?>();
-
-            // when
-            var first = collection.First();
-
-            // then
-            Check.That(first).IsNull();
-        }
-
-        [Test]
         public void ShouldExtenedLinkedListByLastMethod()
         {
             // given
@@ -510,19 +498,6 @@ namespace Sharpility.Tests.Extensions
 
             // then
             Check.That(first).IsEqualTo("C");
-        }
-
-        [Test]
-        public void ShouldReturnNullLastElementOfEmptyCollection()
-        {
-            // given
-            ICollection<int?> collection = Lists.EmptyList<int?>();
-
-            // when
-            var first = collection.Last();
-
-            // then
-            Check.That(first).IsNull();
         }
 
         [Test]
@@ -726,6 +701,222 @@ namespace Sharpility.Tests.Extensions
             // then
             Check.That(setDistinctElementsCount).IsEqualTo(Dictionaries.Create("A", 1, "B", 1, "C", 1));
             Check.That(listDistinctElementsCount).IsEqualTo(Dictionaries.Create("A", 1, "B", 3, "C", 2, "D", 4));
+        }
+
+        [Test]
+        [TestCaseSource("TopSliceCases")]
+        public IList<string> ShouldReturnTopSliceOfList(IList<string> list, int size)
+        {
+            // when
+            var result = list.TopSlice(size);
+
+            // then
+            return result;
+        }
+
+        private static IEnumerable<ITestCaseData> TopSliceCases()
+        {
+            var givenList = Lists.AsList("A", "B", "C");
+            var givenSize = 3;
+            var expectedSlice = Lists.AsList("A", "B", "C");
+            yield return new TestCaseData(givenList, givenSize)
+                .SetName(Strings.Format("Top {0} slice of {1} should return {2}", givenSize, givenList, expectedSlice))
+                .Returns(expectedSlice);
+
+            givenList = Lists.AsList("A", "B", "C");
+            givenSize = 2;
+            expectedSlice = Lists.AsList("B", "C");
+            yield return new TestCaseData(givenList, givenSize)
+                .SetName(Strings.Format("Top {0} slice of {1} should return {2}", givenSize, givenList, expectedSlice))
+                .Returns(expectedSlice);
+
+            givenList = Lists.AsList("A", "B", "C");
+            givenSize = 1;
+            expectedSlice = Lists.AsList("C");
+            yield return new TestCaseData(givenList, givenSize)
+                .SetName(Strings.Format("Top {0} slice of {1} should return {2}", givenSize, givenList, expectedSlice))
+                .Returns(expectedSlice);
+
+            givenList = Lists.AsList("A", "B", "C");
+            givenSize = 5;
+            expectedSlice = Lists.AsList("A", "B", "C");
+            yield return new TestCaseData(givenList, givenSize)
+                .SetName(Strings.Format("Top {0} slice of {1} should return {2}", givenSize, givenList, expectedSlice))
+                .Returns(expectedSlice);
+
+            givenList = Lists.AsList("A", "B", "C");
+            givenSize = 0;
+            expectedSlice = Lists.EmptyList<string>();
+            yield return new TestCaseData(givenList, givenSize)
+                .SetName(Strings.Format("Top {0} slice of {1} should return {2}", givenSize, givenList, expectedSlice))
+                .Returns(expectedSlice);
+        }
+
+        [Test]
+        [TestCaseSource("BottomSliceCases")]
+        public IList<string> ShouldTrimCollectionRight(IList<string> list, int size)
+        {
+            // when
+            var result = list.BottomSlice(size);
+
+            // then
+            return result;
+        }
+
+        private static IEnumerable<ITestCaseData> BottomSliceCases()
+        {
+            var givenList = Lists.AsList("A", "B", "C");
+            var givenSize = 3;
+            var expectedSlice = Lists.AsList("A", "B", "C");
+            yield return new TestCaseData(givenList, givenSize)
+                .SetName(Strings.Format("Bottom {0} slice of {1} should return {2}", givenSize, givenList, expectedSlice))
+                .Returns(expectedSlice);
+
+            givenList = Lists.AsList("A", "B", "C");
+            givenSize = 2;
+            expectedSlice = Lists.AsList("A", "B");
+            yield return new TestCaseData(givenList, givenSize)
+                .SetName(Strings.Format("Bottom {0} slice of {1} should return {2}", givenSize, givenList, expectedSlice))
+                .Returns(expectedSlice);
+
+            givenList = Lists.AsList("A", "B", "C");
+            givenSize = 1;
+            expectedSlice = Lists.AsList("A");
+            yield return new TestCaseData(givenList, givenSize)
+                .SetName(Strings.Format("Bottom {0} slice of {1} should return {2}", givenSize, givenList, expectedSlice))
+                .Returns(expectedSlice);
+
+            givenList = Lists.AsList("A", "B", "C");
+            givenSize = 5;
+            expectedSlice = Lists.AsList("A", "B", "C");
+            yield return new TestCaseData(givenList, givenSize)
+                .SetName(Strings.Format("Bottom {0} slice of {1} should return {2}", givenSize, givenList, expectedSlice))
+                .Returns(expectedSlice);
+
+            givenList = Lists.AsList("A", "B", "C");
+            givenSize = 0;
+            expectedSlice = Lists.EmptyList<string>();
+            yield return new TestCaseData(givenList, givenSize)
+                .SetName(Strings.Format("Bottom {0} slice of {1} should return {2}", givenSize, givenList, expectedSlice))
+                .Returns(expectedSlice);
+        }
+
+        [Test]
+        [TestCaseSource("SetLastListElementCases")]
+        public IList<string> ShouldReplaceLastElementList(IList<string> elements, string element)
+        {
+            // given
+            var list = new List<string>(elements);
+
+            // when
+            list.SetLast(element);
+
+            // then
+            return list;
+        }
+
+        private static IEnumerable<ITestCaseData> SetLastListElementCases()
+        {
+            const string element = "X";
+            var givenList = Lists.AsList("A", "B", "C");
+            var expected = Lists.AsList("A", "B", element);
+            yield return new TestCaseData(givenList, element)
+                .SetName(Strings.Format("Replace last item of {1} by {0} results {2}", element, givenList, expected))
+                .Returns(expected);
+
+            givenList = Lists.EmptyList<string>();
+            expected = Lists.AsList(element);
+            yield return new TestCaseData(givenList, element)
+                .SetName(Strings.Format("Replace last item of {1} by {0} results {2}", element, givenList, expected))
+                .Returns(expected);
+        }
+
+        [Test]
+        [TestCaseSource("SetFirstListElementCases")]
+        public IList<string> ShouldReplaceFirstElementList(IList<string> elements, string element)
+        {
+            // given
+            var list = new List<string>(elements);
+
+            // when
+            list.SetFirst(element);
+
+            // then
+            return list;
+        }
+
+        private static IEnumerable<ITestCaseData> SetFirstListElementCases()
+        {
+            const string element = "X";
+            var givenList = Lists.AsList("A", "B", "C");
+            var expected = Lists.AsList(element, "B", "C");
+            yield return new TestCaseData(givenList, element)
+                .SetName(Strings.Format("Replace first item of {1} by {0} results {2}", element, givenList, expected))
+                .Returns(expected);
+
+            givenList = Lists.EmptyList<string>();
+            expected = Lists.AsList(element);
+            yield return new TestCaseData(givenList, element)
+                .SetName(Strings.Format("Replace first item of {1} by {0} results {2}", element, givenList, expected))
+                .Returns(expected);
+        }
+
+        [Test]
+        public void ShouldConvertEnumerableToComparable()
+        {
+            // given
+            IEnumerable<string> enumerable = new[] {"A", "B", "C"};
+
+            // when
+            var comparable = enumerable.ToComparable();
+
+            // then
+            Check.That(comparable).IsEqualTo(Lists.AsList("A", "B", "C"));
+            Check.That(comparable.GetHashCode()).IsEqualTo(enumerable.ToComparable().GetHashCode());
+            Check.That(comparable.ToString()).IsEqualTo("[A, B, C]");
+        }
+
+        [Test]
+        public void ShouldConvertListToComparable()
+        {
+            // given
+            IList<string> enumerable = new[] { "A", "B", "C" };
+
+            // when
+            var comparable = enumerable.ToComparable();
+
+            // then
+            Check.That(comparable).IsEqualTo(Lists.AsList("A", "B", "C"));
+            Check.That(comparable.GetHashCode()).IsEqualTo(enumerable.ToComparable().GetHashCode());
+            Check.That(comparable.ToString()).IsEqualTo("[A, B, C]");
+        }
+
+        [Test]
+        public void ShouldConvertCollectionToComparable()
+        {
+            // given
+            ICollection<string> enumerable = new[] { "A", "B", "C" };
+
+            // when
+            var comparable = enumerable.ToComparable();
+
+            // then
+            Check.That(comparable).IsEqualTo(Lists.AsList("A", "B", "C"));
+            Check.That(comparable.GetHashCode()).IsEqualTo(enumerable.ToComparable().GetHashCode());
+            Check.That(comparable.ToString()).IsEqualTo("[A, B, C]");
+        }
+
+        [Test]
+        public void ShouldConvertSetToComparable()
+        {
+            // given
+            ISet<string> enumerable = new HashSet<string>(new [] {"A", "B", "C"});
+
+            // when
+            var comparable = enumerable.ToComparable();
+
+            // then
+            Check.That(comparable).IsEqualTo(Lists.AsList("C", "B", "A"));
         }
     }
 }

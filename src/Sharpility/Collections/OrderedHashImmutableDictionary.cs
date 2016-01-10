@@ -7,6 +7,11 @@ using Sharpility.Util;
 
 namespace Sharpility.Collections
 {
+    /// <summary>
+    /// HashMap implementation of OrderedImmutableDictionary.
+    /// </summary>
+    /// <typeparam name="T">Type of dictionary key</typeparam>
+    /// <typeparam name="TV">Type of dictionary vlaue</typeparam>
     public sealed class OrderedHashImmutableDictionary<T, TV>: OrderedImmutableDictionary<T, TV>
     {
         private readonly IImmutableList<T> orderedKeys;
@@ -18,9 +23,13 @@ namespace Sharpility.Collections
             this.dictionary = dictionary;
         }
 
-        public static Builder CreateBuilder()
+        /// <summary>
+        /// Builder of OrderedImmutableDictionary.
+        /// </summary>
+        /// <returns></returns>
+        public static OrderedHashImmutableDictionaryBuilder Builder()
         {
-            return new Builder();
+            return new OrderedHashImmutableDictionaryBuilder();
         }
 
         public IEnumerator<KeyValuePair<T, TV>> GetEnumerator()
@@ -138,16 +147,25 @@ namespace Sharpility.Collections
             }
         }
 
-        public sealed class Builder
+        /// <summary>
+        /// Builder of OrderedHashImmutableDictionary.
+        /// </summary>
+        public sealed class OrderedHashImmutableDictionaryBuilder
         {
             private readonly ImmutableList<T>.Builder keysOrder = ImmutableList.CreateBuilder<T>();
             private readonly ImmutableDictionary<T, TV>.Builder dictionary = ImmutableDictionary.CreateBuilder<T, TV>();
 
-            internal Builder()
+            internal OrderedHashImmutableDictionaryBuilder()
             {
             }
 
-            public Builder Put(T key, TV value)
+            /// <summary>
+            /// Puts value at given key into builder dictionary.
+            /// </summary>
+            /// <param name="key">Key</param>
+            /// <param name="value">Value</param>
+            /// <returns>Builder instance</returns>
+            public OrderedHashImmutableDictionaryBuilder Put(T key, TV value)
             {
                 if (!keysOrder.Contains(key))
                 {
@@ -157,12 +175,22 @@ namespace Sharpility.Collections
                 return this;
             }
 
-            public Builder Put(KeyValuePair<T, TV> entry)
+            /// <summary>
+            /// Puts entry into builder dictionary.
+            /// </summary>
+            /// <param name="entry">Dictionary entry</param>
+            /// <returns>Builder instance</returns>
+            public OrderedHashImmutableDictionaryBuilder Put(KeyValuePair<T, TV> entry)
             {
                 return Put(entry.Key, entry.Value);
             }
 
-            public Builder PutAll(IEnumerable<KeyValuePair<T, TV>> entries)
+            /// <summary>
+            /// Puts all entries into builder dictionary.
+            /// </summary>
+            /// <param name="entries">Entries</param>
+            /// <returns>Builder instance</returns>
+            public OrderedHashImmutableDictionaryBuilder PutAll(IEnumerable<KeyValuePair<T, TV>> entries)
             {
                 foreach (var entry in entries)
                 {
@@ -171,6 +199,10 @@ namespace Sharpility.Collections
                 return this;
             }
 
+            /// <summary>
+            /// Builds OrderedImmutableDictionary.
+            /// </summary>
+            /// <returns></returns>
             public OrderedImmutableDictionary<T, TV> Build()
             {
                 return new OrderedHashImmutableDictionary<T, TV>(keysOrder.ToImmutable(), dictionary.ToImmutable());

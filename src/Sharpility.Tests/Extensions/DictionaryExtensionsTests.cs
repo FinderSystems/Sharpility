@@ -278,5 +278,21 @@ namespace Sharpility.Tests.Extensions
             Check.That(multiDictionary)
                 .IsEqualTo(ImmutableSetMultiDictionary<string, string>.Of("A", "A1", "B", "B1", "C", "C1"));
         }
+
+        [Test]
+        public void ShouldConvertDictionaryIntoComparable()
+        {
+            // given
+            var dictionary = new Dictionary<int, string>();
+            dictionary[1] = "A";
+            dictionary[2] = "B";
+            dictionary[3] = "C";
+
+            // when
+            var comparable = dictionary.ToComparable();
+
+            // then
+            Check.That(comparable).IsEqualTo(Dictionaries.Create(1, "A", 2, "B", 3, "C"));
+        }
     }
 }

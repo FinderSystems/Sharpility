@@ -19,9 +19,25 @@ namespace Sharpility.Time
             return new SystemClock();
         }
 
+        /// <summary>
+        /// UTC system clock.
+        /// </summary>
+        public static Clock UTC
+        {
+            get { return new UtcSystemClock();}
+        }
+
         public DateTime CurrentTime
         {
             get { return DateTime.Now; }
+        }
+
+        private class UtcSystemClock : Clock
+        {
+            public DateTime CurrentTime
+            {
+                get { return DateTime.UtcNow; }
+            }
         }
     }
 }

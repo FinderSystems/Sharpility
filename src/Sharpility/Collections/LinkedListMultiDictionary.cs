@@ -10,10 +10,17 @@ namespace Sharpility.Collections
     /// <typeparam name="TValue">Type of dictionary value</typeparam>
     public sealed class LinkedListMultiDictionary<TKey, TValue> : AbstractMultiDictionary<TKey, TValue>
     {
+        /// <summary>
+        /// Creates LinkedListMultiDictionary.
+        /// </summary>
         public LinkedListMultiDictionary()
         {
         }
 
+        /// <summary>
+        /// Creates LinkedListMultiDictionary with given keys capacity.
+        /// </summary>
+        /// <param name="keysCapacity">Capacity of keys</param>
         public LinkedListMultiDictionary(int keysCapacity)
             : base(keysCapacity, 0)
         {

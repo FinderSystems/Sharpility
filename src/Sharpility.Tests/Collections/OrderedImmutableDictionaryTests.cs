@@ -12,7 +12,7 @@ namespace Sharpility.Tests.Collections
         public void ShouldReturnKeysInPutOrder()
         {
             // given
-            var dictionary = OrderedHashImmutableDictionary<string, int>.CreateBuilder()
+            var dictionary = OrderedHashImmutableDictionary<string, int>.Builder()
                 .Put("Z", 1)
                 .Put("Y", 2)
                 .Put("X", 3)
@@ -29,7 +29,7 @@ namespace Sharpility.Tests.Collections
         public void ShouldReturnEntriesInPutOrder()
         {
             // given
-            var dictionary = OrderedHashImmutableDictionary<string, int>.CreateBuilder()
+            var dictionary = OrderedHashImmutableDictionary<string, int>.Builder()
                 .Put("Z", 1)
                 .Put("Y", 2)
                 .Put("X", 3)

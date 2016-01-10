@@ -20,6 +20,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\Sharpility.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -28,12 +29,13 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\Sharpility.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Collections.Immutable, Version=1.1.36.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\System.Collections.Immutable.1.1.36\lib\portable-net45+win8+wp8+wpa81\System.Collections.Immutable.dll</HintPath>
+    <Reference Include="System.Collections.Immutable, Version=1.1.37.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Collections.Immutable.1.1.37\lib\portable-net45+win8+wp8+wpa81\System.Collections.Immutable.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime" />
@@ -48,11 +50,15 @@
     <Compile Include="Collections\AbstractMultiDictionary.cs" />
     <Compile Include="Collections\AbstractSortedMappedQueue.cs" />
     <Compile Include="Collections\ArrayListSortedMappedQueue.cs" />
+    <Compile Include="Collections\ComparableCollection.cs" />
     <Compile Include="Collections\ComparableDictionary.cs" />
+    <Compile Include="Collections\ComparableEnumerable.cs" />
     <Compile Include="Collections\ComparableList.cs" />
     <Compile Include="Collections\ComparableSet.cs" />
     <Compile Include="Collections\CompositeDictionary.cs" />
     <Compile Include="Collections\CompositeKey.cs" />
+    <Compile Include="Collections\Concurrent\BlockingQueue.cs" />
+    <Compile Include="Collections\Concurrent\DefaultBlockingQueue.cs" />
     <Compile Include="Collections\Concurrent\DefaultConcurrentQueue.cs" />
     <Compile Include="Collections\DefaultQueue.cs" />
     <Compile Include="Collections\HashCompositeDictionary.cs" />
@@ -74,27 +80,36 @@
     <Compile Include="Extensions\DateTimeExtensions.cs" />
     <Compile Include="Extensions\DbCommandExtensions.cs" />
     <Compile Include="Extensions\MultiDictionaryExtensions.cs" />
+    <Compile Include="Extensions\NameValueCollectionExtensions.cs" />
+    <Compile Include="Extensions\TimeSpanExtensions.cs" />
     <Compile Include="Function\BiConsumer.cs" />
     <Compile Include="Function\BiConverter.cs" />
     <Compile Include="Function\Consumer.cs" />
     <Compile Include="IO\EmbeddedResources.cs" />
     <Compile Include="IO\Files.cs" />
     <Compile Include="IO\Streams.cs" />
+    <Compile Include="Net\HttpHeaders.cs" />
+    <Compile Include="Net\HttpMethod.cs" />
+    <Compile Include="Net\MediaTypes.cs" />
     <Compile Include="Time\Clock.cs" />
     <Compile Include="Time\DateRange.cs" />
     <Compile Include="Time\FixedClock.cs" />
     <Compile Include="Time\SystemClock.cs" />
+    <Compile Include="Time\TimeUnit.cs" />
     <Compile Include="Util\Booleans.cs" />
     <Compile Include="Util\Comparers.cs" />
     <Compile Include="Util\CompositeKeys.cs" />
+    <Compile Include="Util\DateTimes.cs" />
     <Compile Include="Util\Dictionaries.cs" />
     <Compile Include="Extensions\DictionaryExtensions.cs" />
     <Compile Include="Util\Hashes.cs" />
+    <Compile Include="Util\InstanceCreator.cs" />
     <Compile Include="Util\KeyValuePairs.cs" />
     <Compile Include="Util\Lists.cs" />
     <Compile Include="Extensions\ObjectExtensions.cs" />
     <Compile Include="Collections\OrderedHashImmutableDictionary.cs" />
     <Compile Include="Collections\OrderedImmutableDictionary.cs" />
+    <Compile Include="Util\MultiComparer.cs" />
     <Compile Include="Util\Sets.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -104,6 +119,7 @@
     <Compile Include="Base\Preconditions.cs" />
     <Compile Include="Util\Reflections.cs" />
     <Compile Include="Util\Strings.cs" />
+    <Compile Include="Util\TimeSpans.cs" />
     <Compile Include="Util\ToStringHelper.cs" />
   </ItemGroup>
   <ItemGroup>

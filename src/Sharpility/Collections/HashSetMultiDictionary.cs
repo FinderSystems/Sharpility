@@ -9,10 +9,17 @@ namespace Sharpility.Collections
     /// <typeparam name="TValue">Type of dictionary value</typeparam>
     public sealed class HashSetMultiDictionary<TKey, TValue> : AbstractMultiDictionary<TKey, TValue>
     {
+        /// <summary>
+        /// Creates HashSetMultiDictionary
+        /// </summary>
         public HashSetMultiDictionary()
         {
         }
 
+        /// <summary>
+        /// Creates HashSetMultiDictionary with given keys capacity.
+        /// </summary>
+        /// <param name="keysCapacity">Capacity of keys</param>
         public HashSetMultiDictionary(int keysCapacity)
             : base(keysCapacity, 0)
         {

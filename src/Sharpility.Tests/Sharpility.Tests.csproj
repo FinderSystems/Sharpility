@@ -30,8 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Moq">
-      <HintPath>..\packages\Moq.4.2.1502.0911\lib\net40\Moq.dll</HintPath>
+    <Reference Include="Moq, Version=4.2.1510.2205, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
+      <HintPath>..\packages\Moq.4.2.1510.2205\lib\net40\Moq.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="NFluent">
       <HintPath>..\packages\NFluent.1.3.1.0\lib\net40\NFluent.dll</HintPath>
@@ -44,9 +45,9 @@
       <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Collections.Immutable, Version=1.1.36.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\System.Collections.Immutable.1.1.36\lib\portable-net45+win8+wp8+wpa81\System.Collections.Immutable.dll</HintPath>
+    <Reference Include="System.Collections.Immutable, Version=1.1.37.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Collections.Immutable.1.1.37\lib\portable-net45+win8+wp8+wpa81\System.Collections.Immutable.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -58,6 +59,7 @@
   <ItemGroup>
     <Compile Include="Collections\AbstractCompositeDictionaryTests.cs" />
     <Compile Include="Collections\ArrayListMultiDictionaryTests.cs" />
+    <Compile Include="Collections\Concurrent\DefaultBlockingQueueTests.cs" />
     <Compile Include="Collections\HashSetMultiDictionaryTests.cs" />
     <Compile Include="Collections\ImmutableListMultiDictionaryTests.cs" />
     <Compile Include="Collections\ImmutableMultiDictionaryTests.cs" />
@@ -70,14 +72,19 @@
     <Compile Include="Extensions\DateTimeExtensionsTests.cs" />
     <Compile Include="Extensions\DbCommandExtensionsTests.cs" />
     <Compile Include="Extensions\MultiDictionaryExtensionsTests.cs" />
+    <Compile Include="Extensions\NameValueCollectionExtensionsTests.cs" />
+    <Compile Include="Extensions\TimeSpanExtensionsTests.cs" />
     <Compile Include="IO\EmbeddedResourcesTests.cs" />
     <Compile Include="IO\FilesTests.cs" />
     <Compile Include="IO\StreamsTests.cs" />
     <Compile Include="Time\DateRangeTests.cs" />
     <Compile Include="Util\BooleansTest.cs" />
     <Compile Include="Util\ComparersTests.cs" />
+    <Compile Include="Util\DateTimesTests.cs" />
     <Compile Include="Util\DictionariesTests.cs" />
+    <Compile Include="Util\InstanceCreatorTests.cs" />
     <Compile Include="Util\ListsTests.cs" />
+    <Compile Include="Util\MultiComparerTests.cs" />
     <Compile Include="Util\SetsTests.cs" />
     <Compile Include="Extensions\CollectionExtensionsTests.cs" />
     <Compile Include="Extensions\DictionaryExtensionsTests.cs" />
@@ -91,6 +98,7 @@
     <Compile Include="Base\PreconditionsTests.cs" />
     <Compile Include="Util\ReflectionsTests.cs" />
     <Compile Include="Util\StringsTests.cs" />
+    <Compile Include="Util\TimeSpansTests.cs" />
     <Compile Include="Util\ToStringHelperTests.cs" />
   </ItemGroup>
   <ItemGroup>

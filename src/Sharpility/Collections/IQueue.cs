@@ -2,6 +2,10 @@
 
 namespace Sharpility.Collections
 {
+    /// <summary>
+    /// A collection designed for holding elements prior to processing.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public interface IQueue<T> : IEnumerable<T>
     {
         /// <summary>

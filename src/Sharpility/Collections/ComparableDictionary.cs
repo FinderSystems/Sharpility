@@ -7,14 +7,14 @@ namespace Sharpility.Collections
 {
     internal sealed class ComparableDictionary<TKey, TValue> : IDictionary<TKey, TValue>, IDictionary
     {
-        private readonly Dictionary<TKey, TValue> dictionary;
+        private readonly IDictionary<TKey, TValue> dictionary;
 
-        private ComparableDictionary(Dictionary<TKey, TValue> dictionary)
+        private ComparableDictionary(IDictionary<TKey, TValue> dictionary)
         {
             this.dictionary = dictionary;
         }
 
-        internal static ComparableDictionary<TKey, TValue> Of(Dictionary<TKey, TValue> dictionary)
+        internal static ComparableDictionary<TKey, TValue> Of(IDictionary<TKey, TValue> dictionary)
         {
             return new ComparableDictionary<TKey, TValue>(dictionary);
         }
@@ -52,7 +52,7 @@ namespace Sharpility.Collections
 
         public void Add(KeyValuePair<TKey, TValue> item)
         {
-            ((IDictionary<TKey, TValue>) dictionary).Add(item);
+            dictionary.Add(item);
         }
 
         public bool Contains(object key)
@@ -67,22 +67,22 @@ namespace Sharpility.Collections
 
         void ICollection<KeyValuePair<TKey, TValue>>.Clear()
         {
-            ((IDictionary<TKey, TValue>) dictionary).Clear();
+            dictionary.Clear();
         }
 
         public bool Contains(KeyValuePair<TKey, TValue> item)
         {
-            return ((IDictionary<TKey, TValue>) dictionary).Contains(item);
+            return dictionary.Contains(item);
         }
 
         public void CopyTo(KeyValuePair<TKey, TValue>[] array, int arrayIndex)
         {
-            ((IDictionary<TKey, TValue>) dictionary).CopyTo(array, arrayIndex);
+            dictionary.CopyTo(array, arrayIndex);
         }
 
         public bool Remove(KeyValuePair<TKey, TValue> item)
         {
-            return ((IDictionary<TKey, TValue>) dictionary).Remove(item);
+            return dictionary.Remove(item);
         }
 
         public void CopyTo(Array array, int index)
@@ -107,7 +107,7 @@ namespace Sharpility.Collections
 
         int ICollection<KeyValuePair<TKey, TValue>>.Count
         {
-            get { return ((IDictionary<TKey, TValue>) dictionary).Count; }
+            get { return dictionary.Count; }
         }
 
         ICollection IDictionary.Values
@@ -117,7 +117,7 @@ namespace Sharpility.Collections
 
         bool IDictionary.IsReadOnly
         {
-            get { return ((IDictionary<TKey, TValue>)dictionary).IsReadOnly; }
+            get { return dictionary.IsReadOnly; }
         }
 
         public bool IsFixedSize
@@ -127,38 +127,38 @@ namespace Sharpility.Collections
 
         bool ICollection<KeyValuePair<TKey, TValue>>.IsReadOnly
         {
-            get { return ((IDictionary<TKey, TValue>) dictionary).IsReadOnly; }
+            get { return dictionary.IsReadOnly; }
         }
 
         public bool ContainsKey(TKey key)
         {
-            return ((IDictionary<TKey, TValue>) dictionary).ContainsKey(key);
+            return dictionary.ContainsKey(key);
         }
 
         public void Add(TKey key, TValue value)
         {
-            ((IDictionary<TKey, TValue>) dictionary).Add(key, value);
+            dictionary.Add(key, value);
         }
 
         public bool Remove(TKey key)
         {
-            return ((IDictionary<TKey, TValue>) dictionary).Remove(key);
+            return dictionary.Remove(key);
         }
 
         public bool TryGetValue(TKey key, out TValue value)
         {
-            return ((IDictionary<TKey, TValue>) dictionary).TryGetValue(key, out value);
+            return dictionary.TryGetValue(key, out value);
         }
 
         TValue IDictionary<TKey, TValue>.this[TKey key]
         {
-            get { return ((IDictionary<TKey, TValue>) dictionary)[key]; }
-            set { ((IDictionary<TKey, TValue>) dictionary)[key] = value; }
+            get { return dictionary[key]; }
+            set { dictionary[key] = value; }
         }
 
         ICollection<TKey> IDictionary<TKey, TValue>.Keys
         {
-            get { return ((IDictionary<TKey, TValue>) dictionary).Keys; }
+            get { return dictionary.Keys; }
         }
 
         ICollection IDictionary.Keys
@@ -168,7 +168,7 @@ namespace Sharpility.Collections
 
         ICollection<TValue> IDictionary<TKey, TValue>.Values
         {
-            get { return ((IDictionary<TKey, TValue>) dictionary).Values; }
+            get { return dictionary.Values; }
         }
 
         public override bool Equals(object obj)

@@ -5,6 +5,12 @@ using Sharpility.Util;
 
 namespace Sharpility.Collections
 {
+    /// <summary>
+    /// Abstraction of CompositeDictionary.
+    /// </summary>
+    /// <typeparam name="TPrimaryKey">Type of primary key</typeparam>
+    /// <typeparam name="TSecondaryKey">Type of secondary key</typeparam>
+    /// <typeparam name="TValue">Type of value</typeparam>
     public abstract class AbstractCompositeDictionary<TPrimaryKey, TSecondaryKey, TValue> : CompositeDictionary<TPrimaryKey, TSecondaryKey, TValue>
     {
         private readonly IDictionary<TPrimaryKey, IDictionary<TSecondaryKey, TValue>> dictionary;
@@ -351,14 +357,43 @@ namespace Sharpility.Collections
             Count = dictionary.Sum(entry => entry.Value.Count);
         }
 
+        /// <summary>
+        /// Creates dictionary with given capacity.
+        /// </summary>
+        /// <typeparam name="T">Type of key</typeparam>
+        /// <typeparam name="TV">Type of value</typeparam>
+        /// <param name="capacity">Dictionary capacity</param>
+        /// <returns>created dictionary</returns>
         protected abstract IDictionary<T, TV> CreateDictionary<T, TV>(int capacity);
 
+        /// <summary>
+        /// Creates dictionary.
+        /// </summary>
+        /// <typeparam name="T">Type of key</typeparam>
+        /// <typeparam name="TV">Type of value</typeparam>
+        /// <returns>created dictionary</returns>
         protected abstract IDictionary<T, TV> CreateDictionary<T, TV>();
 
+        /// <summary>
+        /// Creates list matching CompositDictionary implementatio with given capacity.
+        /// </summary>
+        /// <typeparam name="T">Type of list item</typeparam>
+        /// <param name="capacity">List capacity</param>
+        /// <returns>created list</returns>
         protected abstract ICollection<T> CreateList<T>(int capacity);
 
+        /// <summary>
+        /// Creates list matching CompositDictionary implementation.
+        /// </summary>
+        /// <typeparam name="T">Type of list item</typeparam>
+        /// <returns>created list</returns>
         protected abstract ICollection<T> CreateList<T>();
 
+        /// <summary>
+        /// Creates set.
+        /// </summary>
+        /// <typeparam name="T">Type of set</typeparam>
+        /// <returns>created set</returns>
         protected abstract ISet<T> CreateSet<T>();
     }
 }

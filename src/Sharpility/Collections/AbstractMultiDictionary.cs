@@ -5,6 +5,11 @@ using Sharpility.Util;
 
 namespace Sharpility.Collections
 {
+    /// <summary>
+    /// Abstraction of MultiDictionary.
+    /// </summary>
+    /// <typeparam name="TKey">Type of key</typeparam>
+    /// <typeparam name="TValue">Type of value</typeparam>
     public abstract class AbstractMultiDictionary<TKey, TValue>: MultiDictionary<TKey, TValue>
     {
         public int Count { get; private set; }
@@ -235,10 +240,24 @@ namespace Sharpility.Collections
             return Strings.ToString(dictionary);
         }
 
+        /// <summary>
+        /// Creates collection matching MultiDictionary implementation with given capacity.
+        /// </summary>
+        /// <param name="capacity">collection capacity</param>
+        /// <returns>created collection</returns>
         protected abstract ICollection<TValue> CreateCollection(int capacity);
 
+        /// <summary>
+        /// Creates collection matching MultiDictionary implementation.
+        /// </summary>
+        /// <returns>created collection</returns>
         protected abstract ICollection<TValue> ResultCollection(ICollection<TValue> collection);
 
+        /// <summary>
+        /// Created comparable collection from given collection.
+        /// </summary>
+        /// <param name="collection">transformed collection</param>
+        /// <returns>comparable collection</returns>
         protected abstract ICollection<TValue> ComparableCollection(ICollection<TValue> collection);
     }
 }

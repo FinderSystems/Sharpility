@@ -12,8 +12,8 @@ namespace Sharpility.Util
     public sealed class ToStringHelper
     {
         private readonly object type;
-        private readonly OrderedHashImmutableDictionary<string, object>.Builder fields =
-            OrderedHashImmutableDictionary<string, object>.CreateBuilder();
+        private readonly OrderedHashImmutableDictionary<string, object>.OrderedHashImmutableDictionaryBuilder fields =
+            OrderedHashImmutableDictionary<string, object>.Builder();
 
         private bool skipNulls;
         private bool generateToStringOfProperties;

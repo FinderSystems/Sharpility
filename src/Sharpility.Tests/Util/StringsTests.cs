@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using NFluent;
 using NUnit.Framework;
 using Sharpility.Extensions;
 using Sharpility.Util;
@@ -185,6 +186,19 @@ namespace Sharpility.Tests.Util
             yield return new TestCaseData(given, comparedTo)
                 .SetName(Strings.Format("'{0}' to '{1}' compared with ignored cases returns {2}", given, comparedTo, expected))
                 .Returns(expected);
+        }
+
+        [Test]
+        public void ShouldReturnByteArrayAsString()
+        {
+            // given
+            var bytes = "this is a test".ToBytes();
+
+            // when
+            var toString = Strings.ToString(bytes);
+
+            // then
+            Check.That(toString).IsEqualTo("this is a test");
         }
     }
 }

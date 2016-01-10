@@ -360,5 +360,17 @@ namespace Sharpility.Extensions
             builder.PutAll(dictionary);
             return builder.Build();
         }
+
+        /// <summary>
+        /// Converts dictionary into comparable dictionary with equals/hashCode/toString implementations.
+        /// </summary>
+        /// <typeparam name="TKey">Type of dictionary key</typeparam>
+        /// <typeparam name="TValue">Type of dictionary value</typeparam>
+        /// <param name="dictionary">this</param>
+        /// <returns>Comparable dictionary</returns>
+        public static IDictionary<TKey, TValue> ToComparable<TKey, TValue>(this IDictionary<TKey, TValue> dictionary)
+        {
+            return ComparableDictionary<TKey, TValue>.Of(dictionary);
+        } 
     }
 }

@@ -17,6 +17,10 @@ namespace Sharpility.Collections
         private readonly IImmutableDictionary<TKey, ICollection<TValue>> dictionary;
         public int Count { get; private set; }
 
+        /// <summary>
+        /// Creates ImmutableMultiDictionary from immutable dictionary.
+        /// </summary>
+        /// <param name="dictionary">Immutable dictionary</param>
         protected ImmutableMultiDictionary(IImmutableDictionary<TKey, ICollection<TValue>> dictionary)
         {
             this.dictionary = dictionary;
@@ -175,8 +179,17 @@ namespace Sharpility.Collections
             return Strings.ToString(dictionary);
         }
 
+        /// <summary>
+        /// Returns empty collection matching MultiDictionary implementation.
+        /// </summary>
+        /// <returns>empty collection</returns>
         protected abstract ICollection<TValue> EmptyCollection();
 
+        /// <summary>
+        /// Creates mutable copy of given collection.
+        /// </summary>
+        /// <param name="values">Transformed collection</param>
+        /// <returns>Mutable collection</returns>
         protected abstract ICollection<TValue> MutableCopy(ICollection<TValue> values);
 
         /// <summary>
@@ -256,8 +269,18 @@ namespace Sharpility.Collections
                 return Crete(immutableDictionary);
             }
 
+            /// <summary>
+            /// Creates immutable copy of given collection.
+            /// </summary>
+            /// <param name="values">Transformed collection</param>
+            /// <returns>Immutable collection</returns>
             protected abstract ICollection<TV> Immutable(ICollection<TV> values);
 
+            /// <summary>
+            /// Created ImmutableMultiDictionary from immutable dictionary.
+            /// </summary>
+            /// <param name="dictionary">Immutable dictionary</param>
+            /// <returns>ImmutableMultiDictionary</returns>
             protected abstract TR Crete(IImmutableDictionary<T, ICollection<TV>> dictionary);
         }
     }

@@ -50,13 +50,13 @@ namespace Sharpility.Util
         /// <returns>Ordered dictionary with object properties</returns>
         public static OrderedImmutableDictionary<string, object> Properties(object obj, bool includeBase = false)
         {
-            var builder = OrderedHashImmutableDictionary<string, object>.CreateBuilder();
+            var builder = OrderedHashImmutableDictionary<string, object>.Builder();
             const BindingFlags options = BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public;
             AppendProperties(obj, obj.GetType(), builder, options, includeBase);
             return builder.Build();
         }
 
-        private static void AppendProperties(object obj, Type type, OrderedHashImmutableDictionary<string, object>.Builder builder,
+        private static void AppendProperties(object obj, Type type, OrderedHashImmutableDictionary<string, object>.OrderedHashImmutableDictionaryBuilder orderedHashImmutableDictionaryBuilder,
             BindingFlags options, bool includeBase)
         {
             if (type != null)
@@ -65,11 +65,11 @@ namespace Sharpility.Util
                 foreach (var property in properties)
                 {
                     var value = property.GetValue(obj);
-                    builder.Put(property.Name, value);
+                    orderedHashImmutableDictionaryBuilder.Put(property.Name, value);
                 }
                 if (includeBase)
                 {
-                    AppendProperties(obj, type.BaseType, builder, BindingFlags.NonPublic | BindingFlags.Instance, true);
+                    AppendProperties(obj, type.BaseType, orderedHashImmutableDictionaryBuilder, BindingFlags.NonPublic | BindingFlags.Instance, true);
                 }
             }
         }
@@ -82,13 +82,13 @@ namespace Sharpility.Util
         /// <returns>Ordered dictionary with object fields</returns>
         public static OrderedImmutableDictionary<string, object> Fields(object obj, bool includeBase = false)
         {
-            var builder = OrderedHashImmutableDictionary<string, object>.CreateBuilder();
+            var builder = OrderedHashImmutableDictionary<string, object>.Builder();
             const BindingFlags options = BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public;
             AppendFields(obj, obj.GetType(), builder, options, includeBase);
             return builder.Build();
         }
 
-        private static void AppendFields(object obj, Type type, OrderedHashImmutableDictionary<string, object>.Builder builder,
+        private static void AppendFields(object obj, Type type, OrderedHashImmutableDictionary<string, object>.OrderedHashImmutableDictionaryBuilder orderedHashImmutableDictionaryBuilder,
            BindingFlags options, bool includeBase)
         {
             if (type != null)
@@ -97,11 +97,11 @@ namespace Sharpility.Util
                 foreach (var field in fields.Where(f => !f.Name.EndsWith("k__BackingField")))
                 {
                     var value = field.GetValue(obj);
-                    builder.Put(field.Name, value);
+                    orderedHashImmutableDictionaryBuilder.Put(field.Name, value);
                 }
                 if (includeBase)
                 {
-                    AppendFields(obj, type.BaseType, builder, BindingFlags.NonPublic | BindingFlags.Instance, true);
+                    AppendFields(obj, type.BaseType, orderedHashImmutableDictionaryBuilder, BindingFlags.NonPublic | BindingFlags.Instance, true);
                 }
             }
         }

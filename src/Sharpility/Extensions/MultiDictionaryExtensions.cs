@@ -67,6 +67,18 @@ namespace Sharpility.Extensions
             var result = ImmutableSetMultiDictionary<TKey, TValue>.Builder();
             result.PutAll(multiDictionary);
             return result.Build();
-        } 
+        }
+
+        /// <summary>
+        /// Checks is multi dictionary is not empty.
+        /// </summary>
+        /// <typeparam name="TKey">Type of MultiDictionary key</typeparam>
+        /// <typeparam name="TValue">Type of MultiDictionary value</typeparam>
+        /// <param name="multiDictionary">this</param>
+        /// <returns>True if not empty, False otherwise</returns>
+        public static bool IsNotEmpty<TKey, TValue>(this MultiDictionary<TKey, TValue> multiDictionary)
+        {
+            return !multiDictionary.IsEmpty;
+        }
     }
 }
