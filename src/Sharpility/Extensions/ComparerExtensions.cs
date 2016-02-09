@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using Sharpility.Base;
 
 namespace Sharpility.Extensions
 {
@@ -11,11 +13,12 @@ namespace Sharpility.Extensions
         /// Returns comparer in reversed order.
         /// </summary>
         /// <typeparam name="T">Type of compared item</typeparam>
-        /// <param name="comparer">this</param>
+        /// <param name="source">this</param>
         /// <returns>Reversed order comparer</returns>
-        public static IComparer<T> Reverse<T>(this IComparer<T> comparer)
+        public static IComparer<T> Reverse<T>(this IComparer<T> source)
         {
-            return new ReverseComparer<T>(comparer);
+            Preconditions.IsNotNull(source, () => new ArgumentNullException("source"));
+            return new ReverseComparer<T>(source);
         }
 
         private sealed class ReverseComparer<T> : IComparer<T>

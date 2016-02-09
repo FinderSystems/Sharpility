@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using NFluent;
 using NUnit.Framework;
@@ -98,6 +99,28 @@ namespace Sharpility.Tests.Util
                 "C", Lists.AsList(Lists.EmptyList<int>(), null)))
               .SetName("Should generate toString of complex dictionary")
               .Returns("[(A, [[1, 2, 3], [4, 5, 6]]), (B, [[1], [2]]), (C, [[], null])]");
+
+            yield return new TestCaseData(new DateTime(2016, 2, 9, 10, 45, 0, DateTimeKind.Utc))
+               .SetName("Should include UTC kind for DateTime")
+               .Returns("2016-02-09 10:45:00Z");
+
+            yield return new TestCaseData(new DateTime(2016, 2, 9, 10, 45, 0, DateTimeKind.Unspecified))
+               .SetName("Should ignore unspecified kind for DateTime")
+               .Returns("2016-02-09 10:45:00");
+        }
+
+        [Test]
+        [Explicit] // Depends on system settings
+        public void ToStringOfDateTimeWithLocalKindShouldIncludeZoneOffset()
+        {
+            // given
+            var dateTime = new DateTime(2016, 2, 9, 10, 50, 0, DateTimeKind.Local);
+
+            // when
+            var dateTimeToString = Strings.ToString(dateTime);
+
+            // then
+            Check.That(dateTimeToString).Equals("2016-02-09 10:50:00+01:00");
         }
 
         [Test, TestCaseSource("StringFormatTestCases")]

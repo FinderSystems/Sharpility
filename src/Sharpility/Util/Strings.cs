@@ -2,8 +2,10 @@
 
 using System;
 using System.Collections;
+using System.Globalization;
+using System.Runtime.InteropServices;
 using System.Text;
-using Sharpility.Collections;
+using Sharpility.Extensions;
 
 namespace Sharpility.Util
 {
@@ -49,26 +51,27 @@ namespace Sharpility.Util
             {
                 return (string) value;
             }
-            else if (value is byte[])
+            if (value is byte[])
             {
                 return Encoding.Default.GetString((byte[])value);
             }
-            else if (value is IDictionary)
+            if (value is IDictionary)
             {
                 return ToString((IDictionary) value);
             }
-            else if (value is IEnumerator)
+            if (value is IEnumerator)
             {
                 return ToString((IEnumerator) value);
             }
-            else if (value is IEnumerable)
+            if (value is IEnumerable)
             {
                 return ToString((IEnumerable) value);
             }
-            else
+            if (value is DateTime)
             {
-                return value != null ? value.ToString() : "null";    
+                return ToString((DateTime) value);
             }
+            return value != null ? value.ToString() : "null";    
         }
 
         private static string ToString(IEnumerable enumerable)
@@ -117,6 +120,29 @@ namespace Sharpility.Util
             }
             builder.Append("]");
             return builder.ToString();
+        }
+
+        private static string ToString(DateTime dateTime)
+        {
+            return dateTime.ToString("yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture) + Kind(dateTime);
+        }
+
+        private static string Kind(DateTime dateTime)
+        {
+            switch (dateTime.Kind)
+            {
+                case DateTimeKind.Utc:
+                    return "Z";
+                case DateTimeKind.Local:
+                    var offset = TimeZone.CurrentTimeZone.GetUtcOffset(dateTime);
+                    var hours = offset.ToHours();
+                    var minutes = offset.Minutes;
+                    var prefix = offset < TimeSpan.Zero ? "-" : "+";
+                    return string.Format("{0}{1:D2}:{2:D2}",
+                        prefix, Math.Abs(hours), Math.Abs(minutes));
+                default:
+                    return "";
+            }
         }
 
         /// <summary>

@@ -1,4 +1,6 @@
-﻿using Sharpility.Collections;
+﻿using System;
+using Sharpility.Base;
+using Sharpility.Collections;
 
 namespace Sharpility.Extensions
 {
@@ -13,20 +15,21 @@ namespace Sharpility.Extensions
         /// </summary>
         /// <typeparam name="TKey">Type of dictionary key</typeparam>
         /// <typeparam name="TValue">Type of dictionary value</typeparam>
-        /// <param name="multiDictionary">Converted MultiDictionary</param>
+        /// <param name="source">Converted MultiDictionary</param>
         /// <returns>ImmutableMultiDictionary</returns>
         public static ImmutableMultiDictionary<TKey, TValue> ToImmutableMultiDictionary<TKey, TValue>(
-            this MultiDictionary<TKey, TValue> multiDictionary)
+            this MultiDictionary<TKey, TValue> source)
         {
-            if (multiDictionary is ImmutableMultiDictionary<TKey, TValue>)
+            Preconditions.IsNotNull(source, () => new ArgumentNullException("source"));
+            if (source is ImmutableMultiDictionary<TKey, TValue>)
             {
-                return (ImmutableMultiDictionary<TKey, TValue>) multiDictionary;
+                return (ImmutableMultiDictionary<TKey, TValue>) source;
             }
-            if (multiDictionary is HashSetMultiDictionary<TKey, TValue>)
+            if (source is HashSetMultiDictionary<TKey, TValue>)
             {
-                return ToImmutableSetMultiDictionary(multiDictionary);
+                return ToImmutableSetMultiDictionary(source);
             }
-            return ToImmutableListMultiDictionary(multiDictionary);
+            return ToImmutableListMultiDictionary(source);
         }
 
         /// <summary>
@@ -35,17 +38,18 @@ namespace Sharpility.Extensions
         /// </summary>
         /// <typeparam name="TKey">Type of dictionary key</typeparam>
         /// <typeparam name="TValue">Type of dictionary value</typeparam>
-        /// <param name="multiDictionary">Converted MultiDictionary</param>
+        /// <param name="source">Converted MultiDictionary</param>
         /// <returns>ImmutableListMultiDictionary</returns>
         public static ImmutableListMultiDictionary<TKey, TValue> ToImmutableListMultiDictionary<TKey, TValue>(
-            this MultiDictionary<TKey, TValue> multiDictionary)
+            this MultiDictionary<TKey, TValue> source)
         {
-            if (multiDictionary is ImmutableListMultiDictionary<TKey, TValue>)
+            Preconditions.IsNotNull(source, () => new ArgumentNullException("source"));
+            if (source is ImmutableListMultiDictionary<TKey, TValue>)
             {
-                return (ImmutableListMultiDictionary<TKey, TValue>)multiDictionary;
+                return (ImmutableListMultiDictionary<TKey, TValue>)source;
             }
             var result = ImmutableListMultiDictionary<TKey, TValue>.Builder();
-            result.PutAll(multiDictionary);
+            result.PutAll(source);
             return result.Build();
         }
 
@@ -55,17 +59,18 @@ namespace Sharpility.Extensions
         /// </summary>
         /// <typeparam name="TKey">Type of dictionary key</typeparam>
         /// <typeparam name="TValue">Type of dictionary value</typeparam>
-        /// <param name="multiDictionary">Converted MultiDictionary</param>
+        /// <param name="source">Converted MultiDictionary</param>
         /// <returns>ImmutableSetMultiDictionary</returns>
         public static ImmutableSetMultiDictionary<TKey, TValue> ToImmutableSetMultiDictionary<TKey, TValue>(
-            this MultiDictionary<TKey, TValue> multiDictionary)
+            this MultiDictionary<TKey, TValue> source)
         {
-            if (multiDictionary is ImmutableSetMultiDictionary<TKey, TValue>)
+            Preconditions.IsNotNull(source, () => new ArgumentNullException("source"));
+            if (source is ImmutableSetMultiDictionary<TKey, TValue>)
             {
-                return (ImmutableSetMultiDictionary<TKey, TValue>)multiDictionary;
+                return (ImmutableSetMultiDictionary<TKey, TValue>)source;
             }
             var result = ImmutableSetMultiDictionary<TKey, TValue>.Builder();
-            result.PutAll(multiDictionary);
+            result.PutAll(source);
             return result.Build();
         }
 
@@ -74,11 +79,12 @@ namespace Sharpility.Extensions
         /// </summary>
         /// <typeparam name="TKey">Type of MultiDictionary key</typeparam>
         /// <typeparam name="TValue">Type of MultiDictionary value</typeparam>
-        /// <param name="multiDictionary">this</param>
+        /// <param name="source">this</param>
         /// <returns>True if not empty, False otherwise</returns>
-        public static bool IsNotEmpty<TKey, TValue>(this MultiDictionary<TKey, TValue> multiDictionary)
+        public static bool IsNotEmpty<TKey, TValue>(this MultiDictionary<TKey, TValue> source)
         {
-            return !multiDictionary.IsEmpty;
+            Preconditions.IsNotNull(source, () => new ArgumentNullException("source"));
+            return !source.IsEmpty;
         }
     }
 }

@@ -1,4 +1,6 @@
 ﻿
+using System;
+using Sharpility.Base;
 using Sharpility.Util;
 
 namespace Sharpility.Extensions
@@ -12,15 +14,16 @@ namespace Sharpility.Extensions
         /// Checks object equality by comparing properties.
         /// Collections are supported.
         /// </summary>
-        /// <param name="obj">this</param>
+        /// <param name="source">this</param>
         /// <param name="that">compared object</param>
         /// <returns>true if objects properties are equals</returns>
-        public static bool EqualsByProperties(this object obj, object that)
+        public static bool EqualsByProperties(this object source, object that)
         {
-            var type = obj.GetType();
+            Preconditions.IsNotNull(source, () => new ArgumentNullException("source"));
+            var type = source.GetType();
             if (that != null && that.GetType() == type)
             {
-                var thisProperties = Reflections.Properties(obj);
+                var thisProperties = Reflections.Properties(source);
                 var thatProperties = Reflections.Properties(that);
                 foreach (var key in thisProperties.OrderedKeys)
                 {
@@ -40,15 +43,16 @@ namespace Sharpility.Extensions
         /// Checks object equality by comparing fields.
         /// Collections are supported.
         /// </summary>
-        /// <param name="obj">this</param>
+        /// <param name="source">this</param>
         /// <param name="that">compared object</param>
         /// <returns>true if objects fields are equals</returns>
-        public static bool EqualsByFields(this object obj, object that)
+        public static bool EqualsByFields(this object source, object that)
         {
-            var type = obj.GetType();
+            Preconditions.IsNotNull(source, () => new ArgumentNullException("source"));
+            var type = source.GetType();
             if (that != null && that.GetType() == type)
             {
-                var thisFields = Reflections.Fields(obj);
+                var thisFields = Reflections.Fields(source);
                 var thatFields = Reflections.Fields(that);
                 foreach (var key in thisFields.OrderedKeys)
                 {
@@ -68,23 +72,25 @@ namespace Sharpility.Extensions
         /// Checks object equality by comparing properties and fields.
         /// Collections are supported.
         /// </summary>
-        /// <param name="obj">this</param>
+        /// <param name="source">this</param>
         /// <param name="that">compared object</param>
         /// <returns>true if objects properties and fields are equals</returns>
-        public static bool EqualsByMembers(this object obj, object that)
+        public static bool EqualsByMembers(this object source, object that)
         {
-            return EqualsByProperties(obj, that) && EqualsByFields(obj, that);
+            Preconditions.IsNotNull(source, () => new ArgumentNullException("source"));
+            return EqualsByProperties(source, that) && EqualsByFields(source, that);
         }
 
         /// <summary>
         /// Generates object hashCode from properties.
         /// Collections are supported.
         /// </summary>
-        /// <param name="obj">this</param>
+        /// <param name="source">this</param>
         /// <returns>hashCode</returns>
-        public static int PropertiesHash(this object obj)
+        public static int PropertiesHash(this object source)
         {
-            var properties = Reflections.Properties(obj);
+            Preconditions.IsNotNull(source, () => new ArgumentNullException("source"));
+            var properties = Reflections.Properties(source);
             var hashCode = 1;
             foreach (var key in properties.OrderedKeys)
             {
@@ -98,11 +104,12 @@ namespace Sharpility.Extensions
         /// Generated object hashCode from fields.
         /// Collections are supported.
         /// </summary>
-        /// <param name="obj">this</param>
+        /// <param name="source">this</param>
         /// <returns>hashCode</returns>
-        public static int FieldsHash(this object obj)
+        public static int FieldsHash(this object source)
         {
-            var fields = Reflections.Fields(obj);
+            Preconditions.IsNotNull(source, () => new ArgumentNullException("source"));
+            var fields = Reflections.Fields(source);
             var hashCode = 1;
             foreach (var key in fields.OrderedKeys)
             {
@@ -116,24 +123,26 @@ namespace Sharpility.Extensions
         /// Generated object hashCode from properties and fields.
         /// Collections are supported.
         /// </summary>
-        /// <param name="obj">this</param>
+        /// <param name="source">this</param>
         /// <returns>hashCode</returns>
-        public static int MembersHash(this object obj)
+        public static int MembersHash(this object source)
         {
-            var hashCode = obj.PropertiesHash();
-            hashCode = 31 * hashCode + obj.FieldsHash();
+            Preconditions.IsNotNull(source, () => new ArgumentNullException("source"));
+            var hashCode = source.PropertiesHash();
+            hashCode = 31 * hashCode + source.FieldsHash();
             return hashCode;
         }
 
         /// <summary>
         /// Generate toString implementation using object properties.
         /// </summary>
-        /// <param name="obj">this</param>
+        /// <param name="source">this</param>
         /// <param name="skipNulls">true if null properties should be excluded, false by default</param>
         /// <returns>toString</returns>
-        public static string PropertiesToString(this object obj, bool skipNulls = false)
+        public static string PropertiesToString(this object source, bool skipNulls = false)
         {
-            return ToStringHelper.Of(obj)
+            Preconditions.IsNotNull(source, () => new ArgumentNullException("source"));
+            return ToStringHelper.Of(source)
                 .AddProperties()
                 .SkipNulls(skipNulls)
                 .ToString();
@@ -142,12 +151,13 @@ namespace Sharpility.Extensions
         /// <summary>
         /// Generate toString implementation using object fields.
         /// </summary>
-        /// <param name="obj">this</param>
+        /// <param name="source">this</param>
         /// <param name="skipNulls">true if null properties should be excluded, false by default</param>
         /// <returns>toString</returns>
-        public static string FieldsToString(this object obj, bool skipNulls = false)
+        public static string FieldsToString(this object source, bool skipNulls = false)
         {
-            return ToStringHelper.Of(obj)
+            Preconditions.IsNotNull(source, () => new ArgumentNullException("source"));
+            return ToStringHelper.Of(source)
                 .AddFields()
                 .SkipNulls(skipNulls)
                 .ToString();
@@ -156,12 +166,13 @@ namespace Sharpility.Extensions
         /// <summary>
         /// Generate toString implementation using object properties and fields.
         /// </summary>
-        /// <param name="obj">this</param>
+        /// <param name="source">this</param>
         /// <param name="skipNulls">true if null properties should be excluded, false by default</param>
         /// <returns>toString</returns>
-        public static string MembersToString(this object obj, bool skipNulls = false)
+        public static string MembersToString(this object source, bool skipNulls = false)
         {
-            return ToStringHelper.Of(obj)
+            Preconditions.IsNotNull(source, () => new ArgumentNullException("source"));
+            return ToStringHelper.Of(source)
                 .AddMembers()
                 .SkipNulls(skipNulls)
                 .ToString();

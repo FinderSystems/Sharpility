@@ -20,5 +20,6 @@ namespace Sharpility.Tests.Extensions
             // then
             Check.That(milliseconds).IsEqualTo(1433762100000L);
         }
+
     }
 }

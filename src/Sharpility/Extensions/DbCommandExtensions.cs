@@ -1,4 +1,6 @@
-﻿using System.Data;
+﻿using System;
+using System.Data;
+using Sharpility.Base;
 
 namespace Sharpility.Extensions
 {
@@ -7,12 +9,19 @@ namespace Sharpility.Extensions
     /// </summary>
     public static class DbCommandExtensions
     {
-        public static void SetParameter(this IDbCommand command, string name, object value)
+        /// <summary>
+        /// Sets command named parameter value.
+        /// </summary>
+        /// <param name="source">DB command</param>
+        /// <param name="name">Parameter name</param>
+        /// <param name="value">Paramater value</param>
+        public static void SetParameter(this IDbCommand source, string name, object value)
         {
-            var parameter = command.CreateParameter();
+            Preconditions.IsNotNull(source, () => new ArgumentNullException("source"));
+            var parameter = source.CreateParameter();
             parameter.ParameterName = name;
             parameter.Value = value;
-            command.Parameters.Add(parameter);
+            source.Parameters.Add(parameter);
         }
     }
 }
