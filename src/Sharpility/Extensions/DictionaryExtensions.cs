@@ -11,6 +11,9 @@ namespace Sharpility.Extensions
     /// </summary>
     public static class DictionaryExtensions
     {
+
+        #region PutAll
+
         /// <summary>
         /// Puts value into this dictionary by given key.
         /// </summary>
@@ -96,6 +99,10 @@ namespace Sharpility.Extensions
             return source;
         }
 
+        #endregion
+
+        #region Get
+
         /// <summary>
         /// Returns dictionary value by given key.
         /// </summary>
@@ -123,6 +130,36 @@ namespace Sharpility.Extensions
             Preconditions.IsNotNull(source, () => new ArgumentNullException("source"));
             return source[key];
         }
+
+        /// <summary>
+        /// Returns dictionary value by given key.
+        /// </summary>
+        /// <typeparam name="T">Type of key</typeparam>
+        /// <typeparam name="TV">Type of value</typeparam>
+        /// <param name="source">this</param>
+        /// <param name="key">Key</param>
+        /// <returns>Value</returns>
+        public static TV Get<T, TV>(this Dictionary<T, TV> source, T key)
+        {
+            return Get((IDictionary<T, TV>) source, key);
+        }
+
+        /// <summary>
+        /// Returns dictionary value by given key.
+        /// </summary>
+        /// <typeparam name="T">Type of key</typeparam>
+        /// <typeparam name="TV">Type of value</typeparam>
+        /// <param name="source">this</param>
+        /// <param name="key">Key</param>
+        /// <returns>Value</returns>
+        public static TV Get<T, TV>(this ImmutableDictionary<T, TV> source, T key)
+        {
+            return Get((IReadOnlyDictionary<T, TV>)source, key);
+        }
+
+        #endregion
+
+        #region GetIfPresent
 
         /// <summary>
         /// Returns dictionary value by given key.
@@ -165,6 +202,41 @@ namespace Sharpility.Extensions
         /// <param name="source">this</param>
         /// <param name="key">Key</param>
         /// <returns>Value</returns>
+        public static TV GetIfPresent<T, TV>(this Dictionary<T, TV> source, T key)
+            where TV : class
+        {
+            Preconditions.IsNotNull(source, () => new ArgumentNullException("source"));
+            return GetIfPresent((IDictionary<T, TV>) source, key);
+        }
+
+        /// <summary>
+        /// Returns dictionary value by given key.
+        /// If key not present returns null.
+        /// </summary>
+        /// <typeparam name="T">Type of key</typeparam>
+        /// <typeparam name="TV">Type of value</typeparam>
+        /// <param name="source">this</param>
+        /// <param name="key">Key</param>
+        /// <returns>Value</returns>
+        public static TV GetIfPresent<T, TV>(this ImmutableDictionary<T, TV> source, T key)
+            where TV : class
+        {
+            return GetIfPresent((IReadOnlyDictionary<T, TV>) source, key);
+        }
+
+        #endregion
+
+        #region NullableStructGetIfPresent
+
+        /// <summary>
+        /// Returns dictionary value by given key.
+        /// If key not present returns null.
+        /// </summary>
+        /// <typeparam name="T">Type of key</typeparam>
+        /// <typeparam name="TV">Type of value</typeparam>
+        /// <param name="source">this</param>
+        /// <param name="key">Key</param>
+        /// <returns>Value</returns>
         public static TV? GetIfPresent<T, TV>(this IDictionary<T, TV?> source, T key)
            where TV : struct
         {
@@ -187,6 +259,40 @@ namespace Sharpility.Extensions
             Preconditions.IsNotNull(source, () => new ArgumentNullException("source"));
             return source.ContainsKey(key) ? source.Get(key) : null;
         }
+
+        /// <summary>
+        /// Returns dictionary value by given key.
+        /// If key not present returns null.
+        /// </summary>
+        /// <typeparam name="T">Type of key</typeparam>
+        /// <typeparam name="TV">Type of value</typeparam>
+        /// <param name="source">this</param>
+        /// <param name="key">Key</param>
+        /// <returns>Value</returns>
+        public static TV? GetIfPresent<T, TV>(this Dictionary<T, TV?> source, T key)
+           where TV : struct
+        {
+            return GetIfPresent((IDictionary<T, TV?>) source, key);
+        }
+
+        /// <summary>
+        /// Returns dictionary value by given key.
+        /// If key not present returns null.
+        /// </summary>
+        /// <typeparam name="T">Type of key</typeparam>
+        /// <typeparam name="TV">Type of value</typeparam>
+        /// <param name="source">this</param>
+        /// <param name="key">Key</param>
+        /// <returns>Value</returns>
+        public static TV? GetIfPresent<T, TV>(this ImmutableDictionary<T, TV?> source, T key)
+           where TV : struct
+        {
+            return GetIfPresent((IReadOnlyDictionary<T, TV?>)source, key);
+        }
+
+        #endregion
+
+        #region Entries
 
         /// <summary>
         /// Returns key-value entries set.
@@ -227,6 +333,34 @@ namespace Sharpility.Extensions
         }
 
         /// <summary>
+        /// Returns key-value entries set.
+        /// </summary>
+        /// <typeparam name="T">Type of key</typeparam>
+        /// <typeparam name="TV">Type of value</typeparam>
+        /// <param name="source">this</param>
+        /// <returns>Set of dictionary entries</returns>
+        public static ISet<KeyValuePair<T, TV>> Entries<T, TV>(this Dictionary<T, TV> source)
+        {
+            return Entries((IDictionary<T, TV>) source);
+        }
+
+        /// <summary>
+        /// Returns key-value entries set.
+        /// </summary>
+        /// <typeparam name="T">Type of key</typeparam>
+        /// <typeparam name="TV">Type of value</typeparam>
+        /// <param name="source">this</param>
+        /// <returns>Set of dictionary entries</returns>
+        public static ISet<KeyValuePair<T, TV>> Entries<T, TV>(this ImmutableDictionary<T, TV> source)
+        {
+            return Entries((IReadOnlyDictionary<T, TV>)source);
+        }
+
+        #endregion
+
+        #region ToArrayListMultiDictionary
+
+        /// <summary>
         /// Converts dictionary to ArrayListMultiDictionary.
         /// </summary>
         /// <typeparam name="TKey">Type of dictionary key</typeparam>
@@ -257,6 +391,36 @@ namespace Sharpility.Extensions
             result.PutAll(source);
             return result;
         }
+
+        /// <summary>
+        /// Converts dictionary to ArrayListMultiDictionary.
+        /// </summary>
+        /// <typeparam name="TKey">Type of dictionary key</typeparam>
+        /// <typeparam name="TValue">Type of dictionary value</typeparam>
+        /// <param name="source">this</param>
+        /// <returns>ArrayListMultiDictionary</returns>
+        public static ArrayListMultiDictionary<TKey, TValue> ToArrayListMultiDictionary<TKey, TValue>(
+            this Dictionary<TKey, TValue> source)
+        {
+            return ToArrayListMultiDictionary((IDictionary<TKey, TValue>) source);
+        }
+
+        /// <summary>
+        /// Converts dictionary to ArrayListMultiDictionary.
+        /// </summary>
+        /// <typeparam name="TKey">Type of dictionary key</typeparam>
+        /// <typeparam name="TValue">Type of dictionary value</typeparam>
+        /// <param name="source">this</param>
+        /// <returns>ArrayListMultiDictionary</returns>
+        public static ArrayListMultiDictionary<TKey, TValue> ToArrayListMultiDictionary<TKey, TValue>(
+            this ImmutableDictionary<TKey, TValue> source)
+        {
+            return ToArrayListMultiDictionary((IReadOnlyDictionary<TKey, TValue>)source);
+        }
+
+        #endregion
+
+        #region ToLinkedListMultiDictionary
 
         /// <summary>
         /// Converts dictionary to LinkedListMultiDictionary.
@@ -291,6 +455,36 @@ namespace Sharpility.Extensions
         }
 
         /// <summary>
+        /// Converts dictionary to LinkedListMultiDictionary.
+        /// </summary>
+        /// <typeparam name="TKey">Type of dictionary key</typeparam>
+        /// <typeparam name="TValue">Type of dictionary value</typeparam>
+        /// <param name="source">this</param>
+        /// <returns>LinkedListMultiDictionary</returns>
+        public static LinkedListMultiDictionary<TKey, TValue> ToLinkedListMultiDictionary<TKey, TValue>(
+            this Dictionary<TKey, TValue> source)
+        {
+            return ToLinkedListMultiDictionary((IDictionary<TKey, TValue>) source);
+        }
+
+        /// <summary>
+        /// Converts dictionary to LinkedListMultiDictionary.
+        /// </summary>
+        /// <typeparam name="TKey">Type of dictionary key</typeparam>
+        /// <typeparam name="TValue">Type of dictionary value</typeparam>
+        /// <param name="source">this</param>
+        /// <returns>LinkedListMultiDictionary</returns>
+        public static LinkedListMultiDictionary<TKey, TValue> ToLinkedListMultiDictionary<TKey, TValue>(
+            this ImmutableDictionary<TKey, TValue> source)
+        {
+            return ToLinkedListMultiDictionary((IReadOnlyDictionary<TKey, TValue>)source);
+        }
+
+        #endregion
+
+        #region ToHashSetMultiDictionary
+
+        /// <summary>
         /// Converts dictionary to HashSetMultiDictionary.
         /// </summary>
         /// <typeparam name="TKey">Type of dictionary key</typeparam>
@@ -321,6 +515,36 @@ namespace Sharpility.Extensions
             result.PutAll(source);
             return result;
         }
+
+        /// <summary>
+        /// Converts dictionary to HashSetMultiDictionary.
+        /// </summary>
+        /// <typeparam name="TKey">Type of dictionary key</typeparam>
+        /// <typeparam name="TValue">Type of dictionary value</typeparam>
+        /// <param name="source">this</param>
+        /// <returns>HashSetMultiDictionary</returns>
+        public static HashSetMultiDictionary<TKey, TValue> ToHashSetMultiDictionary<TKey, TValue>(
+            this Dictionary<TKey, TValue> source)
+        {
+            return ToHashSetMultiDictionary((IDictionary<TKey, TValue>) source);
+        }
+
+        /// <summary>
+        /// Converts dictionary to HashSetMultiDictionary.
+        /// </summary>
+        /// <typeparam name="TKey">Type of dictionary key</typeparam>
+        /// <typeparam name="TValue">Type of dictionary value</typeparam>
+        /// <param name="source">this</param>
+        /// <returns>HashSetMultiDictionary</returns>
+        public static HashSetMultiDictionary<TKey, TValue> ToHashSetMultiDictionary<TKey, TValue>(
+            this ImmutableDictionary<TKey, TValue> source)
+        {
+            return ToHashSetMultiDictionary((IReadOnlyDictionary<TKey, TValue>)source);
+        }
+
+        #endregion
+
+        #region ToImmutableListMultiDictionary
 
         /// <summary>
         /// Converts dictionary to ImmutableListMultiDictionary.
@@ -355,6 +579,36 @@ namespace Sharpility.Extensions
         }
 
         /// <summary>
+        /// Converts dictionary to ImmutableListMultiDictionary.
+        /// </summary>
+        /// <typeparam name="TKey">Type of dictionary key</typeparam>
+        /// <typeparam name="TValue">Type of dictionary value</typeparam>
+        /// <param name="source">this</param>
+        /// <returns>ImmutableListMultiDictionary</returns>
+        public static ImmutableListMultiDictionary<TKey, TValue> ToImmutableListMultiDictionary<TKey, TValue>(
+            this Dictionary<TKey, TValue> source)
+        {
+            return ToImmutableListMultiDictionary((IDictionary<TKey, TValue>) source);
+        }
+
+        /// <summary>
+        /// Converts dictionary to ImmutableListMultiDictionary.
+        /// </summary>
+        /// <typeparam name="TKey">Type of dictionary key</typeparam>
+        /// <typeparam name="TValue">Type of dictionary value</typeparam>
+        /// <param name="source">this</param>
+        /// <returns>ImmutableListMultiDictionary</returns>
+        public static ImmutableListMultiDictionary<TKey, TValue> ToImmutableListMultiDictionary<TKey, TValue>(
+            this ImmutableDictionary<TKey, TValue> source)
+        {
+            return ToImmutableListMultiDictionary((IReadOnlyDictionary<TKey, TValue>)source);
+        }
+
+        #endregion
+
+        #region ToImmutableSetMultiDictionary
+
+        /// <summary>
         /// Converts dictionary to ImmutableSetMultiDictionary.
         /// </summary>
         /// <typeparam name="TKey">Type of dictionary key</typeparam>
@@ -385,6 +639,36 @@ namespace Sharpility.Extensions
             builder.PutAll(source);
             return builder.Build();
         }
+
+        /// <summary>
+        /// Converts dictionary to ImmutableSetMultiDictionary.
+        /// </summary>
+        /// <typeparam name="TKey">Type of dictionary key</typeparam>
+        /// <typeparam name="TValue">Type of dictionary value</typeparam>
+        /// <param name="source">this</param>
+        /// <returns>ImmutableSetMultiDictionary</returns>
+        public static ImmutableSetMultiDictionary<TKey, TValue> ToImmutableSetMultiDictionary<TKey, TValue>(
+            this Dictionary<TKey, TValue> source)
+        {
+            return ToImmutableSetMultiDictionary((IDictionary<TKey, TValue>) source);
+        }
+
+        /// <summary>
+        /// Converts dictionary to ImmutableSetMultiDictionary.
+        /// </summary>
+        /// <typeparam name="TKey">Type of dictionary key</typeparam>
+        /// <typeparam name="TValue">Type of dictionary value</typeparam>
+        /// <param name="source">this</param>
+        /// <returns>ImmutableSetMultiDictionary</returns>
+        public static ImmutableSetMultiDictionary<TKey, TValue> ToImmutableSetMultiDictionary<TKey, TValue>(
+            this ImmutableDictionary<TKey, TValue> source)
+        {
+            return ToImmutableSetMultiDictionary((IReadOnlyDictionary<TKey, TValue>)source);
+        }
+
+        #endregion
+
+        #region ToComparable
 
         /// <summary>
         /// Converts dictionary into comparable dictionary with equals/hashCode/toString implementations.
@@ -397,6 +681,8 @@ namespace Sharpility.Extensions
         {
             Preconditions.IsNotNull(source, () => new ArgumentNullException("source"));
             return ComparableDictionary<TKey, TValue>.Of(source);
-        } 
+        }
+
+        #endregion
     }
 }

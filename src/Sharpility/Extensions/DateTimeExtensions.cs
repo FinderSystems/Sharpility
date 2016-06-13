@@ -101,6 +101,41 @@ namespace Sharpility.Extensions
             return source == dateTime;
         }
 
+        /// <summary>
+        /// Converts DateTime to Date with 00:00:00 time.
+        /// </summary>
+        /// <param name="source">this</param>
+        /// <returns>Date</returns>
+        public static DateTime ToDate(this DateTime source)
+        {
+            Preconditions.IsNotNull(source, () => new NullReferenceException("source"));
+            return new DateTime(source.Year, source.Month, source.Day, 0, 0, 0, source.Kind);
+        }
+
+        /// <summary>
+        /// Returns DateTime instance with days instance addition to it.
+        /// </summary>
+        /// <param name="source">this</param>
+        /// <param name="days">Number of days added</param>
+        /// <returns>DateTime with days added</returns>
+        public static DateTime PlusDays(this DateTime source, uint days)
+        {
+            Preconditions.IsNotNull(source, () => new NullReferenceException("source"));
+            return source.AddDays(days);
+        }
+
+        /// <summary>
+        /// Returns DateTime instance with days instance substracted from it.
+        /// </summary>
+        /// <param name="source">this</param>
+        /// <param name="days">Number of days substracted</param>
+        /// <returns>DateTime with substracted days</returns>
+        public static DateTime MinusDays(this DateTime source, uint days)
+        {
+            Preconditions.IsNotNull(source, () => new NullReferenceException("source"));
+            return source.AddDays(-(int)days);
+        }
+
         private static bool IsUtcConvertable(DateTime dateTime)
         {
             switch (dateTime.Kind)

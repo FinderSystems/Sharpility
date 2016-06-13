@@ -14,7 +14,7 @@ namespace Sharpility.Tests.Util
         public void ShouldCreateInstanceOfSimpleObject()
         {
             // when
-            var instance = InstanceCreator.CreateIntance<SimpleObject>();
+            var instance = InstanceCreator.CreateInstance<SimpleObject>();
 
             // then
             Check.That(instance).IsNotNull();
@@ -24,7 +24,7 @@ namespace Sharpility.Tests.Util
         public void ShouldCreateInstanceOfObjectWithPrivateConstructor()
         {
             // when
-            var instance = InstanceCreator.CreateIntance<PrivateConstructor>();
+            var instance = InstanceCreator.CreateInstance<PrivateConstructor>();
 
             // then
             Check.That(instance).IsNotNull();
@@ -34,7 +34,7 @@ namespace Sharpility.Tests.Util
         public void ShouldCreateInstanceOfObjectWithoutDefaultConstrutor()
         {
             // when
-            var instance = InstanceCreator.CreateIntance<NoDefaultConstructor>();
+            var instance = InstanceCreator.CreateInstance<NoDefaultConstructor>();
 
             // then
             Check.That(instance).IsNotNull();

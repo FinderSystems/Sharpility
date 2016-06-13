@@ -23,6 +23,19 @@ namespace Sharpility.Tests.Util
         }
 
         [Test]
+        public void ShouldReturnEnumByNameCaseInsensitive()
+        {
+            // given
+            const string name = "testvalue2";
+
+            // when
+            var result = Enums.ValueOf<TestEnum>(name, ignoreCase: true);
+
+            // when
+            Check.That(result).IsEqualTo(TestEnum.TestValue2);
+        }
+
+        [Test]
         public void ShouldThrowExceptionWhenEnumNotFoundByName()
         {
             // given
@@ -65,6 +78,87 @@ namespace Sharpility.Tests.Util
 
             // then
             Check.That(names).Contains("TestValue1", "TestValue2");
+        }
+
+        [Test]
+        public void ShouldReturnEnumByNameOnTry()
+        {
+            // given
+            const string name = "TestValue2";
+
+            // var
+            var value = Enums.TryValueOf<TestEnum>(name);
+
+            // then
+            Check.That(value).IsEqualTo(TestEnum.TestValue2);
+        }
+
+        [Test]
+        public void ShouldReturnEnumByNameCaseInsensitiveOnTry()
+        {
+            // given
+            const string name = "TESTVALUE2";
+
+            // var
+            var value = Enums.TryValueOf<TestEnum>(name, ignoreCase: true);
+
+            // then
+            Check.That(value).IsEqualTo(TestEnum.TestValue2);
+        }
+
+        [Test]
+        public void ShouldReturnNullEnumValueWhenNotFound()
+        {
+            // given
+            const string name = "not existing";
+
+            // var
+            var value = Enums.TryValueOf<TestEnum>(name);
+
+            // then
+            Check.That(value).IsNull();
+        }
+
+        [Test]
+        public void ShouldReturEnumValueByNameIgnoringDefault()
+        {
+            // given
+            const string name = "TestValue1";
+            const TestEnum defaultValue = TestEnum.TestValue2;
+
+            // when
+            var value = Enums.ValueOf(name, defaultValue);
+
+            // then
+            Check.That(value).IsEqualTo(TestEnum.TestValue1);
+        }
+
+        [Test]
+        public void ShouldReturEnumValueByNameCaseInsensivieIgnoringDefault()
+        {
+            // given
+            const string name = "Testvalue1";
+            const TestEnum defaultValue = TestEnum.TestValue2;
+
+            // when
+            var value = Enums.ValueOf(name, defaultValue, ignoreCase: true);
+
+            // then
+            Check.That(value).IsEqualTo(TestEnum.TestValue1);
+        }
+
+        [Test]
+        public void ShouldReturnDefaultEnumValueWhenNotFoundByName()
+        {
+            // given
+            const string name = "not existing";
+            const TestEnum defaultValue = TestEnum.TestValue2;
+
+            // when
+            var value = Enums.ValueOf(name, defaultValue);
+
+            // then
+            Check.That(value).IsEqualTo(defaultValue);
         }
     }
 

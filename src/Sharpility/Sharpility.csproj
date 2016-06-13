@@ -77,6 +77,7 @@
     <Compile Include="Collections\SortedSetMappedQueue.cs" />
     <Compile Include="Extensions\CollectionExtensions.cs" />
     <Compile Include="Extensions\ComparerExtensions.cs" />
+    <Compile Include="Extensions\CountdownEventExtensions.cs" />
     <Compile Include="Extensions\DateTimeExtensions.cs" />
     <Compile Include="Extensions\DbCommandExtensions.cs" />
     <Compile Include="Extensions\MultiDictionaryExtensions.cs" />

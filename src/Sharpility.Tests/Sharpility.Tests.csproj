@@ -69,6 +69,7 @@
     <Compile Include="Collections\OrderedImmutableDictionaryTests.cs" />
     <Compile Include="Collections\SortedMappedQueueTests.cs" />
     <Compile Include="Extensions\ComparerExtensionsTests.cs" />
+    <Compile Include="Extensions\CountdownEventExtensionsTests.cs" />
     <Compile Include="Extensions\DateTimeExtensionsTests.cs" />
     <Compile Include="Extensions\DbCommandExtensionsTests.cs" />
     <Compile Include="Extensions\MultiDictionaryExtensionsTests.cs" />

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using Sharpility.Base;
+using Sharpility.Extensions;
 
 namespace Sharpility.Util
 {
@@ -15,12 +16,24 @@ namespace Sharpility.Util
         /// </summary>
         /// <typeparam name="T">Type of enum</typeparam>
         /// <param name="value">Parsed value</param>
+        /// <param name="ignoreCase">Disabled by default. When set to true ignores enum name case</param>
         /// <returns>Type of enum</returns>
-        public static T ValueOf<T>(string value)
-            where T : struct, IConvertible
+        public static T ValueOf<T>(string value, bool ignoreCase = false)
         {
             Preconditions.Evaluate(typeof(T).IsEnum,
                 () => new ArgumentException("Expected enum type"));
+            Preconditions.IsNotNull(value, () => new ArgumentException(string.Format("Value: null is not supported by {0} enum", typeof(T))));
+            if (ignoreCase)
+            {
+                foreach (var enumValue in Values<T>())
+                {
+                    if (enumValue.ToString().EqualsIgnoreCases(value))
+                    {
+                        return enumValue;
+                    }
+                }
+                throw new ArgumentException(string.Format("Value: '{0}' is not supported by {1} enum", value, typeof(T)));
+            }
             return (T)Enum.Parse(typeof(T), value);
         }
 
@@ -31,14 +44,23 @@ namespace Sharpility.Util
         /// <typeparam name="T">Type of enum</typeparam>
         /// <param name="value">parsed value</param>
         /// <param name="defaultValue">default enum value</param>
+        /// <param name="ignoreCase">Disabled by default. When set to true ignores enum name case</param>
         /// <returns>Enum value or defaultValue</returns>
-        public static T ValueOf<T>(string value, T defaultValue)
-          where T : struct, IConvertible
+        public static T ValueOf<T>(string value, T defaultValue, bool ignoreCase = false)
         {
             Preconditions.Evaluate(typeof(T).IsEnum,
                 () => new ArgumentException("Expected enum type"));
-            T result;
-            return Enum.TryParse(value, out result) ? result : defaultValue;
+            foreach (var enumValue in Values<T>())
+            {
+                var comparationType = ignoreCase
+                    ? StringComparison.InvariantCultureIgnoreCase
+                    : StringComparison.InvariantCulture;
+                if (enumValue.ToString().Equals(value, comparationType))
+                {
+                    return enumValue;
+                }
+            }
+            return defaultValue;
         }
 
         /// <summary>
@@ -47,12 +69,24 @@ namespace Sharpility.Util
         /// </summary>
         /// <typeparam name="T">Type of enum</typeparam>
         /// <param name="value">parsed value</param>
+        /// <param name="ignoreCase">Disabled by default. When set to true ignores enum name case</param>
         /// <returns>Enum value or Null</returns>
-        public static T? TryValueOf<T>(string value)
-            where T : struct, IConvertible
+        public static T? TryValueOf<T>(string value, bool ignoreCase = false)
+            where T: struct 
         {
             Preconditions.Evaluate(typeof(T).IsEnum,
                 () => new ArgumentException("Expected enum type"));
+            if (ignoreCase)
+            {
+                foreach (var enumValue in Values<T>())
+                {
+                    if (enumValue.ToString().EqualsIgnoreCases(value))
+                    {
+                        return enumValue;
+                    }
+                }
+                return null;
+            }
             T result;
             return Enum.TryParse(value, out result) ? result : (T?)null;
         }
@@ -63,7 +97,6 @@ namespace Sharpility.Util
         /// <typeparam name="T">Type of enum</typeparam>
         /// <returns>set of enum values</returns>
         public static ISet<T> Values<T>()
-             where T : struct, IConvertible
         {
             Preconditions.Evaluate(typeof(T).IsEnum,
                 () => new ArgumentException("Expected enum type"));
@@ -84,7 +117,6 @@ namespace Sharpility.Util
         /// <typeparam name="T">Type of enum</typeparam>
         /// <returns>set of enum values</returns>
         public static ISet<int> Ordinals<T>()
-             where T : struct, IConvertible
         {
             Preconditions.Evaluate(typeof(T).IsEnum,
                 () => new ArgumentException("Expected enum type"));
@@ -105,7 +137,6 @@ namespace Sharpility.Util
         /// <typeparam name="T">Type of enum</typeparam>
         /// <returns>set of enum names</returns>
         public static ISet<string> Names<T>()
-             where T : struct, IConvertible
         {
             Preconditions.Evaluate(typeof(T).IsEnum,
                 () => new ArgumentException("Expected enum type"));
