@@ -25,6 +25,7 @@ var hierarchy =
     ] ],
     [ "Sharpility.Tests.Collections.AbstractCompositeDictionaryTests.CompositeDictionaryCreator", "interface_sharpility_1_1_tests_1_1_collections_1_1_abstract_composite_dictionary_tests_1_1_composite_dictionary_creator.html", null ],
     [ "Sharpility.Collections.CompositeKey< TPrimaryKey, TSecondaryKey >", "struct_sharpility_1_1_collections_1_1_composite_key-g.html", null ],
+    [ "Sharpility.Tests.Extensions.CountdownEventExtensionsTests", "class_sharpility_1_1_tests_1_1_extensions_1_1_countdown_event_extensions_tests.html", null ],
     [ "Sharpility.Time.DateRange", "class_sharpility_1_1_time_1_1_date_range.html", null ],
     [ "Sharpility.Tests.Time.DateRangeTests", "class_sharpility_1_1_tests_1_1_time_1_1_date_range_tests.html", null ],
     [ "Sharpility.Tests.Extensions.DateTimeExtensionsTests", "class_sharpility_1_1_tests_1_1_extensions_1_1_date_time_extensions_tests.html", null ],

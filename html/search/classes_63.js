@@ -11,5 +11,6 @@ var searchData=
   ['comparerstests',['ComparersTests',['../class_sharpility_1_1_tests_1_1_util_1_1_comparers_tests.html',1,'Sharpility::Tests::Util']]],
   ['compositedictionary_2dg',['CompositeDictionary-g',['../interface_sharpility_1_1_collections_1_1_composite_dictionary-g.html',1,'Sharpility::Collections']]],
   ['compositedictionarycreator',['CompositeDictionaryCreator',['../interface_sharpility_1_1_tests_1_1_collections_1_1_abstract_composite_dictionary_tests_1_1_composite_dictionary_creator.html',1,'Sharpility::Tests::Collections::AbstractCompositeDictionaryTests']]],
-  ['compositekey_2dg',['CompositeKey-g',['../struct_sharpility_1_1_collections_1_1_composite_key-g.html',1,'Sharpility::Collections']]]
+  ['compositekey_2dg',['CompositeKey-g',['../struct_sharpility_1_1_collections_1_1_composite_key-g.html',1,'Sharpility::Collections']]],
+  ['countdowneventextensionstests',['CountdownEventExtensionsTests',['../class_sharpility_1_1_tests_1_1_extensions_1_1_countdown_event_extensions_tests.html',1,'Sharpility::Tests::Extensions']]]
 ];
